@@ -1,2 +1,2 @@
-# poseidon-ocean.github.com
+# poseidon-ocean.github.io
 poseidon-ocean page
