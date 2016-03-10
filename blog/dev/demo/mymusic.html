@@ -1,0 +1,357 @@
+﻿<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>累土 - 合抱之木，生于毫末；九层之台，起于累土</title>
+	<meta name="keywords" content="个人博客,SEO优化,编程开发,大数据,网站建设,学习交流"/>
+	<meta name="description" content="码一码互联网的一些事儿,让高大上走入寻常百姓家"/>
+	<link rel="shortcut icon" type="image/ico" href="../../images/favicon.ico">
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		body{font-size:16px;font-family:"微软雅黑";color:#666;
+			background:url("images/bg.jpg") no-repeat top center;
+			background-size:cover;
+		}
+		.fl{float:left;}
+		.fr{float:right;}
+		/*#music start*/
+		#music{width:960px;height:250px;
+			margin:50px auto;background:url("images/banner_bg.jpg") no-repeat;
+			position:relative;
+		}
+		#music ul li{list-style:none;position:absolute;}
+		#music ul li a img{border-radius:50%;}
+		#music ul .m_1{top:30px;left:6px;}
+		#music ul .m_2{top:130px;left:75px;}
+		#music ul .m_3{top:30px;left:99px;}
+		#music ul .m_4{bottom:10px;left:186px;}
+		#music ul .m_5{top:63px;left:306px;}
+		#music ul .m_6{bottom:10px;left:408px;}
+		#music ul .m_7{top:20px;left:479px;}
+		#music ul .m_8{bottom:10px;left:500px;}
+		#music ul .m_9{top:123px;left:576px;}
+		#music ul .m_10{top:67px;left:164px;}
+		#music ul .m_11{top:36px;left:588px;}
+		#music ul .m_12{top:8px;left:289px;}
+		#music ul .m_13{top:28px;right:39px;}
+		#music ul .m_13 .doc{width:160px;color:#fff;}
+		#music .mname{display:none;}
+		/*end #music*/
+		
+		/*.player start*/
+		.player{width:563px;height:115px;background:#000;position:fixed;bottom:60px;left:0;border-radius:0 5px 5px 0;}
+		.player .p_pic img{margin-top:10px;margin-left:12px;}
+		.player .p_desc{margin-top:10px;margin-left:16px;width:96px;}
+		.player .p_desc .d_title{color:#fff; text-overflow: ellipsis;overflow: hidden; white-space: nowrap;}
+		.player .p_desc .d_name{margin-top:7px;white-space: nowrap;text-overflow: ellipsis; overflow: hidden;}
+		.player .p_desc .d_comment .comm{width:16px;height:15px;
+			background:url("images/player_bg.png") no-repeat;
+			cursor:pointer;display:inline-block;
+			margin-top:6px;margin-left:3px;
+		}
+		.player .p_desc .d_comment .c_xin{background-position:-2px -127px;}
+		.player .p_desc .d_comment .c_zh{background-position:-16px -127px;}
+		.player .p_desc .d_comment .c_mai{background-position:-95px -127px;}
+		
+		.player .p_desc .d_comment .c_xin:hover{background-position:-2px -145px;}
+		.player .p_desc .d_comment .c_zh:hover{background-position:-16px -145px;}
+		.player .p_desc .d_comment .c_mai:hover{background-position:-80px -145px;}
+		
+		.player .p_btn .bpic{background:url("images/player_bg.png") no-repeat;cursor:pointer;}
+		.player .p_btn .b_nav .dqdt{width:78px;height:22px;margin-top:6px;
+			background-position:-453px -54px;cursor:pointer;}
+		.player .p_btn .b_nav .nmenu{width:25px;height:30px;
+			background-position:-152px -100px;margin-left:160px;cursor:pointer;}
+		.player .p_btn .b_nav .gnum{width: 26px;height: 28px;cursor:pointer;background-position: -244px -99px;text-align: center;color: #fff;line-height: 27px;font-size: 12px;}
+		.player .p_btn .b_nav .ci{ width: 36px; height: 26px;cursor:pointer;text-align: center;line-height: 26px;}
+		.player .p_btn .b_con{width:272px;margin-top:18px;}
+		.player .p_btn .b_con .prev{width: 40px;height: 30px;background-position: -70px 0px;margin-top:6px;}
+		.player .p_btn .b_con .playbt{width:40px;height:40px;background-position: -105px 0px;}
+		.player .p_btn .b_con .pausebt{width:40px;height:40px;background-position: -293px -88px;display:none;}
+		.player .p_btn .b_con .next{width: 40px;height: 30px;background-position: -145px 0px;margin-top:6px;}
+		.player .p_btn .b_con .xunh{width: 40px;height: 30px;background-position: -217px 5px;}
+		.player .p_btn .b_con .shyin{width: 32px;height: 30px;background-position: -183px 5px;}
+		.player .p_btn .b_con .jindu{ width: 72px;height: 5px;background-position: -290px -15px;margin-top:17px;
+			position:relative;
+		}
+		.player .p_btn .b_con .jindu .jcly{background:url("images/player_bg.png") no-repeat;    width: 6px;
+			height: 10px; display: inline-block;background-position: -366px 0px; position: absolute;left: 1px;top: -4px;}
+		
+		.player .p_btn .b_con .prev:hover{background-position: -70px -32px;}
+		.player .p_btn .b_con .playbt:hover{background-position: -105px -42px;}
+		.player .p_btn .b_con .pausebt:hover{background-position: -335px -88px;}
+		.player .p_btn .b_con .next:hover{background-position: -145px -32px;}
+		.player .p_btn .b_con .xunh:hover{background-position: -217px -27px;}
+		.player .p_btn .b_con .shyin:hover{background-position: -183px -27px;}
+		
+		.player .p_packup{background:url("images/player_bg.png") no-repeat;
+			cursor:pointer;width:22px;height:115px;border-radius:0 5px 5px 0;}
+		.player .p_packdown{background:url("images/player_bg.png") no-repeat;
+			background-position:-46px 0;display:none;
+			cursor:pointer;width:22px;height:115px;border-radius:0 5px 5px 0;}
+			
+		.player	.player_bar{width:541px;height:4px;position:absolute;left:0;bottom:0;}
+		.player	.player_bar .pbar_bg{width:100%;background:#323232;position:absolute;left:0;
+			bottom:0;z-index:1;cursor:pointer;height:4px;z-index:1;
+		}
+		.player	.player_bar .pbr_curr{width:0%;height:4px;background:#0cc65b;
+			position:absolute;left:0;bottom:0;z-index:3;
+		}
+		.player	.player_bar .pbr_op{
+			background:url("images/progress_op.png") no-repeat;
+			width:7px;height:6px;position:absolute;
+			display:block;left:0%;top:-1px;z-index:3;
+		}
+		/* end .player*/
+		        
+		@keyframes rorate{
+			from{transform:rorate(0deg);}
+			to{transform:rotate(360deg);}
+		}
+		
+		.rorate{animation:rorate 3s infinite linear;}
+	</style>
+</head>
+<body>
+	
+	<!-- music start -->
+	<div id="music">
+		<ul>
+			<li class="m_1">
+				<a href="#" class="item" title="周杰伦" data-url="mp3/dx.mp3">
+					<img src="images/1.jpg" alt="周杰伦" width="60" height="60" />
+					<p class="mname">稻香</p>
+				</a>
+			</li>
+			<li class="m_2">
+				<a href="#" class="item" title="陈奕迅" data-url="mp3/ndbb.mp3">
+					<img src="images/2.jpg" alt="陈奕迅" width="90" height="90" />
+					<p class="mname">你的背包</p>
+				</a>
+			</li>
+			<li class="m_3">
+				<a href="#" class="item" title="林俊杰" data-url="mp3/yqnyh.mp3">
+					<img src="images/3.jpg" alt="林俊杰" width="60" height="60" />
+					<p class="mname">一千年以后</p>
+				</a>
+			</li>
+			<li class="m_4">
+				<a href="#" class="item" title="TFBOYS" data-url="mp3/sns.mp3">
+					<img src="images/4.jpg" alt="TFBOYS" width="60" height="60" />
+					<p class="mname">少年说</p>
+				</a>
+			</li>
+			<li class="m_5">
+				<a href="#" class="item" title="邓紫棋" data-url="mp3/xhn.mp3">
+					<img src="images/5.jpg" alt="G.E.M. 邓紫棋" width="124" height="124" />
+					<p class="mname">喜欢你</p>
+				</a>
+			</li>
+			<li class="m_6">
+				<a href="#" class="item" title="刘德华" data-url="mp3/kxdml.mp3">
+					<img src="images/6.jpg" alt="刘德华" width="60" height="60" />
+					<p class="mname">开心的马骝</p>
+				</a>
+			</li>
+			<li class="m_7">
+				<a href="#" class="item" title="费玉清" data-url="mp3/yjm.mp3">
+					<img src="images/7.jpg" alt="费玉清" width="90" height="90" />
+					<p class="mname">一剪梅</p>
+				</a>
+			</li>
+			<li class="m_8">
+				<a href="#" class="item" title="胡歌" data-url="mp3/wjsj.mp3">
+					<img src="images/8.jpg" alt="胡歌" width="60" height="60" />
+					<p class="mname">忘记时间</p>
+				</a>
+			</li>
+			<li class="m_9">
+				<a href="#" class="item" title="降央卓玛" data-url="mp3/ajsgamr.mp3">
+					<img src="images/9.jpg" alt="降央卓玛" width="90" height="90" />
+					<p class="mname">爱江山更爱美人</p>
+				</a>
+			</li>
+			<li class="m_10">
+				<a href="#" class="item" title="莫文蔚" data-url="mp3/dnll.mp3">
+					<img src="images/10.jpg" alt="莫文蔚" width="80" height="80" />
+					<p class="mname">当你老了</p>
+				</a>
+			</li>
+			<li class="m_11">
+				<a href="#" class="item" title="张学友" data-url="mp3/ylsyn.mp3">
+					<img src="images/11.jpg" alt="张学友" width="60" height="60" />
+					<p class="mname">一路上有你</p>
+				</a>
+			</li>
+			<li class="m_12">
+				<a href="#" class="item" title="张惠妹" data-url="mp3/yymt.mp3">
+					<img src="images/12.jpg" alt="张惠妹" width="60" height="60" />
+					<p class="mname">也许明天</p>
+				</a>
+			</li>
+			<li class="m_13">
+				<a href="#" class="item" title="Diana Krall (黛安娜·克瑞儿)" data-url="mp3/tlol.mp3">
+					<img src="images/13.jpg" alt="Diana Krall (黛安娜·克瑞儿)" width="124" height="124" />
+					<p class="mname">The Look Of Love</p>
+				</a>
+				<p class="doc">
+				Diana Krall出生于1964年11月16日，她出生在位于加拿大不列颠哥伦比亚省西南部的、
+				温哥华附近的港口城Nanaimo。Diana Krall之所以能够在日后成为一名杰出的爵士女歌手，
+				至关重要的一个原因就是她有一个极富音乐细胞的父亲。Diana Krall曾经说她的父亲
+				拥有几乎所有三十年代爵士钢琴家Fats Waller的老唱片。
+				</p>
+			</li>
+		</ul>
+	</div>
+	<!-- end music -->
+	
+	<div class="player">
+		<div class="p_pic fl">
+			<img src="images/5.jpg" alt="邓紫棋" width="90" height="90"/>
+		</div>
+		<div class="p_desc fl">
+			<p class="d_title">喜欢你</p>
+			<p class="d_name dnm">邓紫棋</p>
+			<p class="d_time d_name">03:59</p>
+			<p class="d_comment">
+				<i class="c_xin comm fl"></i>
+				<i class="c_zh comm fl"></i>
+				<i class="c_mai comm fl"></i>
+			</p>
+		</div>
+		<div class="p_btn fl">
+			<div class="b_nav">
+				<div class="bpic dqdt fl"></div>
+				<div class="bpic nmenu fl"></div>
+				<div class="bpic gnum fl">1</div>
+				<div class="fl ci">词</div>
+			</div>
+			<div class="b_con fr">
+				<div class="bpic prev fl"></div>
+				<div class="bpic playbt fl"></div>
+				<div class="bpic pausebt fl"></div>
+				<div class="bpic next fl"></div>
+				<div class="bpic xunh fl"></div>
+				<div class="bpic shyin fl"></div>
+				<div class="bpic jindu fl">
+					<i class="jcly"></i>
+				</div>
+			</div>
+		</div>
+		<div class="p_packup fr"></div>
+		<div class="p_packdown fr"></div>
+		<div class="player_bar">
+			<span class="pbar_bg"></span>
+			<span class="pbr_curr"></span>
+			<span class="pbr_op"></span>
+		</div>
+	</div>
+	
+	<div id="audiobox"></div>
+	
+	
+	<script type="text/javascript" src="../../js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript">
+	
+		
+		$(function(){
+			
+			
+			$("#music").find(".item").click(function(){
+				var $th = $(this);
+				var url = $th.data("url");
+				var title = $th.attr("title");
+				var src = $th.find("img").attr("src");
+				var mname = $th.find(".mname").text();
+				
+				
+				$(".p_pic").find("img").attr({"src":src,"alt":title});
+				$(".p_desc").find(".d_title").text(mname);
+				$(".p_desc").find(".dnm").text(title);
+				
+				$(".item").find("img").removeClass("rorate");
+				$th.find("img").addClass("rorate");
+				
+				audioDom = createMp3(url);
+				audioDom.oncanplaythrough = function(){
+					var msecond = this.duration;
+					var m = parseInt(msecond/60);
+					var s = parseInt(msecond%60);
+					var ms = (m<10?("0"+m):m) + ":" +(s<10?("0"+s):s);
+					$(".d_time").html(ms);
+				}
+				
+				audioDom.addEventListener("timeupdate",function(){
+					var ctime = this.currentTime;//播放进度
+					var dtime = this.duration;//播放时间
+					var prcen = ctime/dtime;
+					var num = (ctime/dtime*100).toFixed(0)+"%";
+					//console.log(num);
+					$(".pbr_op").css({left:num});
+					$(".pbr_curr").css({width:num});
+					if(num=="100%"){
+						$th.find("img").removeClass("rorate");
+						$(".pbr_op").css({left:"99%"});
+						$(".playbt").show();
+						$(".pausebt").hide();
+					}
+				});
+			
+				$(".playbt").trigger("click");
+				
+				
+				
+			});
+			//隐藏播放器
+			$(".p_packup").click(function(){
+				var pw = $(".player").width()-22;
+				var $th = $(this);
+				$(".player").animate({left:-pw},1000,function(){
+					$th.hide();
+					$(".p_packdown").show();
+				});
+				
+			});
+			//显示播放器
+			$(".p_packdown").click(function(){
+				$(".player").animate({left:0},1000,function(){
+					$(".p_packdown").hide();
+					$(".p_packup").show();
+				});
+			});
+			
+			//初始化播放器
+			var audioDom = createMp3("mp3/xhn.mp3");
+			//audioDom.play();
+			
+			//点击图片联动音乐播放器
+			
+			//播放
+			$(".playbt").click(function(){
+				audioDom.play();
+				$(this).hide();
+				$(".pausebt").show();
+			});
+			//暂停
+			$(".pausebt").click(function(){
+				$(this).hide();
+				$(".playbt").show();
+				audioDom.pause();
+			});
+		});
+		
+		//创建一个播放器
+		function createMp3(src){
+			//创建一个MP3播放器
+			var audioDom = document.createElement("audio");
+			//设置地址
+			audioDom.src = src;
+			//console.log($("#audiobox"));
+			$("#audiobox").empty();
+			$("#audiobox").append(audioDom);
+			return audioDom;
+		}
+		
+	</script>
+</body>
+</html>

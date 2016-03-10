@@ -1,0 +1,65 @@
+﻿*{margin:0px;padding:0px;}
+body{font-size:16px;font-family:"微软雅黑",sans-serif;background-color:#eee;}
+
+.t_pre{padding-left:800px;;}
+
+.module{width:800px;margin-left:120px; text-align:left; line-height:33px;
+	background:#fff;border:1px solid #ddd;padding:0 50px;margin-top:10px;
+}
+.module h2,.m_pre{margin-left:-40px;}
+.o_list a{text-decoration:none;color:#5B9DCA;}
+.red{color:red;}
+
+.sc1{color:#394a58;}
+.sc2{color:red;}
+
+
+
+ul{list-style:none;}
+
+/* .head start */
+.head{width:100%;height:55px;background:#181818;opacity:0.8;filter:alpha(opacity=80);}
+.head .nav{width:900px;float:left;}
+.head .nav .n_con li{float:left;height:55px;
+	line-height:55px;text-align:center;font-size:16px;width:120px;
+}
+.head .nav .n_con li:hover{background:#666;}
+.head .nav .n_con li a{text-decoration:none;color:#fff;}
+/* end head */
+
+/* left start */
+.left{float:left;}
+.left .hc_left{width:120px;background:#0D3D92;
+	opacity:0.8;filter:alpha(opacity=80);margin:20px 0 0 30px;;
+	border-radius:3px;box-shadow: 1px 1px 5px 1px #9696DC;
+}
+
+.left .hc_left .h_list li span{width:100%;height:40px;line-height:40px;color:#fff;text-align:center;
+	border-bottom:2px solid #072373;font-size:16px;display:block;cursor:pointer;
+}
+.left .hc_left .h_list li:hover  span{background:#FE0A04;}
+.left .hc_left .h_list li .li_ul li{height:35px;line-height:35px;text-align:center;
+	font-size:14px;background:#ABD010;display:none;
+}
+.left .hc_left .h_list li .li_ul li:hover{background:#006835;}
+.left .hc_left .h_list li .li_ul li a{color:#F00806;text-decoration:none;}
+/* end start */
+
+.main{float:left;margin:50px 0 0 50px;}
+.main .banner{width:704px;height:444px;overflow:hidden;position:relative;z-index:0;}
+.main .banner .pic li{position:absolute;z-index:0;}
+.main .banner .pic li.pel{position:absolute;z-index:1;}
+.main .banner .menu{position:absolute;left:300px;bottom:5px;z-index:2;}
+.main .banner .menu li{float:left;width:20px;height:20px;line-height:20px;background:#006835;
+	border-radius:10px;text-align:center;color:#fff;opacity:0.6;filter:lapha(opacity=60);
+	margin-right:3px;
+}
+.main .banner .menu li.sel{background:#fff;}
+
+/**
+.left .hc_left .h_list .h_child{display:none;}
+
+*/
+
+
+

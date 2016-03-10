@@ -1,0 +1,118 @@
+﻿<!doctype html>
+<html>
+<head>
+	<!-- 声明当前页面编码集（中文编码<gbk,gb2312>,国际编码<utf-8> -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<!-- 声明当前页面的三要素 -->
+	<title>JavaWeb技术开发百度切换皮肤【百度内部技术】-poseidon</title>
+	<meta name="keywords" content="切换皮肤"/>
+	<meta name="description" content="JavaWeb技术开发百度切换皮肤【百度内部技术】"/>
+
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		img{border:0;display:block;margin:0px 1px 1px 0px;}
+		body{font-size:14px;font-family:"微软雅黑";background:url("images/1.jpg");}
+		
+		.skin{width:100%;height:200px;background-color:#fff;position:absolute;left:0;top:0;z-index:3;display:none;}
+		.skin .pic{width:590px;height:180px;margin:0 auto;}
+		.skin .pic .one{width:196px;height:180px;float:left;}
+		.skin .pic .one a{float:left;}
+		.skin .pic .two{width:98px;height:180px;float:left;}
+		.skin .pic .three{width:196px;height:180px;float:left;}
+		.skin .pic .three a{float:left;}
+		.skin .pic .four{width:98px;height:180px;float:left;}
+		.skin .pic a:hover img{opacity:0.8;filter(opacity=80)}
+		
+		.yy{width:100%;height:100%;background-color:#000;
+			position:absolute;left:0;top:0;z-index:2;
+			opacity:0.8;filter(opacity=80);display:none;
+		}
+		
+		#mySkin{text-decoration:none;background:#fff;padding:3px 12px;color:blue;
+			border-radius:15px;transition:all 0.6s ease;
+		}
+		#mySkin:hover{background:blue;color:#fff;transition:all 0.6s ease;}
+	</style>
+</head>
+<body>
+
+	<a href="#" id="mySkin">换肤</a>
+	
+	<div class="skin">
+		<div class="pic">
+			<div class="one">
+				<a>
+					<img src="images/1-1.jpg" alt="图片" width="195" height="119" />
+				</a>
+				<a>
+					<img src="images/2-2.jpg" alt="图片" width="97" height="59" />
+				</a>
+				<a>
+					<img src="images/2-2.jpg" alt="图片" width="97" height="59" />
+				</a>
+			</div>
+			<div class="two">
+				<a>
+					<img src="images/4-4.jpg" alt="图片" width="97" height="59" />
+				</a>
+				<a>
+					<img src="images/5-5.jpg" alt="图片" width="97" height="59" />
+				</a>
+				<a>
+					<img src="images/6-6.jpg" alt="图片" width="97" height="59" />
+				</a>
+			</div>
+			<div class="three">
+				<a>
+					<img src="images/7-7.jpg" alt="图片" width="195" height="119" />
+				</a>
+				<a>
+					<img src="images/8-8.jpg" alt="图片" width="97" height="59" />
+				</a>
+				<a>
+					<img src="images/9-9.jpg" alt="图片" width="97" height="59" />
+				</a>
+			</div>
+			<div class="four">
+				<a>
+					<img src="images/10-10.jpg" alt="图片" width="97" height="59" />
+				</a>
+				<a>
+					<img src="images/11-11.jpg" alt="图片" width="97" height="59" />
+				</a>
+				<a>
+					<img src="images/12-12.jpg" alt="图片" width="97" height="59" />
+				</a>
+			</div>
+		</div>
+	</div>
+	
+	<div class="yy"></div>
+	
+	
+	<script type="text/javascript" src="../../js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+		
+			$("#mySkin,.yy").click(function(){
+				$(".skin,.yy").toggle("slow");
+			});
+			
+			$(".pic").find("a").click(function(){
+				var src = $(this).find("img").attr("src").replace(/-\d*/ig,"");
+				
+				$("body").css("background","url(" + src +")");
+				
+				sessionStorage.setItem("src",src);
+			});
+			
+			var sessionSrc = sessionStorage.getItem("src");
+			if(sessionSrc){
+				$("body").css("background","url(" + sessionSrc +")");
+			}
+			
+			
+		});
+	</script>
+</body>
+</html>

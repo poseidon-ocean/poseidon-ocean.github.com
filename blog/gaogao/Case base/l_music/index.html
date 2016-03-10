@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	*{padding:0;margin:0}
+	body{font-size:14px;font-family:"微软雅黑";}
+	a{text-decoration:none;color:#999}
+	li{list-style:none}
+	.fl{float:left}
+	.fr{float:right}
+	.iconfont.fz14{font-size:14px;}
+	.iconfont.fz16{font-size:16px;}
+	.iconfont.fz18{font-size:18px;}
+	.iconfont.fz24{font-size:24px;}
+	.iconfont.fz32{font-size:32px;}
+	.iconfont.fz48{font-size:48px;}
+	.iconfont.fz64{font-size:64px;}
+	.iconfont.fz96{font-size:96px;}
+	.iconfont{padding-right:6px;}
+	.tp1{position:relative;top:1px;}
+	.tp2{position:relative;top:2px;}
+	.tp11{position:relative;top:-1px;}
+	.tp22{position:relative;top:-2px;}
+	#box{background:red;width:100px;height:100px;}
+	/*keke网页设计布局的："布局用背景色，间距看文字" */
+	.header{height:50px;background:#111}
+	.cntbox{width:640px;margin:60px auto;}
+	.cntbox .sbox{height:24px;font-size:12px;line-height:24px;overflow:hidden;}
+	.cntbox .sbox a{color:#999;}
+	.cntbox .sbox a.pl{padding-left:6px;}
+	.cntbox .title{height:52px;font-size:30px;line-height:52px;color:#999;margin-top:42px;font-weight:500;position:relative;color:#333}
+	.cntbox .imgbox{width:640px;height:452px;margin-top:32px;position:relative;}
+	.cntbox .desc{margin-top:28px;color:#333;font-size:12px;line-height:24px;}
+	.cntbox .period{width:64px;height:64px;background:#DD5862;position:absolute;left:-94px;top:0;display:inline-block;border-radius:50%;font-size:18px;color:#fff;text-align:center;line-height:64px;font-weight:bold;}
+	.cntbox .imgbox .play{position:absolute;top:50%;left:50%;margin-top:-32px;margin-left:-32px;z-index:3;color:#f8f8f8;border-radius:50%;text-shadow:1px 1px 10px #ccc;}
+	.cntbox .imgbox .play:hover{color:#111}
+	.cntbox .imgbox .cover{position:absolute;width:100%;height:432px;background:rgba(0,0,0,0.5);top:30px;left:0;z-index:2;}
+	/*进度百分比*/
+	.cprograss{width:640px;height:14px;background:#ccc;position:relative;line-height:14px;top:20px;}
+	.cpnum{position:absolute;top:0;left:0;padding-left:5px;color:#fff;z-index:3}
+	.cbar{position:absolute;left:0;top:0;width:48px;height:14px;background:#111;z-index:3;text-align:center;}
+	.cover{position:absolute;left:0;top:0;width:100%;height:100%;background:transparent;z-index:2}
+	.cpercent{height:14px;background:#333;width:0%;}
+  </style>
+  <link href="http://at.alicdn.com/t/font_1453399036_9014075.css" rel="stylesheet"/>
+ </head>
+ <body>
+
+	<!--头部-->	
+	<div class="header">
+		
+	</div>
+
+	<!--内容区域-->
+	<div class="cntbox">
+		<div class="sbox">
+			<a href="javascript:void(0);" class="fl"><i class="iconfont icon-back"></i>返回期刊首页</a> 	
+			<a href="javascript:void(0);" class="fr pl">#朋克</a>
+			<a href="javascript:void(0);" class="fr pl">#朋克</a>
+			<a href="javascript:void(0);" class="fr ">#朋克</a>
+		</div>
+		<h1 class="title">
+			<i class="iconfont icon-iconlove fz32 tp1"></i>You Are Free
+			<span class="period">788</span>
+		</h1>
+		<i class="iconfont icon-time"></i><span id="tot1">00:00</span>
+			<i class="iconfont icon-time"></i><span id="cur1">00:00</span>
+			<i class="iconfont icon-time"></i><span id="bur1">00:00</span>
+		<div class="imgbox">
+			<img src="http://7xkszy.com2.z0.glb.qiniucdn.com/pics/vol/569fc38f1483f.jpg?imageView2/1/w/640/h/452"/>
+			<a href="javascript:void(0);" id="tzplay" class="play"><i class="iconfont icon-play fz64 tp1"></i></a>
+			<div class="cover"></div>
+		</div>
+		<div id="musicbox"></div>
+		<div class="cprograss">
+			<div id="percent" class="cpercent"></div>
+			<div id="bar" class="cbar"><span id="pnum" class="cpnum">0%</span></div>
+			<div id="over" class="cover"></div>
+		</div><br>
+		<a href="javascript:void(0);" id="vol1">静音</a>
+
+		<div  class="cprograss" style="width:120px;">
+			<div class="cpercent"></div>
+			<div id="vbar" class="cbar"><span id="vpnum" class="cpnum">0%</span></div>
+			<div id="vover" class="cover"></div>
+		</div>
+		<div class="desc">
+			  本期音乐为凯尔特朋克（Celtic Punk）音乐专题。<br>
+			<br>
+			凯尔特音乐主要由西欧凯尔特人传统的民间音乐发展而成，上世纪八九十年代后，很多音乐风格都受到凯尔特音乐的影响，从电子到摇滚，从嘻哈到朋克，以及新世纪音乐，通俗音乐，甚至雷鬼音乐等。这些凯尔特音乐的现代诠释方式大多数时候被视为凯尔特融合（Celtic Fusion）。值得特别说明的是，凯尔特音乐并非只是凯尔特人专有的音乐表达方式。例如这期音乐有来自英国、美国、比利时、甚至中国的乐队。<br>
+			<br>
+			在这期凯尔特朋克音乐中，歌曲表达内容上既有朋克特有的反抗精神，又在旋律上大量的运用了风笛和风琴等乐器，营造出了一种特有的不屈、悠远的特质。如果你喜欢本期音乐，强烈推荐你试听落网之前制作的斯卡朋克（Ska-Punk）音乐专题《Vol.661 苦中作乐》。<br>
+			<br>
+			Cover From Yuumei，Cover Original Description：<br>
+			<br>
+			A scene from Fisheye Placebo. <br>
+			<br>
+			This image was inspired by a free Breadley Manning protest I participated in. We were a small group of about 20-30 peaceful protesters met by an overkill of riot police. We dissipated peacefully to avoid arrest but the image of facing against a roll of riot police remained in my mind. <br>
+			<br>
+			For those not familiar with Bradley Manning, he was the one who leaked the Collateral Murder video to Wikileaks. The video details the slaughter of innocent Iraqi civilians and journalists by American soldiers. Amongst the injured were 2 children whose father was killed. When the journalists' families asked about how they were killed, they were lied to. For revealing the true casualties of war, Manning was put into solitary confinement and tortured without trial. Learn more and support the cause at www.bradleymanning.org   
+		</div>
+	
+	</div>
+
+
+
+
+
+	<script src="js/Gdom.js"></script>
+	<script src="js/tz_music.js"></script>
+	<script>
+		window.onload = function(){
+			var music = new TzMusic("musicbox","http://luoo-mp3.kssws.ks-cdn.com/low/luoo/radio788/01.mp3","Fields Of Green","Fiddler's Green");
+			music.init({bar:dom("bar"),volume:dom("vbar")},function(mark){
+				if(mark=="time"){//时长的调用
+					dom("tot1").innerHTML = this.ftime;
+				}else if(mark=="play"){
+					//播放中的
+					dom("cur1").innerHTML = this.fptime;
+					dom("bur1").innerHTML = this.btime;
+					dom("percent").style.width =this.percent+"%";
+
+					var pwidth = dom("bar").parentElement.offsetWidth - dom("bar").offsetWidth;
+					dom("bar").style.left =pwidth*(this.percent/100)+"px";
+					dom("pnum").innerHTML = this.percent+"%";
+				}
+			});
+
+			dom("tzplay").onclick = function(){
+				var cdom = this.children[0];
+				var className = cdom.className;
+				if(className.indexOf("play")!=-1){
+					music.play();
+					//写法一
+					//cdom.className = "iconfont icon-pause fz64 tp1"
+					//写法二
+					cdom.classList.remove("icon-play");
+					cdom.classList.add("icon-pause");
+				}else{
+					music.stop();
+					//写法一
+					//cdom.className = "iconfont icon-play fz64 tp1"
+					//写法二
+					cdom.classList.remove("icon-pause");
+					cdom.classList.add("icon-play");
+				}
+			};
+		};
+	</script>
+ </body>
+</html>

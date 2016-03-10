@@ -1,0 +1,316 @@
+<!doctype html>
+<html>
+ <head>
+  <!--声明当前前页面的编码集：charset-gbk gb2312（中文编码） UTF-8国际编码-->
+  <!--当前页面三要素-->
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title></title>
+	<!--css 叠层样式-->
+	<link href="css/ux_1456920276_1627085/iconfont.css" rel="stylesheet"></link>
+	<link href="css/ux_1457270510_7625372/iconfont.css" rel="stylesheet"></link>
+	<link href="css/ux_1457273023_3160238/iconfont.css" rel="stylesheet"></link>
+	<style type="text/css">
+	*{padding:0;margin:0;}	
+	body{font-size:14px;font-family:"微软雅黑";background-color: #eff3f5;}
+	a{text-decoration:none;color:#333;}
+	li{list-style:none;}
+	.fl{float:left;}
+	.fr{float:right;}
+	.on{color:#0cf;}
+	/*S - header*/
+	header{height:70px;background:#eff2f5;;}    
+	header .h_visual{width:1180px;height:inherit;margin:0 auto;}
+	header .h_visual .v_box{width:800px;height:inherit;margin:0 auto;}
+	header .h_visual .v_box ul li{float:left;position:relative;}
+	header .h_visual .v_box ul li .l_a{width:100px;text-align:center;padding:25px 0px;display:inline-block;border-top:4px solid transparent;transition:all .2s ease}
+	header .h_visual .v_box ul li .b_list{display:none;position:absolute;width:100px;top:70px;left:0;background:#fff;z-index:3;}
+	header .h_visual .v_box ul li .b_list a{width:85px;height:40px;padding-left:15px;display:block;line-height:40px;color:#7a8e9d;}
+	header .h_visual .v_box ul li .b_list .u_on{color:#3498db;font-weight:bold;background-color:#eff3f5}
+	header .h_visual .v_box ul li .b_list a:hover{color:#3498db;font-weight:bold;background-color:#eff3f5}
+	header .h_visual .v_box ul .l_works:hover .b_list{display:block}
+	header .h_visual .v_box ul .l_study:hover .b_list{display:block}
+	header .h_visual .v_box ul li .l_logo{width:85px;height:85px;border:1px solid #111;padding:0;border-radius:50%;overflow:hidden;margin:0 50px;display:inline-block}
+	header .h_visual .v_box ul li .l_search{padding:19px 0px 22px 0px;}
+	header .h_visual .v_box ul li .l_box_search{width:100px;height:50px;border:1px solid #ccc;position:absolute;top:0px;left:0;z-index:-1;background:#fff;border-radius:10px 10px 10px 10px;}
+	header .h_visual .v_box ul li .l_box_search .b_text_search{outline:none;border:0;width:30px;height:34px;margin:9px 0 9px 8px;:float:left;}
+	header .h_visual .v_box ul li .l_box_search .b_a_search .icon-search{width:40px; height: 40px;display:inline-block;float: right;line-height: 40px;text-align: center;margin:5px}
+	header .h_visual .v_box ul li .l_loginbox{padding:0 10px}
+	header .h_visual .v_box ul li .l_login{width:78px;height:66px;padding:0;line-height:66px;text-align:center;display: inline-block;border-top:4px solid transparent;transition: all .2s ease;border-left:1px solid #e3e3e3;border-right:1px solid #e3e3e3}
+	header .h_visual .v_box ul li:hover .l_login{background-color: #eff3f5;border-top-color:#0cf;}
+	header .h_visual .v_box ul li a .icon-xiajiantou{margin-left:5px;color:#B6C1C9;}
+	header .h_visual .v_box ul li a .icon-denglu{font-size:24px;}
+	header .h_visual .v_box ul li a .icon-search{font-size:24px;color:#868686;}
+	header .h_visual .v_box ul li a:hover .icon-search{color:#0cf;}
+	header .h_visual .v_box ul li .l_a:hover{border-color:#0cf;box-shadow:0 0 2px rgba(0,0,0,.2)}
+	/*E - header*/
+
+	/*S - log-content*/
+	.log-content{width:100%;height:510px;background:#fff;margin-top:}
+	.log-content .c_loginBar{width:1080px;height:inherit;margin:0 auto;}
+	.log-content .c_loginBar .l_login_left{width:400px;margin-left:100px;padding-top:90px;padding-bottom:80px;}
+	.log-content .c_loginBar .l_login_left .l_greet{height:40px;color:#34495e;}
+	.log-content .c_loginBar .l_login_left .l_greet h2{font-size:20px;line-height:40px;font-weight: normal;}
+	.log-content .c_loginBar .l_login_left .l_greet span{font-size:14px;padding-top:16px;}
+	.log-content .c_loginBar .l_login_left .l_greet span a{color:#3498db;}
+	.log-content .c_loginBar .l_login_left .l_input{width:400px;height:225px;}
+	.log-content .c_loginBar .l_login_left .l_input .i_username{height:40px;width:400px;border-bottom:#e9ecee 1px solid;display:inline-block;margin-top:30px;}
+	.log-content .c_loginBar .l_login_left .l_input .i_username .icon-denglu{font-size:30px;font-weight:900;color:#b8c4ce;}
+	.log-content .c_loginBar .l_login_left .l_input .i_username .u_text{width:350px;height:20px;padding:8px 5px;outline:none;border:0;font-size:16px;color:#b8c4ce;}
+	.log-content .c_loginBar .l_login_left .l_input .i_password{display:inline-block;height:40px;width:400px;border-bottom:#e9ecee 1px solid;margin-top:30px;}
+	.log-content .c_loginBar .l_login_left .l_input .i_password .icon-mima{font-size:26px;color:#b8c4ce;}
+	.log-content .c_loginBar .l_login_left .l_input .i_password .p_text_pwd{width:350px;height:20px;padding:8px 5px;outline:none;border:0;font-size:16px;color:#b8c4ce;}
+	.log-content .c_loginBar .l_login_left .l_input .i_btn{height:50px;line-height:50px;width:100%;background-color:#3499DA;margin-top:20px !important;border:none;color:#fff;cursor:pointer;font-size:16px;border-radius:3px;}
+	.log-content .c_loginBar .l_login_left .l_input p{height:28px;line-height:28px;margin-top:15px;font-size:14px;color:#b8c4ce;}
+	.log-content .c_loginBar .l_login_left .l_input p a{float:right;color:#369;}
+	.log-content .c_loginBar .l_login_left .l_input p a:hover{color: #3498db;}
+
+	.log-content .c_loginBar .l_login_right{width:160px;margin-left:100px;}
+	.log-content .c_loginBar .l_login_right h2{height:40px;width:100%;line-height:40px;text-align:center;color:#34495e;font-weight:normal;margin-bottom:40px;padding-top:93px;font-size:18px;}
+	.log-content .c_loginBar .l_login_right .log_party a{display:inline-block;width:160px;margin-bottom:20px;border-radius:3px;}
+	.log-content .c_loginBar .l_login_right .log_party .p_sina{background: #ff424f;color:#fff;}
+	.log-content .c_loginBar .l_login_right .log_party .p_sina i{font-size:20px;float:left;line-height:40px;margin-left:20px}
+	.log-content .c_loginBar .l_login_right .log_party .p_sina p{float:left;height:40px;line-height:40px;font-size:12px;margin-left:13px;}
+	.log-content .c_loginBar .l_login_right .log_party .p_qq{background:#22a4ff;color:#fff;}
+	.log-content .c_loginBar .l_login_right .log_party .p_qq i{font-size:20px;float:left;line-height:40px;margin-left:20px}
+	.log-content .c_loginBar .l_login_right .log_party .p_qq p{float:left;height:40px;line-height:40px;font-size:12px;margin-left:13px;}
+	.log-content .c_loginBar .l_login_right .log_party .p_mi{background:#ff9f2d;color:#fff;}
+	.log-content .c_loginBar .l_login_right .log_party .p_mi i{font-size:20px;float:left;line-height:40px;margin-left:20px;font-style:normal;}
+	.log-content .c_loginBar .l_login_right .log_party .p_mi p{float:left;height:40px;line-height:40px;font-size:12px;margin-left:13px;}
+
+
+	/*E - log-content*/
+	/*S - footer*/
+	footer{padding:40px 0;width:100%;background:#eff2f5;;}
+	footer .f_con{height:90px;width:1180px;margin:0 auto;}
+	footer .f_con .c_desc{width:600px;margin:0 auto;}
+	footer .f_con .c_desc a{color:#7f8c8d;display:inline-block;margin:0 44px;transition:color .3s ease;}
+	footer .f_con .c_desc a:hover{color:#2980b9;}
+	footer .f_con .c_tel{width: 600px;margin: 50px 0 0 315px;color:#b8c4cc;}
+	/*E- footer*/
+
+	/*S -scrollup */
+	.scrollup{display:block;width:48px;position:fixed;bottom:90px;right:50px;z-index:10;height:138px;display:none;transition:opacity .2s ease;}
+	.scrollup a{display:block;transition:color .3s ease;background-color:rgba(153,174,188,.3);font-size:12px;color:#fff;line-height:40px;text-align:center;}
+	.scrollup .s_arrows{width:48px;height:48px;background:url("images/fenye/top_up.png")no-repeat;background-position:0px 0px;background-size:48px;}
+	.scrollup .s_arrows:hover{background-position:0px -49px;}
+	.scrollup .s_service{width:48px;height: 40px;margin-top:5px;}
+	.scrollup .s_feedback{width:48px;height: 40px;margin-top:5px;}
+	.scrollup a:hover{color:#2c98dd;}
+	/*E -scrollup */
+
+	</style>
+ </head>
+ <body>
+	<!--S - header-->
+	<header>
+		<div class="h_visual">
+			<div class="v_box">
+				<ul>
+					<li><a href="../index.html" class="l_a on">首页</a></li>
+					<li class="l_works">
+						<a href="#" class="l_a">作品<i class="iconfont icon-xiajiantou"></i></a>
+						<div class="b_list">
+							<ul>
+								<li><a href="#" class="u_li">HTML5</a></li>
+								<li><a href="#" class="u_li">CSS3</a></li>
+								<li><a href="#" class="u_li">javaScript</a></li>
+								<li><a href="#" class="u_li">jQuery</a></li>
+								<li><a href="#" class="u_li">Java</a></li>
+							</ul>
+						</div>
+					</li>
+					<li class="l_study">
+						<a href="#" class="l_a">学习<i class="iconfont icon-xiajiantou"></i></a>
+						<div class="b_list">
+							<ul>
+								<li><a href="#" class="u_li">HTML5</a></li>
+								<li><a href="#" class="u_li">CSS3</a></li>
+								<li><a href="#" class="u_li">javaScript</a></li>
+								<li><a href="#" class="u_li">jQuery</a></li>
+								<li><a href="#" class="u_li">Java</a></li>
+							</ul>
+						</div>
+					</li>
+					<li><a href="#" class="l_logo"><img src="images/logo.png" title="个人主页" width="85" height="85"></a></li>
+					<li><a href="#" class="l_a">活动</a></li>
+					<li id="search">
+						<a href="#" class="l_a l_search"><i class="iconfont icon-search"></i></a>
+						<div class="l_box_search" id="l_box_search">
+							<input type="text" id="b_text_search" class="b_text_search" placeholder="请输入您要查找的内容"/>
+							<a href="#" class="b_a_search"><i class="iconfont icon-search"></i></a>
+						</div>
+					</li>
+					<li>
+						<div class="l_loginbox">
+							<a href="#" class="l_login on"><i class="iconfont icon-denglu"></i>登入</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</header>
+	<!--E - header-->
+
+	<!--S - log-content-->
+	<div class="log-content">
+		<div class="c_loginBar">
+			<div class="l_login_left fl">
+				<div class="l_greet">
+					<h2 class="fl">欢迎回来</h2>
+					<span class="fr">还没有账号？
+						<a href="javascript:void(0)">立即注册</a>
+					</span>
+				</div>
+				<div class="l_input">
+					<label class="i_username" id="i_username">
+						<i class="iconfont icon-denglu fl" id="icon-denglu"></i>
+						<input id="u_text" class="u_text rl" type="text" placeholder="请输入用户名/邮箱"/>
+					</label>
+					<label class="i_password" id="i_password">
+						<i class="iconfont icon-mima" id="icon-mima"></i>
+						<input id="p_text_pwd" class="p_text_pwd" type="password" placeholder="请输入密码"/>
+					</label>
+					<button class="i_btn"><span>登录</span></button>
+					<p>如登录出现异常，请清理浏览器缓存后再尝试。<a href="javascript:void(0)" onclick="pwdfalse()">忘记密码？</a></p>
+				</div>
+			</div>
+			<div class="l_login_right fl">
+				<h2>第三方账号登录</h2>
+				<div class="log_party">
+					<a href="javascript:void(0)" class="p_sina">
+						<i class="iconfont icon-xinlang"></i>
+						<p>新浪微博登录</p>
+					</a>
+					<a href="javascript:void(0)" class="p_qq">
+						<i class="iconfont icon-qq"></i>
+						<p>QQ账号登录</p>
+					</a>
+					<a href="javascript:void(0)" class="p_mi">
+						<i class="font-mi">mi</i>
+						<p>小米账号登录</p>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--E - log-content-->
+
+
+
+
+	<!--S - footer-->
+	<footer>
+		<div class="f_con">
+			<div class="c_desc">
+				<a href="#">意见反馈</a>
+				<a href="javascript:void(0)" onclick="i()" >关于本人</a>
+				<a href="javascript:void(0)" onclick="tel()">联系方式</a>
+				<a href="#">版权声明</a>
+			</div>
+			<div class="c_tel">
+				<p>Copyright &copy 2013-2015 www.mooncollege.cn All Rights Reserved /备案号：备13016338号</p>
+			</div>
+		</div>
+	</footer>
+	<!--E - footer-->
+
+	<!--S - -->
+	<div class="scrollup" id="scrollup">
+		<a href="#" class="s_arrows" id="s_arrows"></a>
+		<a href="#" class="s_service">客服</a>
+		<a href="#" class="s_feedback">反馈</a>
+	</div>
+	<!--E - -->
+
+
+
+
+
+
+	<script src="js/Gdom.js"></script>
+	<script type="text/javascript">
+
+	
+	window.onload = function(){
+		/*【获取焦点】*/
+		dom("u_text").onfocus =function(){
+			dom("i_username").style.borderColor = "#3498db";
+			dom("icon-denglu").style.color = "#3498db";
+		};
+		dom("u_text").onblur =function(){
+			dom("i_username").style.borderColor = "#b8c4ce";
+			dom("icon-denglu").style.color = "#b8c4ce";
+		};
+		/*【失去焦点】*/
+		dom("p_text_pwd").onfocus =function(){
+			dom("i_password").style.borderColor = "#3498db";
+			dom("icon-mima").style.color = "#3498db";
+		};
+		dom("p_text_pwd").onblur =function(){
+			dom("i_password").style.borderColor = "#b8c4ce";
+			dom("icon-mima").style.color = "#b8c4ce";
+		};
+		
+
+
+
+
+		/*【搜索框代码】*/
+		dom("search").onclick = function(){
+			dom("l_box_search").style.display ="block";
+			dom("l_box_search").style.top = "70px";
+			dom("l_box_search").style.zIndex = "10";
+			dom("l_box_search").style.transition = "top .8s ease,width 1s ease 1s";
+			dom("l_box_search").style.width = "210px";
+			dom("b_text_search").style.width="140px";
+			dom("b_text_search").style.transition="width 1s ease 1s";
+		};
+		dom("b_text_search").onblur= function(){
+			dom("l_box_search").style.width = "100px";
+			dom("l_box_search").style.top = "0px";
+			dom("l_box_search").style.zIndex = "-1";
+			dom("b_text_search").style.width = "30px";
+		};
+
+		
+		/*【置顶代码】*/
+		
+		window.onscroll = function(){
+			var stop =  document.body.scrollTop;
+			if(stop>=100){
+				GGanimate(dom("scrollup"),{opacity:100},function(){
+					dom("scrollup").style.display = "block";
+				});
+				
+			}else{
+				GGanimate(dom("scrollup"),{opacity:0});
+				dom("scrollup").style.display = "none";
+			};
+		};
+		var scroll =null;
+		dom("s_arrows").onclick = function(){
+			document.body.scrollTop = 50;
+		};
+
+	};
+		function pwdfalse(){
+			alert("密码忘了我也没办法。。。");
+		};
+		/*【联系方式】*/
+		function tel(){
+			alert("电话：15270925112  企鹅:1309609944");
+		};
+		/*【关于本人】*/
+		function i(){
+			alert("姓：高，名：志强");
+		};
+	
+	</script>
+ </body>
+</html>
+
+
+
+

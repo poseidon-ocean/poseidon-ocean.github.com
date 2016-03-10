@@ -1,0 +1,164 @@
+﻿<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Java开发QQ空间大数据说说系统【腾讯内部最新技术】</title>
+	<meta name="keywords" content=""/>
+	<meta name="description" content=""/>
+	
+	<style type="text/css">
+	
+		*{margin:0;padding:0;}
+		body{background:url("images/420.jpg") no-repeat top center;
+			background-size:100%;font-size:12px;font-family:"微软雅黑";
+			scrollbar-arrow-color:#f4ae21;
+		}
+		img{border:none;}
+		
+		/*qq start*/
+		.qq{width:600px;height:165px;background:#FFF;
+			margin:100px auto;border-radius:3px;
+			position:relative;
+		}
+		.qq .q_title{font-size:14px;padding:10px 0 10px 20px;}
+		.qq .q_msg{width:540px;height:50px;border:1px solid #ccc;
+			margin:0 auto;padding:10px;outline:none;overflow:hidden;
+		}
+		.qq .q_face{width:600px;height:40px;}
+		.qq .q_face .q_box{float:left; margin:10px 0 0 15px;}
+		.qq .q_face .q_btn{width:82px;height:30px;background:#ff8140;display:block;
+			float:right;line-height:30px;text-decoration:none;text-align:center;
+			margin:10px 20px 0 0;color:#fff;font-weight:bold;
+		}
+		.qq .q_face .q_btn:hover{background:#300;}
+		.qq .q_con{width:365px;height:180px;border:1px solid #ccc;
+			background-color:#fff;
+			box-shadow:1px 1px 3px 1px #000;
+			padding:10px;border-radius:5px;
+			position:absolute;left:20px;top:150px;
+			display:none;
+		}
+		.qq .q_con ul li{list-style:none;float:left;margin:2px;}
+		/*qq end*/
+		
+		
+	</style>
+</head>
+<body>
+
+	<!-- qq start -->
+	<div class="qq">
+		<p class="q_title">有什么新鲜事想告诉大家?</p>
+		<div class="q_msg" contenteditable="true"></div>
+		<p class="q_face">
+			<a href="#" class="q_box">
+				<img src="images/face/mb_thumb.gif" alt="表情" width="22" height="22" />
+			</a>
+			<a href="#" class="q_btn">发 表</a>
+		</p>
+		<div class="q_con">
+			<ul id="q_ul">
+				<li><img src="images/face/zz2_thumb.gif" title="[织]" width="22" height="22"></li>
+				<li><img src="images/face/horse2_thumb.gif" title="[神马]"></li>
+				<li><img src="images/face/fuyun_thumb.gif" title="[浮云]"></li>
+				<li><img src="images/face/geili_thumb.gif" title="[给力]"></li>
+				<li><img src="images/face/wg_thumb.gif" title="[围观]"></li>
+				<li><img src="images/face/vw_thumb.gif" title="[威武]"></li>
+				<li><img src="images/face/panda_thumb.gif" title="[熊猫]"></li>
+				<li><img src="images/face/rabbit_thumb.gif" title="[兔子]"></li>
+				<li><img src="images/face/otm_thumb.gif" title="[奥特曼]"></li>
+				<li><img src="images/face/j_thumb.gif" title="[囧]"></li>
+				<li><img src="images/face/hufen_thumb.gif" title="[互粉]"></li>
+				<li><img src="images/face/liwu_thumb.gif" title="[礼物]"></li>
+				<li><img src="images/face/smilea_thumb.gif" title="[呵呵]"></li>
+				<li><img src="images/face/tootha_thumb.gif" title="[嘻嘻]"></li>
+				<li><img src="images/face/laugh.gif" title="[哈哈]"></li>
+				<li><img src="images/face/tza_thumb.gif" title="[可爱]"></li>
+				<li><img src="images/face/kl_thumb.gif" title="[可怜]"></li>
+				<li><img src="images/face/kbsa_thumb.gif" title="[挖鼻屎]"></li>
+				<li><img src="images/face/cj_thumb.gif" title="[吃惊]"></li>
+				<li><img src="images/face/shamea_thumb.gif" title="[害羞]"></li>
+				<li><img src="images/face/zy_thumb.gif" title="[挤眼]"></li>
+				<li><img src="images/face/bz_thumb.gif" title="[闭嘴]"></li>
+				<li><img src="images/face/bs2_thumb.gif" title="[鄙视]"></li>
+				<li><img src="images/face/lovea_thumb.gif" title="[爱你]"></li>
+				<li><img src="images/face/sada_thumb.gif" title="[泪]"></li>
+				<li><img src="images/face/heia_thumb.gif" title="[偷笑]"></li>
+				<li><img src="images/face/qq_thumb.gif" title="[亲亲]"></li>
+				<li><img src="images/face/sb_thumb.gif" title="[生病]"></li>
+				<li><img src="images/face/mb_thumb.gif" title="[太开心]"></li>
+				<li><img src="images/face/ldln_thumb.gif" title="[懒得理你]"></li>
+				<li><img src="images/face/yhh_thumb.gif" title="[右哼哼]"></li>
+				<li><img src="images/face/zhh_thumb.gif" title="[左哼哼]"></li>
+				<li><img src="images/face/x_thumb.gif" title="[嘘]"></li>
+				<li><img src="images/face/cry.gif" title="[衰]"></li>
+				<li><img src="images/face/wq_thumb.gif" title="[委屈]"></li>
+				<li><img src="images/face/t_thumb.gif" title="[吐]"></li>
+				<li><img src="images/face/k_thumb.gif" title="[打哈气]"></li>
+				<li><img src="images/face/bba_thumb.gif" title="[抱抱]"></li>
+				<li><img src="images/face/angrya_thumb.gif" title="[怒]"></li>
+				<li><img src="images/face/yw_thumb.gif" title="[疑问]"></li>
+				<li><img src="images/face/cza_thumb.gif" title="[馋嘴]"></li>
+				<li><img src="images/face/88_thumb.gif" title="[拜拜]"></li>
+				<li><img src="images/face/sk_thumb.gif" title="[思考]"></li>
+				<li><img src="images/face/sweata_thumb.gif" title="[汗]"></li>
+				<li><img src="images/face/sleepya_thumb.gif" title="[困]"></li>
+				<li><img src="images/face/sleepa_thumb.gif" title="[睡觉]"></li>
+				<li><img src="images/face/money_thumb.gif" title="[钱]"></li>
+				<li><img src="images/face/sw_thumb.gif" title="[失望]"></li>
+				<li><img src="images/face/cool_thumb.gif" title="[酷]"></li>
+				<li><img src="images/face/hsa_thumb.gif" title="[花心]"></li>
+				<li><img src="images/face/hatea_thumb.gif" title="[哼]"></li>
+				<li><img src="images/face/gza_thumb.gif" title="[鼓掌]"></li>
+				<li><img src="images/face/dizzya_thumb.gif" title="[晕]"></li>
+				<li><img src="images/face/bs_thumb.gif" title="[悲伤]"></li>
+				<li><img src="images/face/crazya_thumb.gif" title="[抓狂]"></li>
+				<li><img src="images/face/h_thumb.gif" title="[黑线]"></li>
+				<li><img src="images/face/yx_thumb.gif" title="[阴险]"></li>
+				<li><img src="images/face/nm_thumb.gif" title="[怒骂]"></li>
+				<li><img src="images/face/hearta_thumb.gif" title="[心]"></li>
+				<li><img src="images/face/unheart.gif" title="[伤心]"></li>
+				<li><img src="images/face/pig.gif" title="[猪头]"></li>
+				<li><img src="images/face/ok_thumb.gif" title="[ok]"></li>
+				<li><img src="images/face/ye_thumb.gif" title="[耶]"></li>
+				<li><img src="images/face/good_thumb.gif" title="[good]"></li>
+				<li><img src="images/face/no_thumb.gif" title="[不要]"></li>
+				<li><img src="images/face/z2_thumb.gif" title="[赞]"></li>
+				<li><img src="images/face/come_thumb.gif" title="[来]"></li>
+				<li><img src="images/face/sad_thumb.gif" title="[弱]"></li>
+				<li><img src="images/face/lazu_thumb.gif" title="[蜡烛]"></li>
+				<li><img src="images/face/clock_thumb.gif" title="[钟]"></li>
+				<li><img src="images/face/cake.gif" title="[蛋糕]"></li>
+				<li><img src="images/face/m_thumb.gif" title="[话筒]"></li>
+				<li><img src="images/face/weijin_thumb.gif" title="[围脖]"></li>
+				<li><img src="images/face/lxhzhuanfa_thumb.gif" title="[转发]"></li>
+				<li><img src="images/face/lxhluguo_thumb.gif" title="[路过这儿]"></li>
+				<li><img src="images/face/bofubianlian_thumb.gif" title="[bofu变脸]"></li>
+				<li><img src="images/face/gbzkun_thumb.gif" title="[gbz困]"></li>
+				<li><img src="images/face/boboshengmenqi_thumb.gif" title="[生闷气]"></li>
+				<li><img src="images/face/chn_buyaoya_thumb.gif" title="[不要啊]"></li>
+				<li><img src="images/face/daxiongleibenxiong_thumb.gif" title="[dx泪奔]"></li>
+				<li><img src="images/face/cat_yunqizhong_thumb.gif" title="[运气中]"></li>
+				<li><img src="images/face/youqian_thumb.gif" title="[有钱]"></li>
+				<li><img src="images/face/cf_thumb.gif" title="[冲锋]"></li>
+				<li><img src="images/face/camera_thumb.gif" title="[照相机]"></li>
+			</ul>
+		</div>
+	</div>
+	<!-- qq end -->
+	
+	<script type="text/javascript" src="../../js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$(".q_box").click(function(){
+				$(".q_con").toggle("slow");
+			});
+			
+			$("#q_ul").find("li").click(function(){
+				var img = $(this).find("img").clone();
+				$(".q_msg").append(img);
+			});
+		});
+	</script>
+</body>
+</html>

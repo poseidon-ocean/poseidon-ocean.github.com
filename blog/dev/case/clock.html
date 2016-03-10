@@ -1,0 +1,73 @@
+﻿<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>表盘</title>
+	<meta name="keywords" content=""/>
+	<meta name="description" content=""/>
+	
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		body{font-size:12px;font-family:"微软雅黑";background:#1D1D1D;}
+		ul,li{list-style:none;}
+		.box{width:200px;height:200px;background:#fff;border-radius:50%;margin:150px auto;
+			border:5px solid #FCC100;position:relative;
+		}
+		.box .cen{width:15px;height:15px;background:#111;border-radius:50%;
+			position:absolute;top:90px;left:95px;
+		}
+		#hour{width:8px;height:45px;background:#111;position:absolute;
+			top:53px;left:96px;transform-origin:bottom;
+		}
+		#min{width:4px;height:65px;background:#E0C31D;position:absolute;
+			top:34px;left:98px;transform-origin:bottom;
+		}
+		#sec{width:2px;height:75px;background:#B51918;position:absolute;
+			top:22px;left:99px;transform-origin:bottom;
+		}
+		.kedu li{width:2px;height:5px;background:#000;position:absolute;
+			top:0;left:99px;transform-origin:center 100px;
+		}
+		.kedu li:nth-child(5n+1){height:15px;}
+	</style>
+</head>
+<body>
+	
+	
+	
+	<div class="box">
+		<ul class="kedu"></ul>
+		<div id="hour"></div>
+		<div id="min"></div>
+		<div id="sec"></div>
+	
+		<div class="cen"></div>
+	</div>
+	
+	<script type="text/javascript" src="../../js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			
+			var html = "";
+			for(var i=0;i<60;i++){
+				html += "<li style='transform:rotate("+i*6+"deg)'></li>"
+			}
+			$(".kedu").html(html);
+			
+			function drawDate(){
+				window.requestAnimationFrame(drawDate,null);  //canvas
+				var date = new Date();
+				var sec = date.getSeconds();
+				var min = date.getMinutes() + sec/60;
+				var hour = date.getHours() + min/60;
+				
+				$("#sec").css("transform","rotate("+sec*6+"deg)");
+				$("#min").css("transform","rotate("+min*6+"deg)");
+				$("#hour").css("transform","rotate("+hour*30+"deg)");
+			}
+			drawDate();
+			//setInterval(drawDate,1000);
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!doctype html>
+<html>
+ <head>
+  <!--声明当前前页面的编码集：charset-gbk gb2312（中文编码） UTF-8国际编码-->
+  <!--当前页面三要素-->
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title></title>
+	<!--css 叠层样式-->
+	<style type="text/css">
+	*{margin:0;padding:0}
+	body{font-size:14px;font-family:"微软雅黑";}
+	a{text-decoration:none;color:#ccc;}
+	.box{width:300px;height:200px;position:absolute;border:1px solid #fff;line-height:200px;color:#111;font-size:24px;text-align:center;font-weight:bold;top:0;}
+	#box{background:#ff0000}
+	#box1{background:violet}
+	#box2{background:yellow}
+	#box3{background:#cc0033}
+	#box4{background:#00ff33}
+	.box h1{height:50px;line-height:50px;color:#fff;text-align:center;width:300px;border-bottom:1px solid black;cursor:move;margin-bottom:22px;border-top:1px solid black;background:#9900ff;}
+	.box h1:nth-child(3){margin:0;}
+	#wrap{width:1000px;height:800px;background:orange;position:relative;margin:50px auto;}
+
+
+
+
+	</style>
+ </head>
+ <body>
+	
+	<div id="wrap">
+		<div id="box" class="box">
+			<h1>标题1</h1>
+			<h1>标题2</h1>
+			<h1>标题3</h1>
+		</div>
+		<div id="box4" class="box">盒子内自由的</div>
+	</div>
+	<div id="box1" class="box">只能竖拖</div>
+	<div id="box2" class="box">只能横拖</div>
+	<div id="box3" class="box">完全自由的</div>
+
+	<div style="width:5px;height:1500px;background:#111"></div>
+
+	<script type="text/javascript" src="js/Gdom.js"></script>
+	<script type="text/javascript">
+	
+	
+	
+	window.onload = function(){
+		var drag = new Drag();
+		drag.init({id:"box",arrow:"left",handler:2,parent:"wrap"});//索引控制可以拖动的元素
+		var drag1 = new Drag();
+		drag1.init({id:"box1",arrow:"top"});
+		var drag2 = new Drag();
+		drag2.init({id:"box2",arrow:"left"});
+		var drag3 = new Drag();
+		drag3.init({id:"box3",callback:function(){
+			this.style.background  = "#00ccff";
+		}});
+		drag2.init({id:"box4",parent:"wrap"});
+		var drag3 = new Drag();
+	};
+
+	function Drag(){};
+(function(){
+	//拖拽的构造函数
+	
+	//公共堆叠顺序
+	var dragZindex = 0;
+	Drag.prototype.init = function(options){//可用参数分别为 (id,可移动的方向,代理拖动的子元素索引,父元素,默认定位,回调函数);  没有写默认为空
+		//对象混入
+		var dragObj = this
+		var opts = mix({},{arrow:"",handler:"",parent:"",position:"relative"},options);
+		var boxDom = $(opts.id);
+		//父元素
+		var parentDom = $(opts.id);
+		if(opts.handler)boxDom = boxDom.children[opts.handler*1-1];
+
+		var mark = false;
+		//获取父元素对象
+		var pboxDom = $(opts.parent);
+		if(pboxDom)pboxDom.style.position = opts.position;
+		boxDom.onmousedown = function(e){
+			parentDom.style.zIndex = ++dragZindex;
+			//拿到元素的位置
+			var sleft = parentDom.offsetLeft;
+			var stop = parentDom .offsetTop;
+			//获取元素可以移动的最大值
+			var maxWidth = Math.max(window.innerWidth,document.body.clientWidth);//取出窗口的最大值宽度，包括滚动条部分
+			var maxHeight = Math.max(window.innerHeight,document.body.clientHeight);//取出窗口的最大值高度，包括滚动条部分
+			var maxLeft = (pboxDom?pboxDom.offsetWidth:maxWidth) - parentDom.offsetWidth;//父元素不为空的情况下用父元素的高度或者宽度
+			var maxTop = (pboxDom?pboxDom.offsetHeight:maxHeight) - parentDom.offsetHeight;
+			//拿到鼠标的位置
+			var pos = getXY(e);
+			mark = true;
+			document.onmousemove = function(e){
+				if(mark){
+					//移动鼠标的位置
+					var pos2 = getXY(e);
+	//先用点击时鼠标的位置减去移动时鼠标的位置，在加上点击时元素距离窗口的坐标，求出来的值就是移动时元素的坐标，而且鼠标在元素上的位置一样。
+					var nleft = pos2.x - pos.x +sleft;
+					var ntop = pos2.y - pos.y +stop;
+					//边界判断
+					if(nleft<=0)nleft = 0;
+					if(nleft>=maxLeft)nleft = maxLeft;
+					if(ntop<=0)ntop = 0;
+					if(ntop >= maxTop)ntop = maxTop;
+					//改变位置
+					if(opts.arrow == "left"){
+						parentDom.style.left = nleft+"px";
+					}else if(opts.arrow == "top"){
+						parentDom.style.top = ntop+"px";
+					}else{
+						parentDom.style.left = nleft+"px";
+						parentDom.style.top = ntop+"px";
+					}
+				};
+			};
+			//松开鼠标清除事件
+			document.onmouseup = function(){
+				this.onmousemove = null;
+				this.onmouseup = null;
+				mark = false;
+				if(opts.callback)opts.callback.call(boxDom);
+			};
+		};
+	};	
+	
+	
+})();
+	
+
+
+
+
+	
+	//获取鼠标的位置，包括滚动条部分，并且兼容IE 678 
+	function getXY(e){
+		var ev = e || window.event;//解决兼容
+		var x=0,y=0;
+		if(ev.pageX){ //可以直接获得鼠标在窗口的坐标，包括滚动条的距离
+			x = ev.pageX;
+			y = ev.pageY;
+		}else{
+			//获取当前已滚动的滚动条距离
+			var sleft = 0,stop = 0;
+			if(document.documentElement){//IE 678
+				sleft = document.documentElement.scrollLeft;
+				stop = document.documentElement.scrollTop;
+			}else{//IE 9+ 谷歌
+				sleft = document.body.scrollLeft;
+				stop = document.body.scrollTop;
+			}
+//ev.clientX  只能得到当前窗口的坐标，超出部分就不能获取
+//用当前窗口的坐标加上已滚动的滚动条距离就可以得到和pageY，pageX一样的效果
+			x = ev.clientX + sleft;
+			y = ev.clientY + stop;
+		}
+		return {x:x,y:y};
+	};
+
+	function $(id){
+		return document.getElementById(id);
+	};
+
+	</script>
+ </body>
+</html>
+

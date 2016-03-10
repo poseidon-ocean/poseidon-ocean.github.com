@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+ <head>
+  <!--声明当前前页面的编码集：charset-gbk gb2312（中文编码） UTF-8国际编码-->
+  <!--当前页面三要素-->
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title></title>
+	<!--css 叠层样式-->
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		body{background:-webkit-linear-gradient(180deg,#66ff00,#3366ff);width:1920px;height:100%;position:relative;}
+        ul,li{list-style:none;}
+		img{display:block;}
+		#pic ul li{width:384px;height:965px;float:left;position:relative;overflow:hidden;}
+        /*在每个li的第一层div到第五层div内分别加上五张图片*/
+		#pic ul li div{width:384px;height:100%;position:absolute;top:0;left:-384px;}
+		#pic ul li div:nth-child(1){background:url("images/t1.jpg")no-repeat;background-size:cover;}
+		#pic ul li div:nth-child(2){background:url("images/t2.jpg")no-repeat;background-size:cover;}
+		#pic ul li div:nth-child(3){background:url("images/t3.jpg")no-repeat;background-size:cover;}
+		#pic ul li div:nth-child(4){background:url("images/t4.jpg")no-repeat;background-size:cover;}
+		#pic ul li div:nth-child(5){background:url("images/t5.jpg")no-repeat;background-size:cover;}
+                                                                                                  /*总之就是网格交叉布局有点难解释。。。。*/
+        /*改变li下面div的图片位子；使它们和原本的图片一样*/
+		#pic ul li:nth-child(1) div{background-position:0px;}
+		#pic ul li:nth-child(2) div{background-position:-384px;}
+	    #pic ul li:nth-child(3) div{background-position:-768px;}
+		#pic ul li:nth-child(4) div{background-position:-1152px;}
+	    #pic ul li:nth-child(5) div{background-position:-1536px;}
+
+        /*原始按钮隐藏，让数字圆形按钮可以点击变色。*/
+		input{display:none;}
+        input:checked + label{background:#0ff;}
+		label{width: 20px;height:20px;border-radius:100%;background:#999;display:block;float:left;text-align:center;font-weight:900;color:#fff;position:absolute;z-index:2;top:700px;cursor:pointer;}
+		/*按钮图标定位*/
+        label:nth-child(2){right:1020px;}
+		label:nth-child(4){right:990px;}
+		label:nth-child(6){right:960px;}
+		label:nth-child(8){right:930px;}
+		label:nth-child(10){right:900px;}
+        /*点击按钮后把之前往左移的div复原*/
+		input#rad1:checked ~ #pic ul li div:nth-child(1){left:0;transition:.8s;}
+		input#rad2:checked ~ #pic ul li div:nth-child(2){left:0;transition:.8s;}
+		input#rad3:checked ~ #pic ul li div:nth-child(3){left:0;transition:.8s;}
+		input#rad4:checked ~ #pic ul li div:nth-child(4){left:0;transition:.8s;}
+		input#rad5:checked ~ #pic ul li div:nth-child(5){left:0;transition:.8s;}
+	</style>
+ </head>
+ <body>
+    <!--botton-->
+    <input type="radio" id="rad1" name="choose" checked="checked"><label for="rad1">1</label>
+	<input type="radio" id="rad2" name="choose"><label for="rad2">2</label>
+	<input type="radio" id="rad3" name="choose"><label for="rad3">3</label>
+	<input type="radio" id="rad4" name="choose"><label for="rad4">4</label>
+	<input type="radio" id="rad5" name="choose"><label for="rad5">5</label>
+    <!--图片的容器-->
+	<div id="pic">
+	    <ul>
+		    <li><div></div><div></div><div></div><div></div><div></div></li>
+			<li><div></div><div></div><div></div><div></div><div></div></li>
+			<li><div></div><div></div><div></div><div></div><div></div></li>
+			<li><div></div><div></div><div></div><div></div><div></div></li>
+			<li><div></div><div></div><div></div><div></div><div></div></li>		
+		</ul>
+	</div>
+ </body>
+</html>

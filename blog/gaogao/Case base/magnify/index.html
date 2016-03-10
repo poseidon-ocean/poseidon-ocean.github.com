@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+ <head>
+  <!--声明当前前页面的编码集：charset-gbk gb2312（中文编码） UTF-8国际编码-->
+  <!--当前页面三要素-->
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title></title>
+	<!--css 叠层样式-->
+	<style type="text/css">
+	*{margin:0;padding:0}
+	body{font-size:14px;font-family:"微软雅黑";}
+	a{text-decoration:none;background:#fff;}
+	.wrap{height:250px;margin:180px 0 0 280px;width:700px}
+	#imgbox{height:250px;width:250px;float:left;position:relative;overflow:hidden;}
+	.wrap .cont{float:left;height:250px;width:450px;background:gray;}
+	#spanT{width:100px;height:100px;background:violet;display:block;position:absolute;top:0;left:0;display:none;opacity:.3;}
+	/*兼容IE的闪动问题，加一层挡板就可以实现了 */
+	#mark{position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;filter:aphla(opacity=0);cursor:move;}
+	#maxImgbox{width:800px;height:800px;position:absolute;top:80px;left:550px;overflow:hidden;}
+	#maxImgbox img{position:absolute;top:0;left:0;}
+	#border{width:796px;height:796px;position:absolute;top:80px;left:550px;border:2px solid #666;}
+	</style>
+ </head>
+ <body>
+	<div class="wrap">
+		<div id="imgbox">
+			<img src="images/body_bg.jpg" width="250" height="250">
+			<span id="spanT"></span>
+			<div id="mark"></div>
+		</div>
+		<div id="border"></div>
+		<div id="maxImgbox">
+			<img src="images/body_bg.jpg">
+		</div>
+	</div>
+
+
+   
+	<script type="text/javascript">
+	
+
+	//闭包包起来
+	(function(){
+				var boxDom = $("imgbox");
+		var spanDom = boxDom.getElementsByTagName("span")[0];
+		var imgDom = $("maxImgbox").children[0];
+
+		//绑定box鼠标移入和移除的事件        onmouseenter  onmouseleave
+		boxDom.onmouseover= function(){
+			spanDom.style.display = "block";
+			imgDom.style.display = "block"; 
+		};
+		boxDom.onmouseout = function(){
+			spanDom.style.display = "none";
+			imgDom.style.display = "none"; 
+		};
+
+		//鼠标spanDom的onmousemove事件
+		boxDom.onmousemove = function(e){
+			var ev = e || window.event;//兼容IE678
+			//获取当前鼠标坐标，再减去当前元素距离浏览器的距离，因为元素的坐标是相对于父元素的，而鼠标的坐标则是相对于浏览器的，所以要减去。
+			var x = (ev.clientX || ev.pageX) - this.offsetLeft;
+			var y = (ev.clientY || ev.pageY) - this.offsetTop;
+			//在用当前的坐标减去元素的宽度和高度的一半，那么鼠标就在元素的中间点
+			var left = x - spanDom.offsetWidth/2;
+			var top = y - spanDom.offsetHeight/2;
+			//边界判断
+			var maxLeft = this.offsetWidth-spanDom.offsetWidth;
+			var maxTop = this.offsetHeight-spanDom.offsetHeight;
+			if(left<0){
+				left = 0;
+			}else if(left>maxLeft){
+				left = maxLeft;
+			};
+			if(top<0){
+				top = 0;
+			}else if(top>maxTop){
+				top = maxTop;
+			};
+			//把运算好的结果给元素
+			spanDom.style.left = left + "px";
+			spanDom.style.top = top + "px";
+
+			//改变图片的位置
+			var imgWidth = imgDom.offsetWidth;
+			var imgHeight = imgDom.offsetHeight;
+
+			//联动大图片
+			//得到小图标移动的百分比
+			var sbit = left / maxLeft;
+			var ybit = top / maxTop;
+			//图片宽度和高度减去父元素的大小，图片就如何都不和移出去，然后再乘小图标的百分比就得到了大图片的相应百分比。并且要是负数！
+			var sleft = -(imgDom.offsetWidth - imgDom.parentElement.offsetWidth) * sbit;
+			var stop = -(imgDom.offsetHeight - imgDom.parentElement.offsetHeight) * ybit;
+			//把运算好的结果给元素
+			imgDom.style.left = sleft+"px";
+			imgDom.style.top = stop+"px";
+		};
+		function $(id){
+			return document.querySelector("#"+id);
+		};
+	})();
+	
+	</script>
+ </body>
+</html>
+

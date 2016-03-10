@@ -1,0 +1,314 @@
+﻿<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>基于Java服务器的信息推送技术</title>
+	<meta name="keywords" content=""/>
+	<meta name="description" content="HTML5的websocket通讯技术，qq聊天系统的颜色选择器"/>
+	
+	
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		
+		body{font-size:12px;font-family:"微软雅黑";color:#666;
+			background-color:#73BCB8;background-image:url("images/bg.png");
+			background-repeat:no-repeat;background-position:top center;
+			background-size:100% auto;padding-top:10px;width:100%;height:100%;
+		}
+		ul,li{list-style:none;}
+		.fl{float:left;}
+		.fr{float:right;}
+		.cl{clear:both;}
+		#box{width:800px;min-height:300px;height:auto;background:#fff;
+			margin:15px auto 0;box-shadow:0 0 1em #111;
+		}
+		#box .headbg{width:100%;height:45px;background:#F15A29;}
+		#box h1{color:#000;font-size:22px;padding:30px 30px 0;line-height:150%;
+			font-weight:normal;
+		}
+		#box .desc{line-height:160%;padding:0 30px;}
+		
+		#box .wrap{border-top:1px solid #e5e5e5;margin-top:2px;padding:30px 0 40px;width:100%;}
+		
+		/*chat start*/
+		#box .wrap .chat{width:560px;height:260px;border:1px solid #ddd;margin:0 auto;
+			padding:20px;
+		}
+		#box .wrap .chat .c_room{color:#0430F3;font-size:16px;}
+		#box .wrap .chat .c_main{height:25px;line-height:25px;}
+		/*end chat*/
+		
+		/*.font start*/
+		#box .wrap .font{font-size:26px;border-radius:3px;position:relative;margin:15px 20px 0px 100px;   
+			width:36px;height: 36px;border: 1px solid #ddd; text-align: center;line-height: 36px;}
+		#box .wrap .font:hover{background:#ff761a;color:#fff;}
+		#box .wrap .font .f_lock{display:inline-block;width:100%;height:100%;}
+		#box .wrap .font .f_style{position:absolute;left:0;top:-43px;height:32px;display:none;
+			width:320px;border:1px solid #4A3A3A;background:#ddd;line-height:32px;
+		}
+		#box .wrap .font .f_style select{border:0;outline:none;height:22px;
+			margin:4px 5px;}
+		#box .wrap .font .f_style .s_family{width:100px;}
+		#box .wrap .font .f_style .s_size{width:32px;}
+		#box .wrap .font .f_style .cude{width:30px;height:22px;color:#666;display:block;
+			background:#fff;line-height:22px;font-size:14px;float:left;margin:4px 5px;
+		}
+		#box .wrap .font .f_style .cude:active{background:#ff761a;}
+				#box .wrap .font .f_style .cude:last-child:active{background:#fff;}
+		/*end .font*/
+		
+		/*.nick start*/
+		#box .wrap .nick{margin-top:15px;}
+		#box .wrap .nick .user{width:300px;height:36px;
+			border:0;outline:none;border:1px solid #ff761a;text-indent:5px;color:#555;
+		}
+		#box .wrap .nick .inbtn{display:inline-block;width:145px;height:36px;line-height:36px;
+			text-align:center;font-size:14px;
+			color:#fff;background:linear-gradient(to bottom,#fe8c36 0%, #f0822e 100%);
+			text-decoration:none;
+		}
+		#box .wrap .nick .inbtn:hover{background:#ff761a;}
+		/*end .nick*/
+		
+		/*.msg start*/
+		#box .wrap .msg{width:600px;margin:5px auto;border:1px solid #ce6f24;
+			border-radius:3px;
+		}
+		#box .wrap .msg .m_input{border:0;outline:none;width:460px;height:40px;padding:0 10px;color:#555;
+			border-radius:3px 0 0 3px;
+		}
+		#box .wrap .msg .btn{border:0;outline:none;width:114px;border-left:1px solid #ce6f24;height:40px;
+			background:linear-gradient(to bottom,#fe8c36 0%, #f0822e 100%);font-size:14px;color:#fff;
+			border-radius:0 3px 3px 0;
+		}
+		#box .wrap .msg .btn:hover{background:#ff761a;}
+		/*end .msg*/
+		
+		/*#sel_color start*/
+		#sel_color{width:280px;height:270px;position:absolute;background:#74C4C2;
+			left:50%;top:240px;border:1px solid #ddd;z-index:3;display:none;
+		}
+		#sel_color h3{height:30px;
+			font-size:14px;font-weight:100;
+			line-height:30px;text-align:center;
+			cursor:move;
+		}
+		#sel_color ul{width:260px;height:230px;margin:0 auto;border:1px solid #D6D6D6;
+			background:#F0F0F0;
+		}
+		#sel_color ul li{width:24px;height:24px;float:left;
+			margin:5px;border:1px solid #666;
+		}
+		#sel_color .close{width:30px;height:20px;float:right;}
+		/* end #sel_color*/
+		
+		#windowLock{width:100%;height:100%;
+			position:fixed;top:0;left:0;display:none;
+		}
+		
+	</style>
+	
+</head>
+<body>
+	
+	<!--box start-->
+	<div id="box">
+		<div class="headbg"></div>
+		<h1>企业级聊天系统</h1>
+		<div class="desc">采用技术：Java服务器端消息主动推送、HTML5新协议WebSocket、QQ聊天系统颜色选择器、jQuery拖拽式移动</div>
+		
+		<div class="wrap">
+			
+			<!--chat start---->
+			<div class="chat">
+				<div class="c_room">[<span>银河护卫队</span>]进入聊天室</div>
+				<div class="c_main">[<span>银河护卫队</span>]:<span id="say">呼叫</span></div>
+			</div>
+			<!--end chat-->
+			
+			<!--font start-->
+			<div class="font fl">
+				<span class="f_lock">A</span>
+				<div class="f_style">
+					<select name="s_family" class="s_family fl">
+						<option value="微软雅黑" selected>微软雅黑</option>
+						<option value="华文行楷">华文行楷</option>
+						<option value="宋体">宋体</option>
+						<option value="方正兰亭超细黑简体">方正兰亭超细黑简体</option>
+						<option value="仿宋_GB2312">仿宋_GB2312</option>
+						<option value="黑体">黑体</option>
+						<option value="新宋体">新宋体</option>
+						<option value="冬青黑体简体中文">冬青黑体简体中文</option>
+						<option value="Arial">Arial</option>
+						<option value="SimSun">SimSun</option>
+						<option value="sans-serif">sans-serif</option>
+					</select>
+					
+					<select name="s_size" class="s_size fl">
+						<option value="9" selected>9</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+						<option value="13">13</option>
+						<option value="14">14</option>
+						<option value="15">15</option>
+						<option value="16">16</option>
+					</select>
+					
+					<span class="cude" style="font-weight:bold;">B</span>
+					<span class="cude" style="font-style:italic;">I</span>
+					<span class="cude" style="text-decoration:underline;">U</span>
+					<span class="cude but"><img src="images/chat.png" class="s_img" /></span>
+				</div>
+			</div>
+			<!--end font-->
+			
+			<!--nick start-->
+			<div class="nick fl">
+				<input type="text" class="user" placeholder="请输入您的昵称..." />
+				<a href="javascript:;" class="inbtn">进入聊天系统</a>
+			</div>
+			<!--end nick-->
+			
+			<!--清除浮动-->
+			<div class="cl"></div>
+			
+			<!--msg start-->
+			<div class="msg">
+				<input type="text" class="m_input" />
+				<input type="button" value="发送" class="btn" />
+			</div>
+			<!--end msg-->
+			
+		</div>
+	</div>
+	<!-- end box-->
+	
+	<!--sel_color start-->
+	<div id="sel_color">
+		<h3><span class="close">X</span>颜色选择器</h3>
+		<ul>
+			<li style="background-color:#ff8080;"></li>
+		<li style="background-color:#ffff80;"></li>
+		<li style="background-color:#80ff80;"></li>
+		<li style="background-color:#80ffff;"></li>
+		<li style="background-color:#0080ff;"></li>
+		<li style="background-color:#ff80c0;"></li>
+		<li style="background-color:#ff80ff;"></li>
+		<li style="background-color:#ff0000;"></li>
+		<li style="background-color:#ffff00;"></li>
+		<li style="background-color:#80ff00;"></li>
+		<li style="background-color:#00ffff;"></li>
+		<li style="background-color:#0080c0;"></li>
+		<li style="background-color:#8080c0;"></li>
+		<li style="background-color:#ff00ff;"></li>
+		<li style="background-color:#804040;"></li>
+		<li style="background-color:#ff8040;"></li>
+		<li style="background-color:#00ff00;"></li>
+		<li style="background-color:#008080;"></li>
+		<li style="background-color:#004080;"></li>
+		<li style="background-color:#8080ff;"></li>
+		<li style="background-color:#800040;"></li>
+		<li style="background-color:#ff0080;"></li>
+		<li style="background-color:#800000;"></li>
+		<li style="background-color:#ff8000;"></li>
+		<li style="background-color:#008000;"></li>
+		<li style="background-color:#008040;"></li>
+		<li style="background-color:#0000ff;"></li>
+		<li style="background-color:#0000a0;"></li>
+		<li style="background-color:#800080;"></li>
+		<li style="background-color:#8000ff;"></li>
+		<li style="background-color:#400000;"></li>
+		<li style="background-color:#804000;"></li>
+		<li style="background-color:#004000;"></li>
+		<li style="background-color:#004040;"></li>
+		<li style="background-color:#000080;"></li>
+		<li style="background-color:#000040;"></li>
+		<li style="background-color:#400040;"></li>
+		<li style="background-color:#000000;"></li>
+		<li style="background-color:#808000;"></li>
+		<li style="background-color:#808040;"></li>
+		<li style="background-color:#808080;"></li>
+		<li style="background-color:#408080;"></li>
+		</ul>
+	</div>
+	<!--end sel_color-->
+	
+	<!--windowLock start-->
+	<div id="windowLock"></div>
+	<!--end windowLock-->
+	
+	<script type="text/javascript" src="../../js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript">
+		
+		$(function(){
+		
+			$(".f_lock").click(function(){
+				$(".f_style").toggle("slow");
+			});
+			//开关颜色选择器
+			$(".but,.close").click(function(){
+				$("#sel_color,#windowLock").toggle("slow");
+				
+			});
+			
+			$("#sel_color ul li").click(function(){
+				//获取点击颜色
+				var _color = $(this).css("background-color");
+				$(".chat").find(".c_main").css("color",_color);
+				$(".m_input").css("color",_color);
+				
+				//$("body").css("background",_color);
+			});
+			
+			//拖动颜色选择器
+			$("#sel_color h3").mousedown(function(e){
+				var x = e.clientX; //x 水平坐标
+				var y = e.clientY; //y 垂直坐标 
+				
+				//console.log(e);
+				
+				var left = $("#sel_color").offset().left; //颜色选择器与浏览器左边的距离
+				var top = $("#sel_color").offset().top; //颜色选择器与浏览器上边的距离
+				
+				var width = x-left;  //鼠标按下去与颜色选择器左边的距离
+				var height = y-top;  //鼠标按下去与颜色选择器上边的距离
+				
+				//移动
+				$(document).mousemove(function(e){
+					var ox = e.clientX; //x 水平坐标
+					var oy = e.clientY; //y 垂直坐标 
+					
+					var oleft = ox - width;  //最终得到选择器与浏览器窗口左边的距离
+					var otop = oy - height;  //最终得到选择器与浏览器窗口上边的距离
+					
+					//添加边界
+					var maxLeft = $(window).width() - $("#sel_color").width();
+					if(oleft<0) oleft=0;
+					if(oleft>maxLeft) oleft=maxLeft;
+					
+					var maxTop = $(window).height() - $("#sel_color").height();
+					if(otop<0) otop=0;
+					if(otop>maxTop) otop=maxTop;
+					
+					$("#sel_color").css({"left":oleft,"top":otop});//赋值
+					
+					
+				});
+				
+				//抬起时
+				$(document).mouseup(function(){
+					$(document).unbind("mousemove");
+					$(document).unbind("mouseup");
+				});
+				
+				return false;//阻止默认事件 
+			});
+		});
+		
+	</script>
+	
+	
+	
+</body>
+</html>

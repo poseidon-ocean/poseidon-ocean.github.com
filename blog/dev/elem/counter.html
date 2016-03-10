@@ -1,0 +1,170 @@
+﻿<!doctype html><!--兼容所有HTML-->
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>累土 - 合抱之木，生于毫末；九层之台，起于累土</title>
+	<meta name="keywords" content="个人博客,SEO优化,编程开发,大数据,网站建设,学习交流"/>
+	<meta name="description" content="码一码互联网的一些事儿,让高大上走入寻常百姓家"/>
+	<link rel="shortcut icon" type="image/ico" href="../../images/favicon.ico">
+	
+	
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		body{font-size:12px;font-family:"微软雅黑";color:#666;
+			background:#999;
+		}
+		ul,li{list-style:none;}
+		h1{margin:0 auto;margin-top:60px;width:480px;}
+		#counter{width:480px;height:400px;box-shadow:0 0 3px #080808;background:#ccc;overflow:hidden;margin:10px auto;}
+		#counter .result{background:#fff;width:400px;height:50px;border:1px solid #111;margin:10px auto;}
+		#rez{display:inline-block;color:#222;font-size:26px;line-height:50px;float:right;padding:0 10px;}
+		
+		#counter .btns ul li{float:left;width:100px;height:45px;background:#0E3BDC;
+			margin:10px 10px;border-radius: 5px;box-shadow: 0 0 2px #111;
+			text-align:center;line-height:45px;color:#fff;font-size:18px;
+		}
+		#counter .btns ul li:nth-child(4n){background:#454831;}
+		#counter .btns ul li:hover{background:#092BA2;}
+		#counter .btns ul li:active{background:#0B9677;}
+		#counter .btns .btn{display:block;text-decoration:none;color:#fff;width:100%;height:100%;cursor:pointer;}
+		
+		
+	</style>
+	
+</head>
+<body>
+	
+	
+	<h1>简单计算器</h1>
+	<div id="counter">
+		<div class="result"><span id="rez">0</span></div>
+		<div class="btns">
+			<ul>
+				<li><a class="btn" onclick="del()">←</a></li>
+				<li><a class="btn" onclick="op(5)">%</a></li>
+				<li><a class="btn"  onclick="clearZero()">C</a></li>
+				<li><a class="btn" onclick="op(4)">÷</a></li>
+				<li><a class="btn" onclick="command(7)">7</a></li>
+				<li><a class="btn" onclick="command(8)">8</a></li>
+				<li><a class="btn" onclick="command(9)">9</a></li>
+				<li><a class="btn" onclick="op(3)">×</a></li>
+				<li><a class="btn" onclick="command(4)">4</a></li>
+				<li><a class="btn" onclick="command(5)">5</a></li>
+				<li><a class="btn" onclick="command(6)">6</a></li>
+				<li><a class="btn" onclick="op(2)">-</a></li>
+				<li><a class="btn" onclick="command(1)">1</a></li>
+				<li><a class="btn" onclick="command(2)">2</a></li>
+				<li><a class="btn" onclick="command(3)">3</a></li>
+				<li><a class="btn" onclick="op(1)">+</a></li>
+				<li><a class="btn" onclick="command(0)">0</a></li>
+				<li><a class="btn" onclick="dzero();">00</a></li>
+				<li><a class="btn" onclick="dot();">.</a></li>
+				<li><a class="btn" onclick="equal();">=</a></li>
+			</ul>
+		</div>
+		
+	</div>
+	<div id="audioBox"></div>
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript">
+		/*
+		第二种计算器实现思路：eval
+		eval("20+9-8*7");
+		*/
+		//结果框
+		var rezDom = document.getElementById("rez");
+		//操作符
+		var opFlag = 0;
+		var oldNum = 0;
+		
+		//点击数字
+		function command(num){
+			var str = rezDom.innerHTML;
+			if(str.length>28)return;
+			//console.log(str);
+			str = (str == "0"?"":str);
+			rezDom.innerHTML = str+num;
+			play(num);
+		}
+		
+		function op(num){
+			opFlag = num;
+			oldNum = rezDom.innerHTML;
+			rezDom.innerHTML = "";
+			
+			dotFlag = true;
+			play("j");
+		}
+		
+		function equal(){
+			var result = oldNum;
+			if(opFlag=="1"){
+				result = oldNum*1 + rezDom.innerHTML*1;
+			}
+			else if(opFlag=="2"){
+				result = oldNum*1 - rezDom.innerHTML*1;
+			}
+			else if(opFlag=="3"){
+				result = oldNum*1 * rezDom.innerHTML*1;
+			}
+			else if(opFlag=="4"){
+				result = oldNum*1 / rezDom.innerHTML*1;
+			}
+			else if(opFlag=="5"){
+				result = oldNum*1 % rezDom.innerHTML*1;
+			}
+			rezDom.innerHTML = result;
+			
+			var r = rezDom.innerHTML;
+			//dotFlag:小数点锁需要判断结果中是否有小数点
+			dotFlag = r.indexOf(".")>0?false:true;
+			
+			play("r");
+		}
+		
+		function dzero(){
+			var str = rezDom.innerHTML;
+			if(str=="0") return;
+			rezDom.innerHTML += "00";
+			play("r");
+		}
+		
+		var dotFlag = true;
+		function dot(){
+			if(dotFlag){
+				rezDom.innerHTML = rezDom.innerHTML + ".";
+				dotFlag = false;
+			}
+			play("r");
+		}
+		
+		//清0
+		function clearZero(){
+			rezDom.innerHTML = "0";
+			opFlag = 0;
+			oldNum = 0;
+			dotFlag = true;
+			play("r");
+		}
+		
+		//退格
+		function del(){
+			var str = rezDom.innerHTML;
+			if(str=="0"||!str) return;
+			str = str.substring(0,str.length - 1);
+			var cstr = str.substring(0,str.length - 1);
+			//if(str.lastIndexOf(".")>0) str = str.substring(0,str.length - 1);
+			if(str && /[\+|\-|\*|\/|\%|\.]$/.test(str))str = cstr;
+			if(str.indexOf(".")==-1)dotFlag = true;
+			rezDom.innerHTML = str||0;
+			play("r");
+		}
+		
+		function play(m){
+			
+			document.getElementById("audioBox").innerHTML = "<embed src='music/"+m+".wav' width='0' height='0' />";
+		}
+	</script>
+	
+</body>
+</html>

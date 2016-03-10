@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+ <head>
+  <!--声明当前前页面的编码集：charset-gbk gb2312（中文编码） UTF-8国际编码-->
+  <!--当前页面三要素-->
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title></title>
+	<!--css 叠层样式-->
+	<style type="text/css">
+	*{padding:0;margin:0;}	
+	body{font-size:14px;font-family:"微软雅黑";}
+	a{text-decoration:none;color:#333;}
+	li{list-style:none;}
+	img{border:0;}
+	#box{margin:100px auto 0;padding:0;width:940px;overflow:hidden;}
+	#box li{float:left;margin:0 0 10px 10px;box-sizing:border-box;}
+	#box li img{width:300px;height:200px;display:block;border:1px solid #111;}
+	#imgpreview{width:1200px;position:absolute;height:600px;top:50%;left:50%;margin-left:-600px;margin-top:-300px;min-width:960px;min-height:425px;z-index:2;background:#111;}
+
+	#imgpreview .cl a{font-size:24px;color:#fff;display:block;position:absolute;width:30px;height:40px;background:#cacaca;line-height:40px;text-align:center;font-weight:both;}
+	#imgpreview .cl a:nth-child(1){left:10px;top:calc(50% - 20px);}
+	#imgpreview .cl a:nth-child(2){left:820px;top:calc(50% - 20px);}
+	#imgpreview .cl{width:850px;height:inherit;float:left;overflow:hidden;}
+	#imgpreview .cl .timgbox{overflow:hidden;width:760px;margin:10px auto;height:580px;position:relative}
+	#imgpreview .cl .timgbox img{display:block;position:absolute;top:0;left:0;}
+	#imgpreview .cr{width:350px;height:inherit;float:right;}
+	#imgpreview .cr .remove{width:20px;height:20px;background:#111;color:#fff;border-radius:50%;position:absolute;top:-5px;right:-5px;display:block;border:1px solid #fff;line-height:20px;text-align:center;}
+	#imgpreview .cr .content{width:320px;background:#fff;margin:20px auto 0;height:560px;text-indent:2em;padding:8px 5px;}
+	.overflow{background:#000;position:absolute;top:0;left:0;width:100%;height:100%;opacity:0.3;z-index:1;filter:alpha(opacity=30);}
+
+
+	</style>
+ </head>
+ <body>  
+	<div id="box">
+		<ul id="imgbox">
+			<li>
+				<img src="images/1.jpg">
+				<span style="display:none">类数组和数组的区别就在没有数组的 排序，截取，替换 等方法，但是有下标，也可以循环。
+				给属性加数值，不用变量的情况下最好这样 "10px" </span>
+			</li>
+			<li>
+				<img src="images/2.jpg">
+				<span style="display:none">每一个函数都具有prototype的属性，它定义该构造函数创建的虽有对象共享的属性。通常共享的方法和原始属性被定义原型对象中，每个对象在创建的对象都保存一个[prototype]原型的引用。</span>
+			</li>
+			<li>
+				<img src="images/3.jpg">
+				<span style="display:none">型的副本而是一个具体的引用。JavaScript首先在自有属性中查询属性名称，如果自有属性中没有找到，则查找原型属性。 </span>
+			</li>
+			<li>
+				<img src="images/4.jpg">
+				<span style="display:none">在javascript中可以动态添加属性和扩展方法。
+				面向对象的理解：开辟空间，，独立运行，不会受到干扰。</span>
+			</li>
+			<li>
+				<img src="images/5.jpg">
+				<span style="display:none">如果一个对象里面的对象被改变时，那么就不能被单独改变了，因为里面的那层对象是属于公共的。</span>
+			</li>
+			<li>
+				<img src="images/t3.jpg">
+				<span style="display:none">这时里面的msg改变时，所有创建出来的对象都会改变</span>
+			</li>
+			<li>
+				<img src="images/bg.jpg">
+				<span style="display:none">hasOwnPrototype(只能判断对象的自有属性，不包括原始对象属性) 
+				是判断一个属性是否在某个对象中，不包括原始对象的属性</span>
+			</li>
+			<li>
+				<img src="images/6.jpg">
+				<span style="display:none">原型：每一个对象的基类，它是围绕类去创建的一个基类，每一个对象中都会在创建的时候都拥有一个prototype的引用。
+				</span>
+			</li>
+			<li>
+				<img src="images/bg1.jpg">
+				<span style="display:none">正则表达式服务于字符串。正则表达式不能掺杂变量！除非用正则表达式对象去做！
+				</span>
+			</li>
+		</ul>
+	</div>
+
+
+	<script src="js/Gdom.js"></script>
+	<script type="text/javascript">
+		window.onload = function(){
+			var imgDoms = $("imgbox").getElementsByTagName("img");
+			for(var i=0,len=imgDoms.length;i<len;i++){
+				imgDoms[i].index = i;//缓存索引
+				imgDoms[i].onclick =function(){//循环绑定事件
+					var content = this.nextElementSibling.innerHTML;
+					var $this = this;//把this赋值，方便传进去
+						//加载完成后算出合适比例的宽高
+					ImageFinised(this.src,function(){
+						var xw = 760;//可支持的最大宽度
+						var xh = 580;//可支持的最大高度
+						var ipos = resizeImg(this,xw,xh);//这个方法返回的是一个对象！
+						ipos.src = this.src;//获取点击的图片路径
+						ipos.content = content;//获取相应的内容
+						ipos.index = $this.index;
+						showDialog(ipos,function(imgDom){//用你的目标预留最大宽高减去当前当前图片的宽高除二就可以居中了
+							//图片居中换算
+							var cleft = (xw - ipos.width)/2;
+							var ctop = (xh - ipos.height)/2;
+							imgDom.style.left = cleft+"px";
+							imgDom.style.top = ctop+"px";
+						});
+					});
+				}
+			};
+		  
+
+
+
+			//定义弹出预览层
+			function showDialog(opts,callback){
+					//内容模板
+					var html = 	"<div class='cl'><a href='javascript:void(0);'><</a><a href='javascript:void(0);'>></a>"+
+					"	<div class='timgbox'><img id='targetImg' draggable='false' src='"+opts.src+"'width='"+opts.width+"' height='"+opts.height+"'/></div>"+
+					"</div>"+
+					"<div class='cr'><a href='javascript:void(0);' class='remove'>X</a>"+
+					"	<div class='content'>'"+opts.content+"'</div>"+
+					"</div>";
+				//获取是否已经创建过了，防止重复创建
+				var viewDom = $("imgpreview");	
+				if(viewDom)document.body.removeChild(viewDom);
+				//创建预览窗口
+				var previesDom = document.createElement("div");
+				//追加文本
+				previesDom.innerHTML = html;
+				//添加ID
+				previesDom.id = "imgpreview";
+				//追加到body中
+				document.body.appendChild(previesDom);
+
+				//创建一个遮罩层
+				var overDom = document.createElement("div");
+				//添加样式
+				overDom.className = "overflow";
+				//添加事件
+
+				//追加进窗口中
+				document.body.appendChild(overDom);
+				//点击删除
+				previesDom.children[1].children[0].onclick = function(){
+					GGanimate(previesDom,{opacity:0},function(){
+						document.body.removeChild(this);
+						document.body.removeChild(overDom);
+					});
+				};
+				//记录点击时图片的索引，然后再这之上进行调整
+				var cindex = opts.index;
+				previesDom.children[0].children[0].onclick = function(){
+					cindex>0 ? cindex--:cindex=imgDoms.length-1;  //边界判断
+					$("targetImg").src = imgDoms[cindex].src;
+					
+				};
+				previesDom.children[0].children[1].onclick = function(){
+					cindex>=imgDoms.length-1 ? cindex=0 : cindex++;//边界判断
+					$("targetImg").src = imgDoms[cindex].src;
+				};
+				//居中回调函数
+				if(callback)callback.call(previesDom,$("targetImg"));
+			};
+
+
+		
+		};
+	
+	</script>
+ </body>
+</html>
+

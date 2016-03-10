@@ -1,0 +1,366 @@
+﻿/*
+ * @author  hjt
+ * @date 2015-8
+ * @description 百度个人中心样式表
+ * @version 1.0
+ */
+ .main_wrap{width:1000px; margin:0 auto;}
+ /* header  start */
+ header{
+	 height:50px;margin-bottom:15px;
+	 font-family:'Microsoft YaHei',Arial,'宋体',Helvetica,sans-serif;
+ }
+ header .header-stackup{
+	position:fixed; width:100%;top:0;left:0;background:#fff;
+	z-index:100;min-width:700px;box-shadow:0 0 5px #888;
+}
+.ibx-container{max-width:1000px;margin:0 auto;height:50px;}
+.header-logo{
+	float:left;width:180px; height:50px;
+	background:url(../images/ibd-logo2.png) 2px 10px no-repeat;
+	cursor:pointer;
+	text-decoration:none;
+}
+.header-tool{float:right;margin-right:10px;}
+.header-tool-user,.header-tool-config,.header-tool-cal,.header-tool-news,.header-tool-ps{
+	position:relative;cursor:pointer;font-size:12px;height:50px;text-decoration:underline;
+	line-height:50px;
+}
+.header-tu-img{
+	width:24px;height:24px;position:relative;z-index:5;
+	margin-top:2px;margin-left: 2px;color:#333;
+}
+.header-tool-conf-link{
+	display:block;height:28px;width:28px;text-decoration:none;
+	cursor:pointer;color:#333;
+}
+.header-tool-cal-link{
+	display:block;height:28px;cursor:pointer;text-decoration:none;color:#333;
+}
+.header-tool-news-num{
+	display:block;text-align:center;cursor:pointer;color:#333;
+}
+.header-tool-bd{cursor:pointer;color:#333;}
+.header-tc-content{
+	position:absolute;border:1px solid #ccc;right:-30px;top:50px;
+	text-align:left;background:#fff;display:none;z-index:2;color:#4b4b4b;	
+	font-size:12px; height:auto!important;min-height:32px;height:32px;
+	box-shadow:0 2px 5px #ccc;
+}
+.header-tool-user .header-tc-content{
+	width:130px;right:-59px;text-align:center;
+}
+.header-tc-ct-bg{
+	width:0;height:0;position:absolute;top:-15px;right:59px;border:7px solid #ccc;
+	border-color:transparent transparent #ccc;z-index:5;	
+}
+.header-tc-ct-bg:before{
+	content:"";position:absolute;top:-7px;right:-8px;width:0;height:0;
+	border:8px solid #fff; border-color:transparent transparent #fff;z-index:3;
+} /* 使用盒子模型  的边框属性和CSS3的选择器生成的三角形，增加客户体验 */
+.header-user-menu-list{margin:0;padding:0;}
+.header-user-menu-item{
+	list-style-type:none;margin:0 24px;font-size:14px;border-bottom:1px solid #e0e6f1;
+}
+.header-user-menu-item a{color:#454545;text-decoration:none;}
+.header-tuc-logout{
+	display:block;margin:00 24px;font-size:14px;font-weight:700;
+	cursor:pointer;text-decoration:none;color:#454545;line-height:42px;
+}
+.header-tool-config .header-tc-content{
+	width:166px;right:-50px;text-align:center;
+}
+.header-tool-cal .header-tc-content{
+	width:306px;padding:0 24px;line-height:42px;text-align:center;right:-55px;
+}
+.header-tool-cal-bg{
+	width:6px;height:6px;background:url(../images/ibx_header2.png) right -150px no-repeat;
+	position:absolute;right:2px;top:2px;display:none;
+}
+.header-tool-cal.current .header-tool-cal-bg{display:block;}
+.header-tcc-time{
+	font-size:14px;line-height:42px;border-bottom:1px solid #e0e6f1;
+	color:#4b4b4b;text-align:left;
+}
+.header-tcc-events{
+	float:right;line-height:42px;font-size:14px;color:#454545;
+	text-decoration:none;cursor:pointer;
+}
+.header-lur{color:#969696;}
+.header-tcc-list{
+	color:#878686;font-size:12px;margin:0;margin-right:-18px;
+	padding:0;max-height:274px;overflow-y:auto;padding-right:12px;
+}
+.header-tcc-item{list-style:none;border-bottom:1px solid #e0e6f1;height:54px;line-height:54px;}
+.header-tcc-item a{
+	display:block;text-decoration:none;cursor:pointer;
+	overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+	font-size:14px;color:#4b4b4b;
+}/*
+  * text-overflow:ellipsis; 规定当文本溢出包含元素时发生的事情。
+  * white-space:nowrap; 规定段落中的文本不进行换行。
+  */
+.header-tcc-cal-ctx{padding-left:44px;background:url(../images/calendar.png) 0 10px no-repeat}
+.header-tool-news .header-tc-content{
+	width:302px;padding:0 26px; line-height:34px;right:-55px;text-align:center;
+}
+.news-title{line-height:42px;border-bottom:1px solid #e0e6f1;overflow:hidden;}
+.news-title .news-title-ctx{
+	color:#969696;font-size:14px;float:left;
+}/*
+  *在CSS中所有元素都可以浮动。如果浮动非替换元素，则要指定一个明确的宽度；
+  *否则，它会尽可能的变窄。 所以此处span标签可以使用float属性
+  *
+  */
+.news-title .news-title-op{
+	color:#4b4b4b;font-size:14px;float:right;text-decoration:none;cursor:pointer;
+	display:none; /*当有消息时为可见，否则不可见*/
+}
+.news-empty{
+	width:140px;height:84px;
+	background:url(../images/news_icon.png) 36px -200px no-repeat;
+	padding-top:100px;text-align:center;color:#d8d8d8;font-size:14px;margin:0 auto;
+}
+.news-bottom{height:42px;text-align:center;border-top:1px solid #e0e6f1;}
+.news-bottom .news-bottom-conf{
+	float:right;width:16px;height:42px;cursor:pointer;
+	background:url(../images/ibx_header2.png) 0 -140px no-repeat;
+}
+.news-bottom .news-more{
+	color:#4b4b4b;font-size:14px;cursor:pointer;text-decoration:none;
+}
+/* header end */  
+/* select satrt */
+.header-app{
+	height:80px;background-color:#fff;border:1px solid #ddd;
+	margin-bottom:10px;margin-top:-5px;
+}
+.ibx-header-app{max-width:97%;margin:0 auto;overflow:hidden;margin-left:-20px;}
+.ibx-header-app-item{
+	float:left;width:auto;min-width:4.1%;width:4.1%;padding:16px 0;
+	height:48px;text-align:left;
+}
+.ibx-header-app-item>.ibx-hai-link:first-child{margin-top:-4px;margin-bottom:3px;}
+.ibx-hai-title{
+	padding-top:26px;height:22px;line-height:18px;font-size:14px;color:#4a5d76;
+	background:url(../images/header_app_icon.png) 0 0 no-repeat;
+}
+.ibx-hai-title.ibx-hai-tool{background-position:2px 1px;}
+.ibx-hai-link{display:block;white-space:nowrap;line-height:24px;}
+.ibx-hai-link a{color:#4b4b4b;cursor:pointer;font-size:14px;text-decoration:none;}
+.ibx-hai-link a:hover{text-decoration:underline;}
+.ibx-hai-space{
+	margin-left:33%;border-left:1px solid #cdcfd1;width:0;height:48px;
+}
+.ibx-hai-title.ibx-hai-sns{background-position:2px -79px;}
+.ibx-hai-title.ibx-hai-life{background-position:2px -159px;}
+.ibx-hai-title.ibx-hai-fun{background-position:2px -239px;}
+.ibx-hai-title.ibx-hai-v{background-position:3px -319px;}
+.user-panel{margin-bottom:10px;overflow:hidden;}
+.ibx-uc-uimg{
+	padding-top:13px;margin-bottom:5px;height:78px;
+	position:relative;
+}
+.ibx-uc-uimg-mask{
+	position:absolute;z-index:2;top:13px;left:50%;margin-left:-39px;
+	width:78px;height:78px;cursor:pointer;
+	background:url(../images/uc_user.png) -1000px -1000px no-repeat;
+}
+.ibx-uc-ulink{
+	display:none;width:78px;position:absolute;left:50%;bottom:0;line-height:24px;
+	color:#fff;font-size:12px;text-decoration:none;cursor:pointer;margin-left:-39px;
+	z-index:5;background:rgba(0,0,0,6);background:black\9;filter:alpha(opacity-70) \9;
+	/* \9  IE6, IE7, IE8, IE9, IE10 */   
+}
+.ibx-uc-img{width:72px;height:72px;padding:2px;border:1px solid #ddd;}
+.ibx-uc-unick{line-height:24px;font-size:16px;margin-bottom:2px;}
+.ibx-uc-nick{
+	color:#4b4b4b;text-decoration:none;cursor:pointer;display:inline-block;
+	font-size:14px;
+}
+.ibx-uc-nick:hover{color:#1892F0;}
+.ibx-uc-utool{
+	color:#bcbcbc;font-size:12px;width:156px;height:60px;margin:8px auto 0;
+	border-top:solid #e8e8e8 1px;position:relative;
+}
+.ibx-uc-utool .ibx-uc-utool-cover{
+	position:absolute;top:-8px;left:76px;width:0;height:0;border:4px solid #e8e8e8;
+	border-color:transparent transparent #e8e8e8;
+}
+.ibx-uc-utool .ibx-uc-utool-cover.ibx-uc-utool-cover-mask{
+	top:-7px;border:4px solid #fff;border-color:transparent transparent #fff;
+}
+.ibx-uc-utool .ibx-uc-utool-title,.ibx-uc-utool .ibx-uc-utool-content{
+	float:left;margin-top:10px;
+}
+.ibx-uc-utool .ibx-uc-utool-title{width:36px;text-align:left;}
+.ibx-uc-utool .ibx-uc-utool-content{
+	width:112px;padding-left:8px;text-align:left;
+}
+.ibx-uc-utool .ibx-uc-utool-rank{
+	display:block;width:108px;height:14px;padding:1px;border:solid 1px #84cfff;
+	text-decoration:none;position:relative;margin-top:-2px;
+}
+.ibx-uc-utool .ibx-uc-utool-rank .rank-bg{
+	background-color:#84cfff;height:14px;width:2%;
+	transition: width .4s ease-in;-webkit-transition:width .4s ease-in;/*
+		CSS3的过渡效果，在这里具体是怎么运行的不太清楚
+	*/
+}
+.ibx-uc-utool .ibx-uc-utool-rank .rank-num{
+	position:absolute;top:2px;left:0;width:100%;text-align:center;color:#1992fc;
+	font-size:10px;line-height:14px;height:14px;
+}
+.ibx-uc-utool .ibx-uc-utool-content{width:112px;padding-left:8px;text-align:left;}
+.ibx-uc-utool-mobile,.ibx-uc-utool-envelope{
+	text-decoration:none;width:19px;height:19px;
+	background:url(../images/uc_ce.png) 0 0 no-repeat;float:left;
+}
+.ibx-uc-utool-mobile{margin-right:5px;background-position:0 -60px;}
+.ibx-uc-utool-envelope{background-position:0 -40px;}
+.ibx-uc-uop{width:184px;height:30px;margin:20px auto 0;}
+.ibx-uc-uop-item{float:left;width:92px;font-size:14px;}
+.ibx-uc-uop-item.first{border-right:1px dotted #e0e0e0;margin-right:-1px;}
+.ibx-uc-uop-item a{color:#4b4b4b;text-decoration:none;}
+.ibx-uc-uop-item a:hover{text-decoration:underline;}
+.ibx-cal-box{margin:20px 0 10px;padding:20px 35px;height:154px;}
+#ibx-cal-box{height:152px;}
+.ibx-cal-box-1{width:115px;float:left;text-align:center;margin-right:38px;}
+.ibx-weather-quality{
+	font-size:14px;color:#fff;height:30px;line-height:30px;
+	margin-bottom:5px;background-color:#6d6d6d;display:block;
+	text-decoration:none;cursor:pointer;
+}
+.ibx-weather-quality.level1{background-color:#d6c60f;}
+.ibx-weather-quality.ibx-location{background-color:#1992fc;}
+.ibx-date{font-size:22px;line-height:32px;color:#4b4b4b;}
+.ibx-lunar{font-size:14px;line-height:24px;color:#4b4b4b;}
+.ibx-lunar .ibx-day{margin-right:15px;}
+.ibx-weather-temp{
+	display:block;text-decoration:none;cursor:pointer;text-align:center;color:#4b4b4b;
+}
+.ibx-weather-img{
+	margin-right:5px;vertical-align:middle;width:20px;height:20px;
+}
+.ibx-weather-high,.ibx-weather-low{
+	font-size:14px;color:#4b4b4b;padding-left:10px;
+	background:url(../images/ibx_cal.png) 0 0 no-repeat;
+}
+.ibx-weather-high{margin-right:5px;background-position:0 -245px;}
+.ibx-weather-low{background-position:0 -275px;}
+.ibx-cal-box-r{
+	margin-left:152px;overflow:hidden;position:relative;
+}
+.ibx-cal-dlist{width:2000px;margin:0;padding:0;}
+.ibx-cal-ditem{
+	float:left;list-style:none;width:152px;height:150px;border:1px solid #d9d9d9;
+	position:relative;margin-right:15px;overflow:hidden;
+}
+.ibx-cal-ditem-game{width:100%;height:100%;overflow:hidden;position:relative;display:block;}
+.ibx-cal-game-img{min-height:100%;}
+.ibx-cal-game-ctx,.ibx-cal-video-ctx{
+	position:absolute;top:160px;left:0;width:100%;height:100%;text-align:left;
+	z-index:2;transition:top 500ms;-moz-transition:top 500ms;-webkit-transition:top 500ms;
+	-o-transition:top 500ms;
+}
+.ibx-cal-game-detail{
+	padding:5px 15px;position:relative;z-index:5;text-align:center;
+}
+.ibx-cal-game-title{
+	font-size:13px;line-height:18px;word-wrap:break-word;color:#fff;
+	text-decoration:none;
+}
+.ibx-cal-dpage{
+	position:absolute;left:188px;top:20px;right:35px;height:0;
+	z-index:5;display:block;
+}
+.ibx-cal-dpage-bg{
+	position:absolute;right:0;top:0;height:190px;width:20px;
+	z-index:2;background:url(../images/ibx_cal.png) right -400px no-repeat;
+}
+.ibx-cal-dpage-prev,.ibx-cal-dpage-next{
+	position:absolute;top:76px;width:22px;height:40px;
+	background:url(../images/ibx_cal.png) 0 0 no-repeat;
+	cursor:pointer;text-decoration:none;z-index:5;
+}
+.ibx-cal-dpage-prev{left:0;background-position:0 -300px;}
+.ibx-cal-dpage-next{right:0;background-position:0 -350px;}
+.ibx-cal-tab{margin:0 35px; border-top:1px solid #ececec;}
+.ibx-cal-tablist{float:left;height:50px;margin:0;padding:0;}
+.ibx-cal-talitem{float:left;width:45px;margin-right:30px;list-style:none;}
+.ibx-cal-talitem-ctx{
+	text-decoration:none;color:#4b4b4b;font-size:14px;border-top:4px solid #fff;
+	line-height:46px;display:block;
+} 
+.ibx-cal-talitem-ctx:hover{border-color:#309dfc;}
+.ibx-cal-tocal{
+	float:left;line-height:50px; color:#4b4b4b;text-decoration:none;font-size:14px;
+}
+.ibx-cal-tospan{line-height:50px;}
+
+/* select end */  
+
+.ibx-cal-tab-op{width:60px;height:33px;float:right;}
+.ibx-cal-tab-add,.ibx-cal-tab-conf{
+	width:15px;height:15px;float:left;
+	background-image:url("../images/ibx_cal.png");
+	margin-top:18px;
+}
+.ibx-cal-tab-add{margin-right:18px;background-position:15px 0;}
+
+
+/* .card-panel start */
+.card-panel{width:100%;height:300px;border:1px solid #ddd;background-color:#fff;}
+.card-panel .ibx-inner-title{height:58px;background-color:#F8F9FA;border-bottom:1px solid #ddd;}
+.card-panel .ibx-inner-title .ibx-inner-title-ctx{float:left;
+	color:#4b4b4b;font-size:16px;text-decoration:none;font-weight:700;
+	line-height:24px;margin:18px 15px 0 21px;border-right:1px dashed #ddd;
+	padding-right:15px;
+}
+.card-panel .ibx-inner-title .ibx-inner-title-tab{
+	float:left;
+}
+.card-panel .ibx-inner-title .ibx-inner-title-tab li{
+	float:left;width:60px;height:38px;font-size:12px;line-height:30px;
+	font-weight:700;margin-right:18px;text-align:center;border-bottom:3px solid #f8f9fa;
+}
+.card-panel .ibx-inner-title .ibx-inner-title-tab li{cursor:pointer;}
+.card-panel .ibx-inner-title .ibx-inner-title-tab .timing{
+	color:#1796f9;border-color:#1796f9;border-width:4px;
+}
+.card-panel .ibx-con{width:100%;}
+.card-panel .ibx-con .ibx-hotop{width:956px;height:164px;border:1px solid #ebebeb;margin:20px 20px;}
+.card-panel .ibx-con .ibx-hotop .ibx-list{
+	width:16px;height:16px;background-color:#ff943e;display:block;float:left;
+	text-align:center;line-height:16px;color:#fff;margin:8px 0 0 10px;
+}
+.card-panel .ibx-con .ibx-hotop .ibx-list-1{background-color:#f44528;}
+.card-panel .ibx-con .ibx-hotop .ibx-title{text-decoration:none;color:#000;font-size:14px;
+	margin-left:16px;float:left;width:120px;
+}
+.card-panel .ibx-con .ibx-hotop .ibx-tu{background:url("../images/his_charts_icon.png") -87px 2px no-repeat;
+	width:16px;height:16px;display:block;float:left;margin:6px 0 0 68px;
+}
+.card-panel .ibx-con .ibx-hotop .ibx-dex{display:block;float:left;font-size:12px;color:#969696;
+	background:url("../images/his_charts_icon.png") right -79px no-repeat;margin-left:78px;padding-right:14px;
+}
+.card-panel .ibx-con .ibx-hotop .ibx-title:hover{text-decoration:underline;}
+.card-panel .ibx-con .ibx-hotop .c_left,.c_right{float:left;margin:0;padding:0;}
+.card-panel .ibx-con .ibx-hotop .c_left li{
+	width:477px;border-right:1px solid #ebebeb;border-bottom:1px solid #ebebeb;
+	list-style:none;height:32px;line-height:32px;
+}
+.card-panel .ibx-con .ibx-hotop .c_right li{
+	width:477px;border-bottom:1px solid #ebebeb;
+	list-style:none;height:32px;line-height:32px;
+}
+/* end .card-panel */
+.bd-post{width:100%;height:444px;background-color:#fff;border:1px solid #ddd;margin-top:20px;}
+
+ 
+ /*
+		display:block;
+		
+		
+		
+  */

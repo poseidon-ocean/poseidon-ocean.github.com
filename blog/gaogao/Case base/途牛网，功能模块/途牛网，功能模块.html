@@ -1,0 +1,183 @@
+<!doctype html>
+<html>
+ <head>
+  <!--声明当前前页面的编码集：charset-gbk gb2312（中文编码） UTF-8国际编码-->
+  <!--当前页面三要素-->
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title></title>
+	<!--css 叠层样式-->
+	<style type="text/css">
+	*{padding:0;margin:0}
+	a{text-decoration:none;color:#333;}
+	body{font-size:14px;font-family:"微软雅黑"}
+	.wrap{position:absolute;left:0;top:0;width:100%;height:100%;}
+	.wrap .left{width:400px;background:#fff;height:100%;float:left;padding:100px 30px 0;}
+	.wrap .left a{padding-left:10px;}
+	.wrap .left a:hover{color:green;}
+	.l_box{height:30px;margin-bottom:10px;margin-top:20px;}
+	.l_box span{display:inline-block;margin:8px 8px 0 0;}
+    .tags{background:gray;padding:10px;white-space:nowrap;}
+	.tags i{font-style:normal;padding-right:5px;}
+	.tags a{border-left:1px solid #000;padding-left:5px;}
+
+
+	.wrap .right{margin-left:400px;width:100%;background:#111;height:100%;padding:82px 100px 0;color:#fff;}
+
+
+
+	</style>
+ </head>
+ <body>
+
+	<div class="wrap">
+		<div class="left">
+			<div>
+				<span>热门目的地 ：</span>	
+				<div id="tagwrap">
+					<a href="javascript:void(0);">三亚</a>
+					<a href="javascript:void(0);">张家界</a>
+					<a href="javascript:void(0);">云南</a>
+					<a href="javascript:void(0);">长沙</a>
+					<a href="javascript:void(0);">南昌</a>
+				</div>
+				<div id="leftarget" class="l_box">
+					 
+				</div>
+			</div>
+		</div>
+		<div class="right">
+			<span>到哪里玩：</span>
+			<div id="rightarget" class="l_box">
+	
+			</div>
+		</div>
+	</div>
+
+   
+	<script type="text/javascript">
+			//给所有的a绑定点击事件，并且拿到文本值
+			var arr = [];
+			window.onload = function(){
+				var tagDom = document.getElementById("tagwrap");
+				//拿到两个div的对象
+				var leftTargetDom = document.getElementById("leftarget");
+				var	rightTargetDom = document.getElementById("rightarget");
+				var adoms = tagDom.children;
+				var len = adoms.length;
+				for(var i=0;i<len;i++){
+					adoms[i].onclick = function(){
+						//获取选中的值
+						var text = this.innerHTML;
+						//如果没有找到相同的则返回-1，并且添加
+						if(arr.indexOf(text)==-1){
+							//附加到两个目标div中
+							//左边目标
+							leftTargetDom.innerHTML+="<span class='tags'><i>"+text+"</i><a href='javascript:void(0);' onclick='removeItems(this)'>x</a></span>";
+							//右边目标
+							rightTargetDom.innerHTML+="<span class='tags'><i>"+text+"</i></span>";
+							arr.push(text);
+						}  
+					};
+				};
+			};
+			
+			function removeItems(obj){
+				//获取span元素
+				var spanDom = obj.parentElement;
+				//获取文本内容，spanDom.textContent;是为了兼容火狐
+				var text = spanDom.innerText || spanDom.textContent;
+				
+				//获取数组中的元素的位置，并且把文本内的x替换成空
+				var index = arr.indexOf(text.replace('x',''));
+				//删除数组中对应位置的元素
+				arr.splice(index,1);
+				//获取span的父元素
+				var divDom = spanDom.parentElement;
+				//删除当前对象的父元素，也就是整个span
+				//元素只能经过父元素才能开始删除
+				divDom.removeChild(spanDom);
+				//重新获取一下对象
+				var rightTaggetDom = document.getElementById("rightarget");
+
+
+				/*联动删除右边的元素*/
+				var html = "";//定义一个空容器
+				//再循环把数组内剩余的内容重新进行拼接赋值给右边
+				for(var i=0;i<arr.length;i++){
+					//alert(arr[i]);
+					html += "<span class='tags'><i>"+arr[i]+"</i></span>"
+				}
+				//把右边清空在赋值
+				rightTaggetDom.innerHTML= html;
+
+
+
+				/*第二种方法*/
+
+
+				//把左边的文本转成合右边文本一样的格式
+/*				var tt = text.replace('x','');
+				//获取右边的子元素集合
+				var cs = rightTaggetDom.children;
+				//删除元素时，就进行循环找到和左边删除元素一样的值时，右边也删除，并且跳出循环
+				for(var i=0;i<cs.length;i++){
+					var t = cs[i].innerText || cs[i].textContent;
+					if(t==tt){
+						rightTaggetDom.removeChild(cs[i]);
+						break;
+					}
+				}
+*/
+
+		}
+		
+		//jQuery写法
+/*		$(function(){
+			$("#tagwrap").find("a").on("click",function(){
+				//点击获取文本
+				var text = $(this).text();
+				//获取所有的子元素
+				var citems = $("#leftarget").children();
+				//状态标识
+				var mark = false;
+				citems.each(function(){
+					//替换x
+					var t = $(this).text().replace('X','');
+					//判断元素是否存在，列表中
+					if(t==text){
+						mark = true;
+						return false;
+					}
+				});
+				
+				// 如果不存在就追加元素 
+				if(!mark){
+					$("#leftarget").append("<span class='tags'><i>"+text+"</i><a href='javascript:void(0);' onclick='removeItems(this)'>X</a></span>");
+					$("#righttarget").append("<span class='tags'><i>"+text+"</i></span>");
+				}
+			});
+		});
+		
+		//删除元素
+		function removeItems(obj){
+			//获取父元素进行删除 $(obj).parent()--span
+			var $span = $(obj).parent();
+			var text = $span.text();
+			text = text.replace('X',"");
+
+
+			//左侧元素删除
+			//删除父亲元素
+			$span.remove();
+
+
+			//右侧删除
+			//contains判断一个元素的文本是否包含text，如果包含删除
+			$("#righttarget").find("span:contains('"+text+"')").remove();
+		};*/
+	</script>
+ </body>
+</html>
+

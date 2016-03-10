@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>计算机</title>
+
+	<style type="text/css">
+ *{padding:0;margin:0;}	
+ /*S.  cac*/
+ body{font-size:12px;font-family:"微软雅黑";color:#666;}
+#cac{width:830px;height:500px;background:#f2f2f2;margin:0 auto;padding:10px;}
+#cac .c_show .s_text{width:810px;height:42px;border:none;outline:none;text-align:right;padding-right:20px;font-size:34px;color:#6e6e6e;font-weight:900;}
+#cac h2{font-size:16px;color:#111;font-weight:900;padding:12px 0 12px 20px;cursor:move;}
+#cac .c_key ul{border:1px solid #fff;overflow:auto;margin:30px auto 0;}
+#cac .c_key ul li{float:left;width:140px;height:65px;background:#b9b9b9;list-style:none;margin:11px;text-align:center;line-height:65px;font-size:32px;cursor:pointer;font-weight:900;color:#454545;border:1px solid #fff;}
+#cac .c_key ul li:hover{background:#fff;color:#000;}
+#cac .c_key ul .c_tool{background:#738fd8;color:#fff;}
+#cac .c_key ul .c_result{background:#ff9933;color:#fff;}
+#cac .c_desc{line-height:36px;margin-left:10px;}
+/*E.  cac*/	
+	</style>
+ </head>
+ <body>
+    <!--S.  cac-->
+    <div id="cac">
+	    <h2>桌面系统-计算器</h2>
+        <div class="c_show">
+		   <input type="text" class="s_text" onfocus="this.blur();" value="0" id="result"/>
+		</div>
+		<div class="c_key">
+	        <ul>
+			   <li onclick="command(7);">7</li>
+				<li onclick="command(8);">8</li>
+				<li onclick="command(9);">9</li>
+				<li class="c_tool" onclick="del('j');">←</li>
+				<li class="c_tool" onclick="clearzero('j');">C</li>
+				<li onclick="command(4);">4</li>
+				<li onclick="command(5);">5</li>
+				<li onclick="command(6);">6</li>
+				<li class="c_tool" onclick="tools('*','g');">×</li>
+				<li class="c_tool" onclick="tools('/','g');">÷</li>
+				<li onclick="command(1);">1</li>
+				<li onclick="command(2);">2</li>
+				<li onclick="command(3);">3</li>
+				<li class="c_tool" onclick="tools('+','g');">+</li>
+				<li class="c_tool" onclick="tools('-','g');">-</li>
+				<li onclick="command(0);">0</li>
+				<li onclick="command(00);">00</li>
+				<li onclick="tools('.','g');">.</li>
+				<li class="c_tool" onclick="tools('%','g');">%</li>
+				<li class="c_result" onclick="equal('j')">=</li>
+			</ul>  	
+		</div>
+		<p class="c_desc">潭州学院计算器！ 版权所有CopyRight  &copy;  2007-2016</p>
+	</div>
+    <!--E.　cac-->
+
+    <div id="audioBox"></div>
+
+
+    
+	<script type="text/javascript">
+	//获取id = "sesult" 文本框对象
+    var resultDom = document.getElementById("result");
+    
+	//操作符锁
+	var operate = true;
+
+	//点击计算器键盘执行的操作
+	function command(num){//点击时的数字就是num
+		var str = resultDom.value;   //把输入框的值赋给 str
+		// 如果是0 , 就用   "空"    填充   目的是为了让开头默认的 0 消失
+		str = (str == "0" ? "":str);   
+		// 拼接点击数字    " "  +  当前点击的数字 =  当前点击的数字
+		str += num;      
+		// 把当前点击的数字赋值给文本框
+		resultDom.value = str;
+		//释放锁
+		operate = true;
+
+		// 点击键盘时候的声音
+		paly(num);
+	};
+	
+    //播放声音
+
+	function paly(num){
+		var playDom = document.getElementById("audioBox");
+		playDom.innerHTML = "<embed src='wav/"+num+".wav' width='0' height=‘0'></embed>";
+	};
+
+	//操作符 + - / *
+	function tools(p,m){//两个值  一个代表 符号  ，一个是声音
+		if(operate){
+			var num = resultDom.value;
+			num = (num == "0" ? "":num);
+			// 拼接操作符
+			resultDom.value = num + p;
+			operate = false;
+		}
+		// 点击键盘时候的声音
+		paly(m);
+	}
+
+	//计算等于
+	function equal(m){
+	    var result = resultDom.value;//把输入框内的 值 赋给 result
+		var r = eval(result);  //eval 计算函数内的值 在赋给 r
+		resultDom.value = r;   //在把 计算出来的 r  返回 输入框
+		operate = true;
+		paly(m);//点击时的第一个值 "j" 会赋给  m  调用声音函数时也会把里面的 num 替换成 m 所以得到的声音也不一样
+	};
+    // C 键清空 点击后把输入框 变成 0
+	function clearzero(m){
+	    resultDom.value = 0;
+		paly(m);
+	};
+	//退格键
+	function del(g){
+	  //获取文本框
+	  var str = resultDom.value;
+	  //截取最后一个数字
+	  str = str.substring(0,str.length -1);//保留0 到 数字总单位数量的数字 在减去1 这样每次就只能退格一位数
+	  str = (str == "" ? 0 : str);
+      //重新赋给文本框
+	  resultDom.value = str;
+      //音效
+	  paly(g);
+	};//
+	</script>
+ </body>
+</html>

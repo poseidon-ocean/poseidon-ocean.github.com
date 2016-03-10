@@ -1,0 +1,133 @@
+﻿<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>累土 - 合抱之木，生于毫末；九层之台，起于累土</title>
+	<meta name="keywords" content="个人博客,SEO优化,编程开发,大数据,网站建设,学习交流"/>
+	<meta name="description" content="码一码互联网的一些事儿,让高大上走入寻常百姓家"/>
+	<link rel="shortcut icon" type="image/ico" href="../../images/favicon.ico">
+	
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		body{font-size:16px;font-family:"微软雅黑";color:#666;
+			background:#fff;
+		}
+		ul,li{list-style:none;clear:both;}
+		a{text-decoration:none;outline:none;color:#666;font-size:12px;}
+		#tree{width:260px;height:450px;border:1px solid #333;margin:60px auto;}
+		#tree div div {
+			float:left;display:block;width:22px;height:22px;border:none;
+		}
+		
+		.first_collapsable{background:url("imgs/tree.png") no-repeat;
+			background-position:0 -250px;
+		}
+		.folder_expandable{background:url("imgs/folder.png") no-repeat;}
+		.expandable{background:url("imgs/tree.png") no-repeat;background-position:0 -100px;}
+		.line{background:url("imgs/tree.png") no-repeat;background-position:0 -400px;}
+		.node{background:url("imgs/tree.png") no-repeat;background-position:0 -450px;}
+		.file{background:url("imgs/folder.png") no-repeat;background-position:0 -100px;}
+	</style>
+</head>
+<body>
+	
+	<div id="tree">
+		<div>
+			<ul>
+				<li>
+					<div class="expand first_collapsable"></div>
+					<div class="folder_expandable"></div>
+					<a href="javascript::">主框架面板</a>
+					<ul>
+						<li>
+							<div class="line"></div>
+							<div class="expand first_collapsable"></div>
+							<div class="folder_expandable"></div>
+							<a href="javascript:;">我的主页</a>
+							<ul>
+								<li>
+									<div class="line"></div>
+									<div class="line"></div>
+									<div class="node"></div>
+									<div class="file"></div>
+									<a href="javascript:;">中国传统企业</a>
+								</li>
+								<li>
+									<div class="line"></div>
+									<div class="line"></div>
+									<div class="node"></div>
+									<div class="file"></div>
+									<a href="javascript:;">特别弱是创业者</a>
+								</li>
+								<li>
+									<div class="line"></div>
+									<div class="line"></div>
+									<div class="node"></div>
+									<div class="file"></div>
+									<a href="javascript:;">的巨大优势</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<div class="line"></div>
+							<div class="node"></div>
+							<div class="file"></div>
+							<a href="javascript:;">导航页面</a>
+						</li>
+						<li>
+							<div class="line"></div>
+							<div class="node"></div>
+							<div class="file"></div>
+							<a href="javascript:;">表单页面</a>
+						</li>
+						<li>
+							<div class="line"></div>
+							<div class="node"></div>
+							<div class="file"></div>
+							<a href="javascript:;">会话页面</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<div class="expand expandable"></div>
+					<div class="folder_expandable"></div>
+					<a href="javascript:;">常用组件</a>
+				</li>
+				<li>
+					<div class="expand expandable"></div>
+					<div class="folder_expandable"></div>
+					<a href="javascript:;">表单组件</a>
+				</li>
+				<li>
+					<div class="expand expandable"></div>
+					<div class="folder_expandable"></div>
+					<a href="javascript:;">组合应用</a>
+				</li>
+				<li>
+					<div class="expand expandable"></div>
+					<div class="folder_expandable"></div>
+					<a href="javascript:;">图表</a>
+				</li>
+			</ul>
+		</div>
+					
+	</div>
+	<script type="text/javascript" src="../../js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript">
+		
+		$(function(){
+			$("#tree").find(".expand").click(function(){
+				if($(this).attr("class").indexOf("expandable") == -1){
+					$(this).addClass("expandable").removeClass("first_collapsable");
+					$(this).closest("li").find("ul").eq(0).hide();
+				}else{
+					$(this).addClass("first_collapsable").removeClass("expandable");
+					$(this).closest("li").find("ul").eq(0).show();
+				}
+			});
+			
+		});
+		
+	</script>
+</body>
+</html>

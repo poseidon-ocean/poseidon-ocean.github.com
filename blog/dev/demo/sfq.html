@@ -1,0 +1,77 @@
+﻿<!doctype html><!--兼容所有HTML-->
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>累土 - 合抱之木，生于毫末；九层之台，起于累土</title>
+	<meta name="keywords" content="个人博客,SEO优化,编程开发,大数据,网站建设,学习交流"/>
+	<meta name="description" content="码一码互联网的一些事儿,让高大上走入寻常百姓家"/>
+	<link rel="shortcut icon" type="image/ico" href="../../images/favicon.ico">
+	
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		body{background:#111;}
+		ul li{list-style:none;}
+		.silder{width:280px;background:#71B0D1;
+			position:absolute;
+			height:100%;
+		}
+		.silder li{height:45px;border-bottom:1px solid #fff;
+			transition:all 0.6s ease;line-height:45px;text-align:center;
+			position:relative;overflow:hidden;
+		}
+		.silder li a{display:block;position:relative;}
+		.silder li:hover{background:#111;transition:all 0.6s ease;}
+		.silder li span{width:280px;height:45px;background:red;
+			display:inline-block;position:absolute;
+			top:0;left:280px;transition:all 0.6 ease;
+		}
+		.silder li:hover span{left:0;}
+	
+	</style>
+</head>
+<body>
+	
+	<div class="silder">
+		<ul id="boxli">
+			<li><span></span><a href="#">导航一</a></li>
+			<li><span></span><a href="#">导航一</a></li>
+			<li><span></span><a href="#">导航一</a></li>
+			<li><span></span><a href="#">导航一</a></li>
+			<li><span></span><a href="#">导航一</a></li>
+			<li><span></span><a href="#">导航一</a></li>
+			<li><span></span><a href="#">导航一</a></li>
+			<li><span></span><a href="#">导航一</a></li>
+			<li><span></span><a href="#">导航一</a></li>
+			<li><span></span><a href="#">导航一</a></li>
+			<li><span></span><a href="#">导航一</a></li>
+			<li><span></span><a href="#">导航一</a></li>
+			<li><span></span><a href="#">导航一</a></li>
+			<li><span></span><a href="#">导航一</a></li>
+			<li><span></span><a href="#">导航一</a></li>
+			<li><span></span><a href="#">导航一</a></li>
+			<li><span></span><a href="#">导航一</a></li>
+			<li><span></span><a href="#">导航一</a></li>
+		</ul>
+	</div>
+		
+	
+	<script src="../../js/jquery-1.11.3.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("#boxli").find("li").hover(function(){
+				$(this).find("span").stop(true,true).css("background",randomColor()).animate({left:0});
+			},function(){
+				$(this).find("span").stop(true,true).css("background",randomColor()).animate({left:280});
+			});
+			
+			function randomColor(){
+				var r = Math.floor(Math.random()*256);
+				var g = Math.floor(Math.random()*256);
+				var b = Math.floor(Math.random()*256);
+				
+				return "rgb("+r+","+g+","+b+")";
+			}
+		});
+	</script>
+</body>
+</html>

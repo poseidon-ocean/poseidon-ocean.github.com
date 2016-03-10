@@ -1,0 +1,1132 @@
+<!doctype html>
+<html>
+ <head>
+  <!--声明当前前页面的编码集：charset-gbk gb2312（中文编码） UTF-8国际编码-->
+  <!--当前页面三要素-->
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title></title>
+	<!--css 叠层样式-->
+	<link href="css/ux_1456920276_1627085/iconfont.css" rel="stylesheet"></link>
+	<style type="text/css">
+	*{padding:0;margin:0;}	
+	body{font-size:14px;font-family:"微软雅黑";background-color: #eff3f5;}
+	a{text-decoration:none;color:#333;}
+	li{list-style:none;}
+	.on{color:#0cf;}
+	/*S - header*/
+	header{height:70px;background:#fff;}    
+	header .h_visual{width:1180px;height:inherit;margin:0 auto;}
+	header .h_visual .v_box{width:800px;height:inherit;margin:0 auto;}
+	header .h_visual .v_box ul li{float:left;position:relative;}
+	header .h_visual .v_box ul li .l_a{width:100px;text-align:center;padding:25px 0px;display:inline-block;border-top:4px solid transparent;transition:all .2s ease}
+	header .h_visual .v_box ul li .b_list{display:none;position:absolute;width:100px;top:70px;left:0;background:#fff;z-index:3;}
+	header .h_visual .v_box ul li .b_list a{width:85px;height:40px;padding-left:15px;display:block;line-height:40px;color:#7a8e9d;}
+	header .h_visual .v_box ul li .b_list .u_on{color:#3498db;font-weight:bold;background-color:#eff3f5}
+	header .h_visual .v_box ul li .b_list a:hover{color:#3498db;font-weight:bold;background-color:#eff3f5}
+	header .h_visual .v_box ul .l_works:hover .b_list{display:block}
+	header .h_visual .v_box ul .l_study:hover .b_list{display:block}
+	header .h_visual .v_box ul li .l_logo{width:85px;height:85px;border:1px solid #111;padding:0;border-radius:50%;overflow:hidden;margin:0 50px;display:inline-block}
+	header .h_visual .v_box ul li .l_search{padding:19px 0px 22px 0px;}
+	header .h_visual .v_box ul li .l_box_search{width:100px;height:50px;border:1px solid #ccc;position:absolute;top:0px;left:0;z-index:-1;background:#fff;border-radius:10px 10px 10px 10px;}
+	header .h_visual .v_box ul li .l_box_search .b_text_search{outline:none;border:0;width:30px;height:34px;margin:9px 0 9px 8px;:float:left;}
+	header .h_visual .v_box ul li .l_box_search .b_a_search .icon-search{width:40px; height: 40px;display:inline-block;float: right;line-height: 40px;text-align: center;margin:5px}
+	header .h_visual .v_box ul li .l_loginbox{padding:0 10px}
+	header .h_visual .v_box ul li .l_login{width:78px;height:66px;padding:0;line-height:66px;text-align:center;display: inline-block;border-top:4px solid transparent;transition: all .2s ease;border-left:1px solid #e3e3e3;border-right:1px solid #e3e3e3}
+	header .h_visual .v_box ul li:hover .l_login{background-color: #eff3f5;border-top-color:#0cf;}
+	header .h_visual .v_box ul li a .icon-xiajiantou{margin-left:5px;color:#B6C1C9;}
+	header .h_visual .v_box ul li a .icon-denglu{font-size:24px;}
+	header .h_visual .v_box ul li a .icon-search{font-size:24px;color:#868686;}
+	header .h_visual .v_box ul li a:hover .icon-search{color:#0cf;}
+	header .h_visual .v_box ul li .l_a:hover{border-color:#0cf;box-shadow:0 0 2px rgba(0,0,0,.2)}
+	/*E - header*/
+
+	/*S - banner*/
+	.G_banner{height:350px;}
+	.G_banner .b_cneter{width:1180px;margin:20px auto;height:inherit;position:relative;}
+	.G_banner .b_cneter .c_banner_img{width:1180px;height:350px;overflow:hidden;position:relative;}
+	.G_banner .b_cneter .c_banner_img a{position:absolute;top:0;left:0;opacity:0;z-index:0}
+	.G_banner .b_cneter .c_list_bnt{position:absolute;padding:4px 16px;z-index:10;background-color:rgba(0,0,0,.15);border-radius:20px;bottom:15px;left:50%;margin-left:-102px;}
+	.G_banner .b_cneter .c_list_bnt a{display:inline-block;padding:3px;}
+	.G_banner .b_cneter .c_list_bnt a span{width:12px;height:12px;background-color: rgba(255,255,255,.4);display:block;border-radius:6px;transition:width .4s ease;}
+	.G_banner .b_cneter .c_icon_btn .i_btn{width:65px;height:350px;display:inline-block;position:absolute;top:0px;display:none;}
+	.G_banner .b_cneter .c_icon_btn .i_left_btn{background:url("images/slide-btnl.jpg")no-repeat;background-position:15px 150px;left:-65px;}
+	.G_banner .b_cneter .c_icon_btn .i_right_btn{background:url("images/slide-btnr.jpg")no-repeat;background-position:15px 150px;right:-65px;}
+	.G_banner .b_cneter:hover .i_btn{display:block}
+	.G_banner .b_cneter .c_list_bnt a .active{width:30px;}
+	/*E - banner*/
+
+	/*S - centerbox*/
+		/*S - c_top_nav*/
+	.centerbox{width:1180px;margin:0 auto;}
+	.centerbox .c_top_nav{width:1180px;}
+	.centerbox .c_top_nav .t_left_screen{width:248px;height:42px;float:left;margin-top:20px;}
+	.centerbox .c_top_nav .t_left_screen .l_recommend a{height:40px;padding:0 20px;border:1px solid #0cf;border-radius:20px;display:inline-block;line-height:40px;text-align:center;float:left}
+	.centerbox .c_top_nav .t_left_screen .l_new_works a{height:40px;padding:0 20px;float:right;line-height:40px;text-align:center;margin-right:25px;}
+	.centerbox .c_top_nav .t_left_screen .l_new_works:hvoer{color:#0cf;}
+	.centerbox .c_top_nav .t_right_soup{width:361px;height:40px;float:right;margin-top:20px;background:#fff7e7;border-radius:20px;position:relative;box-shadow:1px 1px 2px rgba(0,0,0,.2);}
+	.centerbox .c_top_nav .t_right_soup li{float:left;}
+	.centerbox .c_top_nav .t_right_soup li i{display:inline-block;color:#ffebc1;position:absolute;font-size:30px;}
+	.centerbox .c_top_nav .t_right_soup .r_li_text{height:40px;line-height:40px;color:#6b3612;display:block;float:left;margin-left:20px;}
+	.centerbox .c_top_nav .t_right_soup .r_icon{width:28px;height:28px;display:block;float:left;border-radius:50%;background:#e1d3bb;position:absolute;}
+	.centerbox .c_top_nav .t_right_soup .r_notice{top:6px;right:81px;}
+	.centerbox .c_top_nav .t_right_soup .r_notice .icon-gonggao{top: 1px;right: -1px;}
+	.centerbox .c_top_nav .t_right_soup .r_chicken{top:6px;right:45px;background:orange;}
+	.centerbox .c_top_nav .t_right_soup .r_chicken .icon-shoucang1{top:0px;right:-1px;}
+	.centerbox .c_top_nav .t_right_soup .r_collect{top:6px;right:10px;}
+	.centerbox .c_top_nav .t_right_soup .r_collect .icon-shoucang{top: 1px;right: -1px;}
+		/*E - c_top_nav*/
+		/*S - c_content*/
+	.c_content{width:1200px;margin:20px 0 0 -20px;}
+	.c_content li{width:280px;height:310px;margin:0 0 15px 20px;position:relative;float:left;}
+	.c_content li .c_list_box{width:308px;height:323px;background:#fff;position:absolute;right:-14px;top:-18px;opacity:0;filter:alpha(opacity=0);z-index:-1;box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);transition:opacity 0.5s ease;}
+	.c_content li:hover .icon-denglu{color:#0cf;}
+	.c_content li:hover strong{color:#0cf;}
+	.c_content li .c_list_img{width:280px;height:210px;position:relative;z-index:2;overflow:hidden;}
+	.c_content li .c_list_img img{transition:transform .3s ease;}
+	.c_content li:hover img{transform:scale(1.05);}
+	.c_content li .c_list_info{width:280px;height:70px;padding:5px 0 20px 0;z-index:2}
+	.c_content li .c_list_info h4{width:300px;font-weight:bold;color:#34495e;}
+	.c_content li .c_list_info .l_list_tag{margin-top:8px !important;height:21px;}
+	.c_content li .c_list_info .l_list_tag span{display:inline-block;margin-right:10px;float:left}
+	.c_content li .c_list_info .l_list_tag span i{display:inline-block;width:18px;height:18px;color:#9aabb8;float:left;font-size:20px;margin:0 5px 0 0}
+	.c_content li .c_list_info .l_type{height:20px;padding:0 5px;color:#9aabb8;font-size:12px;background:#dfe5e9;border-radius:4px;line-height:19px;}
+	.c_content li .c_list_info .l_list_tag .icon-faxian-on{line-height:20px;margin:1px 5px 0 0;}
+	.c_content li .c_list_info .l_list_tag em{font-style:normal;color:#9aabb8;display: inline-block;line-height: 21px;float:left;}
+	.c_content li .c_list_info .l_author{height:20px;margin-top:7px}
+	.c_content li .c_list_info .l_author a{display:inline-block;}
+	.c_content li .c_list_info .l_author a .icon-denglu{height:20px;width:20px;border-radius:50%;margin-left:2px;}
+	.c_content li .c_list_info .l_author a strong{font-size:12px;font-weight: normal;}
+	.c_content .c_bottom{width:100%;height:1px;background:#e2e8eb;}
+	.c_content li:hover .c_list_box{opacity:1;filter:alpha(opacity=100);}
+		/*E - c_content*/
+	.centerbox .c_paging{height:40px;width:auto;margin:0 auto;display:table;margin-top:5px !important;margin-bottom:20px !important;}
+	.centerbox .c_paging ul li{float:left;}
+	.centerbox .c_paging ul li a{display:inline-block;width:40px;height:40px;color: #bdc3c7;border-radius:50%;line-height:40px;text-align:center;font-size:20px;border:1px solid  #bdc3c7;margin:0 10px;transition:all .5s ease;}
+	.centerbox .c_paging ul li .on{border-color:#2d3e4f;color:#2d3e4f;font-weight:bold;}
+	.centerbox .c_paging ul li a:hover{border-color:#2d3e4f;color:#2d3e4f;font-weight:bold;}
+	/*E - centerbox*/
+
+	/*S - footer*/
+	footer{padding:40px 0;width:100%;background:#fff;}
+	footer .f_con{height:90px;width:1180px;margin:0 auto;}
+	footer .f_con .c_desc{width:600px;margin:0 auto;}
+	footer .f_con .c_desc a{color:#7f8c8d;display:inline-block;margin:0 44px;transition:color .3s ease;}
+	footer .f_con .c_desc a:hover{color:#2980b9;}
+	footer .f_con .c_tel{width: 600px;margin: 50px 0 0 315px;color:#b8c4cc;}
+	/*E- footer*/
+
+	/*S -scrollup */
+	.scrollup{display:block;width:48px;position:fixed;bottom:90px;right:50px;z-index:10;height:138px;display:none;transition:opacity .2s ease;}
+	.scrollup a{display:block;transition:color .3s ease;background-color:rgba(153,174,188,.3);font-size:12px;color:#fff;line-height:40px;text-align:center;}
+	.scrollup .s_arrows{width:48px;height:48px;background:url("images/fenye/top_up.png")no-repeat;background-position:0px 0px;background-size:48px;}
+	.scrollup .s_arrows:hover{background-position:0px -49px;}
+	.scrollup .s_service{width:48px;height: 40px;margin-top:5px;}
+	.scrollup .s_feedback{width:48px;height: 40px;margin-top:5px;}
+	.scrollup a:hover{color:#2c98dd;}
+	/*E -scrollup */
+	</style>
+ </head>
+ <body>
+	<!--S - header-->
+	<header>
+		<div class="h_visual">
+			<div class="v_box">
+				<ul>
+					<li><a href="index.html" class="l_a on">首页</a></li>
+					<li class="l_works">
+						<a href="#" class="l_a">作品<i class="iconfont icon-xiajiantou"></i></a>
+						<div class="b_list">
+							<ul>
+								<li><a href="#" class="u_li">HTML5</a></li>
+								<li><a href="#" class="u_li">CSS3</a></li>
+								<li><a href="#" class="u_li">javaScript</a></li>
+								<li><a href="#" class="u_li">jQuery</a></li>
+								<li><a href="#" class="u_li">Java</a></li>
+							</ul>
+						</div>
+					</li>
+					<li class="l_study">
+						<a href="#" class="l_a">学习<i class="iconfont icon-xiajiantou"></i></a>
+						<div class="b_list">
+							<ul>
+								<li><a href="#" class="u_li">HTML5</a></li>
+								<li><a href="#" class="u_li">CSS3</a></li>
+								<li><a href="#" class="u_li">javaScript</a></li>
+								<li><a href="#" class="u_li">jQuery</a></li>
+								<li><a href="#" class="u_li">Java</a></li>
+							</ul>
+						</div>
+					</li>
+					<li><a href="#" class="l_logo"><img src="images/logo.png" title="个人主页" width="85" height="85"></a></li>
+					<li><a href="#" class="l_a">活动</a></li>
+					<li id="search">
+						<a href="#" class="l_a l_search"><i class="iconfont icon-search"></i></a>
+						<div class="l_box_search" id="l_box_search">
+							<input type="text" id="b_text_search" class="b_text_search" placeholder="请输入您要查找的内容"/>
+							<a href="#" class="b_a_search"><i class="iconfont icon-search"></i></a>
+						</div>
+					</li>
+					<li>
+						<div class="l_loginbox">
+							<a href="Case base/登录.html" class="l_login on"><i class="iconfont icon-denglu"></i>登入</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</header>
+	<!--E - header-->
+
+
+
+	<!--S - G_banner-->
+	<div class="G_banner">
+		<div class="b_cneter" id="b_cneter">
+			<div class="c_banner_img" id="c_banner_img">
+					<a href="#" style="opacity:1"><img src="images/banner01.jpeg" width="1180" height="350"></a>
+					<a href="#"><img src="images/banner07.png" width="1180" height="350"></a>
+					<a href="#"><img src="images/banner02.jpeg" width="1180" height="350"></a>
+					<a href="#"><img src="images/banner03.jpeg" width="1180" height="350"></a>
+					<a href="#"><img src="images/banner04.jpeg" width="1180" height="350"></a>
+					<a href="#"><img src="images/banner05.png" width="1180" height="350"></a>
+					<a href="#"><img src="images/banner06.jpeg" width="1180" height="350"></a>
+			</div>
+			<div class="c_list_bnt" id="c_list_bnt">
+				<a href="#">
+					<span class="active"></span>
+				</a>
+				<a href="#">
+					<span></span>
+				</a>
+				<a href="#">
+					<span></span>
+				</a>
+				<a href="#">
+					<span></span>
+				</a>
+				<a href="#">
+					<span></span>
+				</a>
+				<a href="#">
+					<span></span>
+				</a>
+				<a href="#">
+					<span></span>
+				</a>
+
+			</div>
+			<div class="c_icon_btn">
+				<a href="#" class="i_left_btn i_btn" id="btn_left"></a>
+				<a href="#" class="i_right_btn i_btn" id="btn_right"></a>
+			</div>
+		</div>
+	</div>
+	<!--E - G_banner-->
+	
+	
+	<!--S - centerbox-->
+	<div class="centerbox">
+		<!--C - c_top_nav-->
+		<div class="c_top_nav">
+			<ul class="t_left_screen">
+				<li class="l_recommend">
+					<a href="#" class="on">首页推荐</a>
+				</li>
+				<li class="l_new_works">
+					<a href="#" class="h_on">最新项目</a>
+				</li>
+			</ul>
+			<ul class="t_right_soup">
+				<li >
+					<a href="#" class="r_li_text" id="li_text">遇到谷底时就奋力爬上去吧</a>
+				</li>
+				<div id="liBox">
+					<li><a href="#" class="r_notice r_icon" title="公告" ntext="觉得可以就录用我吧，^_^"><i class="iconfont icon-gonggao"></i></a></li>
+					<li><a href="#" class="r_chicken r_icon" title="鸡汤" ntext="遇到谷底时就奋力爬上去吧"><i class="iconfont icon-shoucang1"></i></a></li>
+					<li><a href="#" class="r_collect r_icon" title="更新" ntext="目前没有更新"><i class="iconfont icon-shoucang"></i></a></li>
+				</div>
+			</ul>
+			<div style="clear:both"></div>
+		</div>
+		<!--C - c_content1400 1050-->		
+		<ul class="c_content" id="content">
+			<li>
+				<div class="c_list_box"></div>
+				<div class="c_list_img">
+					<a href="Case base/fenye.html" fen_src="潭州电商/index.html@潭州电商平台@3@HTML CSS" target="_blank" id="a_0">
+					<img src="Case base/潭州电商/G.jpg" width="280" height="210"></a>
+				</div>
+				<div class="c_list_info">
+					<h4>潭州电商平台</h4>
+					<div class="l_list_tag">
+						<span class="l_type">技术</span>
+						<span title="浏览数">
+							<i class="iconfont icon-faxian-on"></i>
+							<em>666</em>
+						</span>
+						<span title="留言">
+							<i class="iconfont icon-pinglun"></i>
+							<em>918</em>
+						</span>
+						<span title="赞">
+							<i class="iconfont icon-zan"></i>
+							<em>111</em>
+						</span>
+					</div>
+					<div class="l_author">
+						<a href="#" title="作者">
+							<i class="iconfont icon-denglu"></i>
+							<strong>高高</strong>
+						</a>
+					</div>
+				</div>
+				<div class="c_bottom"></div>
+			</li>
+			<li>
+				<div class="c_list_box"></div>
+				<div class="c_list_img">
+					<a href="Case base/fenye.html" fen_src="潭州官网/index.html@潭州官网@4@HTML CSS" target="_blank" id="a_1"><img src="Case base/潭州官网/G.jpg" width="280" height="210"></a>
+				</div>
+				<div class="c_list_info">
+					<h4>潭州官网</h4>
+					<div class="l_list_tag">
+						<span class="l_type">技术</span>
+						<span title="浏览数">
+							<i class="iconfont icon-faxian-on"></i>
+							<em>666</em>
+						</span>
+						<span title="留言">
+							<i class="iconfont icon-pinglun"></i>
+							<em>918</em>
+						</span>
+						<span title="赞">
+							<i class="iconfont icon-zan"></i>
+							<em>111</em>
+						</span>
+					</div>
+					<div class="l_author">
+						<a href="#" title="作者">
+							<i class="iconfont icon-denglu"></i>
+							<strong>高高</strong>
+						</a>
+					</div>
+				</div>
+				<div class="c_bottom"></div>
+			</li>
+			<li>
+				<div class="c_list_box"></div>
+				<div class="c_list_img">
+					<a href="Case base/fenye.html" fen_src="响应式后台/index.html@响应式后台@4@HTML CSS" target="_blank" id="a_2"><img src="Case base/响应式后台/G.jpg" width="280" height="210"></a>
+				</div>
+				<div class="c_list_info">
+					<h4>相应式后台</h4>
+					<div class="l_list_tag">
+						<span class="l_type">技术</span>
+						<span title="浏览数">
+							<i class="iconfont icon-faxian-on"></i>
+							<em>666</em>
+						</span>
+						<span title="留言">
+							<i class="iconfont icon-pinglun"></i>
+							<em>918</em>
+						</span>
+						<span title="赞">
+							<i class="iconfont icon-zan"></i>
+							<em>111</em>
+						</span>
+					</div>
+					<div class="l_author">
+						<a href="#" title="作者">
+							<i class="iconfont icon-denglu"></i>
+							<strong>高高</strong>
+						</a>
+					</div>
+				</div>
+				<div class="c_bottom"></div>
+			</li>
+			<li>
+				<div class="c_list_box"></div>
+				<div class="c_list_img">
+					<a href="Case base/fenye.html" fen_src="弹幕特效/index.html@弹幕特效@3@jQuery" target="_blank" id="a_3"><img src="Case base/弹幕特效/G.jpg" width="280" height="210"></a>
+				</div>
+				<div class="c_list_info">
+					<h4>弹幕特效</h4>
+					<div class="l_list_tag">
+						<span class="l_type">技术</span>
+						<span title="浏览数">
+							<i class="iconfont icon-faxian-on"></i>
+							<em>666</em>
+						</span>
+						<span title="留言">
+							<i class="iconfont icon-pinglun"></i>
+							<em>918</em>
+						</span>
+						<span title="赞">
+							<i class="iconfont icon-zan"></i>
+							<em>111</em>
+						</span>
+					</div>
+					<div class="l_author">
+						<a href="#" title="作者">
+							<i class="iconfont icon-denglu"></i>
+							<strong>高高</strong>
+						</a>
+					</div>
+				</div>
+				<div class="c_bottom"></div>
+			</li>
+			<li>
+				<div class="c_list_box"></div>
+				<div class="c_list_img">
+					<a href="Case base/fenye.html" fen_src="跳动小球/index.html@跳动小球@5@javaScript" target="_blank" id="a_4"><img src="Case base/跳动小球/G.jpg" width="280" height="210"></a>
+				</div>
+				<div class="c_list_info">
+					<h4>跳动小球</h4>
+					<div class="l_list_tag">
+						<span class="l_type">技术</span>
+						<span title="浏览数">
+							<i class="iconfont icon-faxian-on"></i>
+							<em>666</em>
+						</span>
+						<span title="留言">
+							<i class="iconfont icon-pinglun"></i>
+							<em>918</em>
+						</span>
+						<span title="赞">
+							<i class="iconfont icon-zan"></i>
+							<em>111</em>
+						</span>
+					</div>
+					<div class="l_author">
+						<a href="#" title="作者">
+							<i class="iconfont icon-denglu"></i>
+							<strong>高高</strong>
+						</a>
+					</div>
+				</div>
+				<div class="c_bottom"></div>
+			</li>
+			<li>
+				<div class="c_list_box"></div>
+				<div class="c_list_img">
+					<a href="Case base/fenye.html" fen_src="桌面系统/index.html@桌面系统@5@jQuery" target="_blank" id="a_5"><img src="Case base/桌面系统/G.jpg" width="280" height="210"></a>
+				</div>
+				<div class="c_list_info">
+					<h4>桌面系统</h4>
+					<div class="l_list_tag">
+						<span class="l_type">技术</span>
+						<span title="浏览数">
+							<i class="iconfont icon-faxian-on"></i>
+							<em>666</em>
+						</span>
+						<span title="留言">
+							<i class="iconfont icon-pinglun"></i>
+							<em>918</em>
+						</span>
+						<span title="赞">
+							<i class="iconfont icon-zan"></i>
+							<em>111</em>
+						</span>
+					</div>
+					<div class="l_author">
+						<a href="#" title="作者">
+							<i class="iconfont icon-denglu"></i>
+							<strong>高高</strong>
+						</a>
+					</div>
+				</div>
+				<div class="c_bottom"></div>
+			</li>
+			<li>
+				<div class="c_list_box"></div>
+				<div class="c_list_img">
+					<a href="Case base/fenye.html" fen_src="时光轴/index.html@时光轴@4@jQuery" target="_blank" id="a_6"><img src="Case base/时光轴/G.jpg" width="280" height="210"></a>
+				</div>
+				<div class="c_list_info">
+					<h4>QQ空间时光轴</h4>
+					<div class="l_list_tag">
+						<span class="l_type">技术</span>
+						<span title="浏览数">
+							<i class="iconfont icon-faxian-on"></i>
+							<em>666</em>
+						</span>
+						<span title="留言">
+							<i class="iconfont icon-pinglun"></i>
+							<em>918</em>
+						</span>
+						<span title="赞">
+							<i class="iconfont icon-zan"></i>
+							<em>111</em>
+						</span>
+					</div>
+					<div class="l_author">
+						<a href="#" title="作者">
+							<i class="iconfont icon-denglu"></i>
+							<strong>高高</strong>
+						</a>
+					</div>
+				</div>
+				<div class="c_bottom"></div>
+			</li>
+			<li>
+				<div class="c_list_box"></div>
+				<div class="c_list_img">
+					<a href="Case base/fenye.html" fen_src="3D浏览图/index.html@3D浏览图@4@jQuery" target="_blank" id="a_7"><img src="Case base/3D浏览图/G.jpg" width="280" height="210"></a>
+				</div>
+				<div class="c_list_info">
+					<h4>3D浏览图</h4>
+					<div class="l_list_tag">
+						<span class="l_type">技术</span>
+						<span title="浏览数">
+							<i class="iconfont icon-faxian-on"></i>
+							<em>666</em>
+						</span>
+						<span title="留言">
+							<i class="iconfont icon-pinglun"></i>
+							<em>918</em>
+						</span>
+						<span title="赞">
+							<i class="iconfont icon-zan"></i>
+							<em>111</em>
+						</span>
+					</div>
+					<div class="l_author">
+						<a href="#" title="作者">
+							<i class="iconfont icon-denglu"></i>
+							<strong>高高</strong>
+						</a>
+					</div>
+				</div>
+				<div class="c_bottom"></div>
+			</li>
+			<li>
+				<div class="c_list_box"></div>
+				<div class="c_list_img">
+					<a href="Case base/fenye.html" fen_src="面向对象-画布特效/index.html@面向对象-画布特效@5@javaScript" target="_blank" id="a_8"><img src="Case base/面向对象-画布特效/G.jpg" width="280" height="210"></a>
+				</div>
+				<div class="c_list_info">
+					<h4>面向对象-画布特效</h4>
+					<div class="l_list_tag">
+						<span class="l_type">技术</span>
+						<span title="浏览数">
+							<i class="iconfont icon-faxian-on"></i>
+							<em>666</em>
+						</span>
+						<span title="留言">
+							<i class="iconfont icon-pinglun"></i>
+							<em>918</em>
+						</span>
+						<span title="赞">
+							<i class="iconfont icon-zan"></i>
+							<em>111</em>
+						</span>
+					</div>
+					<div class="l_author">
+						<a href="#" title="作者">
+							<i class="iconfont icon-denglu"></i>
+							<strong>高高</strong>
+						</a>
+					</div>
+				</div>
+				<div class="c_bottom"></div>
+			</li>
+			<li>
+				<div class="c_list_box"></div>
+				<div class="c_list_img">
+					<a href="Case base/fenye.html" fen_src="落网_音乐/index.html@落网_面向对象音乐@4@javaScript" target="_blank" id="a_9"><img src="Case base/落网_音乐/0.jpg" width="280" height="210"></a>
+				</div>
+				<div class="c_list_info">
+					<h4>落网_面向对象音乐</h4>
+					<div class="l_list_tag">
+						<span class="l_type">技术</span>
+						<span title="浏览数">
+							<i class="iconfont icon-faxian-on"></i>
+							<em>666</em>
+						</span>
+						<span title="留言">
+							<i class="iconfont icon-pinglun"></i>
+							<em>918</em>
+						</span>
+						<span title="赞">
+							<i class="iconfont icon-zan"></i>
+							<em>111</em>
+						</span>
+					</div>
+					<div class="l_author">
+						<a href="#" title="作者">
+							<i class="iconfont icon-denglu"></i>
+							<strong>高高</strong>
+						</a>
+					</div>
+				</div>
+				<div class="c_bottom"></div>
+			</li>
+			<li>
+				<div class="c_list_box"></div>
+				<div class="c_list_img">
+					<a href="Case base/fenye.html" fen_src="电商-图片放大预览/index.html@电商-图片放大@4@javaScript" target="_blank" id="a_10"><img src="Case base/电商-图片放大预览/1.jpg" width="280" height="210"></a>
+				</div>
+				<div class="c_list_info">
+					<h4>电商-图片放大</h4>
+					<div class="l_list_tag">
+						<span class="l_type">技术</span>
+						<span title="浏览数">
+							<i class="iconfont icon-faxian-on"></i>
+							<em>666</em>
+						</span>
+						<span title="留言">
+							<i class="iconfont icon-pinglun"></i>
+							<em>918</em>
+						</span>
+						<span title="赞">
+							<i class="iconfont icon-zan"></i>
+							<em>111</em>
+						</span>
+					</div>
+					<div class="l_author">
+						<a href="#" title="作者">
+							<i class="iconfont icon-denglu"></i>
+							<strong>高高</strong>
+						</a>
+					</div>
+				</div>
+				<div class="c_bottom"></div>
+			</li>
+			<li>
+				<div class="c_list_box"></div>
+				<div class="c_list_img">
+					<a href="Case base/fenye.html" fen_src="拖拽元素交互位移/index.html@拖拽元素交互位移@5@javaScript" target="_blank" id="a_11">
+					<img src="Case base/拖拽元素交互位移/1.jpg" width="280" height="210"></a>
+				</div>
+				<div class="c_list_info">
+					<h4>拖拽元素交互位移</h4>
+					<div class="l_list_tag">
+						<span class="l_type">技术</span>
+						<span title="浏览数">
+							<i class="iconfont icon-faxian-on"></i>
+							<em>666</em>
+						</span>
+						<span title="留言">
+							<i class="iconfont icon-pinglun"></i>
+							<em>918</em>
+						</span>
+						<span title="赞">
+							<i class="iconfont icon-zan"></i>
+							<em>111</em>
+						</span>
+					</div>
+					<div class="l_author">
+						<a href="#" title="作者">
+							<i class="iconfont icon-denglu"></i>
+							<strong>高高</strong>
+						</a>
+					</div>
+				</div>
+				<div class="c_bottom"></div>
+			</li>
+			<div style="clear:both"></div>
+		</ul>
+		<!--C - c_content-->		
+		<ul class="c_content" id="content_two" style="display:none">
+			<li>
+				<div class="c_list_box"></div>
+				<div class="c_list_img">
+					<a href="Case base/fenye.html" fen_src="抛物线运动/抛物线.html@抛物线运动@4@javaScript" target="_blank" id="a_two_0"><img src="images/11.jpg" width="280" height="210"></a>
+				</div>
+				<div class="c_list_info">
+					<h4 id="h4_01">抛物线运动</h4>
+					<div class="l_list_tag">
+						<span class="l_type">技术</span>
+						<span title="浏览数">
+							<i class="iconfont icon-faxian-on"></i>
+							<em>666</em>
+						</span>
+						<span title="留言">
+							<i class="iconfont icon-pinglun"></i>
+							<em>918</em>
+						</span>
+						<span title="赞">
+							<i class="iconfont icon-zan"></i>
+							<em>111</em>
+						</span>
+					</div>
+					<div class="l_author">
+						<a href="#" title="作者">
+							<i class="iconfont icon-denglu"></i>
+							<strong>高高</strong>
+						</a>
+					</div>
+				</div>
+				<div class="c_bottom"></div>
+			</li>
+			<li>
+				<div class="c_list_box"></div>
+				<div class="c_list_img">
+					<a href="Case base/fenye.html" fen_src="QQ空间图片预览/index.html@QQ空间图片预览@4@javaScript" target="_blank" id="a_two_1"><img src="Case base/QQ空间图片预览/0.jpg" width="280" height="210"></a>
+				</div>
+				<div class="c_list_info">
+					<h4>QQ空间图片预览</h4>
+					<div class="l_list_tag">
+						<span class="l_type">技术</span>
+						<span title="浏览数">
+							<i class="iconfont icon-faxian-on"></i>
+							<em>666</em>
+						</span>
+						<span title="留言">
+							<i class="iconfont icon-pinglun"></i>
+							<em>918</em>
+						</span>
+						<span title="赞">
+							<i class="iconfont icon-zan"></i>
+							<em>111</em>
+						</span>
+					</div>
+					<div class="l_author">
+						<a href="#" title="作者">
+							<i class="iconfont icon-denglu"></i>
+							<strong>高高</strong>
+						</a>
+					</div>
+				</div>
+				<div class="c_bottom"></div>
+			</li>
+			<li>
+				<div class="c_list_box"></div>
+				<div class="c_list_img">
+					<a href="Case base/fenye.html" fen_src="各种拖拽/index.html@各种拖拽@3@javaScript" target="_blank" id="a_two_2"><img src="Case base/各种拖拽/1.jpg" width="280" height="210"></a>
+				</div>
+				<div class="c_list_info">
+					<h4>各种拖拽</h4>
+					<div class="l_list_tag">
+						<span class="l_type">技术</span>
+						<span title="浏览数">
+							<i class="iconfont icon-faxian-on"></i>
+							<em>666</em>
+						</span>
+						<span title="留言">
+							<i class="iconfont icon-pinglun"></i>
+							<em>918</em>
+						</span>
+						<span title="赞">
+							<i class="iconfont icon-zan"></i>
+							<em>111</em>
+						</span>
+					</div>
+					<div class="l_author">
+						<a href="#" title="作者">
+							<i class="iconfont icon-denglu"></i>
+							<strong>高高</strong>
+						</a>
+					</div>
+				</div>
+				<div class="c_bottom"></div>
+			</li>
+			<li>
+				<div class="c_list_box"></div>
+				<div class="c_list_img">
+					<a href="Case base/fenye.html" fen_src="百叶窗/index.html@百叶窗@3@CSS3" target="_blank" id="a_two_3"><img src="Case base/百叶窗/2.jpg" width="280" height="210"></a>
+				</div>
+				<div class="c_list_info">
+					<h4>百叶窗</h4>
+					<div class="l_list_tag">
+						<span class="l_type">技术</span>
+						<span title="浏览数">
+							<i class="iconfont icon-faxian-on"></i>
+							<em>666</em>
+						</span>
+						<span title="留言">
+							<i class="iconfont icon-pinglun"></i>
+							<em>918</em>
+						</span>
+						<span title="赞">
+							<i class="iconfont icon-zan"></i>
+							<em>111</em>
+						</span>
+					</div>
+					<div class="l_author">
+						<a href="#" title="作者">
+							<i class="iconfont icon-denglu"></i>
+							<strong>高高</strong>
+						</a>
+					</div>
+				</div>
+				<div class="c_bottom"></div>
+			</li>
+			<li>
+				<div class="c_list_box"></div>
+				<div class="c_list_img">
+					<a href="Case base/fenye.html" fen_src="图片预加载/index.html@图片预加载@3@javaScript" target="_blank" id="a_two_4"><img src="Case base/图片预加载/0.jpg" width="280" height="210"></a>
+				</div>
+				<div class="c_list_info">
+					<h4>图片预加载</h4>
+					<div class="l_list_tag">
+						<span class="l_type">技术</span>
+						<span title="浏览数">
+							<i class="iconfont icon-faxian-on"></i>
+							<em>666</em>
+						</span>
+						<span title="留言">
+							<i class="iconfont icon-pinglun"></i>
+							<em>918</em>
+						</span>
+						<span title="赞">
+							<i class="iconfont icon-zan"></i>
+							<em>111</em>
+						</span>
+					</div>
+					<div class="l_author">
+						<a href="#" title="作者">
+							<i class="iconfont icon-denglu"></i>
+							<strong>高高</strong>
+						</a>
+					</div>
+				</div>
+				<div class="c_bottom"></div>
+			</li>
+			<li>
+				<div class="c_list_box"></div>
+				<div class="c_list_img">
+					<a href="Case base/fenye.html" fen_src="圆周运动/index.html@圆周运动@3@javaScript" target="_blank" id="a_two_5"><img src="Case base/圆周运动/1.jpg" width="280" height="210"></a>
+				</div>
+				<div class="c_list_info">
+					<h4>圆周运动</h4>
+					<div class="l_list_tag">
+						<span class="l_type">技术</span>
+						<span title="浏览数">
+							<i class="iconfont icon-faxian-on"></i>
+							<em>666</em>
+						</span>
+						<span title="留言">
+							<i class="iconfont icon-pinglun"></i>
+							<em>918</em>
+						</span>
+						<span title="赞">
+							<i class="iconfont icon-zan"></i>
+							<em>111</em>
+						</span>
+					</div>
+					<div class="l_author">
+						<a href="#" title="作者">
+							<i class="iconfont icon-denglu"></i>
+							<strong>高高</strong>
+						</a>
+					</div>
+				</div>
+				<div class="c_bottom"></div>
+			</li>
+			<li>
+				<div class="c_list_box"></div>
+				<div class="c_list_img">
+					<a href="Case base/fenye.html" fen_src="途牛网，功能模块/index.html@途牛网，功能模块@3@javaScript" target="_blank" id="a_two_6"><img src="Case base/途牛网，功能模块/0.jpg" width="280" height="210"></a>
+				</div>
+				<div class="c_list_info">
+					<h4>途牛网，功能模块</h4>
+					<div class="l_list_tag">
+						<span class="l_type">技术</span>
+						<span title="浏览数">
+							<i class="iconfont icon-faxian-on"></i>
+							<em>666</em>
+						</span>
+						<span title="留言">
+							<i class="iconfont icon-pinglun"></i>
+							<em>918</em>
+						</span>
+						<span title="赞">
+							<i class="iconfont icon-zan"></i>
+							<em>111</em>
+						</span>
+					</div>
+					<div class="l_author">
+						<a href="#" title="作者">
+							<i class="iconfont icon-denglu"></i>
+							<strong>高高</strong>
+						</a>
+					</div>
+				</div>
+				<div class="c_bottom"></div>
+			</li>
+			<li>
+				<div class="c_list_box"></div>
+				<div class="c_list_img">
+					<a href="Case base/fenye.html" fen_src="文本打印/index.html@文本打印@4@javaScript" target="_blank" id="a_two_7"><img src="Case base/文本打印/0.jpg" width="280" height="210"></a>
+				</div>
+				<div class="c_list_info">
+					<h4>文本打印</h4>
+					<div class="l_list_tag">
+						<span class="l_type">技术</span>
+						<span title="浏览数">
+							<i class="iconfont icon-faxian-on"></i>
+							<em>666</em>
+						</span>
+						<span title="留言">
+							<i class="iconfont icon-pinglun"></i>
+							<em>918</em>
+						</span>
+						<span title="赞">
+							<i class="iconfont icon-zan"></i>
+							<em>111</em>
+						</span>
+					</div>
+					<div class="l_author">
+						<a href="#" title="作者">
+							<i class="iconfont icon-denglu"></i>
+							<strong>高高</strong>
+						</a>
+					</div>
+				</div>
+				<div class="c_bottom"></div>
+			</li>
+			<li>
+				<div class="c_list_box"></div>
+				<div class="c_list_img">
+					<a href="Case base/fenye.html" fen_src="自定义滚动条/index.html@自定义滚动条@4@javaScript" target="_blank" id="a_two_8"><img src="Case base/自定义滚动条/0.jpg" width="280" height="210"></a>
+				</div>
+				<div class="c_list_info">
+					<h4>自定义滚动条</h4>
+					<div class="l_list_tag">
+						<span class="l_type">技术</span>
+						<span title="浏览数">
+							<i class="iconfont icon-faxian-on"></i>
+							<em>666</em>
+						</span>
+						<span title="留言">
+							<i class="iconfont icon-pinglun"></i>
+							<em>918</em>
+						</span>
+						<span title="赞">
+							<i class="iconfont icon-zan"></i>
+							<em>111</em>
+						</span>
+					</div>
+					<div class="l_author">
+						<a href="#" title="作者">
+							<i class="iconfont icon-denglu"></i>
+							<strong>高高</strong>
+						</a>
+					</div>
+				</div>
+				<div class="c_bottom"></div>
+			</li>
+
+			<div style="clear:both"></div>
+		</ul>
+		<!--C - paging-->
+		<div class="c_paging">
+			<ul>
+				<li><a href="javascript:void(0)" class="on" id="one_page">1</a></li>
+				<li><a href="javascript:void(0)" id="two_page">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#" style="line-height:28px;">...</a></li>			
+			</ul>
+		</div>
+	</div>
+	<!--E - centerbox-->
+
+
+
+	<!--S - footer-->
+	<footer>
+		<div class="f_con">
+			<div class="c_desc">
+				<a href="#">意见反馈</a>
+				<a href="javascript:void(0)" onclick="i()" >关于本人</a>
+				<a href="javascript:void(0)" onclick="tel()">联系方式</a>
+				<a href="#">版权声明</a>
+			</div>
+			<div class="c_tel">
+				<p>Copyright &copy 2013-2015 www.mooncollege.cn All Rights Reserved /备案号：备13016338号</p>
+			</div>
+		</div>
+	</footer>
+	<!--E - footer-->
+
+	<!--S - -->
+	<div class="scrollup" id="scrollup">
+		<a href="#" class="s_arrows" id="s_arrows"></a>
+		<a href="#" class="s_service">客服</a>
+		<a href="#" class="s_feedback">反馈</a>
+	</div>
+	<!--E - -->
+
+
+
+
+
+
+	<script src="js/Gdom.js"></script>
+	<script src="js/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript">
+
+	
+	window.onload = function(){
+		/*【搜索框代码】*/
+		dom("search").onclick = function(){
+			dom("l_box_search").style.display ="block";
+			dom("l_box_search").style.top = "70px";
+			dom("l_box_search").style.zIndex = "10";
+			dom("l_box_search").style.transition = "top .8s ease,width 1s ease 1s";
+			dom("l_box_search").style.width = "210px";
+			dom("b_text_search").style.width="140px";
+			dom("b_text_search").style.transition="width 1s ease 1s";
+		};
+		dom("b_text_search").onblur= function(){
+			dom("l_box_search").style.width = "100px";
+			dom("l_box_search").style.top = "0px";
+			dom("l_box_search").style.zIndex = "-1";
+			dom("b_text_search").style.width = "30px";
+		};
+
+
+
+		/*【banner代码】*/
+		var imgDoms = dom("c_banner_img").children;
+		var len  = imgDoms.length;
+		var btnDoms = dom("c_list_bnt").children;
+		var index = 0;
+		var timer = null;
+		for(var i=0,lens = btnDoms.length;i<lens;i++){
+			btnDoms[i].index = i;
+			btnDoms[i].onclick = function(){
+				for(var i=0;i<len;i++){
+				imgDoms[i].style.zIndex = 0;
+				GGanimate(imgDoms[i],{opacity:0},null,80);
+				btnDoms[i].children[0].className= "";
+				}
+			imgDoms[this.index].style.zIndex = 1;
+			GGanimate(imgDoms[this.index],{opacity:100},null,80);
+			btnDoms[this.index].children[0].className= "active";
+			index = this.index;
+			};
+		};
+		dom("btn_right").onclick = function(){
+			index>=len-1 ? index=0:index++;
+			for(var i=0;i<len;i++){
+				imgDoms[i].style.zIndex = 0;
+				GGanimate(imgDoms[i],{opacity:0},null,80);
+				btnDoms[i].children[0].className= "";
+			}
+			imgDoms[index].style.zIndex = 1;
+			GGanimate(imgDoms[index],{opacity:100},null,80);
+			btnDoms[index].children[0].className= "active";
+		};
+		dom("btn_left").onclick = function(){
+			index<=0 ? index=len-1:index--;
+			for(var i=0;i<len;i++){
+				imgDoms[i].style.zIndex = 0;
+				GGanimate(imgDoms[i],{opacity:0},null,80);
+				btnDoms[i].children[0].className= "";
+			}
+			imgDoms[index].style.zIndex = 1;
+			GGanimate(imgDoms[index],{opacity:100},null,80);
+			btnDoms[index].children[0].className= "active";
+		};
+
+
+		function start(){
+			clearInterval(timer);
+			timer = setInterval(function(){
+				index>=len-1 ? index=0:index++;
+				for(var i=0;i<len;i++){
+					imgDoms[i].style.zIndex = 0;
+					GGanimate(imgDoms[i],{opacity:0},null,80);
+					btnDoms[i].children[0].className= "";
+				};
+				imgDoms[index].style.zIndex = 1;
+				GGanimate(imgDoms[index],{opacity:100},null,80);
+				btnDoms[index].children[0].className= "active";
+			},2000);
+		};
+		dom("b_cneter").onmouseover = function(){
+			clearInterval(timer);
+		};
+		dom("b_cneter").onmouseout = function(){
+			start();
+		};
+		start();
+		
+		/*【置顶代码】*/
+		
+		window.onscroll = function(){
+			var stop =  document.body.scrollTop;
+			if(stop>=100){
+				GGanimate(dom("scrollup"),{opacity:100},function(){
+					dom("scrollup").style.display = "block";
+				});
+				
+			}else{
+				GGanimate(dom("scrollup"),{opacity:0});
+				dom("scrollup").style.display = "none";
+			};
+		}; 
+		$("#s_arrows").on("click",function(){
+			$("html,body").animate({scrollTop:0},600);
+		});
+
+		/*【小提示文本切换】*/
+	
+		var iconDoms = dom("liBox").children;
+		var iconlen=iconDoms.length
+		for(var i=0;i<iconlen;i++){
+			//iconDoms[i].children[0].index =i ;
+			iconDoms[i].children[0].onclick = function(){
+				dom("li_text").innerHTML = this.getAttribute("ntext");
+				for(var j=0;j<iconlen;j++){
+					iconDoms[j].children[0].style.background ="#e1d3bb";
+				}
+				this.style.background = "orange";
+			};
+		};
+			//切换内容分页
+		dom("two_page").onclick = function(){
+			dom("content").style.display = "none";
+			dom("content_two").style.display = "block";
+			this.style.borderColor ="#2d3e4f";
+			this.style.color="#2d3e4f";
+			dom("one_page").style.borderColor ="#bdc3c7";
+			dom("one_page").style.color = "#bdc3c7";
+		};
+
+		dom("one_page").onclick = function(){
+			dom("content_two").style.display = "none";
+			dom("content").style.display = "block";
+			this.style.borderColor ="#2d3e4f";
+			this.style.color="#2d3e4f";
+			dom("two_page").style.borderColor ="#bdc3c7";
+			dom("two_page").style.color = "#bdc3c7";
+		};
+
+		/*【页面跳转缓存数据】*/
+		var liDoms = dom("content").children;
+		for(var i=0,length=liDoms.length-1;i<length;i++){
+			dom("a_"+i).onclick = function(){
+				var G_src = this.getAttribute("fen_src");
+				setCache("src",G_src);
+			};
+		}
+		/*【页面2跳转缓存数据】*/
+		var liDomss = dom("content_two").children;
+		for(var i=0,length=liDomss.length-1;i<length;i++){
+			dom("a_two_"+i).onclick = function(){
+				var G_src = this.getAttribute("fen_src");
+				setCache("src",G_src);
+			};
+		};
+	};
+			/*【联系方式】*/
+		function tel(){
+			alert("电话：15270925112  企鹅:1309609944");
+		};
+		/*【关于本人】*/
+		function i(){
+			alert("姓：高，名：志强");
+		};
+	
+	</script>
+ </body>
+</html>
+
+
+
+

@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+ <head>
+  <!--声明当前前页面的编码集：charset-gbk gb2312（中文编码） UTF-8国际编码-->
+  <!--当前页面三要素-->
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title></title>
+	<!--css 叠层样式-->
+	<style type="text/css">
+	*{margin:0;padding:0;}
+	body{font-size:14px;font-family:"微软雅黑";}
+	a{text-decoration:none;color:#333;}
+	li{list-style:none;}
+	#box{background:red;width:100px;height:100px;position:absolute;}
+
+
+
+
+	</style>
+ </head>
+ <body>
+
+
+	<div id="box"></div>
+    <script src="js/Gdom.js"></script>
+	<script type="text/javascript">
+	window.onload = function(){
+		var boxDom = $("box");
+		var timer = null;
+		var timerOut = null;
+		var speedy = 0;
+		var speedx = 10;
+		var dy = 0;
+		var dx = 0;
+		boxDom.onmousedown = function(e){
+			clearInterval(timer);
+			var pos  = getXY(e);
+			var x = pos.x;
+			var y = pos.y;
+			var l = this.offsetLeft;
+			var t = this.offsetTop;
+			dy = y;
+			dx = x;
+			document.onmousemove = function(e){
+				var pos  = getXY(e);
+				var nl = pos.x - x + l;
+				var nt = pos.y - y + t;
+				boxDom.style.left = nl+"px";
+				boxDom.style.top = nt+"px";
+				speedy = pos.y - dy;
+				speedx = pos.x - dx;
+				dy = pos.y;
+				dx = pos.x;
+			};
+
+			document.onmouseup =function(){
+				document.onmousemove = null;
+				document.onmouseup = null;
+				Pmove();
+			}
+		};
+
+		function Pmove(){
+			clearInterval(timer);
+			clearTimeout(timerOut);
+			timerOut = setTimeout(function(){
+				clearInterval(timer);
+			},3000);
+			timer = setInterval(function(){
+				speedy +=10;
+				var y = boxDom.offsetTop + speedy;
+				var x = boxDom.offsetLeft + speedx;
+				var mah = window.innerHeight - boxDom.offsetHeight;
+				var maw = window.innerWidth - boxDom.offsetWidth;
+				if(y>mah){
+					y = mah;
+					speedy*=-1;
+					speedy*=0.825;
+					speedx*=0.625;
+				}else if(y < 0){
+					y = 0;
+					speedy*=-1;
+					speedy*=0.825;
+				}
+
+				if(x>maw){
+					x = maw;
+					speedx*=-1;
+					speedx*=0.625;
+				}else if(x < 0){
+					x = 0;
+					speedx*=-1;
+					speedx*=0.625;
+				}
+
+				console.log(speedy);
+				boxDom.style.top = y+"px";
+				boxDom.style.left = x+"px";
+			},30);
+		};
+
+		
+	
+	};
+	
+	</script>
+ </body>
+</html>
+

@@ -1,0 +1,51 @@
+﻿<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>天空飘来的朵朵云</title>
+	<meta name="keywords" content=""/>
+	<meta name="description" content=""/>
+	
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		body{font-size:16px;font-family:"微软雅黑";color:#666;}
+		
+		#sky{background:linear-gradient(to bottom,#CADCE9 0%,#fff 100%);padding:100px 0;}
+		#sky .cloud{width:200px;height:60px;background:#fff;border-radius:200px;position:relative;
+			
+		}
+		#sky .cloud:before,#sky .cloud:after{
+			content:"";width:100px;height:80px;
+			background:#fff;
+			position:absolute;
+			left:10px;top:-15px;
+			border-radius:100px;
+			transform:rotate(30deg);
+		}
+		#sky .cloud:before{width:120px;height:120px;border-radius:120px;
+			right:15px;top:-55px;left:auto;
+		}
+		
+		@keyframes moveClouds{
+			0%{margin-left:1000px;}
+			100%{margin-left:-1000px;}
+		}
+		#sky .s1{animation:moveClouds 20s infinite ease;transform:scale(0.8);left:200px;top:-100px;}
+		#sky .s2{animation:moveClouds 40s infinite ease;transform:scale(0.5);left:300px;top:-150px;}
+		#sky .s3{animation:moveClouds 15s infinite ease;transform:scale(0.6);left:200px;top:-30px;}
+		#sky .s4{animation:moveClouds 30s infinite ease;transform:scale(0.7);left:400px;top:-100px;}
+		#sky .s5{animation:moveClouds 35s infinite ease;transform:scale(0.9);left:280px;top:-60px;}
+	</style>
+</head>
+<body>
+	
+	<div id="sky">
+		<div class="cloud s1"></div>
+		<div class="cloud s2"></div>
+		<div class="cloud s3"></div>
+		<div class="cloud s4"></div>
+		<div class="cloud s5"></div>
+	</div>
+	
+</body>
+</html>
