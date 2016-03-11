@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en" ng-app="myapp">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+		*{padding:0;margin:0}
+		body{font-size:14px;font-family:"微软雅黑";}
+		ul li{list-style:none}
+		a{text-decoration:none;color:#333}
+		.wrap{width:100px;height:100px;margin:300px  auto}
+		.box{position:relative;}
+		.box a{display:block;position:relative;z-index:2;background:red;border-radius:50%;width:100px;height:100px;text-align:center;line-height:100px;color:#fff}
+		.gy{position:absolute;width:100%;height:100%;background:#111;top:0;left:0;z-index:1;border-radius:50%;
+			animation:move 1s ease-in-out infinite ;
+		}
+		
+		.gy.move3{animation:move3 2s ease-in-out ;}
+		
+		/*keyframes是以拍的一电影，from to 没一个情节*/
+		/*@keyframes move{
+			0%{transform:translateX(100px) rotate(0deg);}
+			100%{transform:translateX(1000px) rotate(360deg);} 
+		}*/
+
+
+		@keyframes move{
+			0%{transform: scale(1);opacity:1}
+			100%{transform:scale(1.2);opacity:0} 
+		}
+
+		@keyframes move2{
+			0%{transform: scale(1) translateX(0px) skewX(20deg);opacity:0}
+			50%{transform: scale(2) translateX(-300px) skewX(30deg);opacity:0.5}
+			75%{transform: scale(1) translateX(0px) skewX(0deg);opacity:0.8}
+			100%{transform:scale(6) translateX(300px) skewX(-30deg);opacity:1} 
+		}
+
+		@keyframes move3{
+			0%{transform: scale(1);}
+			100%{transform:scale(6);opacity:0} 
+		}
+  </style>
+ </head>
+ <body>
+
+		
+
+		<div class="wrap">
+
+			<div class="box">
+				<a href="javascript:void(0);" id="clickme">点我</a>
+				<span class="gy"></span>
+			</div>
+		</div>
+
+		<script>
+			window.onload = function(){
+				var arr = [];
+				document.getElementById("clickme").onclick = function(){
+					if(arr.length>20)return;
+					//box对象
+					var pdom = this.parentElement;
+					var spanDom = document.createElement("span");
+					spanDom.className = "gy move3";
+					spanDom.style.background = "linear-gradient("+randomColor()+","+randomColor()+")";
+					this.style.background ="linear-gradient("+randomColor()+","+randomColor()+")";
+					pdom.appendChild(spanDom);
+					arr.push(spanDom);
+					setTimeout(function(){
+						var index = arr.indexOf(spanDom);
+						pdom.removeChild(arr.splice(index,1)[0]);
+					},2000);
+				};
+			};
+
+			
+			function randomColor(){
+				var r = Math.floor(Math.random()*256);
+				var g = Math.floor(Math.random()*256);
+				var b = Math.floor(Math.random()*256);
+				return "rgb("+r+","+g+","+b+")";//IE7不支出rgb
+			};
+
+			function randomColor16(){
+				//0-255	
+				var r = Math.random(255).toString(16);
+				var g = Math.random(255).toString(16);
+				var b = Math.random(255).toString(16);
+				//255的数字转换成十六进制
+				if(r.length<2)r = "0"+r;
+				if(g.length<2)g = "0"+g;
+				if(b.length<2)b = "0"+b;
+				return "#"+r+g+b;
+			};
+
+		</script>
+
+		
+	
+ </body>
+</html>
+
