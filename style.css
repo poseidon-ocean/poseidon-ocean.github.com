@@ -20,14 +20,25 @@ body{font-size:14px;font-family: "微软雅黑";color:#666;}
     color: #FFF;
     text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3);
 }
+ul,li{list-style: none;}
+a{text-decoration: none;}
 h2{width:60%;margin:20px auto;color:#000;}
+
 .syntaxbox{width:60%;border-left:5px solid #0B4252;background:#C9CBCC;color:#333;
     margin:10px auto;padding:12px;white-space: pre-wrap;line-height: 22px;font-weight: 400;}
-
+.lt_wrap{width:60%;margin:12px auto;}
+.lt_wrap ul{width:100%;padding:16px;counter-reset:flag;font-size: 16px;}
+.lt_wrap ul li{line-height: 26px;border-bottom: 2px solid #0B4252;padding:10px;}
+.lt_wrap ul li:before{ content:counter(flag);counter-increment:flag;
+    float: left;  background: #000; border-radius: 50%;
+    width: 26px;height: 26px;text-align: center;color: #fff;font-size: 22px;margin-right: 10px;}
+.lt_wrap ul li:hover:before{color:#D6C01C;}
+.lt_wrap ul li a{color:#333;display: block;}
+.lt_wrap ul li a:hover{text-decoration: underline;color:#E05D0E;}
 
 
 /*600px的时候，使用下边的样式*/
 @media screen and (max-width:600px){
-    .syntaxbox{width:100%;}
+    .syntaxbox,.lt_wrap{width:100%;}
 }
 
