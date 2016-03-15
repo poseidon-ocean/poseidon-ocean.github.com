@@ -185,7 +185,7 @@
 			//return ageA - ageB;
 			var u1 = a.username;
 			var u2 = b.username;
-			if(u1.toLowerCase() < u2.toLowerCase()){
+			if(u1.toLowerCase() &lt; u2.toLowerCase()){
 				return  -1;
 			}
 		});
@@ -194,7 +194,7 @@
 <h2>八、indexof、过滤。</h2>
 <pre class="syntaxbox">
     Array.prototype.indexOf = function(value){
-			for(var i=0;i<this.length;i++){
+			for(var i=0;i &lt; this.length;i++){
 				if(this[i]===value){
 					return i;
 					break;
