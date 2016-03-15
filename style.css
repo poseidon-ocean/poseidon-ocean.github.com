@@ -22,4 +22,12 @@ body{font-size:14px;font-family: "微软雅黑";color:#666;}
 }
 h2{width:60%;margin:20px auto;color:#000;}
 .syntaxbox{width:60%;border-left:5px solid #0B4252;background:#C9CBCC;color:#333;
-    margin:10px auto;padding:12px;white-space: pre-wrap;line-height: 22px;}
+    margin:10px auto;padding:12px;white-space: pre-wrap;line-height: 22px;font-weight: 400;}
+
+
+
+/*600px的时候，使用下边的样式*/
+@media screen and (max-width:600px){
+    .syntaxbox{width:100%;}
+}
+

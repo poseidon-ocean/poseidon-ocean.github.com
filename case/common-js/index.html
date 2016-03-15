@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>null与undefined的区别</title>
+    <title>常用JavaScript</title>
     <meta name="Keywords" content="关键词1,关键词2">
     <meta name="description" content="网页的描述内容">
     <!--响应式mate标签-->
@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<h2>null与undefined的区别</h2>
+<h2>一、null与undefined的区别</h2>
 <pre class="syntaxbox">
     /*
     *  null与undefined的区别：
@@ -42,30 +42,96 @@
     log(typeof undefined);//输出结果为：undefined
 </pre>
 
+<h2>二、数组不是数据类型，它是一种数据结构。</h2>
+<pre class="syntaxbox">
+    //数组定义:
+    var arr = [];
+    var arr = new Array();
+    var arr = [1,2,3];
+    var arr = new Array(1,2,3,4,5);
+
+    //存储数据的(数据类型) 类型和类型是逗号分开
+    var arr = [1,2,3,4,5,6,7,8,9];
+
+    //数组的增删改查
+    //后添加===push
+    //arr.push(10,11,12,13);
+    //arr.push(14);
+    //前面添加:unshift
+    //arr.unshift(-1,0);
+
+    /*
+        删除数组元素
+        真实删除:pop() 栈底删除,shift()栈顶删除
+        逻辑删除:delete arr[index]删除,
+    */
+    var arr = [1,2,3,4,5,6,7,8,9];
+    arr.pop();//9
+    arr.shift();//1
+
+    //修改元素，根据索引去修改
+    //arr[2] = "00";
+    //查询元素
+    //查看 toString()
+    //alert(arr.toString());
+    //清空数组
+    //arr = [];
+    //索引：1:查找元素，2:可以快速的修改元素 3:符合for循环,
+    //循环就是为数组量身定做的一个迭代器
+
+    //少应用的方法splice(索引，个数)1：删除元素，2：删除替换
+    //splice 如果一个参数的话，保留索引前面的数字。后面的全部删除
+    //splice 两个参数的时候，
+    //1:索引起始位置 第二参数删除多少个.
+    //2:第一个参数是负数的时候，从后面删除
+
+    //截取：slice(startindex,endIndex)--拷贝(赋值)
+    //左闭右开 endIndex不包含最后一位的元素
+    //1 2 3 4 5 6 7 8 9
+    //var arr2 = arr.slice(2,4);
+</pre>
+
+<h2>三、数组小结。</h2>
+<pre class="syntaxbox">
+    数组的增，删，改，查，排序，截取。
+    添加:push和unshift
+    删除:pop和shift和delete
+    修改:splice和通过索引去修改
+    查找:splice和索引或slice
+    截取:slice
+    数组长度：arr.length
+    索引是从0开始
+    合并数组：concat
+    打印格式：toString()默认的用逗号分隔
+    分隔符更改：join(符号)
+
+    //判断是不是数组
+    function isArray(arr){
+        return typeof arr==="object" && arr.constructor.toString().toLowerCase().indexOf("array")!=-1;
+        //return typeof arr ==="object" && arr.length>=0;
+    }
+</pre>
+
+
+<h2>四、冒泡排序。</h2>
+<pre class="syntaxbox">
+    var arr = [0,2,1,4,5];
+    for(var i=0;i &lt; arr.length;i++){ //控制次数
+        for(var j=0;j &lt; arr.length-i-1;j++){//元素交互
+            if(arr[j] &gt; arr[j+1]){
+                var temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+
+    //[0, 1, 2, 4, 5]
+</pre>
 <script src="../../js/util.js"></script>
 <script src="http://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
 <script type="text/javascript">
-   /*
-   *  null与undefined的区别：
-   *
-   *  1.数据类型层面
-   *   undefined是一个undefined数据类型
-    *   null是object数据类型
-    *
-    *   2.内存分配层面
-    *   undefined  声明变量   未赋值
-    *   null  对象默认值  可以清空对象  就是把对象赋值为null
-    *
-    *   3.运算中
-    *
-   * */
-   var n = 1 + undefined;
-   log(n);//输出结果为：NaN
-   var nn = 1 + null;
-   log(nn);//输出结果为：1
 
-   log(typeof null);//输出结果为：object
-   log(typeof undefined);//输出结果为：undefined
 </script>
 </body>
 
