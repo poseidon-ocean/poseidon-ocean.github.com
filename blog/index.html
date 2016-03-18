@@ -1,0 +1,152 @@
+﻿<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="baidu-site-verification" content="d4oGdrilez" />
+	<title>累土 - 合抱之木，生于毫末；九层之台，起于累土</title>
+	<meta name="keywords" content="个人博客,SEO优化,编程开发,大数据,网站建设,学习交流"/>
+	<meta name="description" content="码一码互联网的一些事儿,让高大上走入寻常百姓家"/>
+	<link rel="shortcut icon" type="image/ico" href="images/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	
+	<style type="text/css">
+		
+		
+		/* .navside start */
+		.navside{width:960px;background:#fff;margin:20px auto;
+			border-bottom:2px solid #333;overflow:hidden;
+		}
+		.navside .nul li{float:left;height:60px;line-height:60px;}
+		.navside .nul li a{font-size:16px;color:#444;padding:0 20px;display:block;transition:all 0.6s ease;}
+		.navside .nul li a:hover{color:#111;transform:rotateY(360deg) scale(1.2);transition:all 0.6s ease;}
+		/* end .navside */
+		
+		/* .main start */
+		.main{width:960px;min-height:350px;margin:20px auto;background:#C6A884;}
+		.main .banner{width:960px;height:360px;position:relative;}
+		.main .banner .bul li{float:left;display:none;position:relative;}
+		.main .banner .bul li.actvied{display:block;transition:all 0.6s ease;}
+		.main .banner .bul li .zm{width:960px;height:60px;position:absolute;left:0;
+			bottom:0;background:#C6A884;text-align:center;line-height:60px;color:#000;
+			font-size:26px;
+		}
+		.main .banner .acomm{width:45px;height:360px;background:rgba(105,80,20,0.6);position:absolute;
+			top:0;color:#fff;font-size:36px;line-height:360px;text-align:center;opacity:0;
+		}
+		.main .banner:hover .acomm{opacity:1;transition:all 0.6s ease;}
+		.main .banner .acomm:hover{color:#3281DE;}
+		.main .banner .prev{left:0;}
+		.main .banner .next{right:0;}
+		
+		/* end .main */
+		
+		
+	</style>
+</head>
+<body>
+	
+	<!-- head start -->
+	<div class="head">
+		<h1><a href="index.html" class="h_title">累土博客中心</a></h1>
+		<div class="h_desc">码一码互联网的那些事儿</div>
+	</div>
+	<!-- end head -->
+	
+	<!-- navside start -->
+	<div class="navside">
+		<ul class="nul">
+			<li><a href="index.html">首页</a></li>
+			<li><a href="javascript:;">SEO优化</a></li>
+			<!--<li><a href="seo/index.html">SEO优化</a></li>-->
+			<li><a href="dev/index.html">编程开发</a></li>
+			<li><a href="gaogao/index.html">高高博客</a></li>
+			<li><a href="javascript:;">关于我</a></li>
+		</ul>
+	</div>
+	<!-- end navside -->
+	
+	<!-- main start -->
+	<div class="main">
+		<div class="banner">
+			<ul class="bul" id="banner">
+				<li class="actvied"><img src="images/czyh.jpg" width="960" height="360">
+					<div class="zm">生活的道路一旦选定，就要勇敢地走到底，决不回头</div>
+				</li>
+				<li><img src="images/hdzw.jpg" width="960" height="360">
+					<div class="zm">地势坤，君子以厚德载物</div>
+				</li>
+				<li><img src="images/hnbc.jpg" width="960" height="360">
+					<div class="zm">海纳百川，有容乃大；壁立千仞，无欲则刚</div>
+				</li>
+				<li><img src="images/ssts.jpg" width="960" height="360">
+					<div class="zm">上善若水，水利万物而不争</div>
+				</li>
+				<li><img src="images/yjyq.jpg" width="960" height="360">
+					<div class="zm">业精于勤，荒于嬉；行成于思，毁于随</div>
+				</li>
+				<li><img src="images/tdcq.jpg" width="960" height="360">
+					<div class="zm">夫春生夏长，秋收冬臧，此天道之大经也，弗顺则无以为天下纲纪</div>
+				</li>
+			</ul>
+			<a href="javascript:;" class="acomm prev">&lt;</a>
+			<a href="javascript:;" class="acomm next">&gt;</a>
+			
+		</div>
+	</div>
+	<!-- end main -->
+	
+	<!-- footer start -->
+	<div class="footer">
+		<div class="f_info">
+			<p>本站仅供学习参考，如有侵犯您的版权，请联系poseidon_ocean@163.com，收到邮件后会及时改正。</p>
+			<p>江西省通信管理局备案号：赣ICP备15009489号-1 &copy; 2015</p>
+		</div>
+	</div>
+	<!-- end footer -->
+	
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/ltutil.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			
+			var init = function(){
+				var index = 0;
+				var $li = $("#banner").find("li");
+				var len = $li.length;
+				var timmer = null;
+				
+				//console.log(len);
+				$(".next").click(function(){
+					index ++ ;
+					if(index == len) index = 0;
+					$li.eq(index).addClass("actvied").siblings().removeClass("actvied");
+				});
+				
+				$(".prev").click(function(){
+					index --;
+					if(index == -1) index = len -1;
+					$li.eq(index).addClass("actvied").siblings().removeClass("actvied");
+				});
+				
+				function time(){
+					timmer = setInterval(function(){
+						index ++;
+						if(index == len) index = 0;
+						$li.eq(index).addClass("actvied").siblings().removeClass("actvied");
+					},3000);
+				}
+				time();	
+				
+				$(".banner").hover(function(){
+					clearInterval(timmer);
+				},function(){
+					time();
+				});
+			}
+			
+			
+			init();
+		});
+	</script>
+</body>
+</html>
