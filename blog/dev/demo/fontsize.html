@@ -1,0 +1,65 @@
+﻿<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>累土 - 合抱之木，生于毫末；九层之台，起于累土</title>
+	<meta name="keywords" content="个人博客,SEO优化,编程开发,大数据,网站建设,学习交流"/>
+	<meta name="description" content="码一码互联网的一些事儿,让高大上走入寻常百姓家"/>
+	<link rel="shortcut icon" type="image/ico" href="../../images/favicon.ico">
+	
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		body{font-size:16px;font-family:"微软雅黑";color:#fff;
+			background:#333;
+		}
+		#box{width:600px;margin:20px auto;}
+		#box .btn{display:inline-block;padding:3px 16px;
+			border-radius:3px;text-decoration:none;background:green;color:#fff;}
+		#box .selected{background:red;}
+		#box #content{margin-top:20px;}
+	</style>
+</head>
+<body>
+	
+	
+	<div id="box">
+		<p>
+			<a href="javascript:;" class="btn" data-size="18">大</a>
+			<a href="javascript:;" class="btn selected" data-size="16">默认</a>
+			<a href="javascript:;" class="btn" data-size="14">小</a>
+			<a href="javascript:;" class="btn" data-size="12">更小</a>
+		</p>
+		<div id="content">
+			暮色的江湖，进击的“BAT”
+			随着优酷土豆委身阿里巴巴的厚重聘礼，中国在线视频行业的最后一位
+			独立玩家也踱步进入大院深闺，十年以来的风起云涌宣告落幕，可谓“世事一场大梦，人生几度秋凉”。
+			回顾历史，或许行业鼻祖Youtube在创立不足两年便将自己卖给巨头Google的选择才是真正具有决定意义
+			的先见之明，它间接承认即使是在美国这样一个传媒产业居于全球领先地位的市场也无法乐观估测营收
+			平衡的数字，彼时，日后红到发紫的行业标杆Netflix还在致力于把DVD光盘挨家挨户的向用户投递。
+			而在中国，2005年和2006年成为视频网站密集诞生的两年，优酷、土豆、酷六、56、6间房、偶偶、PPS、
+			PPLive等均以创业公司的形态建立，随之而来的四大门户凭借“新闻信息多媒体化”的先后跟进，这才形成
+			春秋战国式的沸腾局面。
+			在梳理和复盘时不难发现的是，Youtube代表的UGC模式、Hulu代表的PGC模式和Netflix代表的IP模式，
+			恰好是中国同行邯郸学步的三次转型对标。
+			“做企业的，没有一个不是想把公司带上市的，只要对业务本身有信心、也确实有长处，拒绝'BAT'、
+			哪怕反目成仇，也不是做不到。问题是接下来怎么办，中国公司在美股很难有不流血的，想在国内上，
+			A股制度奇葩，而且现在根本没法预测。新三板是死的，上去融不到钱也是白搭。这种环境，这种现实，
+			拿什么去抵抗‘BAT’真金白银的招手？”
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="../../js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("#box").on("click mouseout",function(event){
+				$target = $(event.target);
+				if($target.is("a")){
+					$("#content").stop(true,true).animate({"fontSize":$target.data("size")},1000);
+					$target.addClass("selected").siblings().removeClass("selected");
+				}
+			});
+		});
+	
+	</script>
+</body>
+</html>

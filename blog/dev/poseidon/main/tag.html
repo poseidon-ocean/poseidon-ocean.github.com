@@ -1,0 +1,493 @@
+﻿<!doctype html>
+<html>
+<head>
+	<!-- 声明当前页面编码集（中文编码<gbk,gb2312>,国际编码<utf-8> -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<!-- 声明当前页面的三要素 -->
+	<title>HTML标签</title>
+	<meta name="keywords" content=""/>
+	<meta name="description" content=""/>
+	<link rel="stylesheet" type="text/css" href="../css/main.css"/>
+	<style type="text/css">
+		
+		.t_pre{padding-left:680px;;}
+		
+		header{margin-bottom:333px;}
+		
+		.module .list_1{position:absolute;left:170px;top:46px;}
+		.module .list_2{position:absolute;left:450px;top:75px;}
+		.module .list_3{position:absolute;left:750px;top:75px;}
+		.m_h{text-decoration:none;}
+		.m_h:hover{text-decoration:underline;}
+		
+	</style>
+	
+</head>
+<body>
+
+	<header>
+		<p class="t_pre">所谓劳苦，正是锻炼自我人性的绝对机会。</p>
+		
+		<div class="module" data-sr="enter left, hustle 20px">
+			<div class="list_1">
+				<h2>目录</h2>
+				<h3>HTML基础标签</h3>
+				<ol class="o_list">
+					<li><a href="#label0">HTML注释</a></li>
+					<li><a href="#label1">标题标签</a></li>
+					<li><a href="#label2">段落标签</a></li>
+					<li><a href="#label3">加粗和斜体</a></li>
+					<li><a href="#label4">超链接和锚标记</a></li>
+					<li><a href="#label5">图片标签</a></li>
+					<li><a href="#label6">路径</a></li>
+				</ol>
+			</div>
+			
+			<div class="list_2">
+				<h3>HTML中级标签</h3>
+				<ol class="o_list">
+					<li><a href="#m0">内框架（iframe标签）</a></li>
+					<li><a href="#m1">pre标签</a></li>
+					<li><a href="#m2">div标签</a></li>
+					<li><a href="#m3">span标签</a></li>
+				</ol>
+			</div>
+			
+			<div class="list_3">
+				<h3>HTML高级标签</h3>
+				<ol class="o_list">
+					<li><a href="#h0">ul无序列表</a></li>
+					<li><a href="#h1">ol有序列表</a></li>
+					<li><a href="#h2">dl定义列表</a></li>
+					<li><a href="#h3">表格(table)标签</a></li>
+					<li><a href="#h4">框架（frameset标签）</a></li>
+				</ol>
+			</div>
+			
+			
+		</div>
+	</header>
+	
+	<main>
+	
+		<!-- base tag start -->
+		<div class="module" data-sr="wait 2.5s, ease-in-out 100px">
+			<a name="label0"></a>
+			<h2>HTML注释：</h2>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;可以将注释插入 HTML 代码中，这样可以提高其可读性，
+				使代码更易被人理解。浏览器会忽略注释，也不会显示它们。
+			</p>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;语法：%lt;!-- This is a comment --&gt;
+				<br />开始括号之后（左边的括号）需要紧跟一个叹号，结束括号之前（右边的括号）不需要
+			</p>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;合理地使用注释可以对未来的代码编辑工作产生帮助。
+
+			</p>
+			
+		</div>
+		
+		<div class="module" data-sr="move 16px scale up 20%, over 2s">
+			<a name="label1"></a>
+			<h2>标题标签：</h2>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;可以将注释插入 HTML 代码中，这样可以提高其可读性，
+				使代码更易被人理解。浏览器会忽略注释，也不会显示它们。
+			</p>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;-&lt;h6&gt;标签定义标题
+			</p>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;其中&lt;h1&gt;定义最大标题，&lt;h6&gt;定义最小标题
+			</p>
+			<p>
+			&lt;!--
+	
+			h1 - h6标签字体大小越来越小
+			权重比例也越来越低
+
+			网页布局按规范使用h标签，一个页面只能使用一个h1标签，其他的可以使用多个
+			利于搜索引擎优化，使用多个h1百度会认为是作弊，非法的
+
+			--&gt;
+			</p>
+			<p>样例：<a href="homework/h1-h6.html" class="m_h">h1-h6</a></p>
+		</div>
+		
+		<div class="module" data-sr="no reset">
+			<a name="label2"></a>
+			<h2>段落标签：</h2>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;标签定义段落
+			</p>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;可以将HTML文档分割成若干段落
+			</p>
+		</div>
+		
+		<div class="module" data-sr="enter bottom, roll 45deg, over 2s">
+			<a name="label3"></a>
+			<h2>加粗标签：</h2>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;&lt;strong&gt;和&lt;b&gt;都能加粗文本，但其中&lt;strong&gt;表示强调文本
+			</p>
+			<p>
+			&nbsp;&nbsp;&nbsp;&nbsp;b标签只是用来加粗效果，strong标签不仅是加粗，<span class="red">
+			搜索引擎可以识别</span>
+			</p>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;在 HTML 4.01 中，&lt;strong&gt; 定义语气更重的强调文本，但是在 HTML 5 中，&lt;strong&gt; 定义重要的文本。</p>
+			<h2>斜体标签：</h2>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;&lt;em&gt;和&lt;i&gt;都能定义斜体字，但其中&lt;em&gt;起强调作用
+			</p><br />
+			<p>
+				<h3>提示和注释</h3>
+				&nbsp;&nbsp;&nbsp;&nbsp;注释：根据 HTML5 规范，在没有其他合适标签更合适时，才应该把 &lt;b&gt; 标签作为最后的选项。
+				HTML5 规范声明：应该使用<span class="red"> &lt;h1&gt; - &lt;h6&gt; </span>来表示标题，使用 <span class="red">&lt;em&gt;</span> 标签来表示强调的文本，
+				应该使用<span class="red"> &lt;strong&gt; </span>标签来表示重要文本，应该使用 <&lt;mark&gt; 标签来表示标注的/突出显示的文本。<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;提示：您也能够使用 <span class="red">CSS "font-weight" </span>属性来设置粗体文本。
+			</p>
+		</div>
+		
+		<div class="module" data-sr="move 24px">
+			<a name="label4"></a>
+			<h2>超链接：</h2>
+			<p>&lt;a&gt;标签可以从通过点击从一个页面跳到另一个页面
+				<br />语法：&lt;a href=“url”&gt;文字显示&lt;/a&gt;
+			</p>
+			<p>
+			a标签的属性：href="要跳转的目标链接"<br />
+			target="_blank" 是否新开一个浏览窗口，如果不添加默认当前页面打开<br />
+			href里边的常用值：#（当前页面不跳转） javascript; javascript:void(0)<br />
+			rel="nofollow"不允许搜索引擎追踪收录
+			</p>
+			<p>
+			baidu.com顶级域名
+			www.baidu.com一级域名
+			baike.baidu.com二级域名
+			m.baike.baidu.com三级域名
+			</p>
+			<h2>锚标记：</h2>
+			<p>相当于书签，当使用锚标记时，我们可以创建直接跳至该命名锚的链接
+				<br />语法：&lt;a name=“自定义名字"&gt;锚（显示在页面上的文本）&lt;/a&gt;
+				创建使用该锚的链接：&lt;a href=“#自定义的锚名字”&gt;显示内容&lt;/a&gt;
+			</p>
+		</div>
+		
+		<div class="module" data-sr="over 1.3s">
+			<a name="label5"></a>
+			<h2>图片标签：</h2>
+			<p>&lt;img&gt;标签将其他文件夹或服务器的图片显示到网页中
+			</p>
+			
+			<p>
+				图片标签img元素向网页中嵌入一幅图像，是从网页上连接图像
+			</p>
+			
+			<p>
+				图片标签四要素：src路径，alt描述,width宽度，height高度 <br />
+				alt只是和SEO有关系，百度不能识别图像，通过alt来辨别并收录<br />
+				如果不添加宽度高度，页面加载会计算图片的宽高，所以加入width和height
+				，而且只能是行内加入，不能当样式加入，不需要单位<br />
+				title=""这个属性是提高客户体验的<br />
+				大型网站公司都是这样的标准
+			</p>
+			
+			<p>语法：&lt;img src=“图片地址” alt=“自定义替代文本"&gt;
+			<br /><span class="red">&lt;img&gt;标签只包含属性，并且没有闭合标签</span>
+			</p>
+			<p>
+			<a href="homework/img.html">示例</a>
+			</p>
+		</div>
+		
+		<div class="module" data-sr="flip 45deg">
+			<a name="label6"></a>
+			<h2>绝对路径：</h2>
+			<p>指带域名的文件的完整路径。
+			</p>
+			<h2>相对路径：</h2>
+			<p>同一个目录的文件引用如果源文件和引用文件在同一个目录里，直接写引用文件名即可。
+			</p>
+		</div>
+		<!-- base tag end -->
+		
+		<!-- mid tag start -->
+		<div class="module" data-sr="flip -90deg">
+			<a name="m0"></a>
+			<h2>iframe 标签：</h2>
+			<p>创建包含另外一个文档的内联框架（即行内框架）
+			</p>
+			<a href="homework/start.html">示例</a>
+			
+		</div>
+		
+		<div class="module" data-sr="spin 180deg">
+			<a name="m1"></a>
+			<h2>pre标签：</h2>
+			<p>&lt;pre&gt;标签最常见的应用就是用来表示计算机源代码
+			<br /><span class="red">可以导致段落断开，&lt;p&gt;和 &lt;address&gt; 标签绝不能包含在 &lt;pre&gt; 所定义的块里</span>
+			</p><br />
+			<span class="red">以下是pre的用法实例:</span>
+			<p>
+		pre 元素可定义预格式化的文本，被包围在pre元素中
+		的文本
+	</p>	
+<pre>
+
+	&lt;!doctype html&gt;
+	&lt;html&gt;
+	&lt;head&gt;
+		&lt;!----&gt;
+		&lt;meta http-equiv="Content-Type" content="text/html;charset=utf-8"/&gt;
+		&lt;!-- 当前页面的三要素 --&gt;
+		&lt;title&gt;html标签特殊符号&lt;/title&gt;
+		&lt;meta name="Keywords" content="关键字"/&gt;
+		&lt;meta name="description" content="学习中" /&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;h1&gt;html标签特殊符号&lt;/h1&gt;
+		&lt;p&gt;空格: Poseidon----&nbsp;&nbsp;&nbsp;--------海神----&lt;/p&gt;
+		&lt;br/&gt;&lt;br/&gt;
+		&lt;p&gt;大于号：----更多&gt;&gt;&gt;----&lt;/p&gt;&lt;br/&gt;
+		&lt;p&gt;小于号：----&lt;&lt;&lt;----&lt;&lt;潭州哲学&gt;&gt;&lt;/p&gt;&lt;br/&gt;
+		&lt;p&gt;引号：-----&quot;&quot;&quot;-------&lt;/p&gt;&lt;br/&gt;
+		&lt;p&gt;版权符号:---Copyright&copy;2007-2015 --------&lt;/p&gt;
+	&lt;/body&gt;
+	&lt;html&gt;
+
+
+</pre>
+	<pre>
+	心头影事幻重重，化作佳人绝代容。
+	                恰似东山山上月，轻轻走出最高峰。
+	                                转眼苑枯便不同，昔日芳草化飞蓬。
+	</pre>
+		</div>
+		
+		<div class="module" data-sr="roll 15deg">
+			<a name="m2"></a>
+			<h2>div标签：</h2>
+			<p>定义文档中的分区或节，有时候用它来进行分层或者布局，
+			<br />因此经常有人说网页布局用Div+CSS，其中的Div就是指div标签
+			</p>
+			
+			<p>
+				<div style="width:300px;height:200px;border:1px solid red;">
+					这是一个容器
+				</div>
+			</p>
+		</div>
+		
+		<div class="module" data-sr="roll -45deg">
+			<a name="m3"></a>
+			<h2>span标签：</h2>
+			<p>Span标签通常用于在行内文本中标记某写文本，与它相似使用的标签
+			<br />还有i标签（斜体）、b标签（粗体 ）等，所以span标签经常在段落（p）和大文本中（div）
+			</p>
+			
+		</div>
+		<!-- mid tag end -->
+		
+		<!-- height tag start -->
+		<div class="module" data-sr="scale up 20%">
+			<a name="h0"></a>
+			<h2>&lt;ul&gt;标签：</h2><span>定义无序列表</span>
+			<p>
+<pre>
+语法：
+&lt;ul&gt;
+	&lt;li&gt;one&lt;/li&gt;
+	&lt;li&gt;two&lt;/li&gt;
+	&lt;li&gt;three&lt;/li&gt;
+&lt;/ul&gt;
+</pre>	
+			
+			</p>
+			<p>
+				<ul>
+					<li>水果
+						<ul style="margin-left:20px;">
+							<li>榴莲</li>
+							<li>荔枝</li>
+						</ul>
+					</li>
+					<li>蔬菜
+						<ul style="margin-left:20px;">
+							<li>菠菜</li>
+							<li>黄瓜</li>
+						</ul>
+					</li>
+					<li>咖啡</li>
+					<li>红酒</li>
+					<li>奶酪</li>
+				</ul>
+			</p>
+			<h2>ul,ol列表案例</h2>
+			<img src="../images/list1.jpg" alt="" width="130" height="300" />
+			<img src="../images/list2.jpg" alt="" width="64" height="300" />
+			<img src="../images/list3.jpg" alt="" width="540" height="300" />
+		</div>
+		
+		<div class="module" data-sr="scale down 20%">
+			<a name="h1"></a>
+			<h2>&lt;ol&gt;标签：</h2><span>定义有序列表</span>
+<pre>
+语法：
+&lt;ol&gt;
+	&lt;li&gt;one&lt;/li&gt;
+	&lt;li&gt;two&lt;/li&gt;
+	&lt;li&gt;three&lt;/li&gt;
+&lt;/ol&gt;
+</pre>
+			</p>
+			<h4 style="margin-left:-40px;">本学期所学内容如下：</h4>
+			<p>
+				<ol start="3">
+					<li>计算机基础</li>
+					<li>Photoshop</li>
+					<li>html网页设计</li>
+					<li>计算机数学</li>
+					<li>英语</li>
+					<li>思修</li>
+				</ol>
+			</p><br />
+			
+			<p>
+				<ol type="A">
+					<li>计算机基础</li>
+					<li>Photoshop</li>
+					<li>html网页设计</li>
+					<li>计算机数学</li>
+				</ol><br />
+				
+				<ol type="I">
+					<li>计算机基础</li>
+					<li>Photoshop</li>
+					<li>html网页设计</li>
+				</ol>
+			</p>
+			
+		</div>
+		
+		<div class="module" data-sr="scale 20%">
+			<a name="h2"></a>
+			<h2>&lt;dl&gt;标签：</h2><span>定义列表</span>
+			<p>
+			
+<pre>
+语法：
+&lt;dl&gt;
+	&lt;dt&gt;苹果&lt;/dt&gt;
+	&lt;dd&gt;是一种水果&lt;/dd&gt;
+	&lt;dt&gt;白菜&lt;/dt&gt;
+	&lt;dd&gt;是一种蔬菜&lt;/dd&gt;
+&lt;/dl&gt;
+</pre>			
+			
+			</p>
+			
+			<p>
+				<dl>
+					<dt>车讯</dt>
+					<dd>新车</dd>
+					<dd>行情</dd>
+					<dd>文化</dd>
+				</dl>
+			</p>
+			
+			<span class="red">&lt;dt&gt;:定义列表中的项目   &lt;dd&gt;:描述列表中的项目</span>
+		</div>
+		
+		<div class="module" data-sr="wait 0.5s">
+			<a name="h3"></a>
+			<h2>&lt;table&gt;标签：</h2><span>定义HTML表格</span>
+			<p>
+			
+<pre>
+语法：
+&lt;table&gt;
+	&lt;tr&gt;
+		&lt;th&gt;姓名&lt;/th&gt;
+		&lt;th&gt;性别&lt;/th&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;小明&lt;/td&gt;
+		&lt;td&gt;男&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+</pre>
+			
+			</p>
+			<span class="red">&lt;tr&gt;定义表格行,&lt;th&gt;定义表头,&lt;td&gt;定义表格列</span>
+			<p>
+				<table border="1">
+					<tr><td>分类</td><td>作者</td><td>书名</td></tr>
+					<tr><td rowspan="3">书籍</td><td>稻盛和夫</td><td>活法</td></tr>
+					<tr><td>吴晓波</td><td>把生命浪费在美好的事物上</td></tr>
+					<tr><td>郎咸平</td><td>我们的日子为什么这么难</td></tr>
+				</table>
+			</p>
+		</div>
+		
+		<div class="module" data-sr="reset">
+			<a name="h4"></a>
+			<h2>&lt;frameset&gt;标签：</h2><span>定义一个框架集</span>
+			<p>
+			
+<pre>
+语法：
+&lt;frameset  cols=“25%,50%,25%&gt;
+	&lt;frame src=“url1”/&gt;
+	&lt;frame src=“url2”/&gt;
+	&lt;frame src=“url3”/&gt;
+&lt;/frameset&gt;
+</pre>			
+			
+			</p>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;
+			frameset 元素可定义一个框架集。它被用来组织多个窗口（框架）。每个框架存有独立的文档。在其最简单
+
+			的应用中，frameset 元素仅仅会规定在框架集中存在多少列或多少行。您必须使用 cols 或 rows 属性
+
+			垂直框架(cols)、水平框架(rows)
+
+			</p>
+			<h2>混合框架结构：</h2>
+			<p>
+<pre>
+&lt;frameset rows="50%,50%"&gt;
+
+	&lt;frame src=" frame_a.html"&gt;
+
+	&lt;frameset cols="25%,75%"&gt;
+	&lt;frame src=" frame_b.html"&gt;
+	&lt;frame src=" frame_c.html"&gt;
+
+&lt;/frameset&gt;
+</pre>
+</frameset>
+
+</p>
+			<h2>导航框架</h2>
+			<p>
+<pre>
+&lt;frameset cols="120,*"&gt;
+	&lt;frame src="html_contents.html"&gt;
+	&lt;frame src="/frame_a.html" name="showframe"&gt;
+&lt;/frameset&gt;
+</pre>
+			</p>
+			<h2>内链框架：</h2>
+			<p>
+<pre>
+&lt;iframe src="/i/eg_landscape.jpg"&gt;&lt;/iframe&gt;
+&lt;p&gt;一些老的浏览器不支持 iframe。&lt;/p&gt;
+&lt;p&gt;如果得不到支持，iframe 是不可见的。&lt;/p&gt;
+</pre>
+			</p>
+		</div>
+		<!-- height tag end -->
+		
+	</main>
+	
+	<script type="text/javascript" src="../js/scrollReveal.min.js"></script>
+	<script type="text/javascript">
+		window.sr = new scrollReveal();
+	</script>
+	
+</body>	
+</html>
+

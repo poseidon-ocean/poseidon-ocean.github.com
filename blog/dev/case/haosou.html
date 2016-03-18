@@ -1,0 +1,177 @@
+﻿<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>好搜 — 用好搜，特顺手</title>
+	<meta name="keywords" content="好搜,360搜索,网页搜索,视频搜索,图片搜索,音乐搜索,新闻搜索,软件搜索,学术搜索"/>
+	<meta name="description" content="好搜是奇虎360公司推出的独立搜索品牌，致力于为您提供更精准、更快捷、更安全的搜索服务。用好搜，特顺手。"/>
+	
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		body{font-size:14px;font-family:"微软雅黑";background:#fff;
+			
+		}
+		img{border:0;}
+		.fl{float:left;}
+		.fr{float:right;}
+		a{text-decoration:none;}
+		ul,li{list-style:none;}
+		
+		
+		/*背景图片*/
+		.bgimg{width:100%;height:100%;position:fixed;
+			background:url("images/hs1.jpg") no-repeat;
+			background-size:cover;z-index:-5;
+		}
+		
+		/*头部区域*/
+		.header{width:1120px;height:36px;margin:0 auto;}
+		.header .weather{line-height:36px;}
+		.header .weather a{color:#fff;}
+		.header .weather .wimg{width:18px;height:18px;position:relative;top:3px;}
+		.header .weather .wd span{padding-right:12px;}
+		.header .weather a .level{background:#096;border-radius:2px;padding:3px 10px;font-weight:400;}	
+		.header .weather .wlow{background:url("images/t01512497e6e7151b1f.png") no-repeat -127px -278px; width:11px;
+			height:7px;display:inline-block;}		
+		.header .login{padding:9px 10px;}
+		.header .login #loul li{float:left;height:14px;padding:0 10px;border-right:1px solid rgba(0,0,0,0.2);}
+		.header .login #loul li a{color:#fff;}
+		.header .login #loul li a:hover{text-decoration:underline;}
+		
+		.wrap{width:880px;margin:0 auto;}
+		
+		/*主页LOGO*/
+		.wrap .w_log{width:880px;height:125px;}
+		.wrap .w_log .logo{width:400px;height:100%;margin:0 auto;display:block;}
+		.wrap .w_log .logo img{position:relative;top:30px;left:80px;}
+		
+		/*导航栏*/
+		.wrap .w_nav{width:625px;margin:0 auto 10px;overflow:hidden;}
+		.wrap .w_nav #tabmenu li{float:left;margin-right:18px;}
+		.wrap .w_nav #tabmenu li a{color:#fff;text-decoration:underline;font-size:16px;}
+		.wrap .w_nav #tabmenu li a:hover{text-decoration:none;}
+		
+		/*搜索框*/
+		.wrap .seach{width:645px;height:45px;margin:0px auto 20px;overflow:hidden;}
+		.wrap .seach .sinput{outline:none;border:0;width:499px;height:40px;background:#fff;
+			text-indent:0.5em;padding:5px;color:#333;font-size:14px;}
+		.wrap .seach .sbtn{width:135px;height:45px;background:#00be3c;outline:none;border:0;
+			color:#fff;font-size:18px;}
+		.wrap .seach .sbtn:hover{background:#06E64D;}
+		
+		.wrap .content{width:100%;height:303px;}
+		.wrap .content .banner{width:438px;height:303px;float:left;overflow:hidden;}
+		.wrap .content .info{width:402px;height:263px;padding:20px;background:rgba(255,255,255,0.8);float:left;}
+		.wrap .content .info h3{color:#00be3c;display:inline-block;}
+		.wrap .content .info .more{font-size:12px;color:#111;margin-left:252px;display:inline-block;}
+		.wrap .content .info .news{margin-top:20px;}
+		.wrap .content .info .news .nul{counter-reset:flag;}
+		.wrap .content .info .news .nul li{float:left;height:30px;width:201px;position:relative;}
+		.wrap .content .info .news .nul li:before{width:6px;height:6px;background:#999;position:absolute;
+			left:5px;top:5px;content:"";counter-increment:flag;border-radius:3px;
+		}
+		.wrap .content .info .news .nul li a{color:#111;display:block;position:absolute;left:25px;}
+		.wrap .content .info .news .nul li a:hover{color:#00be3c;text-decoration:underline;}
+		
+	</style>
+</head>
+<body>
+	
+	<!--背景图片-->
+	<div class="bgimg"></div>
+	
+	<!--头部-->
+	<div class="header">
+		<!--天气-->
+		<div class="weather fl">
+			<a href="#" class="wd">
+				<span>南京</span>
+				<img src="images/1-2.png" class="wimg" />
+				<span>阴22~27°C</span>
+			</a>
+			<a href="#">
+				<span>空气质量:</span>
+				<span class="level">优</span>
+			</a>
+			<span class="wlow"></span>
+		</div>
+		
+		<!--登录-->
+		<div class="login fr">
+			<ul id="loul">
+				<li><a href="#">360导航</a></li>
+				<li><a href="#">设为主页</a></li>
+				<li><a href="#">设置</a></li>
+				<li><a href="#">换肤</a></li>
+				<li><a href="#">登录</a> <a href="#">注册</a></li>
+			</ul>
+		</div>
+	</div>
+	
+	<!--主容器-->
+	<div class="wrap">
+		<!--主页LOGO-->
+		<div class="w_log"><a href="#" class="logo"><img src="images/t01f83ed61804dd2efe.png" /></a><div>
+		
+		<!--导航栏-->
+		<div class="w_nav">
+			<ul id="tabmenu">
+				<li><a href="#">新闻</a></li>
+				<li><a href="#">网页</a></li>
+				<li><a href="#">问答</a></li>
+				<li><a href="#">视频</a></li>
+				<li><a href="#">图片</a></li>
+				<li><a href="#">音乐</a></li>
+				<li><a href="#">地图</a></li>
+				<li><a href="#">良医</a></li>
+				<li><a href="#">百科</a></li>
+				<li><a href="#">更多</a></li>
+			</ul>
+		</div>
+		
+		<!--搜索框-->
+		<div class="seach">
+			<form action="" method="get">
+				<input type="text" autofocus="autofocus" class="sinput fl" />
+				<input type="submit" value="好搜一下" class="sbtn fl">
+			</form>
+		</div>
+		
+		<!--内容区-->
+		<div class="content">
+			<div class="banner">
+				<ul>
+					<li><a href="#"><img src="images/t010958c49e9112bed2.jpg" alt="" width="438" height="303" /></a></li>
+					<li><a href="#"><img src="images/t018e02787e7e59c871.jpg" alt="" width="" height="" /></a></li>
+				</ul>
+			</div>
+			<div class="info">
+				<h3>今日热搜</h3><a href="#" class="more">查看更多>></a>
+				<div class="news">
+					<ul class="nul">
+						<li><a href="#">开国中将张震逝世</a></li>
+						<li><a href="#">叙利亚男童偷渡溺亡</a></li>
+						<li><a href="#">卫星云图像人脸</a></li>
+						<li><a href="#">抗战胜利阅兵回顾</a></li>
+						<li><a href="#">围心形陪战友求婚</a></li>
+						<li><a href="#">漂浮数小时获救</a></li>
+						<li><a href="#">朴槿惠访问旧址</a></li>
+						<li><a href="#">浙江最牛官司</a></li>
+						<li><a href="#">女模特患罕见遗传病</a></li>
+						<li><a href="#">海蛇石鱼生死战</a></li>
+						<li><a href="#">吃货重返火场救肋排</a></li>
+						<li><a href="#">流浪绵羊5年没剪毛</a></li>
+						<li><a href="#">小伙反串演杨贵妃</a></li>
+						<li><a href="#">国企负责人降薪</a></li>
+						<li><a href="#">范冰冰赴港被拍</a></li>
+						<li><a href="#">男童胎毛留9年</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="footer"></div>
+	
+</body>
+</html>

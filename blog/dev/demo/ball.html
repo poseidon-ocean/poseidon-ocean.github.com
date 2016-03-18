@@ -1,0 +1,145 @@
+﻿<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>累土 - 合抱之木，生于毫末；九层之台，起于累土</title>
+	<meta name="keywords" content="个人博客,SEO优化,编程开发,大数据,网站建设,学习交流"/>
+	<meta name="description" content="码一码互联网的一些事儿,让高大上走入寻常百姓家"/>
+	<link rel="shortcut icon" type="image/ico" href="../../images/favicon.ico">
+	
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		body{font-size:16px;font-family:"微软雅黑";color:#666;background:#111;}
+		
+		#mycanvas{border:2px solid #111;margin:30px;background:#fff;}
+	</style>
+</head>
+<body>
+	
+	
+	<canvas id="mycanvas" width="960" height="300">您当前的浏览器不支持画布</canvas>
+	<input type="button" value="添加小球" onclick="ball.addBall();" style="padding:5px;" />
+	<script type="text/javascript">
+	
+		// 把canvas当做Photoshop，建立
+		var canvas = document.getElementById("mycanvas");
+		//上下文
+		var context = canvas.getContext("2d");
+		
+		
+		/*
+		
+		//准备绘画
+		context.beginPath();
+		//画一个圆,直线
+		context.moveTo(10,10);
+		context.lineTo(400,10);
+		context.lineWidth = 5;  //线宽
+		context.strokeStyle = "red";
+		context.stroke();//把线喷到画板中
+		
+		
+		context.beginPath();//开始另一个元素
+	
+			context.arc(x,y,radius,start,end);
+
+		context.strokeStyle = "red";
+		context.lineWidth = 10;
+		context.arc(200,200,50,0,Math.PI*2);
+		context.fillStyle = "black";
+		context.fill();
+		context.stroke();
+		
+		*/
+		
+		
+		var ball = (function(){
+			var balls = [];
+			function Ball(x,y,radius,dx,dy){
+				this.x = x;
+				this.y = y;
+				this.radius = radius;
+				this.dx = dx;
+				this.dy = dy;
+			};
+			function addBall(){
+				var x = random(canvas.width)-50;
+				var y = random(canvas.height)-50;
+				var radius = random(50);
+				var ball = new Ball(x,y,radius,1,1);
+				balls.push(ball);
+				drawBall();
+			};
+			
+			function drawBall(){
+				//清楚画布
+				context.clearRect(0,0,canvas.width,canvas.height);
+				//开始绘制图片
+				context.beginPath();
+				var len = balls.length;
+				for(var i=0;i<len;i++){
+					var ball = balls[i];
+					context.beginPath();
+					
+					ball.x += ball.dx;
+					ball.y += ball.dy;
+					
+					if ((ball.y) < canvas.height) ball.dy += 0.22;
+					ball.dx = ball.dx*0.998; //摩擦力ease
+					//边界
+					if((ball.x+ball.radius)>canvas.width || (ball.x-ball.radius)<0){
+						ball.dx = -ball.dx;
+					}
+					if((ball.y+ball.radius)>canvas.height || (ball.y-ball.radius)<0){
+						ball.dy = -ball.dy;
+					}
+					context.arc(ball.x,ball.y,ball.radius,0,Math.PI*2);
+					context.fillStyle = randomColor();
+					context.fill();
+					context.lineWidth = 2;
+					context.strokeStyle = randomColor();
+					context.stroke();
+					
+					context.beginPath();
+					context.moveTo(ball.x,ball.y);
+					try{
+						context.lineTo(balls[i-1].x,balls[i-1].y);
+					}catch(e){
+						context.lineTo(ball.x,ball.y);
+					}
+					context.lineWidth = rangeRandom(1,5);
+					context.strokeStyle = randomColor();
+					context.stroke();
+				}
+				setTimeout(drawBall,100);
+			};
+			//随机颜色
+			function randomColor(){
+				var r = Math.floor(Math.random()*256);
+				var g = Math.floor(Math.random()*256);
+				var b = Math.floor(Math.random()*256);
+				return "rgb("+r+","+g+","+b+")";
+			};
+			//0-num的随机数
+			function random(num){
+				return Math.floor(Math.random()*num+1);
+			};
+			//start-end的范围随机数
+			function rangeRandom(start,end){
+				return Math.floor(Math.random()*(end-start+1))+start;
+			};
+			
+			/*
+			setInterval(function(){
+				addBall();
+			},500);
+			*/
+			setTimeout(drawBall,100);
+			
+			return {
+				addBall : addBall
+			}
+		})();
+	</script>
+</body>
+</html>

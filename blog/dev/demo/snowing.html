@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>累土 - 合抱之木，生于毫末；九层之台，起于累土</title>
+	<meta name="keywords" content="个人博客,SEO优化,编程开发,大数据,网站建设,学习交流"/>
+	<meta name="description" content="码一码互联网的一些事儿,让高大上走入寻常百姓家"/>
+	<link rel="shortcut icon" type="image/ico" href="../../images/favicon.ico">
+  <style style="text/css">
+	*{padding:0;margin:0;}
+	html{overflow:hidden;}
+  </style>
+ </head>
+ <body>
+  
+  
+	<canvas id="canvas" style="background:#111"></canvas>
+	
+	<audio src="http://dx.sc.chinaz.com/Files/DownLoad/sound1/201210/2178.mp3" autoplay loop/>
+	<audio src="http://dx.sc.chinaz.com/Files/DownLoad/sound1/201205/1430.mp3" autoplay loop/>
+	
+	<script type="text/javascript">
+		
+		window.onload = function(){
+			//获取画布对象
+			var canvasDom = document.getElementById("canvas");
+			//获取画布上下文
+			var context = canvasDom.getContext("2d");
+			//获取浏览器的宽度和高度
+			var ww = window.innerWidth;
+			var wh = window.innerHeight;
+			//设置画布的宽高
+			canvasDom.width = ww;
+			canvasDom.height = wh;
+			
+			//初始化雪花的数量
+			var num = 200;
+			//雪花数组
+			var snows = [];
+			for(var i=0;i<num;i++){
+			//x、y是圆心的坐标位置，r代表圆的半径，d代表圆之间的距离，c代表颜色
+				snows.push({
+					x:Math.random()*ww,
+					y:Math.random()*wh,
+					r:Math.random()*10,
+					d:Math.random()*num,
+					c:randomColor()
+				});
+			}
+			
+			//绘制函数
+			function draw(){
+				context.clearRect(0,0,ww,wh);
+				context.beginPath();
+				for(var i=0;i<num;i++){
+					var snow = snows[i];
+					context.fillStyle = snow.c;
+					context.moveTo(snow.x,snow.y);
+					context.arc(snow.x,snow.y,snow.r,0,Math.PI*2);
+				}
+				context.fill();
+				
+				//掉落
+				drop();
+			}
+			
+			var angle = 0;
+			function drop(){
+				angle += 0.01;
+				for(var i=0;i<num;i++){
+					var p = snows[i];
+					//两个公式：Math.sin(弧度); 返回是一个 0 -1 1的数字
+					//Math.cos(); 1 0 -1 自由落体
+					p.y += Math.cos(angle + p.d)+1+p.r*0.625;
+					p.x += Math.sin(angle)*8;
+					//边界处理
+					if(p.x>ww+5||p.x<-5||p.y>wh){
+						if(i%4>0){
+							snows[i] = {x:Math.random()*ww,y:-10,r:p.r,d:p.d,c:p.c};
+						}else{
+							//控制方向
+							if(Math.sin(angle)>0){
+								snows[i] = {x: -5, y: Math.random()*wh, r: p.r, d: p.d};
+							}else{
+								snows[i] = {x: ww+5, y: Math.random()*wh, r: p.r, d: p.d};
+							}
+						}
+					}
+				}
+			}
+			
+			draw();
+			setInterval(draw,10);
+			
+		}
+		
+		
+		function randomColor(){
+			var r = Math.floor(Math.random()*256);
+			var g = Math.floor(Math.random()*256);
+			var b = Math.floor(Math.random()*256);
+			//return "rgb("+r+","+g+","+b+")";
+			return "rgba(255,255,255,0.9)";
+		}
+	</script>
+	
+ </body>
+</html>

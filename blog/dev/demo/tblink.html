@@ -1,0 +1,102 @@
+﻿<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>累土 - 合抱之木，生于毫末；九层之台，起于累土</title>
+	<meta name="keywords" content="个人博客,SEO优化,编程开发,大数据,网站建设,学习交流"/>
+	<meta name="description" content="码一码互联网的一些事儿,让高大上走入寻常百姓家"/>
+	<link rel="shortcut icon" type="image/ico" href="../../images/favicon.ico">
+	<link type="text/css" rel="stylesheet" href="css/codemirror.css"/>
+	<link type="text/css" rel="stylesheet" href="css/material.css" />
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		body{background-color:rgba(44,52,55,0.8);
+			font-size:12px;font-family:"微软雅黑";color:#666;overflow:hidden;
+		}
+		
+		
+	</style>
+</head>
+<body>
+	
+	
+	<textarea id="htmlCode">
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Javascript实现输入输出</title>
+	<meta name="keywords" content=""/>
+	<meta name="description" content=""/>
+	
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		body{font-size:16px;font-family:"微软雅黑";color:#666;}
+	
+	</style>
+</head>
+<body>
+
+</body>
+</html>
+	</textarea>
+	
+	<textarea id="jdCode">
+<script type="text/javascript">
+function blink(){
+	var title = document.title;
+	var index = 0;
+	var timer = setInterval(function(){
+		
+		index ++;
+		if(index%2==0){
+			document.title = "【新消息】" + title;
+		}else{
+			document.title = "【　　　】" + title;
+		}
+		
+	},600);
+}
+
+blink();
+</script>
+	</textarea>
+	
+	<script type="text/javascript" src="js/codemirror.js"></script>
+	<script type="text/javascript" src="js/javascript.js"></script>
+	<script type="text/javascript" src="js/xml.js"></script>
+	<script type="text/javascript" src="js/htmlmixed.js"></script>
+	<script type="text/javascript">
+		var htmlDom = document.getElementById("htmlCode");
+		var myCodeMirror = CodeMirror.fromTextArea(htmlDom,{
+			lineNumbers: true,
+			theme:"material",
+			mode:"htmlmixed"
+		});
+		
+		var jsDom = document.getElementById("jdCode");
+		var myCodeMirror = CodeMirror.fromTextArea(jsDom,{
+			lineNumbers: true,
+			theme:"material",
+			mode:"javascript"
+		});
+		
+		function blink(){
+			var title = document.title;
+			var index = 0;
+			var timer = setInterval(function(){
+				
+				index ++;
+				if(index%2==0){
+					document.title = "【新消息】" + title;
+				}else{
+					document.title = "【　　　】" + title;
+				}
+				
+			},600);
+		}
+		
+		blink();
+	</script>
+</body>
+</html>

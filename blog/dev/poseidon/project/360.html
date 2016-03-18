@@ -1,0 +1,164 @@
+﻿<!doctype html>
+<html>
+<head>
+	<!-- 声明当前页面编码集（中文编码<gbk,gb2312>,国际编码<utf-8> -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<!-- 声明当前页面的三要素 -->
+	<title>弹幕技术-Arry老师</title>
+	<meta name="keywords" content=""/>
+	<meta name="description" content=""/>
+
+	<link rel="stylesheet" type="text/css" href="../css/animate.css" />
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		body{background:url("../images/b_bg.jpg") no-repeat top center;font-family:"微软雅黑";color:#666;}
+		
+		/* dm start */
+		.dm{width:100%;height:100%;position:absolute;;
+		top:0;left:0;
+		}
+		.dm .d_screen{
+			width:100%;height:100%;position:absolute;left:0;top:0;
+			
+		}
+		.dm .d_screen .d_close{
+			width:50px;height:50px;display:block;border-radius:25px;
+			background:#C00;text-align:center;line-height:50px;
+			font-size:24px;color:#fff;text-decoration:none;
+			position:absolute;right:20px;top:20px;z-index:2;
+			border:1px solid #fff;
+		}
+		.dm .d_screen .d_close:hover{background:#800000;}
+		.dm .d_screen .d_yy{
+			width:100%;height:100%;background:#000;position:absolute;
+			left:0;top:0;opacity:0.8;filter:alpha(opacity=80);z-index:1;
+		}
+		.dm .d_screen .d_show{position:relative;z-index:3;}
+		.dm .d_screen .d_show div{font-size:30px;color:#fff;position:absolute;left:0;top:0;display:none;}
+		.dm .d_send{
+			width:100%;height:76px;position:absolute;
+			bottom:0px;left:0px;z-index:2;
+		}
+		.dm .d_send .d_filter{
+			width:100%;height:100%;background:#000;position:absolute;
+			bottom:0;left:0;opacity:0.8;filter:alpha(opacity=80)
+		}
+		.dm .d_send .d_con{
+			width:100%;height:100%;position:absolute;bottom:0;
+			left:0;line-height: 76px;text-align: center;
+		}
+		.dm .d_send .d_con .d_text{
+			width:605px;height:37px;border:0;border-radius:3px 0px 0px 3px;
+			outline:none;
+		}
+		.dm .d_send .d_con .d_btn{
+			width:100px;height:37px;background:#65c33d;
+			border:1px solid #5bba32;border-radius:0px 3px 3px 0px;
+			font-size:14px;font-family:"微软雅黑";color:#fff;
+			outline:none;
+		}
+		.dm .d_send .d_con .d_btn:hover{
+			background:#53A032;
+		}
+		/* dm end */
+	</style>
+</head>
+<body>
+	<a href="#" id="btn">弹幕技术</a>
+	
+	<!-- dm start -->
+	<div class="dm">
+		<div class="d_screen">
+			<a href="#" class="d_close">X</a>
+			<div class="d_yy"></div>
+			<div class="d_show">
+				<div>Arry老师太帅了</div>
+				<div>Arry老师太帅了</div>
+				<div>Arry老师太帅了</div>
+				<div>Arry老师太帅了</div>
+				<div>Arry老师太帅了</div>
+			</div>
+		</div>
+		
+		<div class="d_send">
+			<div class="d_filter"></div>
+			<div class="d_con">
+				<input type="text" class="d_text" /><input type="button" class="d_btn" value="发表评论" />	
+			</div>
+		</div>
+	</div>
+	<!-- dm end -->
+	
+	<script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			
+			init_screen();
+			
+			//点击展开和关闭
+			$(".d_close,#btn").click(function(){
+				$(".dm").toggle(1000);
+			});
+			var cssArr = ['bounce','swing','fadeInDown','fadeInDownBig','fadeOutUp',
+			'fadeOutLeft','fadeOutLeftBig','bounceInRight','bounceOutRight','rollIn','rollOut','hinge'];
+			//发表评论
+			$(".d_btn").click(function(){
+				
+				var index_css = Math.floor(Math.random() * cssArr.length);
+				
+				var text = $(".d_text").val();
+				$(".d_show").append("<div class='animated "+cssArr[index_css]+"'>"+text+"</div>");
+				init_screen();
+				
+			});
+			
+			//初始化弹幕
+			function init_screen(){
+			
+				var _top = 0;
+				
+				
+			
+				$(".d_show").find("div").show().each(function(){
+					//div距离左边的宽度
+					var _left = $(window).width() - $(this).width(); 
+					
+					var _height = $(window).height(); //浏览器最大高度
+					
+					_top = _top + 76;
+					if(_top >= _height - 100){
+						_top = 0;
+					}
+					
+					//设置文字初始化位置
+					$(this).css({left:_left,top:_top,color:getRandomColor()});
+					
+					var time = Math.floor(Math.random() * 5000) + 10000;
+					
+					//跑起来
+					$(this).animate({left:"-"+_left+"px"},time,function(){
+						$(this).remove();
+					});
+				});
+		
+			}
+		
+		});
+		
+		//随机获取颜色
+		function getRandomColor(){
+			return '#' + (function(h){
+				return new Array(7 - h.length).join('0') + h
+			})((Math.random() * 0x1000000 << 0).toString(16))
+		}
+		
+	</script>
+	
+</body>
+</html>
+
+<!--
+
+表单元素单独加font-size:14px;font-family:"微软雅黑";color:#fff;
+
+-->

@@ -1,0 +1,54 @@
+﻿<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>累土 - 合抱之木，生于毫末；九层之台，起于累土</title>
+	<meta name="keywords" content="个人博客,SEO优化,编程开发,大数据,网站建设,学习交流"/>
+	<meta name="description" content="码一码互联网的一些事儿,让高大上走入寻常百姓家"/>
+	<link rel="shortcut icon" type="image/ico" href="../../images/favicon.ico">
+	
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		html,body{height:100%;}
+		#hex{font-size:64px;height:64px;
+			text-align:center;color:#fff;
+			line-height:64px;
+			position:relative;
+			top:50%;
+			margin-top:-30px;
+		}
+	</style>
+</head>
+<body>
+	
+	
+	<div id="hex">#092811</div>
+	
+	<script type="text/javascript">
+		(function(){
+			
+			var time = null,date,color;
+			function drawTimer(){
+				date = new Date();
+				
+				var hours = date.getHours();
+				var minutes = date.getMinutes();
+				var seconds = date.getSeconds();
+				hours = hours<10? "0"+hours:hours;
+				minutes = minutes<10?"0"+minutes:minutes;
+				seconds = seconds<10?"0"+seconds:seconds;
+				color = "#"+hours+minutes+seconds;
+				
+				document.body.style.background = color;
+				document.getElementById("hex").innerText = color;
+				
+				setTimeout(drawTimer,1000);
+			}
+			
+			drawTimer();
+			
+		})();
+	
+	</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+﻿<!doctype html><!--兼容所有HTML-->
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>累土 - 合抱之木，生于毫末；九层之台，起于累土</title>
+	<meta name="keywords" content="个人博客,SEO优化,编程开发,大数据,网站建设,学习交流"/>
+	<meta name="description" content="码一码互联网的一些事儿,让高大上走入寻常百姓家"/>
+	<link rel="shortcut icon" type="image/ico" href="../../images/favicon.ico">
+	
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		body{font-size:16px;font-family:"微软雅黑";color:#666;
+			background:#141414;
+		}
+		
+		#box{position:absolute;width:100%;bottom:100px;text-align:center;}
+		#box span{width:64px;height:64px;background:green;display:inline-block;border-radius:50%;
+			text-align:center;line-height:64px;color:#fff;font-size:18px;font-weight:700;
+		}
+		#box span img{max-width:100%;border-radius:50%;}
+		/*#box span:hover{transform:scale(1.5);transition:all 1s ease;}*/
+	</style>
+</head>
+<body>
+	
+	<input type="text" />
+	<input type="text" />
+	<input type="text" />
+	<input type="text" />
+	<div id="box">
+		<span><img src="images/m_1.jpg" /></span>
+		<span><img src="images/m_2.jpg" /></span>
+		<span><img src="images/m_3.jpg" /></span>
+		<span><img src="images/m_4.jpg" /></span>
+	</div>
+	<script type="text/javascript">
+		
+		window.onload = function(){
+			var boxdom = document.getElementById("box");
+			var spanDoms = boxdom.children;
+			
+			var inputDoms = document.getElementsByTagName("input");
+			
+			document.addEventListener("mousemove",function(ev){
+				var e = ev || window.event;
+				
+				var x = e.clientX;
+				var y = e.clientY;
+				
+				var i=0,len=spanDoms.length;
+				for(;i<len;i+=1){
+					var x1 = spanDoms[i].offsetLeft + spanDoms[i].offsetWidth/2;
+					var y1 = spanDoms[i].offsetTop + spanDoms[i].offsetHeight/2 + boxdom.offsetTop;
+					
+					var a = x - x1;
+					var b = y - y1;
+					//勾股定律
+					var c = Math.sqrt(a*a + b*b);
+					
+					var bit = 1 - c/300;
+					
+					if(bit<=0.5) bit = 0.5;
+					inputDoms[i].value = bit;
+					
+					spanDoms[i].style.width = bit * 128 +"px";
+					spanDoms[i].style.height = bit * 128 +"px";
+				}
+			});
+		};
+		
+		
+	</script>
+</body>
+</html>

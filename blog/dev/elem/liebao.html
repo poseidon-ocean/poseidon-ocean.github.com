@@ -1,0 +1,145 @@
+﻿<!doctype html><!--兼容所有HTML-->
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>累土 - 合抱之木，生于毫末；九层之台，起于累土</title>
+	<meta name="keywords" content="个人博客,SEO优化,编程开发,大数据,网站建设,学习交流"/>
+	<meta name="description" content="码一码互联网的一些事儿,让高大上走入寻常百姓家"/>
+	<link rel="shortcut icon" type="image/ico" href="../../images/favicon.ico">
+	
+	<style>
+		*{margin:0;padding:0;}
+		.side-main{height:580px;position:relative;}
+		.side-box,.side{width:100%;height:580px;overflow:hidden;}
+		.side-box{position:relative;}
+		#bgstylec{background:#000;}
+		#bgstylea{background:#ff6900;}
+		#bgstyleb{background:#193d85;}
+		.obj-a,.obj-b,.obj-c,.obj-d,.obj-e,.obj-f{position:absolute;left:50%;z-index:3;}
+		.obj-a{width:952px;height:352px;margin-left:-476px;top:100px;z-index:5;text-align:center;}
+		.obj-b{width:952px;height:100px;top:406px;margin-left:-476px;z-index:5;text-align:center;}
+		.obj-c{height:582px;margin-left:-540px;top:0px;z-index:5;}
+		.obj-d{height:164px;top:288px;z-index:5;}
+		.obj-d p{font-size:16px;color:#fff;padding-top:20px;}
+		.obj-e{width:366px;height:170px;margin-left:-460px;top:223px;z-index:5;}
+		.obj-f{width:692px;height:394px;top:158px;margin-left:-180px;z-index:5;}
+		.prev,.next{position:absolute;display:block;
+			width:44px;height:44px;z-index:5;top:267px;opacity:0.6;
+			filter:alpha(opacity=60);cursor:pointer;
+		}
+		.prev{left:70px;}
+		.next{right:70px;}
+		.prev:hover,.next:hover{opacity:1;filter:alpha(opacity=100);}
+		.item{width:100%;height:5px;position:absolute;top:540px;left:0;text-align:center;z-index:5;}
+		.item a{width:24px;height:5px;background:#333;margin-right:11px;opacity:0.6;
+			filter:alpha(opacity=60);display:inline-block;
+		}
+		.item a:hover,.item a.cur{background:#fff;}
+		
+		@keyframes ani-a{
+			from{opacity:0;left:60%}
+			to{opacity:1;left:50%;}
+		}
+		@keyframes ani-b{
+			from{opacity:0;transform:scale(0,0);}
+			to{opacity:1;transform:scale(1,1);}
+		}
+		@keyframes ani-c{
+			from{opacity:0;left:47%}
+			to{opacity:1;left:50%;}
+		}
+		@keyframes ani-d{
+			from{opacity:0;left:53%}
+			to{opacity:1;left:50%;}
+		}
+		@keyframes ani-e{
+			from{opacity:0;left:47%}
+			to{opacity:1;left:50%;}
+		}
+		@keyframes ani-f{
+			from{opacity:0;left:53%}
+			to{opacity:1;left:50%;}
+		}
+		.banAnimate .obj-a{animation-name:ani-a;animation:ani-a 0.4s linear 0s normal none;}
+		.banAnimate .obj-b{animation-name:ani-b;animation:ani-b 0.4s linear 0s normal none;}
+		.banAnimate .obj-c{animation-name:ani-c;animation:ani-c 0.4s linear 0s normal none;}
+		.banAnimate .obj-d{animation-name:ani-d;animation:ani-d 0.4s linear 0s normal none;}
+		.banAnimate .obj-e{animation-name:ani-e;animation:ani-e 0.4s linear 0s normal none;}
+		.banAnimate .obj-f{animation-name:ani-f;animation:ani-f 0.4s linear 0s normal none;}
+	</style>
+</head>
+<body>
+	
+	<div class="side-main">
+		<div class="side-box" id="side-box">
+			<div class="side banAnimate" id="bgstylec">
+				<div class="obj-e">
+					<img src="img/baomi-t-1.png" />
+				</div>
+				<div class="obj-f">
+					<img src="img/baomi-kl.jpg" />
+				</div>
+			</div>
+			<div class="side" id="bgstylea"  style="display:none;">
+				<div class="obj-a">
+					<img src="img/bao.png" />
+				</div>
+				<div class="obj-b">
+					<img src="img/nt-1.png" />
+				</div>
+			</div>
+			<div class="side" id="bgstyleb" style="display:none;">
+				<div class="obj-c">
+					<img src="img/bao-2.png" />
+				</div>
+				<div class="obj-d">
+					<img src="img/st-2.png" />
+					<p>全新chrome内核，内存占用最低，轻巧炫酷皮肤</p>
+				</div>
+			</div>
+		</div>
+		<a class="prev" href="javascript:;"><img src="img/l-btn.png" /></a>
+		<a class="next" href="javascript:;"><img src="img/r-btn.png" /></a>
+		<div class="item">
+			<a href="javascript:;" class="cur"></a>
+			<a href="javascript:;"></a>
+			<a href="javascript:;"></a>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var _index = 0;
+			var $a = $(".item a");
+			var $side = $("#side-box").find(".side");
+			$a.click(function(){
+				$a.removeClass("cur");
+				$(this).addClass("cur");
+				_index = $(this).index();
+				$side.removeClass("banAnimate").hide().eq($(this).index()).addClass("banAnimate").show();
+			});
+			
+			$(".prev").click(function(){
+				_index --;
+				if(_index < 0) _index = 2;
+				$a.removeClass("cur").eq(_index).addClass("cur");
+				$side.removeClass("banAnimate").hide().eq(_index).addClass("banAnimate").show();
+			});
+			
+			$(".next").click(function(){
+				_index ++;
+				if(_index>2) _index = 0;
+				$a.removeClass("cur").eq(_index).addClass("cur");
+				$side.removeClass("banAnimate").hide().eq(_index).addClass("banAnimate").show();
+			});
+			
+			var timer = setInterval(function(){
+				_index ++;
+				if(_index>2) _index = 0;
+				$a.removeClass("cur").eq(_index).addClass("cur");
+				$side.removeClass("banAnimate").hide().eq(_index).addClass("banAnimate").show();
+			},3000);
+		});
+	</script>
+</body>
+</html>

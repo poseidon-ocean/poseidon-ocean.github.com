@@ -1,0 +1,53 @@
+﻿<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>回到顶部</title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		body{font-size:12px;font-family:"微软雅黑";background:url("images/qq.png") no-repeat;
+			height:4168px;
+		}
+		
+		.scroll_top{width:60px;height:50px;
+			position:fixed;right:0;bottom:100px;
+			cursor:pointer;display:none;
+		}
+		.scroll_top #s_btn{width:60px;height:50px;
+			background:url("images/icon_top.png") no-repeat;
+			background-color:#000;
+			display:block;
+			background-position:center;
+			border-radius:3px;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="scroll_top">
+		<span id="s_btn"></span>
+	</div>
+
+	<script type="text/javascript" src="../../js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("#s_btn").click(function(){
+				$("html,body").animate({
+					scrollTop:0
+				},1000);
+			});
+			
+			$(window).scroll(function(){
+				if($(window).scrollTop() >= 200){
+					$(".scroll_top").fadeIn();
+				} else {
+					$(".scroll_top").stop(true,true).fadeOut();
+				}
+			});
+		});
+	</script>
+</body>
+</html>

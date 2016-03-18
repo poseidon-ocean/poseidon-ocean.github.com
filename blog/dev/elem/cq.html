@@ -1,0 +1,186 @@
+<!doctype html><!--兼容所有HTML-->
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>累土 - 合抱之木，生于毫末；九层之台，起于累土</title>
+	<meta name="keywords" content="个人博客,SEO优化,编程开发,大数据,网站建设,学习交流"/>
+	<meta name="description" content="码一码互联网的一些事儿,让高大上走入寻常百姓家"/>
+	<link rel="shortcut icon" type="image/ico" href="../../images/favicon.ico">
+	<style type="text/css">
+		
+
+*{
+	margin:0px;
+	padding:0px;
+}
+html,body,div,ul,li,p{
+	list-style-type:none;
+	font-size:28px;
+	font-family:"迷你简卡通";
+}
+html,body{
+	width:100%;
+	height:100%;
+	background-color:#F4B8CA;
+}
+#game{
+	width:800px;
+	height:600px;
+	margin:0 auto;
+	text-align:center;
+}
+#game ul{
+	width:100%;
+	height:415px;
+}
+#game ul li{
+	width:50%;
+	height:100%;
+	float:left;
+	text-align:center;
+}
+#game ul.animt li div{
+	width:223px;
+	height:337px;
+	margin:auto;
+	border-radius:50%;
+	border:10px solid #FF6699;
+}
+#game ul li .user{
+	background:url("img/readyl.png") no-repeat;
+}
+#game ul li .comp{
+	background:url("img/readyr.png") no-repeat;
+}
+#game .btn{
+	width:200px;
+	height:60px;
+	font-size:28px;
+	border:10px solid #FF6699;
+	border-radius:50%;
+	background-color:#FDD9E3;
+	font-weight:bold;
+	margin-bottom:15px;
+	outline:none;
+}
+#game .disabled{
+	border:10px solid #BBB;
+	background-color:#CCC;
+	color:#BBB;
+	width:200px;
+	height:60px;
+	border-radius:50%;
+	font-size:28px;
+	margin-bottom:15px;
+	outline:none;
+	cursor:default;
+}
+#game .btn:hover{
+	cursor:pointer;
+	border-color:#FF0000;
+	background-color:#FF0000;
+	color:#F4B8CA;
+	font-size:36px;
+}
+#game p.text{
+	font-size:50px;
+	font-weight:bold;
+}
+#game ul.transImg{
+	width:225px;
+	height:100%;
+	position:fixed;
+	left:0px;
+	top:0px;
+	display:none;
+}
+#game ul.transImg li{
+	height:29%;
+	width:100%;
+	text-align:center;
+	border:10px solid #FF6699;
+	border-radius:50%;
+	margin-bottom:2px;
+}
+#game ul.transImg li:hover{
+	background-color:#FF6699;
+	color:#fff;
+	cursor:pointer;
+}
+#game ul.transImg li div{
+	height:154px;
+	width:124px;
+	margin:2px auto 0;
+	background-position:center;
+	background-repeat:no-repeat;
+}
+div.guess0{
+	background:url("img/0.png");
+}
+div.guess1{
+	background:url("img/1.png");
+}
+div.guess2{
+	background:url("img/2.png");
+}
+#game .cartoon{
+	background-position:center;
+	background-repeat:no-repeat;
+	
+}
+#game p.name{
+	margin-bottom:20px;
+}
+#game .score{
+	padding:0 120px;
+}
+#game .score span{
+	display:inline-block;
+	width:120px;
+	height:40px;
+	text-align:center;
+	line-height:40px;
+	border:10px solid #FF6699;
+	border-radius:40px;
+	background-color:#FDD9E3;
+	font-weight:bold;
+}
+	</style>
+ </head>
+ <body>
+	<div id="game">
+		<ul class="animt">
+			<li>
+				<p class="name">我：Name</p>
+				<div class="user cartoon"></div>
+			</li>
+			<li>
+				<p class="name">电脑：Name</p>
+				<div class="comp cartoon"></div>
+			</li>
+		</ul>
+		<div class="score">
+		<span style="float:left;" id="userScore">0</span>
+		<button id='play' class='btn' onClick="system.play()">开始</button>
+		<span style="float:right;" id="compScore">0</span>
+		</div>
+		<p id="text" class="text">请开始游戏...</p>
+		<ul class="transImg" id="transImg">
+			<li>
+				石头
+				<div class="guess0" onClick='system.verdict(0)'></div>
+			</li>
+			<li>
+				剪刀
+				<div class="guess1" onClick='system.verdict(1)'></div>
+			</li>
+			<li>
+				布
+				<div class="guess2" onClick='system.verdict(2)'></div>
+			</li>
+		</ul>
+	</div>
+
+	<script type="text/javascript" src="js/cq.js"></script>
+ </body>
+</html>

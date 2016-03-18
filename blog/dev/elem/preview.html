@@ -1,0 +1,120 @@
+<!doctype html><!--兼容所有HTML-->
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>累土 - 合抱之木，生于毫末；九层之台，起于累土</title>
+	<meta name="keywords" content="个人博客,SEO优化,编程开发,大数据,网站建设,学习交流"/>
+	<meta name="description" content="码一码互联网的一些事儿,让高大上走入寻常百姓家"/>
+	<link rel="shortcut icon" type="image/ico" href="../../images/favicon.ico">    
+	<style type="text/css">
+		#box{width:600px;height:300px;margin:30px auto;}
+		.fbox{width:600px;margin:20px auto;}
+	</style>
+	  
+</head>     
+<body>
+
+	 
+	 <div id="box"></div>
+	 <div class="fbox">
+		<input type="file" onchange="previewImage(this)" />
+	 </div>
+	 
+	 
+      
+    
+
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript">
+		(function($){
+			$.lt_preview = {
+				init : function(options){
+					//对象参数的覆盖
+					var opts = $.extend({},$.lt_preview.defaults,options);
+					this.previewImage(opts);
+				},
+				previewImage : function(opts){
+					var _this = this;
+					var $box = $("#"+opts.id);
+					if (opts.file.files && opts.file.files[0])
+					{
+						var $img = $('<img/>');
+						$img.css(opts.imgStyle);
+						$box.html($img);
+						var reader = new FileReader();
+						reader.onload = function(evt){$img[0].src = evt.target.result;}
+						reader.readAsDataURL(opts.file.files[0]);
+					}else {//兼容IE
+						var sFilter='filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src="';
+						opts.file.select();
+						var src = document.selection.createRange().text;
+						var div = document.getElementById('box');
+						div.innerHTML = '<img id="imghead">';
+						var img = document.getElementById('imghead');
+						img.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = src;
+					   // var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+						div.innerHTML = "<div id=divhead style='width:420px;height:280px;"+sFilter+src+"\"'></div>";
+					
+						/**var sFilter='filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src="';
+						opts.file.select();
+						var src = document.selection.createRange().text;
+						var $img = $('<img/>');
+						opts.html.html($img);
+						$img[0].filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = src;
+						var rect = _this.clacImgZoomParam(opts);
+						status =('rect:'+rect.top+','+rect.left+','+rect.width+','+rect.height);
+						opts.html.html("<div style='width:"+rect.width+"px;height:"+rect.height+"px;margin-top:"+rect.top+"px;"+sFilter+src+"\"'></div>");
+					*/
+					}
+				}
+			};
+			$.lt_preview.defaults = {
+				imgStyle : { //图片样式
+					width : 420,
+					height : 280
+				},
+				file : ''//预览图片
+			};
+		})(jQuery);
+		
+		
+		function previewImage(file){
+			$.lt_preview.init({id:"box",file:file});
+		}
+		
+		 /*
+		 一、jQuery对象转成DOM对象：
+
+		两种转换方式将一个jQuery对象转换成DOM对象：[index]和.get(index);
+
+		(1)jQuery对象是一个数据对象，可以通过[index]的方法，来得到相应的DOM对象。
+
+		如：var $v =$("#v") ; //jQuery对象
+
+		var v=$v[0];    //DOM对象
+
+		alert(v.checked)   //检测这个checkbox是否被选中
+
+		(2)jQuery本身提供，通过.get(index)方法，得到相应的DOM对象
+
+		如：var $v=$("#v");  //jQuery对象
+
+		var v=$v.get(0);   //DOM对象
+
+		alert(v.checked)  //检测这个checkbox是否被选中
+
+		 
+
+		二、DOM对象转成jQuery对象:
+
+		对于已经是一个DOM对象，只需要用$()把DOM对象包装起来，就可以获得一个jQuery对象了。$(DOM对象)
+
+		如：var v=document.getElementById("v");  //DOM对象
+
+		var $v=$(v);    //jQuery对象
+
+		转换后，就可以任意使用jQuery的方法了。
+		 */
+	</script>   	
+</body>     
+</html>

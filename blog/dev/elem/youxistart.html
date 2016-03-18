@@ -1,0 +1,123 @@
+<!doctype html><!--兼容所有HTML-->
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>累土 - 合抱之木，生于毫末；九层之台，起于累土</title>
+	<meta name="keywords" content="个人博客,SEO优化,编程开发,大数据,网站建设,学习交流"/>
+	<meta name="description" content="码一码互联网的一些事儿,让高大上走入寻常百姓家"/>
+	<link rel="shortcut icon" type="image/ico" href="../../images/favicon.ico">
+<style>
+*{
+	margin:0;padding:0;
+}
+html,body,.box,.sd{
+	width:100%;
+	height:100%;
+	overflow:hidden;
+}
+.box{
+	position:relative;
+	background: -moz-linear-gradient(top, blue,yellow);
+	background: -webkit-linear-gradient(top, blue,yellow);
+	background: -o-linear-gradient(top, blue,yellow);
+	background: linear-gradient(top, blue,yellow);
+}
+.sd{
+	position:absolute;
+}
+.sd div{
+	width:50%;
+	height:100%;
+	background: -moz-linear-gradient(top, #ccc,#000);
+	background: -webkit-linear-gradient(top, #ccc,#000);
+	background: -o-linear-gradient(top, #ccc,#000);
+	background: linear-gradient(top, #ccc,#000);
+	float:left;
+	position:relative;
+}
+.d1{
+	top:0
+	left:0
+}
+.d2{
+	top:0;
+	right:0;
+}
+.jdt{
+	width:350px;
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-left:-175px;
+}
+h2{
+	text-align:center;
+}
+meter{
+	width:350px;
+	height:50px;
+}
+.btn,.btn1{
+	width:80px;
+	height:80px;
+	border-radius:40px;
+	background: -moz-linear-gradient(top, pink,green);
+	background: -webkit-linear-gradient(top, pink,green);
+	background: -o-linear-gradient(top, pink,green);
+	background: linear-gradient(top, pink,green);
+	text-align:center;
+	line-height:80px;
+	position:relative;
+	left:50%;
+	margin-left:-40px;
+	display:none;
+}
+
+</style>
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+		var met=$("meter");
+		var i=0;
+		var t=setInterval(function(){
+		i++;
+		$("h2").html("正在加载，请稍后。。。"+i+"%");
+		met.val(i);
+		
+		if(i==100){
+			$("h2").html("加载完成"+i+"%");
+			met.hide();
+			$(".btn,.btn1").show();
+			clearInterval(t);
+		}
+	},50);
+
+
+	$(".btn").click(function(){
+		$(".d1").animate({"left":"-50%"},2500);
+		$(".d2").animate({"right":"-50%"},2500);
+		$(".jdt").hide();
+	});
+
+	$(".btn1").click(function(){
+		window.close(); 
+	});
+});
+
+</script>
+</head>
+<body>
+	<div class="box">
+		<div class="sd">
+			<div class="d1"></div>
+			<div class="d2"></div>
+		</div>
+		<div class="jdt">
+			<h2>正在加载，请稍后。。。</h2><br/>
+			<meter min="0" max="100" value="0""></meter> <br/>
+			<div type="button" class="btn" >开始游戏</div>
+			<div type="button" class="btn1" >退出游戏</div>
+		</div>
+	</div>
+</body>
+</html>

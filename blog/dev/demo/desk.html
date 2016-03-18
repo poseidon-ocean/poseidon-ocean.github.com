@@ -1,0 +1,158 @@
+﻿<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>累土 - 合抱之木，生于毫末；九层之台，起于累土</title>
+	<meta name="keywords" content="个人博客,SEO优化,编程开发,大数据,网站建设,学习交流"/>
+	<meta name="description" content="码一码互联网的一些事儿,让高大上走入寻常百姓家"/>
+	<link rel="shortcut icon" type="image/ico" href="../../images/favicon.ico">
+	
+	<link type="text/css" rel="stylesheet" href="css/font-awesome.min.css" />
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		body{font-size:16px;font-family:"微软雅黑";color:#666;}
+		a{text-decoration:none;outline:none;}
+		ul,li{list-style:none;}
+		/*背景*/
+		#bg{z-index:-1;position:fixed;background-image:url("images/fy.jpg");background-attachment:fixed;top:0;left:0;width:100%;height:100%;background-repeat:no-repeat;background-size:cover}
+		
+		/*右键菜单*/
+		#contextMenu{width:180px;min-height:240px;background:#fff;box-shadow:2px 2px 5px #2D5680;border:1px solid #2D5680;position:absolute}
+		#contextMenu ul li{height:35px;line-height:35px;border-bottom:1px solid #2D5680}
+		#contextMenu ul li a{padding-left:12px;color:#555;display:block;transition:all 0.3s ease}
+		#contextMenu ul li a:hover{color:#fff;background:#2D5680;transition:all 0.3s ease}
+		#contextMenu ul li a i{padding-right:6px}
+		
+		/*桌面图标*/
+		#container{position:fixed;width:100%;height:100%;top:0;left:0;}
+		#container .items{height:80px;width:65px;display:inline-block;position:absolute;}
+		#container .items .folder{background:url("images/folderopened_yellow.png") center center no-repeat;width:64px;height:64px;}
+		#container .items span{color:#fff;font-size:12px;}
+		
+		/*窗口*/
+		.tzwindow{width:640px;height:360px;background:#fff;position:fixed;z-index:100;left:100px;top:100px;border:8px solid #333;overflow:hidden;}
+		.tzwindow .title{width:100%;height:35px;background:#333;color:#fff;padding-left:10px;line-height:30px;cursor:move;}
+		.tzwindow .buttons{position:absolute;top:4px;right:12px;}
+		.tzwindow .buttons a{color:#fff;}
+		.tzwindow .resize{
+			position:absolute;right:0;bottom:0;
+			overflow:hidden;display:inline-block;
+			border-top:6px solid transparent;
+			border-right:6px solid #666;
+			border-bottom:6px solid #666;
+			border-left:6px solid transparent;
+			cursor:se-resize;
+		}
+		
+	</style>
+</head>
+<body oncontextmenu="return false;">
+	
+	<!--图标-->
+	<div id="container">
+		<!--
+			<div class="items">
+			<div class="folder"></div>
+			<span>新建文件夹</span>
+		</div>
+		-->
+		
+	</div>
+	
+	<!--背景-->
+	<div id="bg"></div>
+	<!--右键菜单-->
+	<div id="contextMenu" style="display:none;">
+		<ul>
+			<li><a href="javascript:void(0);" onclick="tzopen()"><i class="icon-plus"></i>添加</a></li>
+			<li><a href="javascript:void(0);" onclick="createFolder()"><i class="icon-folder-open"></i>新建</a></li>
+			<li><a href="javascript:void(0);"><i class=" icon-upload"></i>上传</a></li>
+			<li><a href="javascript:void(0);"><i class="icon-off"></i>退出</a></li>
+		</ul>
+	</div>
+	
+	<!--
+	<div class="tzwindow">
+		<div class="title">欢迎您</div>
+		<div class="buttons">
+			<a href="javascript:;">最大化</a>
+			<a href="javascript:;">关闭</a>
+		</div>
+		<div class="resize"></div>
+	</div>
+	-->
+	
+	
+	<script type="text/javascript" src="js/tzdrag.js"></script>
+	<script type="text/javascript">
+		//打开窗口 
+		function tzopen(){
+			tzWindow.init({width:450,height:300,title:'欢迎您'});
+		}
+	
+		//图标的排列
+		function iconSort(){
+			var col = 1; //定义列
+			var row = 0;  //定义行
+			var space = 100;  //间距
+			var position = 10;
+			
+			var wh = window.innerHeight;
+			var num = parseInt(wh/space);
+			
+			//console.log(wh + "====" + num);
+			//拿到所有图片容器里面的元素，不大于7个  col++ row = 0
+			var items = document.getElementById("container").children;
+			var i = 0,len = items.length;
+			for(;i<len;i+=1){
+				if(i >= num*col){
+					col ++;
+					row = 0;
+				}
+				items[i].style.left = (position+space*(col-1)) + "px";
+				items[i].style.top = (position+space*row)+"px";
+				
+				row ++;
+			}
+			
+			//第一列所有的元素的高度相加以后如果大于浏览器
+			//的高度的时候就换列
+		}
+		iconSort();
+		window.onload = function(){
+			this.addEventListener("resize",function(){
+				iconSort();
+			},false);
+		}
+		
+		//新建文件夹
+		function createFolder(){
+			var conDom = document.getElementById("container");
+			conDom.innerHTML += "<div class='items'><div class='folder'></div><span>新建文件夹</span></div>";
+			iconSort();
+		}
+	
+		/*
+			右键菜单：
+				知识点：鼠标事件 mousedown mouseup mouseover mouseleave mousemove
+			鼠标事件：绑定在document上
+		*/
+		document.addEventListener("mousedown",function(e){
+			var ev = e || window.event;
+			var code = ev.button || ev.which;
+			if(code==2 || code==3){ //代表右键
+				var x = ev.clientX;
+				var y = ev.clientY;
+				document.getElementById("contextMenu").style.display = "block";
+				document.getElementById("contextMenu").style.left = x + "px";
+				document.getElementById("contextMenu").style.top = y + "px";
+			}
+			
+		},false);
+		
+		document.addEventListener("click",function(e){
+			document.getElementById("contextMenu").style.display = "none";
+		},false);
+	</script>
+</body>
+</html>
