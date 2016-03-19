@@ -62,20 +62,27 @@
 		$(".nav li").click(function(){
 			$(this).addClass("one").siblings().removeClass();
 		});
-		var color=['#B9D329','#C0EBF7','#B9D329','#69BCF3','#79D9F3','#FA5F94','#ACD180','#FAB4CC','#FFAE5B'];
+		//var color=['#B9D329','#C0EBF7','#B9D329','#69BCF3','#79D9F3','#FA5F94','#ACD180','#FAB4CC','#FFAE5B'];
 		$(".nav li").append("<span>");
 		$(".nav span").each(function(index){
-			$(this).css("background-color",color[index]);
+			//$(this).css("background-color",random_rgb());
 		});
 		$(".nav li").hover(function(){
 			var index=$(this).index();
-			$(this).children("span").animate({"top":-38},200);
+			$(this).children("span").css("background",random_rgb()).animate({"top":-38},200);
 			$("audio").get(index).play();
 		},function(){
 			$(this).children("span").animate({"top":0},200);
 		});
 	});
 
+	//获取随机颜色  rgb
+	function random_rgb(){
+		var r = Math.floor(Math.random()*256);
+		var g = Math.floor(Math.random()*256);
+		var b = Math.floor(Math.random()*256);
+		return "rgb("+r+","+g+","+b+")";
+	}
 
 	</script>
 </head>
