@@ -57,6 +57,7 @@
 		}
 	</style>
 	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/jquery-color.js"></script>
 	<script>
 	$(document).ready(function(){
 		$(".nav li").click(function(){
@@ -69,7 +70,7 @@
 		});
 		$(".nav li").hover(function(){
 			var index=$(this).index();
-			$(this).children("span").css("background",random_rgb()).animate({"top":-38},200);
+			$(this).children("span").animate({"top":-38,backgroundColor:random_rgb()},200);
 			$("audio").get(index).play();
 		},function(){
 			$(this).children("span").animate({"top":0},200);
