@@ -16,12 +16,39 @@
 </head>
 <body>
 
-<h2>一、函数方法 命名规则</h2>
-<pre class="syntaxbox">
-    1.以字母、美元符号、下划线开头
-    2.不能是关键字
-    3.见名知义
-</pre>
+    <h2>使用jQuery来预加载图像</h2>
+    <pre class="syntaxbox">
+        jQuery.preloadImages = function() {
+            for(var i = 0; i < arguments.length; i++) {
+                $("<img />").attr('src', arguments[i]);
+            }
+        };
+        //用法
+        $.preloadImages('image1.gif', '/path/to/image2.png', 'some/image3.jpg');
+    </pre>
+
+    <h2>Object.create实现原理</h2>
+    <pre class="syntaxbox">
+        Object.prototype.create = function(o){
+			 function F(){};//构造函数
+			 F.prototype = o;//原型对象继承
+			 return new F();//返回新对象
+		 };
+    </pre>
+
+    <h2>使用js原型防止全局入侵</h2>
+    <pre class="syntaxbox">
+      一、 function Person(nm){
+            this.name=nm;
+        }
+
+        Person("tom");
+
+        二、function Person(){
+        }
+
+        Person.prototype.name = "tom"
+    </pre>
 
 
 </body>
