@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	*{padding:0;margin:0}
+	#box{width:450px;height:200px;border:2px solid red;margin:30px auto;}
+	#box iframe{width:100%;height:100%;}
+  </style>
+ </head>
+ <body>
+  
+	<div id="box">
+		<iframe src="children.html" id="iframebox" frameborder="0" scrolling="yes"></iframe>
+	</div>
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript">
+
+		/*
+			iframe中父子页面之间的数据传递
+		*/
+		//javascript版本
+		window.onload = function(){
+			//父页面调用子页面的元素和事件
+			var iframebox = document.getElementById("iframebox");
+			alert(iframebox);
+			var cwinDom = iframebox.contentWindow;//获取的是window，而不是domcument对象
+			cwinDom.document.getElementById("regbox").innerHTML = "";
+		}
+
+	</script>
+	
+ </body>
+</html>

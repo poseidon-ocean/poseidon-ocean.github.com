@@ -1,0 +1,243 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="prama" content="no-cache"/>
+    <title>图片展示</title>
+    <script src="http://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+
+    <script type="text/javascript">
+
+        var pWindow;
+        var picIdAry = [];
+        var picTypes = [];
+        var pics = [];
+        var num = 0;//高版本IE浏览器（10、11）旋转标示
+        var imgTypeflag = false;//是否显示照片类型
+
+        //顺时针旋转
+        function rotateImage_shun() {
+            //高版本浏览器不支持滤镜--使用css3自带方法
+            if (!document.body.filters) {
+                if (num == 3) {
+                    $("#pic").css("transform", "rotate(0deg)");
+                    num = 0;
+                } else {
+                    $("#pic").css("transform","rotate(" + 90 * (num + 1) + "deg)");
+                    num++;
+                }
+                return;
+            }
+
+            var index = 0;
+            var img = document.getElementById("pic");
+            var tmpFilter = img.style.filter;
+            var imgindex = 0;
+            imgindex = parseInt(tmpFilter.charAt(tmpFilter.length - 2));
+            if (!isFinite(imgindex)) {
+                imgindex = 1;
+            } else {
+                imgindex = imgindex + 1;
+                if (imgindex > 3) {
+                    imgindex = 0;
+                }
+            }
+
+            img.style.filter = "progid:DXImageTransform.Microsoft.BasicImage(Rotation="
+                    + imgindex + ")";
+
+        }
+        /****************************完美分割线**********************************/
+
+        //逆时针旋转
+        function rotateImage_ni() {
+
+            //高版本浏览器不支持滤镜--使用css3自带方法
+            if (!document.body.filters) {
+                if (num == -3) {
+                    $("#pic").css("transform", "rotate(0deg)");
+                    num = 0;
+                } else {
+                    $("#pic").css("transform","rotate(" + 90 * (num - 1) + "deg)");
+                    num--;
+                }
+                return;
+            }
+            var img = document.getElementById("pic");
+            var tmpFilter = img.style.filter;
+            var imgindex = 3;
+            imgindex = parseInt(tmpFilter.charAt(tmpFilter.length - 2));
+            if (!isFinite(imgindex)) { //first time
+                imgindex = 3;
+            } else {
+                imgindex = imgindex - 1;
+                if (imgindex < 0) {
+                    imgindex = 3;
+                }
+            }
+            img.style.filter = "progid:DXImageTransform.Microsoft.BasicImage(Rotation="
+                    + imgindex + ")";
+        }
+
+        function selectPic(chg) {
+            turnReset();
+            if (chg == 1) {//下一张
+                var curPicNum = parseInt($.trim($("#curNum").text()), 10);
+                var allPicNum = parseInt($.trim($("#allNum").text()), 10);
+                if (curPicNum == allPicNum) {
+                    alert("已经是最后一张！");
+                } else {
+                    $("#pic").attr("src", pics[curPicNum]);
+                    if(imgTypeflag){
+                        $("#imgtype").text(picTypes[curPicNum]);
+                    }
+                    $("#curNum").text(curPicNum + chg);
+                }
+            } else {
+                var curPicNum = parseInt($.trim($("#curNum").text()), 10);
+                if (curPicNum == 1) {
+                    alert("已经是第一张！");
+                } else {
+                    $("#pic").attr("src", pics[curPicNum + chg - 1]);
+                    if(imgTypeflag){
+                        $("#imgtype").text(picTypes[curPicNum + chg - 1]);
+                    }
+                    $("#curNum").text(curPicNum + chg);
+                }
+            }
+        }
+
+        function jumpPage() {
+            if (event.keyCode==37)//左
+                fun_a();
+            if (event.keyCode==38)//上
+                fun_b();
+            if (event.keyCode==39)//右
+                fun_c();
+            if (event.keyCode==40)//下
+                fun_d();
+        }
+        function fun_a(){
+            selectPic(-1);
+        }
+        function fun_b(){
+            rotateImage_shun();
+        }
+        function fun_c(){
+            selectPic(1);
+        }
+        function fun_d(){
+            rotateImage_ni();
+        }
+        document.onkeydown=jumpPage;
+
+        function deletePic() {
+            if(confirm("确定要删除照片吗？")){
+                var curPicNum = parseInt($.trim($("#curNum").text()), 10);
+                var allPicNum = parseInt($.trim($("#allNum").text()), 10);
+                if (pWindow.deleteOnePhoto(picIdAry[curPicNum - 1]) == 0) {
+                    if (curPicNum == 1) {
+                        if (allPicNum == 1) {
+                            window.close();//无图片可显示，直接关闭窗口
+                        } else {
+                            $("#pic").attr("src", pics[curPicNum]);
+                            if(imgTypeflag){
+                                $("#imgtype").text(picTypes[curPicNum]);
+                            }
+                            $("#allNum").text(allPicNum - 1);
+                        }
+                    } else if (curPicNum == allPicNum) {//删除的是最后一张
+                        if (allPicNum == 1) {
+                            window.close();//无图片可显示，直接关闭窗口
+                        } else {
+                            $("#pic").attr("src", pics[curPicNum - 2]);
+                            if(imgTypeflag){
+                                $("#imgtype").text(picTypes[curPicNum - 2]);
+                            }
+                            $("#curNum").text(allPicNum - 1);
+                            $("#allNum").text(allPicNum - 1);
+                        }
+                    } else {
+                        $("#pic").attr("src", pics[curPicNum]);
+                        if(imgTypeflag){
+                            $("#imgtype").text(picTypes[curPicNum]);
+                        }
+                        $("#allNum").text(allPicNum - 1);
+                    }
+                    picIdAry.splice(curPicNum - 1, 1);
+                    pics.splice(curPicNum - 1, 1);
+                } else {
+                    alert("删除失败！");
+                }
+            }
+        }
+
+
+        function init() {
+            var paramObj = window.dialogArguments;
+            pWindow = paramObj["pWindow"];
+            picIdAry = paramObj["picIdAry"];
+            picTypes = paramObj["picTypeAry"];
+            if(!(picTypes==undefined)&&(picTypes.length>0)){
+                imgTypeflag = true;
+            }
+            pics = paramObj["picAry"];
+            var curPicId = paramObj["curPicId"];
+            var curNum = 1;
+            for ( var i = 0; i < picIdAry.length; i++) {
+                if (curPicId == picIdAry[i]) {
+                    curNum = i + 1;
+                    break;
+                }
+            }
+            //$("#pic").attr("src", pics[curNum-1]);
+            $("#curNum").text(curNum);
+            $("#allNum").text(pics.length);
+            if(imgTypeflag){
+                $("#imgtype").text(picTypes[curNum-1]);
+            }
+            $("td[name='picTD']")
+                    .append(
+                            "<img alt='照片' width='550' height='550' id='pic' name='img' align='middle' src='"+pics[curNum-1]+"'>");
+        }
+        function turnReset(){
+            //高版本浏览器不支持滤镜--使用css3自带方法
+            if (!document.body.filters) {
+                $("#pic").css('transform', 'rotate(0deg)');
+                num = 0;
+            }
+            var img = document.getElementById("pic");
+            var imgindex = 0;
+            img.style.filter = "progid:DXImageTransform.Microsoft.BasicImage(Rotation=" + imgindex + ")";
+        }
+    </script>
+</head>
+
+
+<body onload="init()">
+<table cellpadding="0" cellspacing="0" border="0" align="center"
+       width="100%">
+    <tr align="center">
+        <td name="picTD" align="center" height="610">
+            <img alt='照片' width='550' height='550' id='pic' name='img' align='middle' src='000.jpg'>
+        </td>
+    </tr>
+    <tr align="center">
+        <td>
+            <span id="imgtype"></span><br/>
+            <input type="button" value="上一张" onclick="selectPic(-1)">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span id="curNum">1</span>/<span id="allNum"></span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="button" value="下一张" onclick="selectPic(1)">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="button" value="左  旋" onclick="rotateImage_ni()">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="button" value="右  旋" onclick="rotateImage_shun()">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="button" value="删  除" onclick="deletePic()">
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

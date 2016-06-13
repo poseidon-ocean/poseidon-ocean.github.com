@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>小球 喷涌运动</title>
+    <meta name="Keywords" content="关键词1,关键词2">
+    <meta name="description" content="果断，是一种教养和能力">
+    <!--响应式mate标签-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <style>
+        * {
+            padding:0;margin:0;
+        }
+        body{font-size: 14px;}
+    </style>
+</head>
+<body>
+
+    <canvas id="canvas"></canvas>
+
+    <script type="text/javascript">
+        window.onload = function(){
+            var canvas = document.getElementById("canvas");
+            var context = canvas.getContext("2d");
+
+            //定义画布样式
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            canvas.style.background = "#333";
+
+            var cw = canvas.width;
+            var ch = canvas.height;
+
+            //定义小球个数
+            var ballNum = 360;
+            var r = 0.2;
+            //
+            var balls = [];
+            for(var i=0;i<ballNum;i++){
+                var ball = new Ball();
+                ball.x = cw/2;
+                ball.y = ch;
+
+                ball.vy = Math.random()*-10-10;
+                ball.vx = Math.random()*2-1;
+
+                ball.color = getRgb16();
+                ball.radius = rangeRandom(1,6);
+                balls.push(ball);
+            }
+
+
+            function drawCanvas(ball){
+                cw = window.innerWidth;
+                ch = window.innerHeight;
+
+                //每个小球方向的改变
+                ball.vy += r;
+                //每个小球的位置
+                ball.x += ball.vx;
+                ball.y += ball.vy;
+
+                ball.color = getRgb16();
+                ball.radius = rangeRandom(1,6);
+
+                //边界的控制
+                if(ball.y-ball.radius > ch ||
+                        ball.y+ball.radius<0 ||
+                        ball.x-ball.radius > cw ||
+                        ball.x+ball.radius<0
+                ){
+                    //从新初始化
+                    ball.x = cw/2;
+                    ball.y = ch;
+                    ball.vy = Math.random()*-10-10;
+                    ball.vx = Math.random()*2-1;
+                }
+                ball.draw(context);
+            }
+
+            setInterval(function () {
+                context.clearRect(0,0,cw,ch);
+                balls.forEach(function(ball){
+                    drawCanvas(ball);
+                });
+            },33);
+        };
+
+        function Ball(){
+            this.x = 0;
+            this.y = 0;
+            this.vx = 0;
+            this.vy = 0;
+            this.radius = 6;
+        }
+
+        Ball.prototype.draw = function(context){
+            context.beginPath();
+            context.fillStyle = this.color;
+            context.arc(this.x,this.y,this.radius,0,Math.PI*2);
+            context.fill();
+        };
+
+
+        function getRgb(){
+            //0-255
+            var r = tRandom(256);
+            var g = tRandom(256);
+            var b = tRandom(256);
+            return "rgb("+r+","+g+","+b+")";
+        }
+
+
+        function getRgb16(){
+            //0-255
+            var r = tRandom(256).toString(16);
+            var g = tRandom(256).toString(16);
+            var b = tRandom(256).toString(16);
+            if(r.length<2)r=r+""+r;
+            if(g.length<2)g=g+""+g;
+            if(b.length<2)b=b+""+b;
+            return "#"+r+""+g+""+b;
+        }
+
+        function rangeRandom(start,end){
+            return Math.floor(Math.random()*(end-start+1)+start);
+        }
+
+        function tRandom(start){
+            return Math.floor(Math.random()*start);
+        }
+    </script>
+</body>
+
+
+</html>

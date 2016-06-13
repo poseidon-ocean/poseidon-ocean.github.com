@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>色卡</title>
+    <meta name="Keywords" content="关键词1,关键词2">
+    <meta name="description" content="果断，是一种教养和能力">
+    <!--响应式mate标签-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <style>
+        * {
+            padding:0;margin:0;
+        }
+        body{font-size: 14px;font-family: "微软雅黑";}
+        div{width:80px;height:50px;float:left;text-align:center;color:#fff;line-height:50px;font-weight:700}
+    </style>
+</head>
+<body>
+
+<script type="text/javascript">
+    //随机数 Math.random(x)===随机数的范围：0<num(0.5)<1的一个数字一个小数
+    //5 - 10
+    var count = 0;
+    var timer = setInterval(function(){
+        count ++;
+        if(count == 1000){
+            clearInterval(timer);
+        }
+        var divDom = document.createElement("div");
+        var color = getRgb16();
+        divDom.style.background = color;
+        divDom.innerHTML = color;
+        document.body.appendChild(divDom);
+    },1000/30);
+
+    function rangeRandom(start,end){
+        return Math.floor(Math.random()*(end-start+1)+start);
+    }
+
+    function tRandom(start){
+        return Math.floor(Math.random()*start);
+    }
+
+
+    function getRgb(){
+        //0-255
+        var r = tRandom(256);
+        var g = tRandom(256);
+        var b = tRandom(256);
+        return "rgb("+r+","+g+","+b+")";
+    }
+
+
+    function getRgb16(){
+        //0-255
+        var r = tRandom(256).toString(16);
+        var g = tRandom(256).toString(16);
+        var b = tRandom(256).toString(16);
+        if(r.length<2)r=r+""+r;
+        if(g.length<2)g=g+""+g;
+        if(b.length<2)b=b+""+b;
+        return "#"+r+""+g+""+b;
+    }
+
+
+</script>
+</body>
+
+
+</html>

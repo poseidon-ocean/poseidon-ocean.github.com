@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>CSS Grid构建圣杯布局</title>
+    <meta name="Keywords" content="">
+    <meta name="description" content="http://www.w3cplus.com/css3/holy-grail-layout-css-grid.html">
+    <!--响应式mate标签-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+
+    <style>
+        .dot{width:30px;height: 30px;background: #33ccdd;margin: 100px;}
+    </style>
+</head>
+<body>
+
+    <div class="dot"></div>
+<script src="https://cdn.jsdelivr.net/web-animations/latest/web-animations.min.js"></script>
+<script>
+
+
+    var dot = document.querySelector('.dot');
+    var frames = [
+        {transform: 'rotate(0deg) translate(80px)'},
+        {transform: 'rotate(360deg) translate(80px) '},
+    ];
+    var timing = {
+        duration: 2500,         //ms
+        delay: 0,               //ms
+        iterations: Infinity,   //1, 2, 3 ... Infinity
+        direction: 'alternate', //'normal', 'reverse'等
+        easing: 'ease-in-out',  //'linear', 'ease-in'等
+        fill: 'forwards',       //'backwards', 'both', 'none', 'auto'
+    };
+    dot.animate(frames, timing);
+</script>
+</body>
+
+
+</html>

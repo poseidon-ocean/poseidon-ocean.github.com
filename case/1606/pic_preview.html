@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <title>javascript图片预览</title>
+    <link type="text/css" rel="stylesheet" href="css/animate.css"/>
+    <style>
+        *{padding:0;margin:0}
+        img{cursor:pointer;display:block;}
+
+        #imgOverlay{position:fixed;left:0;top:0;width:100%;height:100%;background:#111;opacity:0.6;filter:alpha(opacity=60);z-index:1;cursor:pointer;}
+        #imgbox{position:fixed;left:0;top:0;background:#fff;z-index:2;overflow:hidden;}
+    </style>
+</head>
+<body>
+
+<img src="../img/000.jpg" onclick="imgBox.show(this)"/>
+<img src="../img/000.jpg" onclick="imgBox.show(this)"/>
+<img src="../img/000.jpg" onclick="imgBox.show(this)"/>
+<img src="../img/000.jpg" onclick="imgBox.show(this)"/>
+<img src="../img/000.jpg" onclick="imgBox.show(this)"/>
+<img src="../img/000.jpg" onclick="imgBox.show(this)"/>
+
+
+<script type="text/javascript">
+
+    var imgBox = (function(){
+        function lightImgbox(obj){
+            //创建图片相框  加动画 animated
+            var imgboxDom = document.createElement("div");
+            imgboxDom.id = "imgbox";
+            imgboxDom.className = "animated bounceIn";
+
+            //创建图片遮罩层
+            var imgLay = document.createElement("div");
+            imgLay.id = "imgOverlay";
+
+            document.body.appendChild(imgboxDom);
+            document.body.appendChild(imgLay);
+
+            imgLay.onclick = function(){
+                imgboxDom.className = "animated bounceOut";
+                var timer = setTimeout(function(){
+                    document.body.removeChild(imgboxDom);
+                    document.body.removeChild(imgLay);
+                },1000);
+            }
+            var imgDom = obj;
+
+            //窗口改变事件
+            var xbit = 900;
+            var ybit = 500;
+            //获取窗口改变之前的宽高
+            var ww = window.innerWidth;
+            var wh = window.innerHeight;
+
+            window.onresize = function(){
+                //获取等比例缩放之后再计算
+                var json = resizeImg(imgDom,xbit,ybit);
+                //获取比例值
+                var xb = window.innerWidth / ww;
+                var yb = window.innerHeight / wh;
+                //获取最小值
+                var scale = Math.min(xb,yb,1);
+
+                var xper = scale * json.width;
+                var yper = scale * json.height;
+                xper = xper >= xbit?xbit:xper;
+                yper = yper >= ybit?ybit:yper;
+
+                lt_position(imgboxDom,xper,yper);
+                imgboxDom.children[0].style.width = xper + "px";
+                imgboxDom.children[0].style.height = yper + "px";
+            }
+            var json = resizeImg(imgDom,900,500);
+
+            lt_position(imgboxDom,json.width,json.height);
+            imgboxDom.innerHTML = "<img src='"+imgDom.src+"' width='"+json.width+"' height='"+json.height+"' />"
+        }
+
+        //层居中的小算法
+        function lt_position(dom,w,h){
+            //获取窗口的高度和宽度
+            var ww = window.innerWidth;
+            var wh = window.innerHeight;
+
+            var left = (ww-w)/2;
+            var top = (wh-h)/2;
+
+            dom.style.left = left + "px";
+            dom.style.top = top + "px";
+            dom.style.width = w + "px";
+            dom.style.height = h + "px";
+        }
+
+        //图片等比例
+        function resizeImg(img,iwidth,iheight){
+            //计算后的图片宽度和高度的对象
+            var boxWH = {};
+            //如果图片的宽度和高度都大于0，代表是一张图片
+            if(img.width > 0 && img.height > 0){
+                //图片宽度
+                boxWH.width = img.width;
+                //图片高度
+                boxWH.height = img.height;
+
+                //宽度固定，高度缩放
+                if(boxWH.width > iwidth){
+                    boxWH.height = (iwidth/boxWH.width)*boxWH.height;
+                    boxWH.width = iwidth;
+
+                }
+                //高度固定，宽度缩放
+                if(boxWH.height > iheight){
+                    boxWH.width = (iheight/boxWH.height)*boxWH.width;
+                    boxWH.height = iheight;
+
+                }
+            }
+
+            return boxWH;
+        }
+        return {
+            show:lightImgbox
+        }
+    })();
+</script>
+
+</body>
+</html>

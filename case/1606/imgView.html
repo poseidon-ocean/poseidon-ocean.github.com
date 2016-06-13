@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <style>
+        *{padding:0;margin:0}
+        img{cursor:pointer;display:block;}
+
+        #imgOverlay{position:fixed;left:0;top:0;width:100%;height:100%;background:#111;opacity:0.6;filter:alpha(opacity=60);z-index:1;cursor:pointer;}
+        /*
+        #imgView{position:fixed;left:0;top:0;background:#fff;z-index:2;overflow:hidden;}
+        */
+
+
+        #imgView{
+            width:550px;height:550px;margin: 10px auto;position:fixed;left:26%;top:0;background:#fff;z-index:2;overflow:hidden;
+        }
+        #imgView .imgshow{width:500px;height:500px;margin: 10px auto;}
+        #imgView .imgul{width:360px;margin: 0 auto;}
+        #imgView .imgul li{list-style: none;float: left;width: 60px;}
+    </style>
+</head>
+<body>
+
+
+<script>
+
+    $(function(){
+        $.ms_img.init();
+
+    });
+
+
+    var num = 0;//高版本IE浏览器（10、11）旋转标示
+    //顺时针旋转
+    function rotateImage_shun() {
+
+        //高版本浏览器不支持滤镜--使用css3自带方法
+        if (!document.body.filters) {
+            if (num == 3) {
+                $("#pic").css("transform", "rotate(0deg)");
+                num = 0;
+            } else {
+                $("#pic").css("transform","rotate(" + 90 * (num + 1) + "deg)");
+                num++;
+            }
+            return;
+        }
+
+        var index = 0;
+        var img = document.getElementById("pic");
+        var tmpFilter = img.style.filter;
+        var imgindex = 0;
+        imgindex = parseInt(tmpFilter.charAt(tmpFilter.length - 2));
+        if (!isFinite(imgindex)) {
+            imgindex = 1;
+        } else {
+            imgindex = imgindex + 1;
+            if (imgindex > 3) {
+                imgindex = 0;
+            }
+        }
+        img.style.filter = "progid:DXImageTransform.Microsoft.BasicImage(Rotation="
+                + imgindex + ")";
+
+        reImg();
+
+    }
+    /****************************完美分割线**********************************/
+
+    //逆时针旋转
+    function rotateImage_ni() {
+
+        //高版本浏览器不支持滤镜--使用css3自带方法
+        if (!document.body.filters) {
+            if (num == -3) {
+                $("#pic").css("transform", "rotate(0deg)");
+                num = 0;
+            } else {
+                $("#pic").css("transform","rotate(" + 90 * (num - 1) + "deg)");
+                num--;
+            }
+            return;
+
+        }
+
+        var img = document.getElementById("pic");
+        var tmpFilter = img.style.filter;
+        var imgindex = 3;
+        imgindex = parseInt(tmpFilter.charAt(tmpFilter.length - 2));
+        if (!isFinite(imgindex)) { //first time
+            imgindex = 3;
+        } else {
+            imgindex = imgindex - 1;
+            if (imgindex < 0) {
+                imgindex = 3;
+            }
+        }
+        img.style.filter = "progid:DXImageTransform.Microsoft.BasicImage(Rotation="
+                + imgindex + ")";
+        reImg();
+    }
+
+
+    //图片等比例
+    function resizeImg(img,iwidth,iheight){
+        //计算后的图片宽度和高度的对象
+        var boxWH = {};
+        //如果图片的宽度和高度都大于0，代表是一张图片
+        if(img.width > 0 && img.height > 0){
+            //图片宽度
+            boxWH.width = img.width;
+            //图片高度
+            boxWH.height = img.height;
+
+            //宽度固定，高度缩放
+            if(boxWH.width > iwidth){
+                boxWH.height = (iwidth/boxWH.width)*boxWH.height;
+                boxWH.width = iwidth;
+
+            }
+            //高度固定，宽度缩放
+            if(boxWH.height > iheight){
+                boxWH.width = (iheight/boxWH.height)*boxWH.width;
+                boxWH.height = iheight;
+
+            }
+        }
+
+        return boxWH;
+    }
+
+
+    /**
+     * 图片预览
+     */
+    ;(function($,window,top){
+        $.ms_img = {
+            //初始化
+            init : function(options){
+                //初始化参数 混合
+                var opts = $.extend({},$.ms_img.defaults,options);
+                this.template();
+            },
+            template : function(){
+                top.$("body").append("<div id='imgOverlay'></div>"+
+                        "    <div id='imgView'>"+
+                        "        <div class='imgshow'>"+
+                        "            <img src='../img/000.jpg' id='pic' width='500' height='500' >"+
+                        "        </div>"+
+                        "        <ul class='imgul'>"+
+                        "            <li>"+
+                        "                <input type='button' value='上一张' onclick='selectPic(-1)'>"+
+                        "            </li>"+
+                        "            <li>"+
+                        "                <span id='curNum'>1</span>/<span id='allNum'></span>"+
+                        "            </li>"+
+                        "            <li>"+
+                        "                <input type='button' value='下一张' onclick='selectPic(1)'>"+
+                        "            </li>"+
+                        "            <li>"+
+                        "                <input type='button' value='左  旋' onclick='rotateImage_ni()'>"+
+                        "            </li>"+
+                        "            <li>"+
+                        "                <input type='button' value='右  旋' onclick='rotateImage_shun()'>"+
+                        "            </li>"+
+                        "            <li>"+
+                        "                <input type='button' value='删  除' onclick='deletePic()'>"+
+                        "            </li>"+
+                        "        </ul>"+
+                        "    </div>");
+            }
+        };
+
+        //默认参数
+        $.ms_img.defaults = {
+            num : 0, //高版本IE浏览器（10、11）旋转标示
+
+        };
+    })(jQuery,window,top);
+</script>
+
+</body>
+</html>
+
+
+<!--
+<div id="imgOverlay"></div>
+    <div id="imgView">
+        <div class="imgshow">
+            <img src="../img/000.jpg" id="pic" width="550" height="550" >
+        </div>
+        <ul class="imgul">
+            <li>
+                <input type="button" value="上一张" onclick="selectPic(-1)">
+            </li>
+            <li>
+                <span id="curNum">1</span>/<span id="allNum"></span>
+            </li>
+            <li>
+                <input type="button" value="下一张" onclick="selectPic(1)">
+            </li>
+            <li>
+                <input type="button" value="左  旋" onclick="rotateImage_ni()">
+            </li>
+            <li>
+                <input type="button" value="右  旋" onclick="rotateImage_shun()">
+            </li>
+            <li>
+                <input type="button" value="删  除" onclick="deletePic()">
+            </li>
+        </ul>
+    </div>
+
+-->

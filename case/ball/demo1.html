@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Generator" content="EditPlus®">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <title>Document</title>
+    <style>
+        * {
+            padding:0;margin:0;
+        }
+        body{font-size: 14px;font-family: "微软雅黑";}
+    </style>
+</head>
+<body>
+<canvas id="canvas" style="background:#111"></canvas>
+<script>
+    window.onload = function(){
+        //获取画布的对象
+        var canvas = document.getElementById("canvas");
+        //获取画布应用上下文
+        var context = canvas.getContext("2d");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        //画布的宽度和高度
+        var cwidth = canvas.width;
+        var cheight = canvas.height;
+        //初始化小球的数量
+        var ballNums = 360;
+        //装载小球的盒子
+        var balls = [];
+        //小球方向的改变
+        var r = 0.2;
+        //创建200小球
+        for(var i=0;i<ballNums;i++){
+            var ball = new Ball();//创建小球，初始化参数
+            //小球的初始化的位置
+            ball.x = cwidth/2;//画布的一半
+            ball.y = cheight;//画布的高度
+            ball.vy = Math.random()*-10-10;//初始化每个小球的速度，既然是随机的那么可能每个小球的开始的位置都不一样
+            ball.vx = Math.random()*2-1; //同理
+            ball.radius = rangeRandom(1,6);//半径
+            ball.color = getRgb16();
+            balls.push(ball);//放入小球盒子中
+        };
+
+
+        function drawCanvas(ball){
+            cwidth = window.innerWidth;
+            cheight =  window.innerHeight;
+            //每个小球方向的改变
+            ball.vy+=r;
+            //每个小球的位置
+            ball.x += ball.vx;
+            ball.y += ball.vy;
+            //随机颜色
+            ball.color = getRgb16();
+            ball.radius = rangeRandom(1,6);
+            //边界的控制
+            if(ball.y-ball.radius > cheight ||
+                    ball.y+ball.radius<0 ||
+                    ball.x-ball.radius > cwidth ||
+                    ball.x+ball.radius<0
+            ){
+                //从新初始化
+                ball.x = cwidth/2;
+                ball.y = cheight;
+                ball.vy = Math.random()*-10-10;
+                ball.vx = Math.random()*2-1;
+            }
+            //调用小球对象通过prototype扩展的方法
+            ball.draw(context);
+        };
+
+
+        //一次性。肯定需要用不断的改变
+        setInterval(function(){
+            context.clearRect(0,0,cwidth,cheight);//擦黑板
+            //一次性绘制200小球，并且每个小球都调用drawCanvas
+            for(var i=0;i<balls.length;i++){
+                drawCanvas(balls[i]);//同时绘制
+            }
+        },30);
+
+        //面型对象--继承--定时器和for循环区别--还是画布
+        //内置方法：string substring indexOf charAt
+    };
+
+
+
+    //面向对象
+    function Ball(radius){
+        this.radius = radius;
+        this.x = 0;
+        this.y = 0;
+        this.vy = 0;
+        this.vx = 0;
+        this.color = "#ff0000";
+    };
+
+
+
+    //绘制小球
+    Ball.prototype.draw = function(context){
+        context.beginPath();
+        context.fillStyle= this.color;
+        context.arc(this.x,this.y,this.radius,0,Math.PI*2)
+        context.fill();
+    };
+
+
+    function rangeRandom(start,end){
+        return Math.floor(Math.random()*(end-start+1)+start);
+    }
+
+    function tRandom(start){
+        return Math.floor(Math.random()*start);
+    }
+
+
+    function getRgb(){
+        //0-255
+        var r = tRandom(256);
+        var g = tRandom(256);
+        var b = tRandom(256);
+        return "rgb("+r+","+g+","+b+")";
+    }
+
+
+    function getRgb16(){
+        //0-255
+        var r = tRandom(256).toString(16);
+        var g = tRandom(256).toString(16);
+        var b = tRandom(256).toString(16);
+        if(r.length<2)r=r+""+r;
+        if(g.length<2)g=g+""+g;
+        if(b.length<2)b=b+""+b;
+        return "#"+r+""+g+""+b;
+    }
+
+</script>
+
+
+</body>
+</html>

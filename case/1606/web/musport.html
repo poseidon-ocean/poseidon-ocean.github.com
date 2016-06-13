@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Javascript的多极运动</title>
+  <style>
+	*{padding:0;margin:0}
+	
+	.items{width:100px;height:100px;background:red;position:absolute;left:30px;top:30px;}
+	#box2{left:160px;background:green;}
+  </style>
+ </head>
+ <body>
+  
+  
+	<div id="box" class="items"></div>
+	<div id="box2" class="items"></div>
+	
+	
+	<script type="text/javascript">
+		
+		function $(id){
+			return document.getElementById(id);
+		}
+		
+		$("box").onmouseover = function(){
+			var opts = {top:100,height:300,opacity:60};
+			move($("box"),opts,function(){
+				console.log("执行完成")
+			});
+		}
+		
+		$("box2").onmouseover = function(){
+			var opts = {left:500,width:300,height:400,};
+			move($("box2"),opts,function(){
+				console.log("执行完成")
+			});
+		}
+		
+		function move(obj,opts,callback){
+			clearInterval(obj.timer);
+			
+			obj.timer = setInterval(function(){
+				var mark = true;
+				for(var attr in opts){
+					attr = attr.toLowerCase();  //转换成小写
+					//获取起点坐标
+					var start;
+					if(attr == "opacity"){
+						start = Math.round((getCss(obj,attr)*100));
+					}else{
+						start = parseInt(getCss(obj,attr));
+					}
+					
+					var speed = (opts[attr] - start) * 0.2;//速度
+					//速度精度计算，如果正小数则向上取整，如果是负小数则向下取整，否则会有精度丢失的问题
+					speed = speed > 0 ?Math.ceil(speed):Math.floor(speed);
+					if(start != opts[attr]){
+						mark = false;
+						if(attr == "opacity"){
+							obj.style.opacity = (start + speed)/100;
+							obj.style.filter = "alpha(opacity = "+(start + speed)+")"
+						}else{
+							obj.style[attr] = (start + speed) + "px";
+						}
+						
+					}
+				}
+				if(mark){
+					if(callback)callback.call(obj);
+					clearInterval(obj.timer);
+				}
+			},30);
+		}
+		
+		function getCss(obj,attr){
+			var val = obj.currentStyle ? obj.currentStyle[attr] : window.getComputedStyle(obj,null)[attr];
+			return val== "auto" ? 0 : val;
+		}
+	</script>
+	
+ </body>
+</html>

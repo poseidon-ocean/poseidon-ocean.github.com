@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <link type="text/css" rel="stylesheet" href="css/lt_dialog.css" />
+  <style type="text/css">
+	*{padding:0;margin:0}
+	body{padding:100px;}
+	.bitem{display:inline-block;padding:6px 22px;background:#0A7B7B;color:#fff;border-radius:3px;text-decoration:none;}
+	.bitem:hover{background:#09A2A2;}
+  </style>
+ </head>
+ <body>
+  
+  
+<!--
+  <div class="lt_dialog">
+	<div class="lt_title">提示框</div>
+	<a href="javascript:;" class="lt_close">×</a>
+	<div class="lt_content">
+		<div class="lt_body">你确定要删除吗你确定要删除吗你确定要删除吗你确定要删除吗你确定要删除吗你确定要删除吗你确定要删除吗你确定要删除吗你确定要删除吗你确定要删除吗你确定要删除吗你确定要删除吗...</div>
+	</div>
+	<div class="lt_btns">
+		<a href="javascript:;" class="lt_btn">确定</a>
+		<a href="javascript:;" class="lt_btn">取消</a>
+	</div>
+  </div>
+
+-->
+  <a href="javascript:;" onclick="test1();" class="bitem">点击1</a>
+  <a href="javascript:;" onclick="test2();" class="bitem">点击2</a>
+  <a href="javascript:;" onclick="test3();" class="bitem">点击3</a>
+  
+
+	
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/lt_dialog.js"></script>
+	<script type="text/javascript">
+		
+		function test1(){
+			$.ltdialog.alert({width:420,title:"alert提示框",background:"#3A1919",border:"3px solid #443232",callback:function(dom,sure){
+				console.log(dom.html());
+				if(sure){
+					console.log("确定");
+				}else{
+					console.log("取消");
+				}
+			}});
+			
+		}
+		
+		function test2(){
+			$.ltdialog.sure({width:420,title:"sure提示框",background:"#2A9412",border:"3px solid #272D13",callback:function(dom,sure){
+				console.log(dom.html());
+				if(sure){
+					console.log("确定");
+				}else{
+					console.log("取消");
+				}
+			}});
+			
+		}
+		
+		function test3(){
+			$.ltdialog.confirm({width:420,title:"confirm提示框",background:"#128F94",border:"5px solid #3C6D50",callback:function(dom,sure){
+				console.log(dom.html());
+				if(sure){
+					console.log("确定");
+				}else{
+					console.log("取消");
+				}
+			}});
+		}
+	</script>
+	
+ </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>常用CSS</title>
+    <meta name="Keywords" content="关键词1,关键词2">
+    <meta name="description" content="网页的描述内容">
+    <!--响应式mate标签-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href="../../style.css"/>
+    <style>
+
+    </style>
+</head>
+<body>
+
+<h2>CSS清除浮动</h2>
+<pre class="syntaxbox">
+    .clearfix:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
+    .clearfix { display: inline-block; }
+
+    html[xmlns] .clearfix { display: block; }
+    * html .clearfix { height: 1%; }
+
+    .clearfix:before, .container:after { content: ""; display: table; }
+    .clearfix:after { clear: both; }
+
+    /* IE 6/7 */
+    .clearfix { zoom: 1; }
+</pre>
+
+<h2>CSS blockquote美化效果</h2>
+<pre class="syntaxbox">
+    blockquote {
+        background:#f9f9f9;
+        border-left:10px solid #ccc;
+        margin:1.5em 10px;
+        padding:.5em 10px;
+        quotes:"\201C""\201D""\2018""\2019";
+    }
+</pre>
+
+
+</body>
+
+
+</html>

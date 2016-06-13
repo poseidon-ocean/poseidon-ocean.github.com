@@ -1,0 +1,255 @@
+<!doctype html>
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>javascript实现层交换</title>
+  <style>
+	*{padding:0;margin:0}
+	body{background:#ccc;}
+	ul,li{list-style:none;}
+	img{display:block;}
+	#box{width:780px;margin:50px auto;}
+	#box ul{position:relative;}
+	#box ul li{float:left;margin-right:20px;margin-bottom:20px;cursor:pointer;}
+	#clickMe{text-decoration:none;padding:6px 20px;color:#fff;background:linear-gradient(to top,#D07514,#0C576D);border-radius:5px;margin-left:60px;transition:all ease 0.6s;}
+	#clickMe:hover{transform:scale(1.2) rotate(360deg);transition:all 0.6s aese;background:linear-gradient(to bottom,orange,green)}
+  </style>
+ </head>
+ <body>
+  
+  
+	 <div id="box">
+		 <ul id="imglist">
+			<li><img src="images/175211.png" draggable="false" width="240" height="160" /></li>
+			<li><img src="images/392527.jpg" draggable="false" width="240" height="160" /></li>
+			<li><img src="images/393955.jpg" draggable="false" width="240" height="160" /></li>
+			<li><img src="images/394047.jpg" draggable="false" width="240" height="160" /></li>
+			<li><img src="images/394313.png" draggable="false" width="240" height="160" /></li>
+			<li><img src="images/394423.png" draggable="false" width="240" height="160" /></li>
+			<li><img src="images/395073.jpg" draggable="false" width="240" height="160" /></li>  
+			<li><img src="images/395214.jpg" draggable="false" width="240" height="160" /></li>
+			<li><img src="images/1447641480.jpeg" draggable="false" width="240" height="160" /></li>
+		 </ul>
+	 </div>
+	
+	<a href="javascript:;" id="clickMe">随机交换</a>
+	
+	<script type="text/javascript">
+		
+		/*
+			offsetLeft offsetTop 会在浏览器加载的时候计算在相应对象上，
+			通过定位来控制left  top
+			
+			涉及知识点：
+				1.循环定位
+				2.拖拽
+				3.计算当前元素和其它元素的碰撞
+				4.找出碰撞元素之间最近的那个对象（勾股定律）
+				5.交换
+		*/
+		window.onload = function(){
+			var uldom = document.getElementById("imglist");
+			var liDoms = uldom.children;
+			
+			//保存li之前的位置 记录
+			var arr = [];
+			for(var i=0,len=liDoms.length;i<len;i++){
+				arr.push([liDoms[i].offsetLeft,liDoms[i].offsetTop]);
+			}
+			
+			//重新定位坐标
+			for(var i=0,len=arr.length;i<len;i++){
+				liDoms[i].style.position = "absolute";
+				liDoms[i].style.left = arr[i][0] + "px";
+				liDoms[i].style.top = arr[i][1] + "px";
+				//liDoms[i].setAttribute("index",(i+1));
+				liDoms[i].index = i;  //缓存它的索引
+				drag(liDoms[i]);
+			}
+			
+			//拖拽
+			function drag(dom){
+				
+				dom.onmousedown = function(ev){
+					for(var i=0,len=liDoms.length;i<len;i++){
+						liDoms[i].style.zIndex = 0;
+					}
+					
+					var e = ev || window.event;
+					var x = e.clientX;
+					var y = e.clientY;
+					var oleft = dom.offsetLeft;
+					var otop = dom.offsetTop;
+					dom.style.zIndex = 1;
+					
+					document.onmousemove = function(ev){
+						var e = ev || window.event;
+						var nx = e.clientX;
+						var ny = e.clientY;
+						
+						var nleft = nx - x + oleft;
+						var ntop = ny - y + otop;
+						
+						dom.style.left = nleft + "px";
+						dom.style.top = ntop + "px";
+						
+						//清楚所有交换元素的边框
+						for(var i=0,len=liDoms.length;i<len;i++){
+							liDoms[i].style.border = "";
+						}
+						
+						//循环把当前元素去和其它元素碰撞 产生交集
+						var nearLi = near(dom);
+						if(nearLi){
+							nearLi.style.border = "2px solid red";
+						}
+						
+					};
+					
+					document.onmouseup = function(){
+					
+						document.onmousemove = null;
+						document.onmouseup = null;
+						
+						var nearLi = near(dom);
+						if(nearLi){
+							//dom.style.left = arr[nearLi.index][0] + "px";
+							//dom.style.top = arr[nearLi.index][1] + "px";
+							//nearLi.style.left = arr[dom.index][0] + "px";
+							//nearLi.style.top = arr[dom.index][1] + "px";
+							
+							move(dom,{"left":arr[nearLi.index][0],"top":arr[nearLi.index][1]});
+							move(nearLi,{"left":arr[dom.index][0],"top":arr[dom.index][1]});
+							
+							var temp = arr[dom.index];
+							arr[dom.index] = arr[nearLi.index];
+							arr[nearLi.index] = temp;
+							nearLi.style.border = "";
+						}else{
+							move(dom,{"left":arr[dom.index][0],"top":arr[dom.index][1]});
+						}
+					};
+					
+					
+					
+				};
+			}
+			
+				//求出和当前元素距离最短的那个元素
+			function near(dom){
+				var min = 999999;
+				var index = -1;
+				for(var i=0,len=liDoms.length;i<len;i++){
+					//碰撞并交换
+					if(pengzhuang(dom,liDoms[i]) && liDoms[i] != dom){
+						var c = juli(dom,liDoms[i]);//距离
+						if(c<min){
+							min = c;
+							index = i;
+						}
+					}
+				}
+				
+				if(index != -1){
+					return liDoms[index];
+				}else{
+					return false;
+				}
+			}
+			
+			function juli(dom1,dom2){
+				var a = dom1.offsetLeft - dom2.offsetLeft;
+				var b = dom1.offsetTop - dom2.offsetTop;
+				
+				//return Math.sqrt(a*a,b*b);
+				return Math.sqrt(Math.pow(a,2)+Math.pow(b,2));
+			}
+			
+			//物体碰撞
+			function pengzhuang(dom1,dom2){
+			
+				//移动物体的位置
+				var L1 = dom1.offsetLeft;
+				var T1 = dom1.offsetTop;
+				var R1 = dom1.offsetLeft + dom1.offsetWidth;
+				var B1 = dom1.offsetTop + dom1.offsetHeight;
+				
+				//dom2的位置
+				var L2 = dom2.offsetLeft;
+				var T2 = dom2.offsetTop;
+				var R2 = dom2.offsetLeft + dom2.offsetWidth;
+				var B2 = dom2.offsetTop + dom2.offsetHeight;
+				
+				if(L1 > R2 || T1 > B2 || R1 < L2 || B1 < T2){
+					return false;
+				}else{
+					return true;
+				}
+			}
+			
+			document.getElementById("clickMe").onclick = function(){
+				arr = arr.sort(function(){
+					//return (Math.random()*100<<2)%3-1;
+					return Math.random()>.5 ? -1 : 1;  
+				});
+				
+				//重新赋值定位
+				for(var i=0,len=arr.length;i<len;i++){
+						move(liDoms[i],{"left":arr[liDoms[i].index][0],"top":arr[liDoms[i].index][1]});
+				}
+			};
+			
+
+		};
+		
+		
+		//动画函数
+		function move(obj,opts,callback){
+			clearInterval(obj.timer);
+			
+			obj.timer = setInterval(function(){
+				var mark = true;
+				for(var attr in opts){
+					attr = attr.toLowerCase();  //转换成小写
+					//获取起点坐标
+					var start;
+					if(attr == "opacity"){
+						start = Math.round((getCss(obj,attr)*100));
+					}else{
+						start = parseInt(getCss(obj,attr));
+					}
+					
+					//var speed = (opts[attr] - start) * 0.2;//速度   缓冲运动的速度
+					var speed = (opts[attr] - start) / 8;  //速度  第二种缓冲运动的速度
+					
+					//速度精度计算，如果正小数则向上取整，如果是负小数则向下取整，否则会有精度丢失的问题
+					speed = speed > 0 ?Math.ceil(speed):Math.floor(speed);
+					if(start != opts[attr]){
+						mark = false;
+						if(attr == "opacity"){
+							obj.style.opacity = (start + speed)/100;
+							obj.style.filter = "alpha(opacity = "+(start + speed)+")"
+						}else{
+							obj.style[attr] = (start + speed) + "px";
+						}
+						
+					}
+				}
+				if(mark){
+					if(callback)callback.call(obj);
+					clearInterval(obj.timer);
+				}
+			},30);
+		}
+		
+		function getCss(obj,attr){
+			var val = obj.currentStyle ? obj.currentStyle[attr] : window.getComputedStyle(obj,null)[attr];
+			return val== "auto" ? 0 : val;
+		}
+		
+	</script>
+	
+ </body>
+</html>

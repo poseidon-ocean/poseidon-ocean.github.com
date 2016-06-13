@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>javascript缓冲运动</title>
+  <style>
+	*{padding:0;margin:0}
+	
+	#box{width:100px;height:100px;background:red;position:absolute;}
+  </style>
+ </head>
+ <body>
+  
+	<div id="box">
+		
+	</div>
+	<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+	<script type="text/javascript">
+	/*
+		js动画
+		动画：物体在一定时间内的位置发生变化
+		30秒内移动了600米
+	*/
+	
+	window.onload = function(){
+		var boxdom = document.getElementById("box");
+		
+		var start = 0;  //起点位置
+		var speed = 10;  //速度
+		
+		var distance = 600;  //距离
+		
+		var i = 0;
+		var timer = setInterval(function(){
+			start = getCss(boxdom,"left");
+			speed = (distance - start)*0.2;
+			
+			speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+			
+			if(start == distance){
+				clearInterval(timer);
+				boxdom["style"]["left"] = distance + "px";
+			}else{
+				boxdom["style"]["left"] = start + speed +"px";
+			}
+		},30);
+	}
+	
+	//获取CSS属性值
+	function getCss(obj,attr){
+		var val = obj.currentStyle ? obj.currentStyle[attr] : window.getComputedStyle(obj,null)[attr];
+		return val == "auto" ? 0 : parseInt(val);
+	}
+	</script>
+	
+ </body>
+</html>
