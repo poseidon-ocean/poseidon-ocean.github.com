@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .box{
+            background:#000;
+            width:100%;
+            height:100%;
+        }
+
+        .from{
+            -webkit-animation:xin 2s infinite;
+            animation:xin 2s infinite;
+        }
+
+        .five{
+            -webkit-animation:xin 3s infinite;
+            animation:xin 3s infinite;
+        }
+
+        .to{
+            -webkit-animation:xin 4s infinite;
+            animation:xin 4s infinite;
+        }
+
+        .xin{
+            float: left;
+            width: 300px;
+            height: 400px;
+            position:relative;
+            margin:100px 50px;
+
+        }
+        .xin:before{
+            content: " ";
+            width:200px;
+            height:300px;
+            background:#ff0000;
+            position:absolute;
+            -webkit-border-radius:100px 100px 0 0;
+            -moz-border-radius:100px 100px 0 0;
+            -ms-border-radius:100px 100px 0 0;
+            -o-border-radius:100px 100px 0 0;
+            border-radius:100px 100px 0 0;
+            -webkit-transform:rotate(-45deg);
+            -ms-transform:rotate(-45deg);
+            transform:rotate(-45deg);
+        }
+
+
+        .xin:after{
+            content: " ";
+            left:72px;
+            width:200px;
+            height:300px;
+            background:#ff0000;
+            position:absolute;
+            -webkit-border-radius:100px 100px 0 0;
+            -moz-border-radius:100px 100px 0 0;
+            -ms-border-radius:100px 100px 0 0;
+            -o-border-radius:100px 100px 0 0;
+            border-radius:100px 100px 0 0;
+            -webkit-transform:rotate(45deg);
+            -ms-transform:rotate(45deg);
+            transform:rotate(45deg);
+        }
+
+        @-webkit-keyframes xin{
+            to{-webkit-transform:scale(1.0);}
+            50%{-webkit-transform:scale(0.0);}
+            from{-webkit-transform:scale(1.0)}
+        }
+
+        @-moz-keyframes xin{
+            to{-moz-transform:scale(1.0);}
+            50%{-moz-transform:scale(0.0);}
+            from{-moz-transform:scale(1.0)}
+        }
+
+        @-o-keyframes xin{
+            to{-o-transform:scale(1.0);}
+            50%{-o-transform:scale(0.0);}
+            from{-o-transform:scale(1.0)}
+        }
+
+
+    </style>
+
+</head>
+<body>
+    <div class="xin from"></div>
+    <div class="xin five"></div>
+    <div class="xin to"></div>
+
+</body>
+</html>

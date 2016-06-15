@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button onclick="tz()" type="button">点我看效果</button>
+    <script type="text/javascript">
+        function tz(){
+            if (window.Notification && Notification.permission !== "denied") {
+                Notification.requestPermission(function(status) { // 请求权限
+                    if (status === 'granted') {
+                        // 弹出一个通知
+                        var n = new Notification('潭州学院', {
+                            body: '潭州的各位老师辛苦了！！！',
+                            icon: 'img/logo.png'
+                        });
+                        // 5秒后关闭通知
+                        setTimeout(function() {
+                            n.close();
+                        }, 5000);
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+</html>

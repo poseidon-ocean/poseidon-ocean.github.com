@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>解析音乐绘制频谱</title>
+    <style type="text/css">
+        .box{
+            width:800px;
+            height:350px;
+            margin:50px auto;
+        }
+        #canvas{
+            background: #000;
+        }
+        #audio{
+            display: block;
+            width: 300px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <canvas id="canvas" width="800" height="350"></canvas>
+    </div>
+    <audio id="audio" controls="controls" crossOrigin="anonymous" src="mp3/beibao.mp3" autoplay="autoplay"></audio>
+    <script type="text/javascript" charset="utf-8">
+
+        window.AudioContext = window.AudioContext ||
+                window.webkitAudioContext ||
+                window.mozAudioContext;
+
+        window.onload = function() {
+            var audio = document.getElementById('audio');
+            var ctx = new AudioContext();
+            var analyser = ctx.createAnalyser();
+            var audioSrc = ctx.createMediaElementSource(audio);
+            audioSrc.connect(analyser);
+            analyser.connect(ctx.destination);
+            var frequencyData = new Uint8Array(analyser.frequencyBinCount);
+            var canvas = document.getElementById('canvas'),
+                    cwidth = canvas.width,
+                    cheight = canvas.height - 2,
+                    meterWidth = 10, //能量柱的宽度
+                    gap = 2, //能量柱的间隙
+                    capHeight = 2,
+                    capStyle = '#00FFD5',//帽子颜色
+                    meterNum = 800 / (10 + 2), //多少个能量柱
+                    capYPositionArray = []; //能量柱的帽子
+            ctx = canvas.getContext('2d'),
+                    gradient = ctx.createLinearGradient(0, 0, 0,350);
+            gradient.addColorStop(0, '#F500FF');
+            gradient.addColorStop(0.5, '#A200FF');
+            gradient.addColorStop(1, '#FF001E');
+            // loop
+            function renderFrame() {
+                var array = new Uint8Array(analyser.frequencyBinCount);
+                analyser.getByteFrequencyData(array);
+                var step = Math.round(array.length / meterNum); //一个计算能量柱高度的公式第一步
+                ctx.clearRect(0, 0, cwidth, cheight);
+                for (var i = 0; i < meterNum; i++) {
+                    var value = array[i * step];//一个计算能量柱高度的公式第二步
+                    if (capYPositionArray.length < Math.round(meterNum)) {
+                        capYPositionArray.push(value);//往帽子数组里面添加值，长度不能大于能量柱的个数
+                    };
+                    ctx.fillStyle = capStyle;//设置画笔颜色，要开始画了啊
+                    //能量柱过渡效果
+                    if (value < capYPositionArray[i]) {
+                        ctx.fillRect(i * 12, cheight - (--capYPositionArray[i]), meterWidth, capHeight);//能量柱帽子递减往下落
+                    } else {
+                        ctx.fillRect(i * 12, cheight - value, meterWidth, capHeight);
+                        capYPositionArray[i] = value;
+                    };
+                    ctx.fillStyle = gradient; //设置画笔颜色，要开始画了啊
+                    ctx.fillRect(i * 12, cheight - value + capHeight, meterWidth, cheight);//能量柱
+                }
+                requestAnimationFrame(renderFrame);//无限循环动画
+            }
+            renderFrame();//开始调用以后，就会自动无限调用了
+            audio.play();
+        };
+    </script>
+</body>
+</html>

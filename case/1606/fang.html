@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>弹性碰撞方块</title>
+
+    <style type="text/css">
+        body{
+            margin: 0;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+            background: red;
+            position: absolute;
+        }
+        .title{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="title">鼠标按住红色方块，拖动方块，松开鼠标，还可以随意“扔”</h1>
+    <div id="box" style="left: 433.288px; top: -53px;"></div>
+    <script src="//hm.baidu.com/hm.js?3c8ecbfa472e76b0340d7a701a04197e"></script>
+    <script type="text/javascript">
+        window.onload = function(){
+            var box = document.getElementById("box");
+            var disX = 0;//鼠标在选中元素以后距离元素左边的距离
+            var disY = 0;//鼠标在选中元素以后距离元素左边的距离
+            var prevX = 0;//X轴的点
+            var prevY = 0;//Y轴的点
+            var iSpeedX = 0;//X轴的运动速度
+            var iSpeedY = 0;//Y轴的运动速度
+            box.onmousedown = function(ev){
+                var ev = ev || window.event;
+                prevX = ev.clientX;
+                prevY = ev.clientY;
+                disX = ev.clientX - box.offsetLeft;
+                disY = ev.clientY - box.offsetTop;
+                document.onmousemove = function(ev){
+                    var ev = ev || window.event;
+                    /*拖拽部分*/
+                    box.setleft = ev.clientX - disX;
+                    box.settop = ev.clientY - disY;
+                    if(box.setleft>document.documentElement.clientWidth - box.offsetWidth){
+                        box.setleft = document.documentElement.clientWidth - box.offsetWidth - 1;
+                    }else if(box.setleft < 0){
+                        box.setleft = 1;
+                    }
+                    if(box.settop>document.documentElement.clientHeight - box.offsetHeight){
+                        box.settop = document.documentElement.clientHeight - box.offsetHeight - 1;
+                    }else if(box.settop < 0){
+                        box.settop = 1;
+                    }
+                    box.style.left = box.setleft + "px";
+                    box.style.top = box.settop + "px";
+                    /*拖拽部分*/
+                    /*碰撞弹性部分*/
+                    iSpeedX = ev.clientX - prevX;
+                    iSpeedY = ev.clientY - prevY;
+                    prevX = ev.clientX;
+                    prevY = ev.clientY;
+                    /*碰撞弹性部分*/
+                }
+                document.onmouseup = function(){
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+                    starMove();
+                }
+                return false;
+            }
+            function starMove(){
+                clearInterval(box.timer);
+                box.timer = setInterval(function(){
+                    iSpeedY += 3;
+                    box.L = box.offsetLeft + iSpeedX;
+                    box.T = box.offsetTop + iSpeedY;
+                    if(box.L>document.documentElement.clientWidth - box.offsetWidth){
+                        box.L = document.documentElement.clientWidth - box.offsetWidth - 1;
+                        iSpeedX *= -1;
+                        iSpeedX *= 0.75;
+                    }else if(box.L < 0){
+                        box.L = 1;
+                        iSpeedX *= -1;
+                        iSpeedX *= 0.75;
+                    }
+                    if(box.T>document.documentElement.clientHeight - box.offsetHeight){
+                        box.T = document.documentElement.clientHeight - box.offsetHeight - 1;
+                        iSpeedY *= -1;
+                        iSpeedY *= 0.75;
+                        iSpeedX *= 0.75;
+                    }else if(box.T < 0){
+                        box.T = 1;
+                        iSpeedY *= -1;
+                        iSpeedY *= 0.75;
+                    }
+                    if(Math.abs(iSpeedY)<1 &&
+                            Math.abs(box.offsetHeight + box.offsetTop) == document.documentElement.clientHeight -1 ){
+                        clearInterval(box.timer);
+                        console.log("停止！");
+                    }else{
+                        box.style.left = box.L + "px";
+                        box.style.top = box.T + "px";
+                        console.log("继续！");
+                    }
+                },30);
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="//cdn.koushuidang.cn/ext/v2/css/main.min.css?tms=1464862169889" type="text/css">
+</body>
+</html>
