@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>图片展示</title>
+    <meta name="Keywords" content="关键词1,关键词2">
+    <meta name="description" content="网页的描述内容">
+    <!--响应式mate标签-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <base target="_blank"/>
+
+    <style>
+        *{padding: 0;margin: 0;}
+        ul,li{list-style: none;}
+        .lt_warp{width:1120px;margin: 20px auto;}
+        .lt_imglist{overflow: hidden;margin: 20px auto;width:872px;}
+        .lt_imglist li{float: left;width:218px;}
+        .lt_imglist li .lt_span{ display: inline-block;width: 218px;text-align: center;color:#333;font-size:16px;}
+        #showImg{width:420px;margin: 10px auto;height: 280px;border:1px solid #28bd8b;}
+
+        .lt_cller li{
+            line-height: 60px;background: #fbfbfb;border-left: 2px solid #d0dbed;margin-left:10px;
+            padding-left:20px;}
+        .lt_cller li .select-btn1{
+            display: inline-block;
+            overflow: hidden;
+            position: relative;
+            text-decoration: none;
+            background: url(images/but-select-sm.jpg);
+            width: 168px;
+            height: 50px;
+        }
+        .lt_cller li .select-btn1 input {
+            top: -10px;
+            right: -40px;
+            z-index: 2;
+            position: absolute;
+            cursor: pointer;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            font-size: 50px;
+        }
+        .lt_cller li .select-btn2{
+            display: inline-block;
+            width: 168px;
+            height: 50px;
+            background: url(images/but-start-sm.jpg) no-repeat left top;
+        }
+       .lt_warp .lt_info{height:140px;margin: 10px 20px;overflow: auto;}
+    </style>
+</head>
+<body>
+
+    <div class="lt_warp">
+        <form>
+            <ul class="lt_imglist">
+                <li data-src="xsz">
+                    <img src="images/xsz-normal.png" width="180" height="180">
+                    <span class="lt_span">行驶证</span>
+                </li>
+                <li data-src="yhk">
+                    <img src="images/yhk-normal.png" width="180" height="180">
+                    <span class="lt_span">银行卡</span>
+                </li>
+                <li data-src="jsz">
+                    <img src="images/jsz-normal.png" width="180" height="180">
+                    <span class="lt_span">驾驶证</span>
+                </li>
+                <li data-src="sfz">
+                    <img src="images/sfz-normal.png" width="180" height="180">
+                    <span class="lt_span">身份证</span>
+                </li>
+            </ul>
+
+            <div id="showImg" style="float: left;"></div>
+
+            <div style="float: left;width: 600px;">
+                <div class="lt_info">
+                    <table>
+                        <tr>
+                            <td>姓名：</td><td>书旗网</td>
+                        </tr>
+                        <tr>
+                            <td>性别：</td><td>男</td>
+                        </tr>
+                        <tr>
+                            <td>身份证：</td><td>2521125252525252</td>
+                        </tr>
+                        <tr>
+                            <td>地址：</td><td>水电费赶得上拉萨的风格爱上浪费的客观沙口路的覆盖啥都看卢浮宫</td>
+                        </tr>
+                        <tr>
+                            <td>姓名：</td><td>书旗网</td>
+                        </tr>
+                        <tr>
+                            <td>性别：</td><td>男</td>
+                        </tr>
+                        <tr>
+                            <td>身份证：</td><td>2521125252525252</td>
+                        </tr>
+                        <tr>
+                            <td>地址：</td><td>水电费赶得上拉萨的风格爱上浪费的客观沙口路的覆盖啥都看卢浮宫</td>
+                        </tr>
+                        <tr>
+                            <td>姓名：</td><td>书旗网</td>
+                        </tr>
+                        <tr>
+                            <td>性别：</td><td>男</td>
+                        </tr>
+                        <tr>
+                            <td>身份证：</td><td>2521125252525252</td>
+                        </tr>
+                        <tr>
+                            <td>地址：</td><td>水电费赶得上拉萨的风格爱上浪费的客观沙口路的覆盖啥都看卢浮宫</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <ul class="lt_cller">
+                    <li>证件类型：<span id="cardType"></span></li>
+                    <li>
+                        <a class="select-btn1" href="javascript:">
+                            <input type="file" onchange="previewImage(this)" />
+                        </a>
+                        <a class="select-btn2" href="javascript:;" onclick="changeLoad(this)"></a>
+                    </li>
+                </ul>
+            </div>
+
+        </form>
+    </div>
+
+<script src="http://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript">
+
+    $(function(){
+        $(".lt_imglist").on("click", "li", function(){
+            $(".lt_imglist li").each(function(){
+                var src = $(this).data("src");
+                $(this).find("img")[0].src = "images/"+src+"-normal.png";
+                $(this).find(".lt_span").css("color", "#333");
+            });
+            var flag = $(this).data("src");
+
+            $(this).find("img")[0].src = "images/"+flag+"-press-hover.png";
+            $(this).find(".lt_span").css("color", "#28bd8b");
+
+            if(flag == 'sfz'){
+                $("#cardType").html("<label><input type='radio' name='sfz'/>身份证正面</label><label><input type='radio' name='sfz'/>身份证反面</label>");
+            }else{
+                $("#cardType").html($(this).find(".lt_span")[0].innerHTML);
+            }
+
+        });
+    });
+
+    function previewImage(file){
+        $.lt_preview.init({id:"showImg",file:file});
+    }
+
+
+    function changeLoad(obj){
+        $(obj).css({backgroundPosition: "0px -50px"});
+    }
+</script>
+
+
+
+<script>
+
+
+    (function($){
+        $.lt_preview = {
+            init : function(options){
+                //对象参数的覆盖
+                var opts = $.extend({},$.lt_preview.defaults,options);
+                this.previewImage(opts);
+            },
+            previewImage : function(opts){
+                var _this = this;
+                var $box = $("#"+opts.id);
+                if (opts.file.files && opts.file.files[0])
+                {
+                    var $img = $('<img/>');
+                    $img.css(opts.imgStyle);
+                    $box.html($img);
+                    var reader = new FileReader();
+                    reader.onload = function(evt){$img[0].src = evt.target.result;}
+                    reader.readAsDataURL(opts.file.files[0]);
+                }else {//兼容IE
+                    var sFilter='filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src="';
+                    opts.file.select();
+                    var src = document.selection.createRange().text;
+                    var div = document.getElementById(opts.id);
+                    div.innerHTML = '<img id="imghead">';
+                    var img = document.getElementById('imghead');
+                    img.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = src;
+                    div.innerHTML = "<div id=divhead style='width:420px;height:280px;"+sFilter+src+"\"'></div>";
+
+                }
+            }
+        };
+        $.lt_preview.defaults = {
+            imgStyle : { //图片样式
+                width : 420,
+                height : 280
+            },
+            file : ''//预览图片
+        };
+    })(jQuery);
+
+</script>
+</body>
+
+
+</html>

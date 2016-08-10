@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>格式化代码工具</title>
+
+    <script src="http://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+    <style>
+        body{font-size: 14px;font-family:"微软雅黑"}
+        textarea {width:100%;height:340px;margin: 4px;border: 1px solid #ccc;padding:6px;font-size: 16px;}
+        label {cursor: pointer;}
+        .tmr{height:100px;}
+    </style>
+
+
+</head>
+<body style="padding-top:16px;">
+<textarea id="tm-source" class="tmr">username,
+account,
+password,
+age,
+male</textarea>
+<label><input type="button" onclick="tm_transfter()" value="开始转换"></label>
+<input type="text" id="tablename" value="r_user" style="padding-left:6px;" title="表名"/>
+<textarea id="tm-result1" class="tmr"></textarea>
+<textarea id="tm-result2" class="tmr"></textarea>
+<textarea id="tm-result3" class="tmr"></textarea>
+<textarea id="tm-result4" class="tmr"></textarea>
+<script type="text/javascript">
+    function tm_transfter(){
+        var source = $.trim($("#tm-source").val().replace(/(\s)*/ig,""));
+        if(source!=""){
+            var tableName = $("#tablename").val();
+            var arr = source.split(",");
+            var narr = [];
+            var narr2 = [];
+            var narr3 = [];
+            var narr4 = [];
+            var narr5 = [];
+
+            for(var i=0;i<arr.length;i++){
+                narr.push("?");
+                narr5.push(columnToProperty2(arr[i]));
+                narr2.push(" #\{"+columnToProperty2(arr[i])+" \}");
+                narr3.push( arr[i]+" =? ");
+                narr4.push(arr[i]+" = #\{"+columnToProperty2(arr[i])+"\} ");
+            }
+
+            $("#tm-result1").val("INSERT INTO "+tableName+" ("+source+") VALUES ("+narr.toString()+")\nINSERT INTO "+tableName+" ("+source+") VALUES ("+narr2.toString()+")");
+            $("#tm-result2").val("UPDATE "+tableName+" SET "+narr3.toString()+" WHERE ID = ?\nUPDATE "+tableName+"  SET "+narr4.toString()+"  WHERE  ID = ?");
+            $("#tm-result3").val("SELECT "+narr5.toString()+" "+tableName+"\nWHERE ID = ?\nORDER BY CREATE_TIME DESC\n\nSELECT "+source+" "+tableName+"\nWHERE ID = #\{id\}\nORDER BY CREATE_TIME DESC");
+            $("#tm-result4").val("DELETE FROM "+tableName+" WHERE id = ?\nDELETE FROM "+tableName+" WHERE id = #\{id\}");
+        }
+    }
+
+
+    function columnToProperty2(column) {
+
+        var result = [];
+        // 快速检查
+        if (column == null || column=="") {
+            // 没必要转换
+            return "";
+        }
+
+
+        if (column.indexOf("_")==-1) {
+            // 不含下划线，仅将首字母小写
+            return column.substring(0, 1).toLowerCase() + column.substring(1);
+        } else {
+            // 用下划线将原始字符串分割
+            var columns = column.split("_");
+            for(var i=0;i<columns.length;i++){
+                var columnSplit =columns[i];
+                // 跳过原始字符串中开头、结尾的下换线或双重下划线
+                if (columnSplit=="") {
+                    continue;
+                }
+                // 处理真正的驼峰片段
+                if (result.length == 0) {
+                    // 第一个驼峰片段，全部字母都小写
+                    result.push(columnSplit.toLowerCase());
+                } else {
+                    // 其他的驼峰片段，首字母大写
+                    result.push(columnSplit.substring(0, 1).toUpperCase());
+                    result.push(columnSplit.substring(1).toLowerCase());
+                }
+            }
+            return result.join("");
+        }
+    }
+</script>
+</body>
+</html>
