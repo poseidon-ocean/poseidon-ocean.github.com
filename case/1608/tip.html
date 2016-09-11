@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tip提示</title>
+
+    <style>
+        .lt_tip{
+            position: absolute;
+            right:0;top:-56px;
+            background:#E74F03 ;/*#E2444B*/
+            font-size:14px;
+            height:30px;
+            padding:3px 6px;
+            text-align: center;
+            line-height: 30px;
+            color:#fff;
+            z-index: 12;
+        }
+        .lt_tip .lt_close{
+            color:#fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- 提示层 -->
+    <div class="lt_tip">
+        <span class="lt_msg"></span>
+        <span class="lt_close" onclick="closeTip()">×</span>
+    </div>
+
+    <input type="button" value="打开" onclick="opentip()"/>
+    <input type="button" value="关闭" onclick="closeTip()"/>
+    <script src="http://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        function opentip(){
+            $(".lt_msg").html("对方未打开麦克风或者是当前网络不好！");
+            $(".lt_tip").animate({top:0});
+        }
+
+        function closeTip(){
+            $(".lt_tip").animate({top:-56});
+        }
+
+
+       ; (function($){
+            $.lt_tip = {
+                //打开提示层
+                opentip : function(msg){
+                    $(".lt_msg").html(msg);
+                    $(".lt_tip").animate({top:0});
+                },
+                //关闭提示层
+                closeTip : function(){
+                    $(".lt_tip").animate({top:-56});
+                }
+        };
+        })(jQuery);
+    </script>
+</body>
+</html>

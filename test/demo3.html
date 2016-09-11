@@ -29,10 +29,46 @@
         </div>
         、
     </div>
-
+    <input type="text" value="0" id="curTaskNum"/>
+    <input type="button" onclick="changCurTaskNum('1')" value="加一"/>
+    <input type="button" onclick="changCurTaskNum('-1')" value="减一"/>
 
 <script src="http://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
 <script type="text/javascript">
+
+    var num = 0;
+
+    function changCurTaskNum(num){
+//        var num = parseInt(num);
+//        var curTaskNum = parseInt(document.getElementById("curTaskNum").value);
+//        document.getElementById("curTaskNum").value = curTaskNum + num;
+
+        var dispatch = {};
+        var allTask = {};
+        dispatch.caseNo = "1-";
+        dispatch.objectName = "su";
+        dispatch.sury = "qiwei";
+
+
+        for(var i=0;i<3;i++){
+            var d = jQuery.extend({}, dispatch);
+
+            d.caseNo = "1-"+i;
+            d.objectName = "su-"+i;
+
+            allTask["1-"+i] = d;
+            d = {};
+
+        }
+
+        for(var i=0;i<3;i++){
+            console.log(allTask["1-"+i]);
+        }
+
+
+    }
+
+
 
 
 </script>
