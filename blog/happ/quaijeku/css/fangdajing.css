@@ -1,0 +1,49 @@
+html,body{width:100%;height:100%;}
+body{font-size:1.42857rem;}
+header{background:url("https://gdp.alicdn.com/tps/i4/T1BOyfFoxfXXcqrM2Y-44-150.png");}
+header h2{padding:42px 120px;}
+header .nav{margin-left:120px;}
+section{max-width:1220px;margin:0 auto;}
+.left{width:35%;position:relative;}
+.top{width:430px;height:430px;}
+#img:hover{cursor:move;}
+.down ul li{width:calc(100%/5);}
+#list .on{box-shadow:0 0 2em #111;}
+#showimg{box-shadow:5px 5px 10px #111;padding:10px;width:100%;position:absolute;z-index:99;top:0px;left:430px;}
+.right{width:40%;height:530px;margin-left:2%;}
+.shoe,.fenlei{width:100%;margin-top:50px;}
+.shoe ul li{width:8%;text-align:center;padding:4px 0;border:2px solid #ddd;cursor:pointer;}
+.shoe ul li:first-child{border:2px solid transparent;}
+#size  li:hover,#size .selected{border:2px solid red;}
+#type li:hover,#type .selected{outline:2px solid red;}
+.fenlei ul li{width:9%;cursor:pointer;}
+.fenlei ul li:first-child{width:12%;padding:14px 0;border:2px solid transparent;}
+.num{margin-top:80px;}
+.num .txt{margin-left:34px;width:10%;height:26px;text-indent:4px;border-radius:4px;outline:none;}
+.flag i:nth-child(1){top:-10px;left:0px;line-height:8px;padding:1px 4px;border:1px solid #ddd;}
+.flag i:nth-child(2){top:4px;left:0px;line-height:8px;padding:1px 4px;border:1px solid #ddd;margin-top:2px;}
+.sel{margin-top:50px;}
+.sel div{padding:6px 20px }
+.buy{color:#E5511D;background:#FFD9BC;margin-left:80px;}
+.join{color:#fff;background:#F40;}
+#cover{width:215px;height:215px;background:url(../images/scanbg.png);position:absolute;top:0px;left:0px}
+#cover:hover{cursor:move;}
+/* max-width:960px */
+@media screen and (max-width:960px) and (min-width:721px){
+	body{font-size:1.28571rem;}
+	header h2{padding:44px 120px;}
+
+}
+
+
+/* max-width:720px */
+@media screen and (max-width:720px) and (min-width:481px){
+	body{font-size:1.14285rem;}
+	header h2{padding:46px 120px;}
+}
+
+/* max-width:480 */
+@media screen and (max-width:480px) {
+	body{font-size:1rem;}
+	header h2{padding:50px 120px;}
+}

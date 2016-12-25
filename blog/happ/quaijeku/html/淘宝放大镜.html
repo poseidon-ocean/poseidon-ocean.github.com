@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<title>PLAYBOY</title>
+	<link rel="stylesheet" href="../css/base.css">
+	<link rel="stylesheet" href="../css/fangdajing.css">
+	<link rel="stylesheet" href="http://at.alicdn.com/t/font_9m8oe8llhcgtlnmi.css">
+</head>
+<body>
+	<header class="w h150" >
+		<h2>PLAYBOY</h2>
+		<div class="nav ml" ><span class="mr20">所有分类</span><span>首页</span></div>
+	</header>
+	<section class="clearfix">
+		<div class="left mt30 ml30 clearfix fl" id="outbox">
+			<div class="top pr " id="top">
+				<img src="../images/m_1.jpg" id="img">
+				<span id="cover" class="dpd pa hide"></span>
+				<span id="showimg" class="ml10 w h hide" style="background:url(../images/b_1.jpg)"></span>
+			</div>
+			<div class="down mt10 ">
+				<ul id="list" class="w">
+					<li class="fl tc"><img src="../images/s_1.jpg" ></li>
+					<li class="fl tc"><img src="../images/s_2.jpg"></li>
+					<li class="fl tc"><img src="../images/s_3.jpg" ></li>
+					<li class="fl tc"><img src="../images/s_4.jpg" ></li>
+					<li class="fl tc"><img src="../images/s_5.jpg" ></li>
+				</ul>
+			</div>
+		</div>
+		<div class="right fl mt30 pl10 clearfix">
+			<h4>秋冬季男士低帮韩版英伦潮鞋子伐木鞋休闲鞋皮鞋加绒棉鞋板鞋男鞋</h4>
+			<p class="fz12 mt20 c1">秋冬新款 时尚百搭 亏本冲量 包邮特价 买一送三</p>
+			<div class="shoe fz14">
+				<ul class="w h" id="size">
+					<li class="fl fz12 mr30">尺码</li>
+					<li class="fl mr10">38</li>
+					<li class="fl mr10">39</li>
+					<li class="fl mr10">40</li>
+					<li class="fl mr10">41</li>
+					<li class="fl mr10">42</li>
+					<li class="fl mr10">43</li>
+				</ul>
+			</div>
+			<script>
+				function dom(id){
+					return document.getElementById(id);
+				}
+				
+				/*dom渲染完毕执行的回调函数类似于jquery中$(function(){})*/	
+				function ready(b) {
+					if(document.addEventListener) document.addEventListener("DOMContentLoaded", b, !1);
+					else {
+						var a = document.createElement("script");
+						document.getElementsByTagName("head")[0].appendChild(a);
+						a.defer = !0;
+						a.onreadystatechange = function() {
+							"complete" == a.readyState && b()
+						}
+					}
+				};
+
+				
+				/*找到同辈元素的方法*/
+				function siblings(ele,callback){
+					var parentObj = ele.parentElement;
+					var children = parentObj.children;
+					//循环的目标就是为了去排除本身
+					for(var i=0,len=children.length;i<len;i++){
+						if(children[i]==ele){
+							continue;
+						}else{
+							//callback.call(children[i]);
+							callback(children[i]);
+						}
+					}
+				}
+					
+
+				/*根据class获取doms对象*/	
+				function getClass(tagName, className) {
+					if (document.getElementsByClassName) {
+						return document.getElementsByClassName(className);
+					} else {
+						var aEle = tagName.getElementsByTagName('*');
+						var aResult = [];
+						var re = new RegExp('\\b' + className + '\\b', 'i');
+
+						for (var i = 0; i < aEle.length; i++) {
+							if (aEle[i].className.search(re) != -1) {
+								aResult.push(aEle[i]);
+							}
+						}
+						return aResult;
+					}
+				}
+				
+				/*判断是否已经添加了某个class*/
+				function hasClass(obj, cls) { 
+					return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));  
+				} ; 
+				/*添加样式*/
+				function addClass(ele,cls) { 
+					//如果已经追加过了就不再添加
+					if (!this.hasClass(ele,cls)) ele.className +=" "+cls; 
+				} ;
+
+				/*删除class*/
+				function removeClass(ele,cls) { 
+					if (hasClass(ele,cls)) { 
+						var reg=new RegExp('(\\s|^)'+cls+'(\\s|$)'); 
+						ele.className=ele.className.replace(reg,' '); 
+					} 
+				};
+				
+
+				ready(function(){
+
+					function selecteItem(id,selectedClass){
+						//属性事件
+						var typeDoms = dom(id).children;
+						for(var i=0;i<typeDoms.length;i++){
+							typeDoms[i].onclick = function(){
+								//找到同辈元素，删除选中样式
+								siblings(this,function(obj){
+									//删除样式
+									removeClass(obj,selectedClass);
+								});
+									
+								//本身操作，如果已经包含selected,那么删除选中，否则添加
+								if(!hasClass(this,selectedClass)){
+									addClass(this,selectedClass);
+								}else{
+									removeClass(this,selectedClass);
+								}
+							};
+						};
+					};
+			
+					//封装一定是有东西你才可以封装。
+					selecteItem("size","selected");
+					selecteItem("type","selected");
+				});
+				
+		
+			</script>
+
+
+			<div class="fenlei fz14">
+				<ul class="w h" id="type">
+					<li class="fl fz12 mr10">颜色分类</li>
+					<li class="fl mr20">
+						<img src="../images/s_1.jpg" />
+					</li>
+					<li class="fl mr20">
+						<img src="../images/s_2.jpg" />
+					</li>
+					<li class="fl mr20">
+						<img src="../images/s_3.jpg" />
+					</li>
+					<li class="fl mr20">
+						<img src="../images/s_4.jpg" />
+					</li>
+					<li class="fl mr20">
+						<img src="../images/s_5.jpg" />
+					</li>
+				</ul>
+			</div>
+			<div class="num">
+				<span class="bq fz12">数量</span>
+				<input type="text" value="1" class="txt fz12">
+				<div class="flag dpl pr clearfix">
+					<i class="iconfont icon-xiangshang dpl pa fz12"></i>
+					<i class="iconfont icon-xiangxia1 dpl pa fz12"></i>
+				</div>
+			</div>
+			<div class="sel">
+				<div class="buy dpl">立即购买</div>
+				<div class="join dpl">加入购物车</div>
+			</div>
+		</div>
+	</section>
+	<script type="text/javascript">
+		//function $(id){return document.getElementById(id);}
+		// var lichild = $("list").children;
+		// var oImg = $("img");
+		// var showDom = $("showimg");
+		// var cover = $("cover");	
+		// var len = sChild.length;
+		// var oTop = $("top");
+		// var outbox = $("outbox");
+		//var sChild = $("size").children;
+		// var typeChild = $("type").children;
+		// for(var i=0;i<len;i++){
+		// 	lichild[i].index = i;
+		// 	lichild[i].onclick = function(){
+		// 		this.children[0].className += " on";
+		// 		var src = this.children[0].src;
+		// 		var m_src = src.replace("s_","m_");
+		// 		var b_src = src.replace("s_","b_");
+		// 		oImg.src = m_src;
+		// 		showDom.style.background = "url("+b_src+")";
+		// 		siblings(this,function(){
+		// 			this.children[0].className = "";
+		// 		});
+		// 	}
+		// }
+		/*$("type").addEventListener("click",function(e){
+			e = e || event;
+			e.target.className += " addborder";
+			siblings(e.target,function(){
+				this.className += "";
+			});
+		});
+		for(var m = 0;m<sChild.length;m++){
+			sChild[m].onclick = function(){	
+				// for(var n=0;n<sChild.length;n++){
+				// 	if(sChild[n]!=this){
+				// 		sChild.className += "";
+				// 	}
+				// }
+				this.className += " addstyle";
+				siblings(this,function(){
+					this.className += "";
+				});			
+			};	
+		};
+		function siblings(obj,callback){
+			var parent = obj.parentNode;
+			var child = parent.children;
+			for(var j=0;j<child.length;j++){
+				if(child[j]!=obj){
+					callback && callback.call(child[j]);
+				}
+			}
+		}*/
+
+
+		//ie678不支持page
+		// oTop.addEventListener("mousemove",function(e){
+		// 	e = e||event;
+		// 	var cliX = e.clientX;
+		// 	var cliY = e.clientY + Math.max(document.documentElement.scrollTop,document.body.scrollTop);
+		// 	cover.style.display = "block";
+		// 	showDom.style.display = "block";
+		// 	var top = cliY - outbox.offsetTop - (cover.offsetHeight/2);
+		// 	var left = cliX - outbox.offsetLeft - (cover.offsetWidth/2);
+		// 	var maxWidth = oImg.offsetWidth - cover.offsetWidth;
+		// 	var maxHeight= oImg.offsetHeight - cover.offsetHeight;
+		// 	top = (top<0)?0:top = (top>maxHeight)?maxHeight:top;
+		// 	left = (left<0)?0:left = (left>maxHeight)?maxHeight:left;
+		// 	cover.style.top = top+"px";
+		// 	cover.style.left = left+"px";
+		// 	var curX = left/(oImg.offsetWidth/2)*100 + "%";
+		// 	var curY = top/(oImg.offsetHeight/2)*100 + "%";
+		// 	showDom.style.backgroundPosition = ""+curX+" "+curY+"";
+		// });
+		// oTop.addEventListener("mouseout",function(){
+		// 	cover.style.display = "none";
+		// 	showDom.style.display = "none";
+		// });
+
+
+	</script>
+</body>
+</html>

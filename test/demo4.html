@@ -11,6 +11,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <base target="_blank"/>
     <link href="../iconfont/iconfont.css" type="text/css" rel="stylesheet" />
+    <link href="../blog/js/tm/css/sg.css" type="text/css" rel="stylesheet" />
 
     <style>
 
@@ -20,23 +21,24 @@
 
 
         .lt_load{width: 200px;height:200px;border:1px solid #0B4252;text-align: center;line-height: 160px;}
+
     </style>
 </head>
 <body>
-    <div class="lt_load">
-        <img src="img/loading.gif" width="32" height="32"/>
-    </div>
 
-    <input type="text" value="" id="">
-    <input type="button" value="赋值" onclick="setVal()"/>
-    <i class="iconfont">&#xe645;</i>
+<div style=" padding: 100px;">
+    <a href="https://www.sublimetext.com/" target="_blank" class="tmui-tips"
+       tip="漂亮的用户界面和强大的功能，越来越多工程师用它。"  rel="nofollow"> <img alt="Sublime Text" src="https://www.mengkedu.com:443/resources/tools/sub.png"> </a>
+</div>
 
-
+<!--
 <script src="http://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+-->
+<script src="//cdn.bootcss.com/jquery/1.10.1/jquery.js"></script>
+<script src="../blog/js/tm/js/sgutil.js"></script>
+<script src="../blog/js/tm/js/sg.js"></script>
 <script type="text/javascript">
-    var showCaseno = "123465682487554886522145697";
-    showCaseno = showCaseno.slice(0, 4) + "****"+ showCaseno.slice(-4);
-    console.log(showCaseno);
+    $(".tmui-tips").tmTip();
 
 </script>
 </body>
