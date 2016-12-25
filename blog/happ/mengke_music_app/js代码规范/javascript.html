@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<a href="javascript:void(0);" onclick="Global.jianda.test();">A点我</a>
+		<a href="javascript:void(0);" onclick="Global.keke.test();">B点我</a>
+		<script type="text/javascript">
+			
+			
+			
+			//闭包其实就形成一个独立作用域，隔绝全局变量污染的问题
+			
+			//命名空间
+			var Global = {};
+			(function(){
+				//注册一下
+				Global.jianda={};
+				//全部变成私有了--怎么把闭包里面的私有函数或者一些返回出去，你要解决闭包的第二个问题
+				var audioDom = document.getElementById("audio");
+				function test(){
+					alert(100);
+				}
+				
+				Global.jianda.test = test;
+				
+			})();
+			
+			
+			
+			
+			(function(){
+				//注册
+				Global.keke={};
+				var a = 120;
+				function test(){
+					alert(a);
+				}
+				
+				Global.keke.test = test;
+			})();
+			
+			(function(){
+				//注册
+				Global.改成你自己的英文名字={};
+				var a = 120;
+				function test(){
+					alert(a);
+				}
+				
+				Global.doudou.test = test;
+			})();
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

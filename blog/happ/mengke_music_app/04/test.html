@@ -1,0 +1,28 @@
+!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<style type="text/css">
+			#box{max-width:600px;background:red;height:100px;}
+			#box2{min-width:600px;background:green;height:100px;}
+			
+			#box2:target{background:gray;}
+			
+			#box2:empty{background:pink;}
+		</style>
+		<div id="box" ></div>
+		<div id="box2" ></div>
+		<a href="#box" >dd</a>
+		<a href="#box2" >dd</a>
+		
+		<form action="" oninput="x.value=v.value" method="post">
+			<input type="text" id="v" />
+			<output id="x"></output>
+			<input type="submit" value=""/>
+		</form>
+		
+	</body>
+</html>

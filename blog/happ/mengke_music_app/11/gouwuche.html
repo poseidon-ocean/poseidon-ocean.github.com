@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{padding:0;margin:0;}
+			body{margin:50px;}
+			#smallbox{width:900px}
+			#smallbox li {float:left;margin-right:10px;list-style: none;}
+			#smallbox li img{width:200px;height:100px;border:1px solid #ccc;}
+			#box{min-height:180px;border:2px dotted #ccc;text-align: center;
+				font-size:24px;
+				color: #ccc;
+				overflow:hidden;
+			}
+			
+			#box li {float:left;margin-right:10px;list-style: none;}
+			#box li img{width:180px;height:100px;border:1px solid #ccc;}
+		</style>
+	</head>
+	<body>
+		
+		
+		
+		<div id="smallbox">
+			<ul id="ulist">
+				<li id="mk_01" draggable="true">
+					<p><a href="#" draggable="false"><img src="../10/04.jpg" draggable="false"/></a></p>
+					<h1>商品1</h1>
+					<p>2.5</p>
+				</li>
+				<li id="mk_02" draggable="true">
+					<p><a href="#" draggable="false"><img src="../10/05.jpg" draggable="false"/></a></p>
+					<h1>商品2</h1>
+					<p>1.5</p>
+				</li>
+				<li id="mk_03" draggable="true">
+					<p><a href="#" draggable="false"><img src="../10/05.jpg" draggable="false"/></a></p>
+					<h1>商品3</h1>
+					<p>1.5</p>
+				</li>
+				<li id="mk_04" draggable="true">
+					<p><a href="#" draggable="false"><img src="../10/05.jpg" draggable="false"/></a></p>
+					<h1>商品4</h1>
+					<p>12</p>
+				</li>
+			</ul>
+		</div>
+		
+		
+		<div style="clear: both;">
+			
+		</div>
+		<div id="box" style="margin-top: 20px;">
+			将桌面上的文件拖拽到div进行上传
+			<ul id="slist">
+				
+			</ul>
+		</div>
+		
+		<div>总计：<span id="result">0</span></div>
+		
+		<script type="text/javascript">
+		
+			/*
+			 * FileReader
+			 * Draggbale  ie678都不支持
+			 * ie9+
+			 * 第一步：给元素加draggable="true"
+			 * 第二步：给元素绑定dragstart事件,只执行一次,找个什么？存放拖放的元素 e.dataTransfer.setData(key,value)
+			 * key:text url
+			 * 第三步：给目标元素绑定drop事件，将拖放的元素添加到目标元素/ e.dataTransfer.getData(key)
+			 * 问题：
+			 * */
+			
+			window.onload = function(){
+				//拖放元素
+				var ulistDom = document.getElementById("ulist");
+				//目标元素
+				var bigBox = document.getElementById("box");
+				//目标UL
+				var slistDom = document.getElementById("slist");
+				
+				var liDoms = ulistDom.children;
+				for (var i = 0; i < liDoms.length; i++) {
+					liDoms[i].addEventListener("dragstart",function(e){
+						//缓存的一个id
+						e.dataTransfer.setData("text",e.target.id);
+					});
+				}
+				
+				//这里一样要注意，如果你不阻止dragover，那么久不执行drop
+				bigBox.addEventListener("dragover",function(e){
+					e.preventDefault();
+				});
+				
+				var arr = [];
+				bigBox.addEventListener("drop",function(e){
+					var oid = e.dataTransfer.getData("text");
+					if(oid){
+						//拿到拖放元素的id
+						var oliDom = document.getElementById(oid);
+						//获取到原来的价格
+						var jprice = oliDom.children[2].innerHTML*1;
+						//查找看看目标十分已经有
+						var cdom = document.getElementById(oid+"_target");
+						if(!cdom){	//如果没有就添加
+							var liDom = document.createElement("li");
+							liDom.id = oid+"_target";
+							liDom.innerHTML = oliDom.innerHTML;
+							slistDom.appendChild(liDom);
+						}else{
+							//如果有了就修改价格
+							var priceDom = cdom.children[2];
+							var oprice = priceDom.innerText * 1;
+							priceDom.innerText = oprice + jprice; 
+						}
+						
+						//结算
+						totalPrice();
+					}
+				});
+				
+				
+				function getFileName(img){
+					return img.substring(img.lastIndexOf("/")+1,img.lastIndexOf("."));
+				}
+				
+				
+				function totalPrice(){
+					var ulList = document.getElementById("slist");
+					var liDoms = ulList.children;
+					var tprice = 0;
+					for (var i = 0; i < liDoms.length; i++) {
+						tprice +=liDoms[i].children[2].innerHTML*1;
+					}
+					document.getElementById("result").innerHTML = tprice;
+				}
+				
+			};
+			
+			
+		</script>
+		
+		
+		
+		
+		
+	</body>
+</html>

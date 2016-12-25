@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#dragarea{
+				width:300px;
+				height:300px;
+				margin:10px 0 0 0;
+				border:1px solid #015eac;
+			}
+			
+			#dragarea img{
+				width:100px;
+				height:60px;
+				margin:5px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>把图片放入到下面的方框</div>
+		<div id="dragarea"></div>
+		
+		<script type="text/javascript">
+			window.onload = function(){
+				
+				
+				
+				var target = document.getElementById("dragarea");
+				
+				target.addEventListener("dragover",function(e){
+					e.preventDefault();
+				},false);
+				
+				target.addEventListener("drop",function(e){
+					//获取拖放的元素
+					var fileList = e.dataTransfer.files;
+					for (var i=0;i<fileList.length;i++) {
+						var file = fileList[i];
+						if(file.type.indexOf("image")==-1){
+							alert("请拖放图片”");
+							return;
+						}
+						//加载单个文件
+						loadImage(file);
+					}
+					e.preventDefault();
+				},false);
+				
+				function loadImage(file){
+					//读取接口对象
+					var reader = new FileReader();
+					reader.readAsDataURL(file);
+					//添加load事件处理
+					reader.onload = function(){
+						var img = document.createElement("img");
+						img.src = this.result;//读取本地文件数据
+						target.appendChild(img);
+					};
+				}
+			};
+		</script>
+	</body>
+</html>

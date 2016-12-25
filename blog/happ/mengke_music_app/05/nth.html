@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		
+		<style>
+			/*li:first-child{background:red;}
+			li:last-child{background:green;}*/
+			
+			/*当行换色 不能用双引号括起来*/
+			/*li:nth-child(odd){background:red;}
+			li:nth-child(even){background:green;}*/
+			
+			/*li:nth-child(1){background:red;}
+			li:nth-child(2){background:green;}
+			li:nth-child(3){background:blue;}
+			li:nth-child(4){background:yellow;}
+			li:nth-child(5){background:yellowgreen;}
+			li:nth-child(6){background:blanchedalmond;}
+			li:nth-child(7){background:beige;}
+			li:nth-child(8){background:cadetblue;}*/
+			
+			/*li:nth-child(2n){background:red;}*//*1开始*/
+			/*li:nth-child(2n+1){background:green;}*//*0开始*/
+			/*li:nth-child(3n-2){background:green;}*/
+			
+			/*多个相同元素或者标签或者class根据它们的所在的盒子索引添加样式
+			 nth-child box盒子中所有孩子是div并且是在当行给背景色红色
+			 nth-of-type：找到box中所有的元素div,单行的
+			 * */
+			#box div:nth-of-type(odd){background:red;}
+			
+			
+		</style>
+		
+		<div id="box">
+			1<p>1</p>
+			2<div>div==11</div>
+			3<p>2</p>
+			4<div>div==22</div>
+			5<p>3</p>
+			6<div>div==33</div>
+			7<p>4</p>
+			8<p>5</p>
+			9<div>div==44</div>
+			10<p>6</
+			12<div>div==55</div>
+		</div>
+		<!--
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+			<li>8</li>
+		</ul>
+		 -->
+		
+	</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#dragarea,#dragarea2{
+				width:50%;
+				height:300px;
+				margin:10px 0 0 0;
+				border:1px solid #015eac;
+				float: left;
+				box-sizing: border-box;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div draggable="true" ondragstart="setData(event);">2016年10月14日，深深房（000029.SZ）。</div>
+		
+		<div id="dragarea" ondragover="disover(event)" ondrop="drop(event)">
+			
+		</div>
+		
+		<script type="text/javascript">
+			
+			
+			function disover(ev){
+				ev.preventDefault();
+			};
+			
+			function drop(ev){
+				ev.preventDefault();
+				var data = ev.dataTransfer.getData("Text");
+				var pdom = document.createElement("p");
+				pdom.innerHTML = data;
+				ev.target.appendChild(pdom);
+			};
+			
+			function setData(ev){
+				ev.dataTransfer.setData("text",ev.target.textContent);
+			}
+				
+		</script>
+	</body>
+</html>

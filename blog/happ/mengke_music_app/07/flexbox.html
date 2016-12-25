@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/base.css"/>
+	</head>
+	<body>
+		
+		<style type="text/css">
+			.flex-wrapper{
+				border:1px solid #333;
+				margin:50px;
+				width:600px;
+				height:300px;
+				background:hsla(10,80%,10%,0.2);
+				/*声明伸缩盒子布局*/
+				display: -webkit-flex;
+				display: flex;
+				-webkit-flex-flow: row wrap;
+				flex-flow: row wrap;
+				justify-content: flex-end;
+				align-items: start;
+			}
+			
+			.flex-wrapper >div{
+				width:100px;
+				min-height: 100px;
+				border:1px solid #000;
+				margin:5px;
+				font-size:20px;
+				color:#fff;
+				font-weight: bold;
+			}
+			
+			.flex-wrapper >div:first-child{
+				align-self: flex-start;
+				background:red;
+			}
+			
+			.flex-wrapper >div:nth-child(2){
+				align-self: flex-end;
+				background:red;
+			}
+			
+			.flex-wrapper >div:nth-child(3){
+				align-self: center;
+				background:red;
+			}
+			
+			.flex-wrapper >div:nth-child(4){
+				align-self: baseline;
+				background:red;
+			}
+			
+			.flex-wrapper >div:nth-child(5){
+				align-self: stretch;
+				background:red;
+			}
+		</style>
+		<div class="flex-wrapper">
+			<div>flex-start</div>
+			<div>flex-end</div>
+			<div>center</div>
+			<div>baseline</div>
+			<div>stretch</div>
+		</div>
+		
+	</body>
+</html>

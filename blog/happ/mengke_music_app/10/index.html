@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		
+		<p><label>请选择一个文件</label></p>
+		<input type="file" id="file"/>
+		<input type="button" value="读取图像" onclick="readAsDataURL()"/>
+		<div id="result"></div>
+		
+		<script type="text/javascript">
+			function readAsDataURL(){
+				//检查是否为图像
+				var file = document.getElementById("file").files[0];
+				var reader = new FileReader();
+				//将文件已data url形式读入页面
+				reader.readAsDataURL(file);
+				reader.onload = function(e){
+					var resultDom = document.getElementById("result");
+					resultDom.innerHTML = "<img src='"+this.result+"'/>";
+				}
+			};
+		</script>
+		
+	</body>
+</html>

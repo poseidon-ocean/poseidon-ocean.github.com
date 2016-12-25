@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>梦柯教育keke老师滚动加载数据的实现方式</title>
+		<style type="text/css">
+			*{padding:0;margin: 0;}
+			#loading{position:fixed;left:0;bottom: 0;right: 0;margin: 0 auto;}
+		</style>
+	</head>
+	<body>
+		
+		
+		<div id="loading"></div>
+		<div id="container">
+			<ul id="loadlist">
+					
+			</ul>
+		</div>
+		
+		<link rel="stylesheet" type="text/css" href="../css/base.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/sganimate.css"/>
+		<script type="text/javascript" src="../js/jquery-1.11.2.min.js"></script>
+		<script type="text/javascript" src="../js/mkui.js"></script>
+		<script type="text/javascript" src="../js/mkutil.js"></script>
+		
+		<script type="text/javascript">
+			
+			function loadScroll(callback){
+				window.onload = window.onscroll = function(){
+					//可视区域
+					var clientHeight = window.innerHeight || document.documentElement.clientHeight;
+					//整个文档的高度
+					var bheight = document.body.clientHeight;
+					//滚动条的距离
+					var stop = document.documentElement.scrollTop || document.body.scrollTop;
+					
+					//console.log((clientHeight+stop)+"====="+bheight)
+					if(!window.loadMark && clientHeight+stop+3 >= bheight){
+						//加锁
+						window.loadMark = true;
+						//执行一个异步操作,跨域的问题,需要消耗时间
+						loading("#loading",11);
+						callback && callback();
+					}
+				};
+			};
+			
+			
+			
+			loadScroll(function(){
+				setTimeout(function(){
+					$.getJSON("data.json",function(json){
+						var html = "";
+						var arr = json.data;
+						for(var i =0;i<arr.length;i++){
+							html+="<li>"+arr[i]+"</li>";
+						}
+						$("#loadlist").append(html);
+						window.loadMark = false;
+						$("#loading").hide();
+					});
+				},3000);
+			});
+			
+			
+		</script>
+	</body>
+</html>

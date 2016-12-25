@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	
+	
+	<!--
+		outline和border的应用
+		
+		outline代表是外边框
+			outline-color
+			outline-style
+			outline-width
+		outline-offset:num+"px";如果是负数就内边框，如果是正数就外边看
+		应用在form表单和不影响布局的边框
+		
+		border:边框
+		
+		
+		大家都知道：ie8+以上：w3c的盒模型是有 element = border+padding+width/height
+		ie6 7 是非标准的盒模型：element = elementwidth(border,padding,width);
+	-->
+	
+	
+	<style type="text/css">
+		*{padding:0;margin:0;}
+		body{margin:100px;}
+		#box{border:1px solid red;}
+		#box p{margin-bottom: 20px;}
+		#box p input:focus{
+			outline:red dashed 5px;
+			outline-offset: 0px;
+		}
+	</style>
+	<div id="box">
+		
+		<!--
+			outline是外边轮廓，虽然语法上和border很类似，但是在实际开发中还是很大的差别，一般应用于布局和 form元素上
+			1：border属于盒模型的一部分，直接影响元素盒子的大小，而outline不属于，也不会破坏和影响文档流，和网页整体的布局
+			2：outline不能设置outline-top/right/bottom/left这样的属性，border可以
+			3:border可以单独控制每一个方向，outline不行
+			4：outline:可以通过设置outline-offset控制边框轮廓的距离，如果为正，往外扩散，为负数往内扩散。
+			
+		-->
+		
+		<form action="" method="post">
+			
+			<p><label><input type="text" class="input"/></label></p>
+			<p><label><input type="text" class="input"/></label></p>
+			<p><label><input type="text" class="input"/></label></p>
+			<p><label><input type="text" class="input"/></label></p>
+			<p><label><input type="text" class="input"/></label></p>
+			
+			<input type="submit" value=""/>
+		</form>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+</body>
+</html>

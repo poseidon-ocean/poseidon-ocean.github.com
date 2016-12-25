@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/base.css"/>
+	</head>
+	<body>
+		
+		<style type="text/css">
+			.wrapper{
+				width:960px;
+				margin:0 auto;
+				color: #fff;
+				box-sizing: border-box;
+			}
+			
+			.header{
+				height:100px;
+				background:#333;
+				margin-bottom: 10px;
+				
+				box-sizing: inherit;
+				border: 10px solid red;
+				padding: 10px;
+			}
+			
+			.silder{
+				float:left;
+				width:230px;
+				margin-right:10px;
+				margin-bottom: 10px;
+				height:300px;
+				background:#5d33cf;
+				
+				box-sizing: inherit;
+				border: 10px solid red;
+				padding: 10px;
+			}
+			
+			.content{
+				float:right;
+				width:720px;
+				height:300px;
+				background:#c8ca30;
+				margin-bottom: 10px;
+				
+				box-sizing: inherit;
+				border: 10px solid red;
+				padding: 10px;
+			}
+			
+			.footer{
+				background:#cc4ad5;
+				height: 100px;
+				clear: both;
+				
+				box-sizing: inherit;
+				border: 10px solid red;
+				padding: 10px;
+			}
+		</style>
+		<div class="wrapper">
+			<div class="header">box-sizing：content-box|border-box|inherit
+
+content-box是默认值，让元素维持w3c的标准盒模型，
+element.width = border + padding +contentwidth/height;
+
+border-box:
+element.width = element.width/height - border - padding;
+
+inherit:是继承父元素上的设定的box-sizing.
+</div>
+			<div class="silder">侧边栏</div>
+			<div class="content">主内容</div>
+			<div class="footer">底部</div>
+		</div>
+		
+	</body>
+</html>

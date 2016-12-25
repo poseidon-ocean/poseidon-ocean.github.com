@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#dragarea,#dragarea2{
+				width:50%;
+				height:300px;
+				margin:10px 0 0 0;
+				border:1px solid #015eac;
+				float: left;
+				box-sizing: border-box;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div>把图片放入到下面的方框</div>
+		<div id="dragarea" ondragover="disover(event)" ondrop="drop(event)"><img alt="dd" title="dd" ondragstart="setData(event)" src="https://ss0.baidu.com/73t1bjeh1BF3odCf/it/u=1014460745,3698507069&fm=85&s=E5F013D5037048394EC5784E0300C032" draggable="true" id="img1"/></div>
+		<div id="dragarea2" ondragover="disover(event)" ondrop="drop(event)" style="float: right;"></div>
+		
+		
+		<script type="text/javascript">
+			
+			
+			function disover(ev){
+				ev.preventDefault();
+			};
+			
+			function drop(ev){
+				ev.preventDefault();
+				var data = ev.dataTransfer.getData("Text");
+				ev.target.appendChild(document.getElementById(data));
+			};
+			
+			function setData(ev){
+				ev.dataTransfer.setData("Text",ev.target.id);
+			}
+				
+		</script>
+	</body>
+</html>

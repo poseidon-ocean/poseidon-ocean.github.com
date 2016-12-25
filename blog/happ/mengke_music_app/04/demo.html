@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>梦柯教育HTML5语义标签</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, user-scalable=no"/>
+		<link rel="stylesheet" type="text/css" href="css/base.css"/>
+		<link rel="stylesheet" type="text/css" href="css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="css/page.css"/>
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			header{background:#111;color:#fff;}
+			nav{background:#333;}
+			nav li{display: inline-block;padding:10px;}
+			nav li a{color:#fff;}
+			section{width:79.5%;}
+			section article{border: 1px solid #ccc;}
+			section article h1{border-bottom:1px solid #ccc;}
+			aside{width:19.5%;}
+			
+			/*竖屏模式 竖屏模式下 并且大于640px*/
+			@media screen and (min-width:640px) and (orientation:portrait){
+				html{font-size:12px;}
+				aside.fr,section.fl{float:none;width:100%;}
+				.imgbox img{width:100%}
+			}
+			
+			/*小于等于960px*/
+			@media screen and (max-width:960px) and (orientation:landscape) {
+				html{font-size:16px;}
+				aside.fr,section.fl{float:none;width:100%;}
+				.imgbox img{width:100%}
+			}
+			
+		
+			/*
+			横屏模式
+			@media screen and (orientation:landscape){
+				html{font-size:30px;}
+				aside.fr,section.fl{float:none;width:100%;}
+				.imgbox img{width:100%}
+			}
+			
+			
+			@media screen and (max-width:480px) {
+				html{font-size:16px;}
+				aside.fr,section.fl{float:none;width:100%;}
+				.imgbox img{width:100%}
+			}
+			
+			@media screen and (max-width:480px)  {
+				html{font-size:16px;}
+				aside.fr,section.fl{float:none;width:100%;}
+				.imgbox img{width:100%}
+			}*/
+			
+		</style>
+	</head>
+	<body>
+		<header>
+			<h1 class="title tc pd20 fz20">keke老师个人博客</h1>
+			<p class="sign tc pt10 pb10">梦柯教育技术成就梦想!</p>
+		</header>
+		<!--浮动版本-->
+		<!--<nav class="clearfix">-->
+		<nav class="tc">
+			<ul>
+				<li><a href="#">首页1</a></li>
+				<li><a href="#">首页2</a></li>
+				<li><a href="#">首页3</a></li>
+				<li><a href="#">首页4</a></li>
+			</ul>
+		</nav>
+		<div class="ccontainer">
+			<section class="fl mt10">
+				<article class="pd10 mb10">
+					<h1 class="fz20 pb10"><a href="#"><mark>HTML5</mark>是什么?</a></h1>
+					<p><time>2015-12-12</time> 赞数：<output class="znum">100</output>，金额：<output class="mnum">100</output>评论:100</p>
+					<p class="pt10">近来因为创业同陈孝良博士（声智科技创始人，声学、语音识别专家）对未来进行了较多探讨，非常认同陈博士对未来趋势的两个关键判断：
+						1. 移动互联网之后 AI （人工智能，英语 Artificial Intelligence）互联网正在到来，但这是一个慢热的过程。
+						2. 2~3年内 AI 领域会出现回调（类似2000年的互联网）。
+						用常用语来描述那就是前途是光明的，但道路是曲折的。这篇文章主要就想探讨下曲折的道路上会有什么，道路的终点又会有什么。</p>
+				</article>
+				<article class="pd10 mb10">
+					<h1 class="fz20 pb10"><a href="#">HTML5是什么?</a></h1>
+					<p>2015-12-12</p>
+					<p class="pt10">近来因为创业同陈孝良博士（声智科技创始人，声学、语音识别专家）对未来进行了较多探讨，非常认同陈博士对未来趋势的两个关键判断：
+						1. 移动互联网之后 AI （人工智能，英语 Artificial Intelligence）互联网正在到来，但这是一个慢热的过程。
+						2. 2~3年内 AI 领域会出现回调（类似2000年的互联网）。
+						用常用语来描述那就是前途是光明的，但道路是曲折的。这篇文章主要就想探讨下曲折的道路上会有什么，道路的终点又会有什么。</p>
+				</article>
+				<article class="pd10 mb10">
+					<h1 class="fz20 pb10"><a href="#">HTML5是什么?</a></h1>
+					<p class="pt10">近来因为创业同陈孝良博士（声智科技创始人，声学、语音识别专家）对未来进行了较多探讨，非常认同陈博士对未来趋势的两个关键判断：
+						1. 移动互联网之后 AI （人工智能，英语 Artificial Intelligence）互联网正在到来，但这是一个慢热的过程。
+						2. 2~3年内 AI 领域会出现回调（类似2000年的互联网）。
+						用常用语来描述那就是前途是光明的，但道路是曲折的。这篇文章主要就想探讨下曲折的道路上会有什么，道路的终点又会有什么。</p>
+				</article>
+				<article class="pd10 mb10">
+					<h1 class="fz20 pb10"><a href="#">HTML5是什么?</a></h1>
+					<p class="pt10">近来因为创业同陈孝良博士（声智科技创始人，声学、语音识别专家）对未来进行了较多探讨，非常认同陈博士对未来趋势的两个关键判断：
+						1. 移动互联网之后 AI （人工智能，英语 Artificial Intelligence）互联网正在到来，但这是一个慢热的过程。
+						2. 2~3年内 AI 领域会出现回调（类似2000年的互联网）。
+						用常用语来描述那就是前途是光明的，但道路是曲折的。这篇文章主要就想探讨下曲折的道路上会有什么，道路的终点又会有什么。</p>
+				</article>
+			</section>
+			<aside class="fr mt10">
+				<artcle>
+					<div class="imgbox"><img src="https://imgs.bipush.com/article/cover/201611/20/193525149412.jpg?imageView2/1/w/280/h/210/|imageMogr2/strip/interlace/1/quality/85/format/jpg" alt="" /></div>
+					<p class="c1 pd10">早晨 Echo 这样的智能助理会把我们从睡梦中叫醒，当我们还赖在床上的时候，它会根据我们的偏好组合出一组有趣的新闻。起床后，智能助理帮预定的早餐已经送到，又因为这一天是在家办公，所以可以比较悠闲的吃个早饭。之后则会带上一幅 AR 眼镜开始自己一天的工作，当需要和同事沟通时那个同事会被迅速投影到自己的身边，共享相同的视角进行问题讨论。工作一段时间后智能助理会提醒你需要进行活动，并根据日常的习惯推荐了今天的午餐，你从推荐中选了一个，然后继续一天的工作。晚上需要外出时一辆无人驾驶的车会根据此前的预约开到指定地点来接你。晚上回家后，智能助理提示说你关注的老家的房价又有变化可以入手了，这时又需要带上 AR 眼镜，身临其境的感受目标房子的状况。远程办公因为 AI 互联网而越来越方便，所以你可能会考虑告别高房价的大都市，回到自己的家乡了......
+</p>
+				</artcle>
+			</aside>
+		</div>
+		<footer>
+		</footer>
+	</body>
+</html>

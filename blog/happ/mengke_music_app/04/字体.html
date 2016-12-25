@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			html{font-size:12px;}
+			body{font-size:14px;}
+			
+			@midea screen and(){
+				html{font-size:12px}
+			}
+			
+			@midea screen and(){
+			}
+		</style>
+	</head>
+	<body>
+		
+		响应式--字体--->rem em px  %  =====pt vh vm(了解)
+		响应式开发过程中一定要用 rem em吗？NO
+		不管你是用rem em %最终内部里面都是通过px去渲染
+		em 是以父元素fontsize作为继承,就近原则
+		rem 是以HTML的fontsize作为继承 root(根)em 剔除em的继承的关系，所有的计算都以html根做计算 。
+		换算公式:100% = 16px = 1em
+		换算公式:100% = 14px = 1em
+		
+		
+		<style type="text/css">
+			.box{font-size:12px;} 
+			.box p{width:20rem;height:20rem;background:red;}
+			.box p span{font-size:2rem;width:20rem;height:20rem;}
+		</style>
+		
+		<div class="box">
+			<p class="fz16">是的发斯蒂<span>芬水电费</span>阿斯蒂芬阿斯蒂芬</p>
+			<p>是的发斯蒂<span style="font-size:48px;">芬水电费</span>阿斯蒂芬阿斯蒂芬</p>
+			<p>是的发斯蒂芬水电费阿斯蒂芬阿斯蒂芬</p>
+		</div>
+		
+	</body>
+</html>

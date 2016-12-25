@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link href="css/common.css" rel="stylesheet" type="text/css"/>
+    <link href="css/animate.css" rel="stylesheet" type="text/css"/>
+    <style>
+        .mui_loading{padding:12px 32px;background:#111;color:#fff;display:inline-block;position:fixed;
+            border-radius:4px;
+            box-shadow: 1px 1px 1em #111;}
+    </style>
+</head>
+<body>
+
+
+
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="js/muiLoading.js"></script>
+    <script type="text/javascript">
+
+        //进一步封装简化
+        function loading(){
+            $.muiLoading({time:3});
+        }
+
+        loading();
+    </script>
+</body>
+</html>

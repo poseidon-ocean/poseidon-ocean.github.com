@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>页面框架布局</title>
+    <style>
+        *{padding: 0;margin: 0;}
+        body{font-size: 14px;font-family: "微软雅黑";}
+        ul li{list-style: none;}
+        a{text-decoration: none;}
+        .wd1200{width: 1200px;background: #0B9677;margin: 0 auto;height: 100%;}
+        .fl{float: left;}
+        .fr{float: right;}
+        /*css层叠样式知识点  布局看布局+高度  间距看文字*/
+
+
+        .container{background: #fff;}
+        .sliderbox{height: 140px;background: red;margin:20px auto;}
+        .bannerbox{height: 340px;background: #00be3c;margin: 20px auto;}
+        .contentbox{height: 640px;background: #0000a0;margin: 20px auto;}
+        .footer{height: 120px;background: #111;}
+
+    </style>
+</head>
+<body>
+
+    <!-- 先整体，后局部 -->
+
+    <style>
+        .header{height: 50px;background: #111;line-height: 50px;}
+        .header ul li{float: left;padding: 0 10px 0 0;}
+        .header ul li span{padding: 0 0 0 10px;}
+        .header ul li a{color:#ccc;font-size: 12px;}
+    </style>
+    <!-- 头部 -->
+    <div class="header">
+        <div class="wd1200">
+            <div class="cleft fl">
+                <ul>
+                    <li><a href="javascript:;">小米商城</a><span>|</span></li>
+                    <li><a href="javascript:;">MIUI</a><span>|</span></li>
+                    <li><a href="javascript:;">米聊</a><span>|</span></li>
+                    <li><a href="javascript:;">游戏</a><span>|</span></li>
+                    <li><a href="javascript:;">多看阅读</a><span>|</span></li>
+                    <li><a href="javascript:;">云服务</a><span>|</span></li>
+                    <li><a href="javascript:;">金融</a><span>|</span></li>
+                    <li><a href="javascript:;">小米网移动版</a><span>|</span></li>
+                    <li><a href="javascript:;">问题反馈</a><span>|</span></li>
+                    <li><a href="javascript:;">Select Region</a><span>|</span></li>
+                </ul>
+            </div>
+
+            <div class="cright fr">
+                登录|注册|消息通知
+            </div>
+        </div>
+    </div>
+
+    <!-- 主体内容 -->
+    <div class="container wd1200">
+        <!-- 导航栏 -->
+        <div class="sliderbox"></div>
+
+        <!-- banner -->
+        <div class="bannerbox"></div>
+
+        <!-- 内容区域 -->
+        <div class="contentbox"></div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer">
+        <div class="wd1200"></div>
+    </div>
+</body>
+</html>

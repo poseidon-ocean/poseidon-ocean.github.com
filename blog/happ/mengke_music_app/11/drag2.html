@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		<style type="text/css">
+			*{padding:0;margin:0}
+			.dragbox{width:400px;height:100px;background:red;cursor: move;
+				position:fixed;
+			}
+			
+			div:nth-child(1){background:greenyellow}
+			div:nth-child(2){background:green}
+			div:nth-child(3){background:pink}
+			div:nth-child(4){background:yellow}
+			div:nth-child(5){background:gray}
+			
+			div h1{font-size:12px;background:#111;color:#fff;height: 45px;line-height: 45px;}
+			div h2{font-size:12px;background:#111;color:#fff;height: 45px;line-height: 45px;}
+		</style>
+		<div id="box">
+			<div class="dragbox" draggable="false" id="dragwrap">
+			</div>
+			<div class="dragbox" draggable="false" id="dragwrap2">2</div>
+			<div class="dragbox" draggable="false" id="dragwrap3">3</div>
+			<div class="dragbox" draggable="false" id="dragwrap4">4</div>
+			<div class="dragbox" draggable="false" id="dragwrap5">5</div>
+			<div class="dragbox" dragindex="1" id="dragwrap6">
+				<h1>我是标题1</h1>
+				<h2>我是标题2</h2>
+			</div>
+		</div>
+		
+		
+		<script type="text/javascript" src="drag.js"></script>
+		<script>
+			
+			var dragDoms = document.getElementsByClassName("dragbox");
+			for (var i=0;i<dragDoms.length;i++) {
+				mkDrag(dragDoms[i]);
+			}
+		</script>
+		
+	</body>
+</html>

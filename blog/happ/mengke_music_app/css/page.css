@@ -1,0 +1,93 @@
+body{font:normal 1rem/1.5rem pbfont,"微软雅黑","冬青黑体简体中文 w3","宋体";}
+a{color:#171717;text-decoration:none;}
+.c4{color:#bec0bf;}
+/*视口*/
+.container{max-width:960px;margin:0 auto;background:#111;}
+.bgf{background:#fff;}
+/*轮播图*/
+.header{height:160px;}
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.swiper-slide img{width: 100%;height:160px;}
+
+
+/*导航*/
+.nav{bottom:0;background:rgba(255,255,255,0.96);right:0;left:0;box-shadow:0 0 1px #eee;}
+.nav-items{width:33.33333%;width:calc(100%/3);text-align:center;}
+.nav-items a{display:block;padding:10px 0;}
+/*每日精选*/
+.day_tit{height:40px;line-height:40px;}
+.day_tit .split{display:inline-block;width:3px;background:red;height:20px;}
+.day_list{background:#fafafa;}
+.music_items .bgpic{width:100%;height:220px;}
+.music_items .avatar{width:20px;height:20px;border-radius:50%;}
+.music_items .imgbox:after{content:"";display:block;position:absolute;top:0;left:0;/*right:0;bottom:0;*/
+width:100%;height:100%;background:#111;opacity:0.18;}
+.music_items .mplay{top:50%;left:50%;margin-left:-24px;margin-top:-24px;z-index:1;}
+.music_items .mplay i{color:#fff;}
+
+/*给图片设置max-width或者widht，代表的含义，如果外层容易的宽度发送改变，图片会自动缩放
+ 但是max-width:100%; 如果真实的图片大小没有超过外层容器的宽度，那么就原图展示，如果外层容器缩小图片会自动伸缩
+ width::100%;不管你图片多大多小都会适配整个外层容器
+ * */
+/*响应图片*/
+.img-resp,.respimg{width:100%;height:100%;}
+
+/*最新博文*/
+.yc_left{width:32%;height:80px;max-width: 235px;}
+.yc_right{width:68%;height:80px;}
+.zc_left{height:210px;background:red;width:50%;}
+
+/*最新专题*/
+.zc_right{height:200px;width:calc(50% - 10px);}
+.zc_right .zc_rtop{height:50%;background:red;}
+.zc_right .zc_rbottom{height:50%;background: yellow;}
+
+
+/*内容详情页 css*/
+.w620{max-width:620px;margin-right:auto;margin-left:auto;}
+.nheader{
+	height:40px;
+	background:#fafafa;
+	z-index:10;
+	top:0;left:0;right:0;
+	position: fixed;
+}
+/*头部按钮*/
+.nheader .ntbn{padding:0 12px;height:40px;line-height: 40px;text-align: center;}
+.relwrap{}
+.relwrap .f_items{float:left;width:calc(50% - 7.5px);margin-bottom: 15px;}
+.relwrap .f_items img{width:100%;}
+.relwrap .f_items:nth-child(2n){float: right;}
+.mutitbox{background:linear-gradient(to right,#f7f7f7,#FF9800);height:45px;line-height: 45px;padding:0 15px;}
+.m_items{height:40px;float:left;width:100%;margin-bottom:10px;}
+.play{line-height:50px;} 
+
+
+
+
+
+
+@media only screen and (max-width: 620px) {
+	.w620{width: 100%;}
+}

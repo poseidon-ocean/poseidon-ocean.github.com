@@ -1,0 +1,107 @@
+<!DOCTYPE HTML >
+<html>
+  <head>
+    <title>My JSP 'index.jsp' starting page</title>
+    <meta charset="UTF-8"/>
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="This is my page">
+  </head>
+  <body>
+  	 <form id="userForm">
+		<input name="username"  value="keke"/>
+		<input name="password" value="keke"/>
+		<input type="button" onclick="saveData()" value="提交"/>
+ 	</form>
+
+		
+		<script>
+			function saveData(){
+				
+				 var xhr = null;//异步请求对象
+				 if(window.ActiveXObject){//ie678的兼容处理
+					xhr = new ActiveXObject("Microsoft.XMLHTTP");
+				 }else{
+					xhr = new XMLHttpRequest();
+				 }
+				 
+				// var username = document.getElementById("username").value;
+				// var password = document.getElementById("password").value;
+				 
+				var username = userForm.username.value;
+				var password = userForm.password.value;
+				
+				if(!password){
+					alert("请输入密码...");
+					userForm.password.focus();
+					return;
+				}
+				
+				 //Post提交
+				 //打开和服务器进连接
+				 xhr.open("post", "http://localhost/testajax/data/ajaxData.jsp", true);
+				 //post提交数据的时候一定要设置这行代码
+				 xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded;");
+				 //请求结束会接受服务器响应的数据
+				 xhr.onreadystatechange = function(){
+					 // 如果状态status 200 并且异步请求的状态是4代表请求没有任何异常。
+					 if (xhr.status == 200 && xhr.readyState==4) {
+						 var text = xhr.responseText.trim();
+						 if(text=="success"){
+							 window.location.href = "http://www.mengkedu.com";
+						 }else{
+							 alert("账号密码输入错误，请重新输入....");
+							 userForm.username.focus();
+							 userForm.password.value="";
+						 }
+					 };
+				 };
+				 //发送数据
+				 xhr.send("username="+username+"&password="+password);
+				 
+				
+// 				word文档
+// 				需求：用户登录
+// 				参数的名称：username password
+// 				请求方式：post
+// 				请求地址UR: http://www.mengkedu.com/login
+// 				返回状态：0失败:进行1成功 跳转：首页2密码错误3账户错误4验证码
+				
+// 				$.ajax({
+// 					type:"post",
+// 					url:"http://www.mengkedu.com/login",
+// 					data:{username:username,password:password},
+// 					success:function(data){
+// 						if(data==0){
+// 						}else if(data==1){
+// 						}else if(data===3){
+// 						}
+// 					}
+// 				});
+				
+				
+				
+				 
+				 
+				 
+				 //Get请求
+				/*  var params = "username="+username+"&password="+password;
+				 //打开和服务器进连接
+				 xhr.open("get", "data/ajaxData.jsp?"+params, true);
+				 //请求结束会接受服务器响应的数据
+				 xhr.onreadystatechange = function(){
+					 // 如果状态status 200 并且异步请求的状态是4代表请求没有任何异常。
+					 if (xhr.status == 200 && xhr.readyState==4) {
+						 var text = xhr.responseText;
+						 alert(text);
+					 };
+				 };
+				 //发送数据
+				 xhr.send(); */
+			};	
+		</script>
+		
+  </body>
+</html>

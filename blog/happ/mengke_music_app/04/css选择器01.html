@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/base.css"/>
+		<link rel="stylesheet" type="text/css" href="css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="css/page.css"/>
+	</head>
+	<body>
+		<!--
+			E:first-child
+			E:last-child
+			这些选择有用,但是只适用于单行的元素，不适合多行元素
+			
+			//下次课在讲，你先去测试
+			nth-child(4n) n===1开始
+			nth-child(4n+1) n==0开始
+			E:first-letter css3
+			E:first-line css3
+			
+			
+			
+			
+			
+		-->
+
+		<style>
+			.container{width:940px;height:300px;background:#111;}
+			.container li{width:220px;height:200px;background:red;float:left;
+				margin-right:20px;
+				margin-bottom: 20px;
+			}
+			.container li:nth-child(4n+1){background:green}
+			/*.container li.nomr{margin-right:0;}*/
+		</style>
+		<div class="container">
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li class="nomr">4</li>
+				<li>5</li>
+				<li>6</li>
+				<li>7</li>
+				<li class="nomr">8</li>
+				<li class="nomr">9</li>
+				
+			</ul>
+		</div>
+		
+		
+	</body>
+</html>

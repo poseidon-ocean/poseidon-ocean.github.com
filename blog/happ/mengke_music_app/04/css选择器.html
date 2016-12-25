@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/base.css"/>
+		<link rel="stylesheet" type="text/css" href="css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="css/page.css"/>
+	</head>
+	<body>
+		
+		
+		<style type="text/css">
+			/*
+			.box .items{background:red;}
+			.box p.items{color:#fff;}
+			*/
+			
+			
+			.box+p{background:pink;}
+			/*.box > span[mark]{background:red;}*/
+			/*span[mark='title']{background:red;}
+			span[mark^='tit']{background:pink;}
+			span[mark$='le']{background:red;} ctrl+shift+/ */
+			/*span[mark*="tit"]{background:red;}*/
+		
+			.c{background: red;height:100px;display: none;}
+			#img1{background:blue;}
+			#img2{background:yellow;}
+			
+			#img1:target{background:#111;display:block;}
+			#img2:target{background:red;display:block;}
+			#img3:target{background:gray;display:block;}
+		</style>
+		
+		
+		
+		<div>
+			<div class="c" id="img1">1111</div>
+			<div class="c" id="img2">222</div>
+			<div class="c" id="img3">222</div>
+		</div>
+		
+		<a href="#img1">第一张</a>
+		<a href="#img2">第二张</a>
+		<a href="#img3">第三张</a>
+		<script>
+			if(window.location.href.indexOf("#")==-1){
+				window.location.href = window.location.href+"#img1";
+			}
+		</script>
+		
+
+
+		
+		<p>我是上面邻居</p>
+		<div class="box">
+			<span class="items" mark="tctitle">keke1</span>
+			<span class="items">keke2</span>
+			<span class="items" mark="title">keke3</span>
+			<span class="items" mark="tit">keke4</span>
+			<div class="cs">5
+				<p class="items">是为饿水电费水电费</p>
+			</div>
+		</div>
+		<div>我是下面邻居</div>
+		<p>我是下面邻居</p>
+		<p>我是下面邻居</p>
+		<p>我是下面邻居</p>
+		<p></p>
+		
+	</body>
+</html>

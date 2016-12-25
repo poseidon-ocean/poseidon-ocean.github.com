@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{padding:0;margin:0;}
+			body{margin:50px;}
+			#box{height:180px;border:2px dotted #ccc;text-align: center;line-height: 180px;
+				font-size:24px;
+				color: #ccc;
+			}
+		</style>
+	</head>
+	<body>
+		
+		
+		<a href="#">我是一个链接</a>
+		<img src="../10/03.png" width="100"/>
+		
+		<!--
+			
+			文件拖拽的注意点：
+			第一个知识点：面试题：在网页中那些元素默认是可以拖拽的：img和a 其他的都是禁止的
+			draggable=true
+			其他都是false
+			
+			第二个知识点：
+			dragstart
+				元素开始拖放的时候执行的事件，作用于:拖放元素
+			drag
+				拖放过程中执行事件，作用于:拖放元素
+			dragend:
+			拖放元素松开的时候执行的回调函数  作用于：拖放元素 
+			
+			
+			//目标元素
+			dragenter:
+				有“拖放元素”进入到目标元素的范围内执行事件，作用于：目标元素
+				拖放元素进入到目标元素的三分之二的时候触发
+			dragleave:
+			   拖放元素离开目标元素的时候触发的事件，作用于：目标元素
+			   拖放元素出去到目标元素的三分之二的时候触发
+			dragover:
+			     有拖放的元素在里面移动触发，作用于：目标元素
+			drop:
+			  当有拖放元素拖放到目标元素以后执行的回调函数，作用：目标元素
+		
+			
+			
+			
+			
+		-->
+		
+		
+		
+		<style type="text/css">
+			#smallbox{width:100px;height:100px;background:red;}
+		</style>
+		<div id="smallbox" draggable="true">
+			
+		</div>
+		<div id="box">
+			将桌面上的文件拖拽到div进行上传
+		</div>
+		
+		<script type="text/javascript">
+			
+			window.onload = function(){
+				//拖放元素
+				var smallBox = document.getElementById("smallbox");
+				//目标元素
+				var bigBox = document.getElementById("box");
+				
+/*				smallBox.ondragstart*/
+				smallBox.addEventListener("dragstart",function(){
+					this.style.background = "green";					
+				});
+				
+				smallBox.addEventListener("drag",function(){//onmousemove
+					this.style.background = randomColor();					
+				});
+				
+				
+				//目标元素开始监听，有谁进入，
+				bigBox.addEventListener("dragenter",function(){
+					this.style.background = "red";
+				});
+				
+				bigBox.addEventListener("dragleave",function(){
+					this.style.background = "green";
+				});
+				
+				bigBox.addEventListener("dragover",function(e){
+					//this.style.background = randomColor();	
+					//阻止掉，为什么因为这种在页面几乎不会使用
+					e.preventDefault();
+				});
+				
+				//目标绑定，元素进入并且松开的时候执行 ,这个目标元素的结束
+				bigBox.addEventListener("drop",function(e){
+					this.style.background = "pink";	
+				});
+				
+				
+				
+				//拖放元素的结束
+				smallBox.addEventListener("dragend",function(){
+					this.style.background = "#111"; 
+				});
+				
+				
+				
+				
+				
+				
+				
+				
+			};
+			
+			
+			/*rgb的随机颜色*/
+			function randomColor(){
+				var r = Math.floor(Math.random()*256);
+				var g = Math.floor(Math.random()*256);
+				var b = Math.floor(Math.random()*256);
+				return "rgb("+r+","+g+","+b+")";//IE7不支出rgb
+			};
+
+			
+		</script>
+		
+		
+		
+		
+		
+	</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#dragarea{
+				width:300px;
+				height:300px;
+				margin:10px 0 0 0;
+				border:1px solid #015eac;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div>把图片放入到下面的方框</div>
+		<div id="dragarea"></div>
+		<div>把图片放入到下面的方框</div>
+		<img alt="dd" title="dd" src="https://ss0.baidu.com/73t1bjeh1BF3odCf/it/u=1014460745,3698507069&fm=85&s=E5F013D5037048394EC5784E0300C032" draggable="true" id="img1"/>
+		<img alt="dd" title="dd" src="https://ss0.baidu.com/73t1bjeh1BF3odCf/it/u=1014460745,3698507069&fm=85&s=E5F013D5037048394EC5784E0300C032" draggable="true" id="img2"/>
+		<img alt="dd" title="dd" src="https://ss0.baidu.com/73t1bjeh1BF3odCf/it/u=1014460745,3698507069&fm=85&s=E5F013D5037048394EC5784E0300C032" draggable="true" id="img3"/>
+		<img alt="dd" title="dd" src="https://ss0.baidu.com/73t1bjeh1BF3odCf/it/u=1014460745,3698507069&fm=85&s=E5F013D5037048394EC5784E0300C032" draggable="true" id="img4"/>
+		<img alt="dd" title="dd" src="https://ss0.baidu.com/73t1bjeh1BF3odCf/it/u=1014460745,3698507069&fm=85&s=E5F013D5037048394EC5784E0300C032" draggable="true" id="img5"/>
+		
+		
+		<script type="text/javascript">
+			window.onload = function(){
+				
+				var imgDoms = document.images;
+				var areaDom = document.getElementById("dragarea");
+				areaDom.addEventListener("dragover",function(e){
+					e.preventDefault();
+				});
+				
+				
+				areaDom.addEventListener("drop",function(e){
+					e.preventDefault();
+					var data = e.dataTransfer.getData("Text");
+					e.target.appendChild(document.getElementById(data));
+				});
+				
+				
+				for(var i=0;i<imgDoms.length;i++){
+					imgDoms[i].addEventListener("dragstart",function(e){
+						e.dataTransfer.setData("Text",e.target.id);
+					});
+				}
+				
+			};
+		</script>
+	</body>
+</html>

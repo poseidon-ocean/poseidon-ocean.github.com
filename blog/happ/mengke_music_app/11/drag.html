@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		<style type="text/css">
+			*{padding:0;margin:0}
+			.dragbox{width:100px;height:100px;background:red;cursor: move;
+				
+				position:fixed;
+			}
+		</style>
+		
+		<div class="dragbox" id="dragwrap">
+			
+		</div>
+		
+		
+		<script>
+		
+			//第一步：拿到拖拽元素
+			var dragDom = document.getElementById("dragwrap");
+			//拖拽三部曲：
+			//1:给元素加position:absolute/fixed; 改变top,left的值
+			//2:给拖拽元素绑定onmousedown事件
+			dragDom.onmousedown = function(e){
+				var thisDom = this;
+				var x = e.clientX;
+				var y = e.clientY;
+				var cleft = thisDom.offsetLeft;
+				var ctop  = thisDom.offsetTop;
+				var maxLeft = window.innerWidth - thisDom.offsetWidth;
+				var maxTop = window.innerHeight - thisDom.offsetHeight;
+				//3:给document绑定onmousemove 和onmouseup事件
+				document.onmousemove = function(e){
+					var nleft = e.clientX -x +cleft;
+					var ntop = e.clientY -y+ctop;
+					if(ntop<=0)ntop=0;
+					if(nleft<=0)nleft=0;
+					if(ntop>=maxTop)ntop=maxTop;
+					if(nleft>=maxLeft)nleft=maxLeft;
+					thisDom.style.left = nleft+"px";
+					thisDom.style.top = ntop+"px";
+				};
+				
+				document.onmouseup = function(e){
+					document.onmousemove = null;
+					document.onmouseup = null;
+				};
+			};
+			
+			//问题一：为什么onmousemove和onmouseup不是绑定在dragDom上
+			
+			
+			
+			
+			
+		</script>
+		
+	</body>
+</html>

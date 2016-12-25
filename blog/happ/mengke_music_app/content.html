@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>梦柯教育-html5/css3 app教学</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, user-scalable=no"/>
+		<link rel="stylesheet" type="text/css" href="css/base.css"/>
+		<link rel="stylesheet" type="text/css" href="css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="css/page.css"/>
+		<link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_f6t1tvd26s35l8fr.css"/>
+		<script type="text/javascript" src="js/jquery-1.11.2.min.js" ></script>
+		<script type="text/javascript" src="js/mkutil.js" ></script>
+		<script type="text/javascript" src="js/mkui.js" ></script>
+		<script type="text/javascript" src="js/mk_audio.js" ></script>
+		<style type="text/css">
+			.selected{background:green;color:#fff;}
+		</style>
+	</head>
+	<body>
+		
+		<!--头部-->
+		<header class="nheader">
+			<nav class="w620">
+				<a href="index.html" class="fl show ntbn"><i class="iconfont icon-back1"></i></a>
+				<a href="#" class="fr show ntbn"><i class="iconfont icon-comment1"></i>(10)</a>
+				<a href="#" class="fr show ntbn"><i class="iconfont icon-comment tp2"></i>(100)</a>
+			</nav>
+		</header>
+		
+		<section class="w620 mt30">
+			<figure>
+				<img class="img-resp" src="http://img-cdn.luoo.net/pics/vol/5834647b3c191.jpg?imageView2/1/w/640/h/452"/>
+				<figcaption class="pl15 pr15 pt10 clearfix">
+					<a href="#" class="show play"><i class="iconfont icon-play fz32 fl"></i></a>
+					<div class="titbox ml10 fl">
+						<h1 class="fz18 lh180">感性的人最性感</h1>
+						<p class="ftp5 fz14 c1">vol:762</p>
+					</div>
+				</figcaption>
+			</figure>
+			<div class="pl15 pr15">
+				<div class="tag fz12 c4">#流行,朋克</div>
+				<div class="cnt mt15">
+					<p>生活万岁，我们没有理由因为被生活强奸而做了生活的婊子，生活多美啊，你只要把你的小鸡鸡插进土地，你也可以强奸地球，生活多美啊，我们要好好的活下去，一定！</p>
+				</div>
+				<p>本期音乐为流行朋克（Pop Punk）音乐专题。</p>
+				<p>Cover From Jovana Rikalo</p>
+			</div>
+			
+			<audio id="audio"></audio>
+			<h3 class="mutitbox mt20">音乐列表
+				<span id="stime">00:00</span> /
+				<span id="ptime">00:00</span> /
+				<span id="ttime">00:00</span>
+			</h3>
+			
+			<input type="range" id="vrange" min="0" max="10" value="5" onchange="Global.audio.setV(this)"/>
+			
+			
+			<div class="pl15 pr15 mt20">
+				<div class="clearfix" id="mk_musiclist">
+					
+					<dl class="m_items">
+						<a href="javascript:void(0);" class="block over"  data-link="mp3/01.mp3" onclick="Global.audio.play(this)">
+							<dt class="fl pt10 pr10">01</dt>
+							<dd class="fl"><img src="http://img-cdn.luoo.net/pics/albums/10793/cover.jpg?imageView2/1/w/580/h/580" width="40" height="38"></dd>
+							<dd class="fl ml10">
+								<p>Endless Bummer</p>
+								<p class="fz12">Endless Bummer</p>
+							</dd>
+						</a>
+					</dl>
+					
+					<dl class="m_items">
+						<a href="javascript:void(0);" class="block over"  data-link="mp3/02.mp3" onclick="Global.audio.play(this)">
+							<dt class="fl pt10 pr10">02</dt>
+							<dd class="fl"><img src="http://img-cdn.luoo.net/pics/albums/10793/cover.jpg?imageView2/1/w/580/h/580" width="40" height="38"></dd>
+							<dd class="fl ml10">
+								<p>Endless Bummer</p>
+								<p class="fz12">Endless Bummer</p>
+							</dd>
+						</a>
+					</dl>
+					
+					<dl class="m_items">
+						<a href="javascript:void(0);" class="block over" data-link="mp3/03.mp3" onclick="Global.audio.play(this)">
+							<dt class="fl pt10 pr10">03</dt>
+							<dd class="fl"><img src="http://img-cdn.luoo.net/pics/albums/10793/cover.jpg?imageView2/1/w/580/h/580" width="40" height="38"></dd>
+							<dd class="fl ml10">
+								<p>Endless Bummer</p>
+								<p class="fz12">Endless Bummer</p>
+							</dd>
+						</a>
+					</dl>
+					
+					
+				</div>
+			</div>
+			
+			<h3 class="mutitbox mt20">相似期刊</h3>
+			<div class="pl15 pr15 mt20">
+				<div class="relwrap">
+					<figure class="f_items">
+						<img src="http://img-cdn.luoo.net/pics/vol/5468bc57e944e.jpg?imageView2/1/w/160/h/120"/>
+						<figcaption>vol.670 总有当初模样</figcaption>
+					</figure>
+					<figure class="f_items">
+						<img src="http://img-cdn.luoo.net/pics/vol/5255234e886e6.jpg?imageView2/1/w/160/h/120"/>
+						<figcaption>vol.670 总有当初模样</figcaption>
+					</figure>
+					<figure class="f_items">
+						<img src="http://img-cdn.luoo.net/pics/vol/5285b5fd2b35b.jpg?imageView2/1/w/160/h/120"/>
+						<figcaption>vol.670 总有当初模样</figcaption>
+					</figure>
+					<figure class="f_items">
+						<img src="http://img-cdn.luoo.net/pics/vol/52550ff3d4674.jpg?imageView2/1/w/160/h/120"/>
+						<figcaption>vol.670 总有当初模样</figcaption>
+					</figure>
+				</div>
+			</div>
+		</section>
+		
+		
+		<style type="text/css">
+			/*底部*/
+			.mfooter{
+				height:38px;
+				background:#fafafa;
+				z-index:10;
+				bottom:0;left:0;right:0;
+				position: fixed;
+				border-top:1px solid #eee;
+			}
+			.mfooter input{height:38px;border:0;width:calc(100% - 66px);text-indent: 1em;}
+			.mfooter button{width:64px;height:38px;}
+		</style>
+		<footer class="mfooter w620">
+			<input class="fl" placeholder="请输入评论的内容(少于100)...." maxlength="100"></input>
+			<button class="fr fz12">评论</button>
+		</footer>
+		
+		
+	</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>after,before伪类</title>
+	</head>
+	<body>
+		
+		
+		<!--after before 伪标签-->
+		
+		<style type="text/css">
+			.nu span{font-weight: 700;font-size:24px;}
+		</style>
+		<ul class="nu">
+			<li>
+				<a href="#">手机 电话卡</a>
+				<span>></span>
+			</li>
+			<li>
+				<a href="#">笔记本 平板</a>
+				<span>></span>
+			</li>
+			<li>
+				<a href="#">手机 电话卡</a>
+				<span>></span>
+			</li>
+			<li>
+				<a href="#">笔记本 平板</a>
+				<span>></span>
+			</li>
+			<li>
+				<a href="#">手机 电话卡</a>
+				<span>></span>
+			</li>
+			<li>
+				<a href="#">笔记本 平板</a>
+				<span>></span>
+			</li>
+			<li>
+				<a href="#">手机 电话卡</a>
+				<span>></span>
+			</li>
+			<li>
+				<a href="#">笔记本 平板</a>
+				<span>></span>
+			</li>
+			
+		</ul>
+		
+		
+		
+		<style>
+			/*after:后面
+			before前面*/
+			/*
+			 * 当做一个span去使用即可，
+			如果要让after before生效话必须条件：
+			1：content:""是伪类必须存在的
+			注意点：伪类是一个行内元素,span a
+			 
+			 * */
+			
+			
+			
+			/* 这个伪类是给li 下面的所以的子元素和孙子辈元素添加伪类
+			.ba li :before{content:"<";font-weight: 700;font-size:24px;}
+			.ba li :after{content:">";font-weight: 700;font-size:24px;}
+			*/
+			
+			.ba li:before{content:"⑴";font-weight: 700;font-size:24px;}
+			.ba li:after{content:"α";font-weight: 700;font-size:24px;}
+			
+			.ba li:hover:before{color:red;}
+			.ba li:hover:after{color:red;}
+			
+			.ba li:hover.on{color:red;}
+			.checked.items{background:Red}
+			li.items{background:green;}
+			
+		</style>
+		
+		<ul class="ba">
+			<li class="on">
+				<a href="#">手机 电话卡</a>
+			</li>
+			<li class="checked items">
+				<a href="#">笔记本 平板</a>
+			</li>
+			<li>
+				<a href="#">手机 电话卡</a>
+			</li>
+			<li>
+				<a href="#">笔记本 平板</a>
+			</li>
+			<li>
+				<a href="#">手机 电话卡</a>
+			</li>
+			<li>
+				<a href="#">笔记本 平板</a>
+			</li>
+			<li>
+				<a href="#">手机 电话卡</a>
+			</li>
+			<li>
+				<a href="#">笔记本 平板</a>
+			</li>
+			
+		</ul>
+		
+		
+		<style>
+			.clearfix:after{content:"";display:block;clear:both;}
+			.box .itembox{height:100px;width: 100px;background:rgba(0,0,0,0.4);float:left}
+			.box2 .itembox{height:100px;width: 100px;background:green;}
+		</style>	
+		
+		<div class="box clearfix">
+			<div class="itembox"></div>
+			<div class="itembox"></div>
+		</div>
+		
+		
+		<div class="box2">
+			<div class="itembox"></div>
+			<div class="itembox"></div>
+		</div>
+		
+		
+		<style>
+			.imgbox{width:220px;height:200px;background:#fafafa;color: #fff;
+				position:relative;
+			}
+			.imgbox:after{content:"☀①②④⑤⑥⑦⑧⑨⑩";position:absolute;top:0;left:0;width:100%;height:100%;background:red;
+				opacity: 0.5;
+			}
+			.cntbox{position: relative;z-index:2}
+		</style>
+		<div class="imgbox">
+			<div class="overlay"></div>
+			<div class="cntbox">水电费水电费水电费水电费</div>
+		</div>
+		
+		
+		<style type="text/css">
+			a:after{content:attr(name);}
+			/*作业：after before能不能放图片*/
+		</style>
+		<a href="javascritp:void(0)" name="keke" title="我是一个标题哦"></a>
+	</body>
+</html>
