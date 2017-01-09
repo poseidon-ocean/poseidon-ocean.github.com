@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_1474813743_9218109.css"/>
+	</head>
+	<body>
+		
+		
+		<style type="text/css">
+			.starbox i{color:#ccc;font-size:48px;}
+			.starbox i.on{color:red;}
+		</style>
+		<div class="starbox">
+			<i class="iconfont icon-xingxing on"></i>
+			<i class="iconfont icon-xingxing"></i>
+			<i class="iconfont icon-xingxing"></i>
+			<i class="iconfont icon-xingxing"></i>
+			<i class="iconfont icon-xingxing"></i>
+		</div>
+		
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				$(".starbox").children().hover(function(){
+					var index = $(this).index();
+					/*$(".starbox").children(":lt("+index+")").add(this).addClass("on");
+					$(".starbox").children(":gt("+index+")").removeClass("on");*/
+					
+					$(".starbox").find("i:lt("+index+")").add(this).addClass("on");
+					$(".starbox").find("i:gt("+index+")").removeClass("on");
+				});
+			});
+		</script>
+	</body>
+</html>

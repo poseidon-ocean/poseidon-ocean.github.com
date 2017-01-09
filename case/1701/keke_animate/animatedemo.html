@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>梦柯教育-动画</title>
+		<style>
+			*{padding:0;margin:0}
+			li{list-style: none;}
+			.w1180{width: 1180px;background: red;margin: 10px auto;}
+			.container li{width:280px;height: 300px;float:left;background: #111;
+				margin-right: 20px;
+				margin-bottom: 20px;
+			}
+			.container li:nth-child(4n){margin-right: 0;}
+			.container li img{width:100%;height:100%;}
+			
+			#cbox{width:240px;height:100px;background:red;text-align: center;line-height: 100px;
+				font-size: 16px;
+				font-weight: bold;
+				color: #fff;
+				position: fixed;
+				top:50%;
+				left:50%;
+				margin-top:-50px;
+				margin-left:-120px;
+				z-index: 5;
+				
+			}
+		</style>
+		<link rel="stylesheet" type="text/css" href="css/animate.css"/>
+	</head>
+	<body>
+		 	<div id="cbox"></div>
+		
+		<div class="container">
+			<div class="w1180">
+				<ul>
+					<li class="animated bounceInDown"><img src="https://www.mengkedu.com/resource/content/2016/12/06/201612061741434_small.jpg" alt="" /></li>
+					<li class="animated bounceInUp"><img src="https://www.mengkedu.com/resource/course/2016/10/15/201610151355233.jpg" alt="" /></li>
+					<li class="animated bounceInDown"><img src="https://www.mengkedu.com/resource/content/2016/12/09/201612091553523_small.png" alt="" /></li>
+					<li class="animated bounceInUp"><img src="https://www.mengkedu.com/resource/content/2016/12/04/201612041321512_small.jpg" alt="" /></li>
+					<li class="animated bounceInDown"><img src="https://www.mengkedu.com/resource/content/2016/12/06/201612061741434_small.jpg" alt="" /></li>
+					<li class="animated bounceInUp"><img src="https://www.mengkedu.com/resource/course/2016/10/15/201610151355233.jpg" alt="" /></li>
+					<li class="animated bounceInDown"><img src="https://www.mengkedu.com/resource/content/2016/12/09/201612091553523_small.png" alt="" /></li>
+					<li class="animated bounceInUp"><img src="https://www.mengkedu.com/resource/content/2016/12/04/201612041321512_small.jpg" alt="" /></li>
+					<li class="animated bounceInDown"><img src="https://www.mengkedu.com/resource/content/2016/12/06/201612061741434_small.jpg" alt="" /></li>
+					<li class="animated bounceInUp"><img src="https://www.mengkedu.com/resource/course/2016/10/15/201610151355233.jpg" alt="" /></li>
+					<li class="animated bounceInDown"><img src="https://www.mengkedu.com/resource/content/2016/12/09/201612091553523_small.png" alt="" /></li>
+					<li class="animated bounceInUp"><img src="https://www.mengkedu.com/resource/content/2016/12/04/201612041321512_small.jpg" alt="" /></li>
+				</ul>
+			</div>	
+		</div>
+		
+	
+		<input type="button" onclick="clickme()"  value="点我"/>
+		<script src="js/animate.js"></script>
+		<script type="text/javascript">
+			function clickme(){
+				document.getElementById("cbox").className = "";
+				var cls = tz_animateIn();
+				document.getElementById("cbox").innerHTML = cls;
+				document.getElementById("cbox").className = cls;
+			};
+		</script>
+	</body>
+</html>

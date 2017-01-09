@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<style type="text/css">
+			
+			*{padding:0;margin:0;}
+			ul li{list-style: none;}
+			a{text-decoration:none;color:#fff;}
+			.container{background:#eee;}
+			.w960{width:960px;background:#999;margin: 0 auto;
+				overflow: hidden;
+			}
+			
+			.ullist{position:relative;}
+			.ullist li{height:40px;line-height: 40px;}
+			.listbox{overflow: hidden;height:40px;float:left;}
+			.btnbox{float:right;line-height: 40px;}
+		</style>
+		
+		
+		<div class="container">
+			<div class="w960">
+				<div class="listbox">
+					<ul class="ullist">
+						<li>1随着10月份的尾巴即将扫过，11月份的临近，</li>
+						<li>2梦柯教育从2016年9月10日正式成立以来，</li>
+						<li>3同大部分创业公司一样，遇到了会遇上的所有挫折，</li>
+						<li>4包括足够的资金，需要磨合的团队，对发展计划制定的分歧</li>
+						<li>5团队的职能规划，到同行间激烈的竞争，同行的诋毁等，网站关键词丢失</li>
+						<li>6（www.mengkedu.com）等无一不考验着我们这个团队的发展和生存。</li>
+					</ul>
+				</div>
+				<div class="btnbox">
+					<a href="javascript:void(0);" id="down">下翻</a>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var mkSlider = {
+				index:0,//控制轮播的索引
+				timer:null,//清楚动画的属性
+				init:function(){
+					var $this = this;
+					
+					var $ul = $(".ullist");//获取要运动的对象
+					//要运动每个元素的高度 0 -40 -80 -120....
+					var cheight = $ul.children().eq(0).height();//高度
+					//总长度
+					var len = $ul.children().length;
+					
+					//下翻
+					var nindex = 0;
+					//下翻
+					$("#down").on("click",downEvent).hover(function(){
+						if($this.timer)clearInterval($this.timer);
+					},function(){
+						$this.auto();
+					});;
+					
+					function downEvent(){
+						//变量递增
+						$this.index++;
+						if($this.index == len){//索引等于长度时候，
+							//回到第一个
+							$this.index = len - 1;
+							$("#down").off("click").on("click",upEvent).trigger("click");
+						}else{
+							//开始运动
+							var ctop = $this.index * cheight * -1;
+							$ul.stop(true,true).animate({top:ctop});
+							console.log($this.index);
+						}
+					};
+					
+					function upEvent(){
+						$this.index--;
+						if($this.index < 0){
+							$this.index = len-1;
+							$ul.css({top:$this.index * cheight * -1});
+						}else{
+							var ctop = $this.index * cheight * -1;
+							$ul.stop(true,true).animate({top:ctop});
+							if($this.index==0){
+								$("#down").off("click").on("click",downEvent);
+							}
+						}
+					};
+					
+					//操作动画清楚
+					$(".listbox").hover(function(){
+						if($this.timer)clearInterval($this.timer);
+					},function(){
+						$this.auto();
+					});
+					
+					if($this.timer)clearInterval($this.timer);
+					$this.timer = setInterval(function(){
+						$("#down").trigger("click",downEvent);
+					},1000);
+				}
+			};
+			
+			mkSlider.init();
+		
+		</script>
+		
+	</body>
+</html>

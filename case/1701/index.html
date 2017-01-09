@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>梦柯教育keke老师--canvas入门课</title>
+		<style type="text/css">
+			*{padding: 0;margin: 0;}
+			ul li{list-style: none;}
+			a{text-decoration: none;color: #333;}
+			body{font-size: 14px;font-family: "微软雅黑";background:#111;}
+			.canvabox{margin: 10px auto;width: 1200px;}
+			canvas{background:#fff;}
+		</style>
+	</head>
+	<body>
+		
+		<div class="canvabox">
+			<canvas id="canvas" width="1200" height="450">您当前的浏览器不支持Canvas标签</canvas>
+		</div>
+		
+		<script type="text/javascript">
+			//canvas的宽度和高度不允许用css的样式去修饰，一定造成拉伸和变形
+			//1:直接canvas加width和height,或者用js
+			//画板(画矩行和画圆),涂鸦，放图片，也可以放文字,
+			var dom = function(id){
+				return document.getElementById(id);
+			};
+			window.onload = function(){
+				
+				
+				
+				
+				//拿到画布对象
+				var canvasDom = dom("canvas");
+				//拿到画笔
+				var context = canvasDom.getContext("2d");
+				
+				var arr = [];//性能的问题
+				setInterval(function(){
+					//stroke 轮廓  和 fill 填充 擦黑板
+					context.clearRect(0,0,canvasDom.width,canvasDom.height);
+					for (var i = 0; i < arr.length; i++) {
+						arr[i].radius+=1;
+						arr[i].op-=0.005;
+						if(arr[i].op<=0){
+							arr.splice(i,1);
+						}
+					};
+					
+					for (var i = 0; i < arr.length; i++) {
+						context.beginPath();
+						context.fillStyle = "rgba("+arr[i].r+","+arr[i].g+","+arr[i].b+","+arr[i].op+")";
+						context.arc(arr[i].x,arr[i].y,arr[i].radius,0,360*Math.PI/180,false);
+						context.fill();
+						context.closePath();
+					}
+				},1000/60);
+				
+				
+				//制造圆
+				setInterval(function(){
+					//确定圆的xy轴
+					var x = Math.floor(Math.random() * canvasDom.width);
+					var y = Math.floor(Math.random() * canvasDom.height);
+					//半径
+					var radius = 10;
+					var r = Math.floor(Math.random()*255);
+					var g = Math.floor(Math.random()*255);
+					var b = Math.floor(Math.random()*255);
+					var op = 1;
+					arr.push({
+						x:x,
+						y:y,
+						radius:radius,
+						r:r,
+						g:g,
+						b:b,
+						op:op
+						
+					});
+				},300);
+				
+			};
+			
+			
+		</script>
+		
+	</body>
+</html>

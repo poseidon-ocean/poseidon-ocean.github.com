@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		<style>
+			/*
+			 
+			 * 
+			 * transition总结：
+			 * 1:transition:样式列表 1s【ease(默认),ease-in ease-out ease-in-out linear】
+			 * 2:如果所有的动画和时间都是一致的话，可以用all来替代。比如
+			 * transition:all 1s ease;
+			 * 如果还在多个里面有特殊
+			 * transition all 1s ease,top 1s linear;可以自己定义出来覆盖all里面的设定多度
+			 * 
+			 * 3:你要控制精细动画，可以用delay延时，如果没有用delay延时的话，所有的过度都是同时执行，
+			 * transition:height 5s ease,width 1s ease;同时执行
+			 * transition:width 1s ease 0.5s,height 1s ease ;height先执行 1s秒后宽度执行
+			 * 总结：先执行和后执行是有delay来决定
+			 * 
+			 * 4 时间： 1s = 1000ms  如果是
+			 * transition:all 0.5s ease;
+			 * transition:all .5s ease;
+			 * transition:all 500ms ease;
+			 * 
+			 * 5:top left right bottom注意一定要赋初始值才会有效果，其他可以不用，但是个人建议
+			 * 在过渡的最好都初始值最终值都要设定
+			 * 
+			 * 6：js控制
+			 * dom.style.WebkitTransition = "height 1s ease,width 1s ease 1s";
+			 * dom.style.MozTransition = "height 1s ease,width 1s ease 1s";
+			 * dom.style.transition = "height 1s ease,width 1s ease 1s";
+			 * 
+			 * 7：速度可以通过工具去取值 ease ease-in ease-out ease-in-out linear;
+			 * 
+			 * */
+			
+		</style>
+		
+	</body>
+</html>

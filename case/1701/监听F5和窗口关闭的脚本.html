@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		
+		
+		<script type="text/javascript">
+			function click(e) {
+				if (document.all) {
+					if (event.button == 2 || event.button == 3) {
+						alert("欢迎光临寒舍，有什么需要帮忙的话，请与客服联系！谢谢您的合作！！！");
+						oncontextmenu = 'return false';
+					}
+				}
+				if (document.layers) {
+					if (e.which == 3) {
+						oncontextmenu = 'return false';
+					}
+				}
+			}
+			
+			if (document.layers) {
+				document.captureEvents(Event.MOUSEDOWN);
+			}
+			
+			
+			document.onmousedown = click;
+			document.oncontextmenu = new Function("return false;")
+			document.onkeydown = document.onkeyup = document.onkeypress = function(e) {
+				var ev = window.event || e;
+				if (ev.keyCode == 123) {
+					ev.returnValue = false;
+					return (false);
+				}
+				
+				if( ev.keyCode == 116){
+					if(confirm("您确定要刷新此页面吗?")){
+						window.location.href = window.location.href;
+					}
+				}
+			};
+			
+			window.onbeforeunload = onbeforeunload_handler;
+			window.onunload = onunload_handler;
+			function onbeforeunload_handler() {
+			    var warning = "确认退出?";
+			    return warning;
+			}
+			
+			function onunload_handler() {
+			    var warning = "谢谢光临";
+			    alert(warning);
+			}     
+		</script>
+		
+	</body>
+</html>

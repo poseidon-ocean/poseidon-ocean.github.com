@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>漂浮的小层</title>
+		<style type="text/css">
+			*{padding:0;margin:0;}
+			a{text-decoration: none;color:#333;}
+			body{font-family: "微软雅黑";font-size: 14px;}
+			.items{display: inline-block;background:#333;padding: 10px 20px;color: #fff;border-radius:20px;
+				position:absolute;
+				top:50px;
+				left:0px;
+				animation: move 5s  linear infinite alternate both;
+			}
+			
+			@keyframes move{
+				from{left:-100px;}
+				10%{background:rgba(0,0,0,0.4)}
+				50%{background:rgba(0,0,0,0.12)}
+				70%{background:rgba(0,0,0,0.1)}
+				to{left:960px;background:rgba(0,0,0,0)}
+			}
+			#videobox{width:960px;height:460px;background:red;margin:0 auto;position: relative;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="text" id="msg" value="请输入评论内容" style="width: 240px;height:35px;">
+		<button onclick="saveMessage(this)">追加评论</button>
+		
+		<!--漂浮的位置-->
+		<div id="videobox"></div>
+		<button onclick="saveMessage(this)">关闭弹幕</button>
+		<button onclick="start(this)">开启弹幕</button>
+		<script type="text/javascript">
+		
+			//次数组用来记录待会要元素如果到了尾部的元素把删除
+			var arr = [];
+			var vdom = document.getElementById("videobox");
+			var iheight = 40;//高度
+			var mt = 10;//间隙
+			//飘窗的高度
+			var vheight = vdom.offsetHeight;
+			//漂浮的位置放的行数
+			var rows = Math.floor(vheight / (iheight+mt));
+			
+			
+			var danMuArr = [];
+			var dtimer = null;
+			//开启弹幕
+			function  start(){
+				//伪造弹幕列表
+				for (var i = 0; i < 20; i++) {
+					danMuArr.push("内容"+i);
+				}
+				clearInterval(dtimer);
+				dtimer = setInterval(function(){
+					playDanMu2();
+				},17);
+			};
+			
+			
+			
+			//追加评论
+			function saveMessage(){
+				//如果有新的内容加入，重新激活弹幕
+				playDanmu3();
+			};
+			
+			var index = 0;
+			//播放弹幕，我想着要从弹幕列表中取rows条放入到
+			function playDanmu3(){
+				index++;
+				var msg = document.getElementById("msg").value;
+				//创建元素
+				var divDom = document.createElement("div");
+				//添加class
+				divDom.className = "items";
+				//设定一点延时，延时目的，主要是让每个元素错开，因为不设定那么时间都一直，一起运动，可以注释看效果
+				//加延时的目的：主要是产生时间差
+				divDom.style.animationDelay = Math.random()+"s";
+				//文本内容
+				divDom.innerHTML= msg;
+				//计算每个div小元素的top距离
+				divDom.style.top = (iheight +mt)*(index%rows)+"px" ;
+				//追加到飘窗中
+				vdom.appendChild(divDom);
+				//追加到数组
+				arr.push(divDom);
+			};
+			
+			
+			function playDanMu2(){
+				playDanmu();
+			};
+		
+			
+			//播放弹幕，我想着要从弹幕列表中取rows条放入到
+			function playDanmu(){
+				for(var i=0;i<danMuArr.length;i++){
+					//创建元素
+					var divDom = document.createElement("div");
+					//添加class
+					divDom.className = "items";
+					//设定一点延时，延时目的，主要是让每个元素错开，因为不设定那么时间都一直，一起运动，可以注释看效果
+					//加延时的目的：主要是产生时间差
+					divDom.style.animationDelay = Math.random()+"s";
+					//文本内容
+					divDom.innerHTML= danMuArr[i];
+					//计算每个div小元素的top距离
+					divDom.style.top = (iheight +mt)*(i%rows)+"px" ;
+					//追加到飘窗中
+					vdom.appendChild(divDom);
+					//追加到数组
+					arr.push(divDom);
+					danMuArr.splice(i,1);
+				}
+			};
+			
+			
+			
+			var timer = setInterval(function(){
+				for (var i = 0; i < arr.length; i++) {
+					if(arr[i].offsetLeft+arr[i].offsetWidth+50 >= vdom.offsetWidth){//div.offsetWidth
+						vdom.removeChild(arr[i]);
+						arr.splice(i,1);
+					}
+				}
+			},100);
+		</script>
+	</body>
+</html>
