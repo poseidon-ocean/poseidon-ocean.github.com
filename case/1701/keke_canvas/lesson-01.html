@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>html5-cavans</title>
+</head>
+<body>
+
+
+
+     <!--canvas 是一个行内块级元素，和图标标签差不多。但是也有区别 ie9+ -->
+     <canvas id="canvas">不支持的浏览器会打印：当前浏览器不支持.</canvas>
+
+     <script>
+
+         //第二方式，通过javascript判断canvas是否支持
+         function dom(id){
+             return document.getElementById(id);
+         };
+
+         var canvas = dom("canvas");
+         if(canvas.getContext){
+             alert("当前浏览器支持canvas");
+         }else{
+             alert("当前浏览器不支持canvas");
+         };
+
+         //第三种判断html5中的元素是否支持 可以moderrnizr.js可以判断
+         function canvasSupport(){
+            return Moderrnizr.canvas;
+         }
+
+     </script>
+
+</body>
+</html>

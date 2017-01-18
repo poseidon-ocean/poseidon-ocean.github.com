@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mengke</title>
+</head>
+<body>
+
+
+    <style>
+        .box{width:100px;height:100px;background:red;transition:1s;}
+
+        .box:hover{
+           /* -webkit-transform: matrix(1,0,0,1,200,300);
+            -moz-transform: matrix(1,0,0,1,200,300);
+            -ms-transform: matrix(1,0,0,1,200,300);
+            -o-transform: matrix(1,0,0,1,200,300);
+            transform: matrix(1,0,0,1,200,300);*/
+
+            transform: translate(200px,300px);
+        }
+
+        /*
+
+            transform: 变换
+            scale skew translate rotate
+
+            矩阵:
+            matrix
+            1:scale skew translate rotate 都是通过matrix演变而来的。
+            2:我们可以通过matrix实现scale skew translate rotate四个效果
+            3:在程序开发过程中我们一般很少使用。
+
+            matrix(a,b,c,d,e,f) 矩阵函数
+            默认值:
+            matrix(1,0,0,1,0,0);
+
+
+
+            translate
+            通过矩阵实现位移
+            x轴位移: e=e+x
+            y轴位移: f=f+y
+
+
+        */
+    </style>
+
+    <div class="box"></div>
+
+
+</body>
+</html>

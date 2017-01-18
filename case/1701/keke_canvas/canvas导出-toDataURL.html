@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>html5-cavans</title>
+    <style>
+        *{padding:0;margin:0;}
+        .container{overflow: hidden;margin:50px;}
+        .canvasbox{float:left;}
+        #canvas{border: 1px solid #333;}
+        #result{float:left;background:#eee;border:1px solid #eee;width:600px;height:400px;}
+
+    </style>
+</head>
+<body>
+
+
+<!--canvas 是一个行内块级元素，和图标标签差不多。但是也有区别 ie9+ -->
+<!--
+   注意点：
+   1:canvas宽度和高度不要加像素
+   2:canvas不允许用样式列表去定义宽度和高度
+-->
+<div class="container">
+    <div class="canvasbox">
+        <canvas id="canvas" width="600" height="400">不支持的浏览器会打印：当前浏览器不支持.</canvas>
+        <form id="formobj">
+            颜色:
+            <select id="color">
+                <option value="red" selected>red</option>
+                <option value="blue">blue</option>
+                <option value="green">green</option>
+            </select>
+            线条粗细：
+            <input type="linewidth" value="1" id="linewidth"/>
+            是否直线：
+            <label><input type="radio" checked value="0" name="linetype"/> 任意线</label>
+            <label><input type="radio" value="1" name="linetype"/> X直线</label>
+            <label><input type="radio" value="2" name="linetype"/> Y直线</label>
+        </form>
+    </div>
+    <div id="result"></div>
+</div>
+
+
+<script>
+
+    //第二方式，通过javascript判断canvas是否支持
+    function dom(id){
+        return document.getElementById(id);
+    };
+
+    //初始化
+    window.addEventListener("load",loadCanvas);
+
+    //画布逻辑
+    function loadCanvas(){
+        //获取canvas的操作对象 --photoshop
+        var canvas = dom("canvas");
+        //获取画笔，上下文
+        var context = canvas.getContext("2d");//===>threejs d3.js webGl--c++ actionscript
+        var mark = false;
+        //画板鼠标按下去的事件
+        canvas.addEventListener("mousedown",function(e){
+
+            //擦除黑板
+            //context.clearRect(0,0,canvas.width,canvas.height);
+            //另起一行。
+            context.beginPath();
+
+            context.strokeStyle = dom("color").value;//颜色
+            context.lineWidth = dom("linewidth").value;//粗细
+
+            var lineType = getRadiosValue("linetype");
+            //e :鼠标事件 mousedown,mousemove mousenup
+            // 鼠标事件就获取鼠标当前的坐标，注意这个坐标和相当于浏览器
+            var startPonit = mkUtils.getXY(canvas,e);
+            //起点坐标
+            context.moveTo(startPonit.x,startPonit.y);
+            mark = true;
+            //鼠标移动的时候
+            canvas.addEventListener("mousemove",move);
+
+            function move(e){
+                if(mark) {
+                    //第二个点的坐标
+                    var endPoint = mkUtils.getXY(canvas, e);
+                    if(lineType==1){//x直线
+                        context.lineTo(endPoint.x, startPonit.y);
+                    }else if(lineType==2){//y直线
+                        context.lineTo(startPonit.x, endPoint.y);
+                    }else{//任意线
+                        context.lineTo(endPoint.x, endPoint.y);
+                    }
+
+                    //绘制
+                    context.stroke();
+                    //context.closePath();//闭合的左右.把起始点和终点自然连接
+
+                    exportImg(canvas);
+                }
+            };
+
+            canvas.addEventListener("mouseup",function(e){
+                mark = false;
+                canvas.removeEventListener("mousemove",move);
+
+
+            });
+
+            canvas.addEventListener("mouseleave",function(){
+                mark = false;
+                canvas.removeEventListener("mousemove",move);
+            });
+
+        });
+    };
+
+
+    //canvas导出
+    function exportImg(canvas){
+        dom("result").innerHTML = "<img src='"+canvas.toDataURL()+"' width='600' height='400'/>";
+    }
+
+
+    function getRadiosValue(radioName){
+        var radios = formobj[radioName];
+        var arr = [];
+        for (var i=0;i<radios.length;i++){
+            if(radios[i].checked) {
+                arr.push(radios[i].value);
+            }
+        }
+        return arr.join("");
+    };
+
+
+
+    var mkUtils = {
+        getXY:function(element,e){
+            var ev = e || window.event;
+            var x ,y;
+            if(ev.pageX){
+                x = ev.pageX;
+                y = ev.pageY;
+            }else{
+                x = ev.clientX + (document.body.scrollLeft || document.documentElement.scrollLeft);
+                y = ev.clientY + (document.body.scrollTop||document.documentElement.scrollTop)
+            }
+
+            x = x - element.offsetLeft;
+            y = y - element.offsetTop;
+
+            return {x:x,y:y};
+        }
+    }
+
+</script>
+
+</body>
+</html>

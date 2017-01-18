@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>html5-cavans</title>
+    <style>
+        *{padding:0;margin:0;}
+        #canvas{border: 1px solid #333;margin:50px;}
+
+    </style>
+</head>
+<body>
+
+    <div id="div">divdddddd</div>
+
+    <script>
+
+       // document.getElementById("div").onclick = function(){
+       //     alert(this.innerHTML);
+       // };
+        //删除事件
+       // document.getElementById("div").onclick = null;
+
+       document.getElementById("div").addEventListener("click",event1);
+       function event1(){
+           alert("===1"+this.innerHTML);
+       }
+
+
+       document.getElementById("div").addEventListener("click",event2);
+       function event2(){
+           alert("===2"+this.innerHTML);
+       }
+
+       document.getElementById("div").addEventListener("click",function(){
+           window.event3();
+       });
+
+       function event3(){
+           alert("===3"+this.innerHTML);
+       }
+
+         //A能 B不能
+       document.getElementById("div").removeEventListener("click",event1);
+       document.getElementById("div").removeEventListener("click",event2);
+
+       document.getElementById("div").removeEventListener("click",event3);
+
+
+
+
+    </script>
+
+</body>
+</html>

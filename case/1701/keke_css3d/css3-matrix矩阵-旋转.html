@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mengke</title>
+</head>
+<body>
+
+
+    <style>
+        .box{width:100px;height:100px;background:red;transition:1s;}
+
+        .box:hover{
+
+            -webkit-transform: matrix(0.8788,0.5,-0.5,0.8788,0,0);
+            -moz-transform: matrix(0.8788,0.5,-0.5,0.8788,0,0);
+            -ms-transform: matrix(0.8788,0.5,-0.5,0.8788,0,0);
+            -o-transform: matrix(0.8788,0.5,-0.5,0.8788,0,0);
+            transform: matrix(0.8788,0.5,-0.5,0.8788,0,0); 
+           /* transform: scaleX(0.5);*/
+            filter: progid:DXImageTransform.Microsoft.Matrix( M11= 0.8788, M12= -0.5, M21= 0.5 , M22=0.8788,SizingMethod='auto expand');
+        }
+
+        /*
+            transform: 变换
+            scale skew translate rotate
+
+            矩阵:
+            matrix
+            1:scale skew translate rotate 都是通过matrix演变而来的。
+            2:我们可以通过matrix实现scale skew translate rotate四个效果
+            3:在程序开发过程中我们一般很少使用。
+
+            matrix(a,b,c,d,e,f) 矩阵函数
+            默认值:
+            matrix(1,0,0,1,0,0);
+            
+            
+            通过矩阵实现旋转
+            a=Math.cos(deg/180*Math.PI); 
+            b=Math.sin(deg/180*Math.PI);
+            c=-Math.sin(deg/180*Math.PI);
+            d=Math.cos(deg/180*Math.PI);
+
+        */
+    </style>
+
+    <div class="box" style="filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.8788, M12=-0.5, M21=0.5 , M22=0.8788,SizingMethod='auto expand');"></div>
+    
+
+</body>
+</html>

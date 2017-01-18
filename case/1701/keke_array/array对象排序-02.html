@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <ul id="ulist">
+        <li>
+            <span>keke</span>
+            <span>30</span>
+            <span>176</span>
+        </li>
+        <li>
+            <span>fengche</span>
+            <span>20</span>
+            <span>186</span>
+        </li>
+        <li>
+            <span>liushu</span>
+            <span>18</span>
+            <span>172</span>
+        </li>
+        <li>
+            <span>tianluo</span>
+            <span>22</span>
+            <span>178</span>
+        </li>
+
+    </ul>
+    <a href="javascript:void(0)" onclick="sortLi(this,1)">age排序</a>
+    <a href="javascript:void(0)" onclick="sortLi(this,2)">sg排序</a>
+
+    <script>
+
+        //数据类型，函数，数组，dom元素，对象等等---程序化知识点.
+        //编程思想很重要-----漫长过程和编码你才能理会。--才篮子去买菜--菜品很不一样-数组
+        //图片---背包--书比，手机，钱包--背包数组---集中管理的，方便获取，删除，添加，个数
+
+        //数组---数据类型--（字符串，数字，对象，）
+        //slice splice indexOf forEach sort join map concat push shift
+
+
+         function sortLi(obj,index){
+             var liDoms = document.getElementById("ulist").children;
+
+             var liDomsArr = Array.prototype.slice.call(liDoms);//liDoms
+
+             liDomsArr.sort(function(a,b){
+                var aage = a.children[index].innerHTML * 1;
+                var bage = b.children[index].innerHTML * 1;
+                return !obj.mark ? (aage - bage) : (bage - aage) ;
+             });
+
+             obj.mark = !obj.mark;
+
+             liDomsArr.forEach(function(obj){
+                 document.getElementById("ulist").appendChild(obj);
+             });
+         };
+
+
+    </script>
+
+
+</body>
+</html>

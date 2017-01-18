@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>html5-cavans</title>
+    <style>
+        *{padding:0;margin:0;}
+        #canvas{background:#111;}
+
+    </style>
+</head>
+<body>
+
+
+         <!--canvas 是一个行内块级元素，和图标标签差不多。但是也有区别 ie9+ -->
+         <!--
+            注意点：
+            1:canvas宽度和高度不要加像素
+            2:canvas不允许用样式列表去定义宽度和高度
+         -->
+        <canvas id="canvas" width="600" height="400">不支持的浏览器会打印：当前浏览器不支持.</canvas>
+
+     <script>
+
+         //第二方式，通过javascript判断canvas是否支持
+         function dom(id){
+             return document.getElementById(id);
+         };
+
+
+         function resizeCanvas(){
+             var width = window.innerWidth;
+             var height = window.innerHeight;
+             var canvasDom = dom("canvas");
+             canvasDom.width = width-10;
+             canvasDom.height = height-10;
+         }
+
+         window.onresize = function(){
+             resizeCanvas();
+         };
+
+         window.onload = function(){
+             resizeCanvas();
+             //游戏逻辑
+             //initGame();
+         };
+
+     </script>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mengke</title>
+</head>
+<body>
+
+    <style>
+        .box{width:100px;height:100px;padding:100px;border:10px solid #111;margin:50px  auto;
+            -webkit-perspective: 200px;/*景深: 600-1200*/
+            perspective: 200px;
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+        }
+        .box div{width:100px;height:100px;background:red;transition:1s;}
+        .box:hover div{transform:rotateY(180deg);}
+    </style>
+    <div class="box">
+        <div>123456</div>
+    </div>
+
+
+    <!--
+        要实现css3d必须在3d环境下才能生效
+
+    -->
+
+</body>
+</html>

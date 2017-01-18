@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>html5-cavans</title>
+    <style>
+        *{padding:0;margin:0;}
+        #canvas{border: 1px solid #333;margin:50px;}
+
+    </style>
+</head>
+<body>
+
+
+         <!--canvas 是一个行内块级元素，和图标标签差不多。但是也有区别 ie9+ -->
+         <!--
+            注意点：
+            1:canvas宽度和高度不要加像素
+            2:canvas不允许用样式列表去定义宽度和高度
+         -->
+        <canvas id="canvas" width="600" height="400">不支持的浏览器会打印：当前浏览器不支持.</canvas>
+
+     <script>
+
+         //第二方式，通过javascript判断canvas是否支持
+         function dom(id){
+             return document.getElementById(id);
+         };
+
+         //初始化
+         window.addEventListener("load",loadCanvas);
+
+         //画布逻辑
+         function loadCanvas(){
+             //获取canvas的操作对象 --photoshop
+             var canvas = dom("canvas");
+             //获取画笔，上下文
+             var context = canvas.getContext("2d");//===>threejs d3.js webGl--c++ actionscript
+             //strokeRect(x,y,width,height);
+             context.beginPath();
+
+
+             context.fillStyle = "red";
+             context.strokeStyle = "yellow";//标准色  rgba hsla  十六进制
+             context.lineWidth = 5;
+             context.fillRect(10,10,100,100);//fill填充
+             context.strokeRect(10,10,100,100);//轮廓，
+             context.stroke();
+             context.fill();
+
+             context.closePath();
+
+         };
+
+     </script>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas</title>
+</head>
+<body>
+
+    <canvas id="canvas" width="600" height="600"></canvas>
+
+    <script>
+
+        window.addEventListener("load",loadCanvas,false);
+
+        function loadCanvas(){
+             var canvas = document.getElementById("canvas");
+             var context = canvas.getContext("2d");
+
+             context.beginPath();
+             context.moveTo(10,10);
+             context.lineTo(200,200);
+             context.stroke();
+             context.closePath();
+        };
+
+
+    </script>
+
+</body>
+</html>

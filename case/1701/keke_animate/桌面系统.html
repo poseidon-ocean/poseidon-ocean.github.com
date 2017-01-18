@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>梦柯教育-keke老师-web桌面系统</title>
+		<link rel="stylesheet" type="text/css" href="css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="css/base.css"/>
+		<link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_o88vph57bdszto6r.css"/>
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
+		
+	</head>
+	<body>
+		
+		
+		<style type="text/css">
+			html,body{overflow: hidden;}
+			body{font-family: "微软雅黑";}
+			.createFlolder{position:absolute;right:10px;top:10px;background:red;color:#fff;padding: 10px;}
+			.createFlolder:nth-child(1){top:0px}
+			.createFlolder:nth-child(2){top:32px}
+			.createFlolder:nth-child(3){top:64px}
+			
+			.container{position:absolute;top:0;left:0;right:0;bottom:0;background:#333;}
+			.f_items a{color:#fff;}
+			.f_items{width:65px;height:65px;position:absolute;}
+			.f_items span{color:#fff;font-size:12px;display: block;text-align: center;
+				padding: 4px 0;
+				width:58px;
+				text-overflow:ellipsis;
+				overflow: hidden;
+				white-space: nowrap;
+			}
+			.f_items i{font-size:48px;}
+		</style>
+		<!--第一步创建一个容器，存放小图标-->
+		<div class="container">
+			
+		</div>
+		
+		<div>
+			<a href="javascript:void(0)" data-name="folder" class="createFlolder">创建文件夹</a>
+			<a href="javascript:void(0)" data-name="file" class="createFlolder">创建文件</a>
+			<a href="javascript:void(0)" data-name="img" class="createFlolder">创建图片</a>
+		</div>
+		
+		<script type="text/javascript">
+			
+			$(function(){
+				var index = 0;
+				//创建桌面图标有小算法
+				$(".createFlolder").on("click",function(){
+					var name = $(this).data("name");
+					var $div = $("<div>");
+					$div.addClass("f_items").data("copen",name).html("<a href='javascript:void(0);'><i class='iconfont icon-"+name+"'></i></a><span>文件创建文件夹</span>");
+					$(".container").append($div);
+					cretaeIcon();
+				});
+				
+				
+				$(".container").on("dblclick",".f_items",function(){
+					var copen = $(this).data("copen");
+					openType[copen]();
+				});
+				
+				var  openType = {
+					
+				  folder:function(){
+				  	alert("你打开的是文件夹");
+				  },
+				  
+				  img:function(){
+				  	alert("你打开的是图片");
+				  }
+				  
+				};
+				
+				
+				
+				window.onresize = window.onload = function(){
+					cretaeIcon();
+				};
+				
+				//图标排列
+				function cretaeIcon(){
+					//控制left的位置
+					var left = 1;
+					//控制top的位子
+					var top = 0;
+					
+					//元素之间的间距
+					var space  = 65;
+					//初始位置
+					var position = 25;
+					
+					//存放的列数
+					var cells = parseInt(window.innerHeight / (space + position));
+					
+					$(".container").children().each(function(index){
+						//转向
+						if(index >= cells * left){
+							left++;
+							top = 0;
+						}
+						
+						$(this).css({
+							left:(left-1)*(space+position)+position,
+							top:position+(space+position)*top
+						});
+						
+						top++;
+					});
+				}
+			});
+		</script>
+	</body>
+</html>

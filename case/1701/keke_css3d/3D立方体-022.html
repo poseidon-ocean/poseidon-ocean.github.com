@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+    <style>
+
+        @keyframes spin {
+            0%{transform: rotateY(0deg)}
+            100%{transform: rotateY(360deg)}
+        }
+
+        .stage{
+            width:300px;
+            height:300px;
+            padding:100px;
+            margin:15px auto;
+            position:relative;
+            background:#eee;
+            perspective: 800px;
+            -webkit-perspective-origin:center center;
+            perspective-origin:center center;
+        }
+
+        .container{
+            top:50%;
+            left:50%;
+            margin:-100px 0 0 -100px;
+            position: absolute;
+            background: red;
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            transform-origin: center center;
+        }
+
+
+        .container:hover{
+            animation: spin 3s linear infinite;
+        }
+
+
+        .side{
+            background:rgba(142,198,63,0.3);
+            border:2px solid #8ec63f;
+            font-size:60px;
+            font-weight:bold;
+            color:#fff;
+            height:196px;
+            line-height:196px;
+            position: absolute;
+            text-align: center;
+            text-shadow: 0 -1px 0 rgba(0,0,0,0.2);
+            text-transform: uppercase;
+            width: 196px;
+
+        }
+
+        .front{
+            transform:translateZ(100px);
+        }
+
+        .back{
+            transform: rotateX(180deg) translateZ(100px);
+        }
+
+        .left{
+            transform: rotateY(-90deg) translateZ(100px);
+        }
+
+        .right{
+            transform: rotateY(90deg) translateZ(100px);
+        }
+
+        .top{
+            transform: rotateX(-90deg) translateZ(100px);
+        }
+        .bottom{
+            transform: rotateX(-90deg) translateZ(100px);
+        }
+
+
+
+    </style>
+
+    <div class="stage">
+        <div class="container">
+            <div class="side front">1</div>
+            <div class="side back">2</div>
+            <div class="side left">3</div>
+            <div class="side right">4</div>
+            <div class="side top">5</div>
+            <div class="side bottom">6</div>
+        </div>
+    </div>
+
+
+</body>
+</html>

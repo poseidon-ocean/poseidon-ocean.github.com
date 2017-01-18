@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mengke</title>
+</head>
+<body>
+
+
+    <style>
+        *{padding:0;margin:0;}
+        body{font-size:14px;font-family: "Microsoft YaHei"}
+        
+        @keyframes  expand{
+            0%{transform: rotateX(-120deg)}
+            25%{transform: rotateX(80deg)}
+            50%{transform: rotateX(-20deg)}
+            75%{transform: rotateX(20deg)}
+            100%{transform: rotateX(0deg)}
+        }
+
+        @keyframes  unexpand{
+            0%{transform: rotateX(0deg)}
+            100%{transform: rotateX(-120deg)}
+        }
+        
+        
+        #wrapbox{
+            width:900px;
+            margin:100px auto;
+            position:relative;
+
+            perspective: 800px;
+            -webkit-perspective: 800px;
+        }
+
+        #wrapbox h1{
+            height:50px;
+            background:#111;
+            color:#fff;
+            line-height:50px;
+            font-weight: bold;
+            text-align: center;
+            position: relative;
+            z-index: 20;
+        }
+
+
+        #wrapbox div{
+            position:absolute;
+            top:32px;
+            width:100%;
+
+
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            /*隐藏*/
+            transform: rotateX(-120deg);
+            /*圆心点的上移*/
+            transform-origin: top;
+            -webkit-transform-origin: top;
+
+        }
+
+        #wrapbox span{
+            display: block;
+            height:30px;
+            line-height: 30px;
+            color:#fff;
+            text-indent: 0.5em;
+            background:green;
+        }
+
+        #wrapbox > div{top:50px;}
+
+        /*.show{animation:expand 1s both;}*/
+    </style>
+
+   <!-- div &#45;&#45;景深人
+
+       div-&#45;&#45;3d环境
+
+          元素&#45;&#45;transform:-->
+
+    <div id="wrapbox">
+
+        <h1>我是的折纸标题</h1>
+        <div class="show">
+            <span>选项1</span>
+            <div>
+                <span>选项2</span>
+                <div>
+                    <span>选项3</span>
+                    <div>
+                        <span>选项4</span>
+                        <div>
+                            <span>选项5</span>
+                            <div>
+                                <span>选项6</span>
+                                <div>
+                                    <span>选项7</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        function dom(id){
+            return document.getElementById(id);
+        };
+
+        window.onload = function(){
+            var wrapDom = dom("wrapbox");
+            var h1Dom = wrapDom.children[0];
+            var divDoms = wrapDom.getElementsByTagName("div");
+            var flag = true;
+            h1Dom.onclick = function(){
+                for (var i = 0, len = divDoms.length; i < len; i++) {
+                    if(flag) {
+                        divDoms[i].style.animation = "expand 1s both " + (i * 100) + "ms";
+                    }else{
+                        divDoms[len-i-1].style.animation = "unexpand 1s both " + (i * 100) + "ms";
+                    }
+                }
+                flag = !flag;
+            };
+
+        };
+
+
+    </script>
+
+
+</body>
+</html>

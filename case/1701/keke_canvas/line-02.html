@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas</title>
+    <style>
+
+        #canvas{border:1px solid #333;}
+        #canvasbox{width: 600px; margin:100px  auto;}
+    </style>
+</head>
+<body>
+
+    <div id="canvasbox">
+        <canvas id="canvas" width="600" height="400"></canvas>
+    </div>
+
+    <div id="result"></div>
+
+    <script>
+
+        window.addEventListener("load",loadCanvas,false);
+
+        function loadCanvas(){
+             var canvas = document.getElementById("canvas");
+             var context = canvas.getContext("2d");
+             var mark = false;
+             canvas.onmousedown = function(e){
+                //context.clearRect(0,0,canvas.width,canvas.height);
+                context.beginPath();
+                var x = e.clientX - canvas.offsetLeft;
+                var y = e.clientY - canvas.offsetTop;
+                mark = true;
+                context.moveTo(x,y);
+                canvas.onmousemove = function(e){
+                    if(mark) {
+                        var nx = e.clientX - canvas.offsetLeft;
+                        var ny = e.clientY - canvas.offsetTop;
+                        context.lineTo(nx, ny);
+                        context.stroke();
+                        document.getElementById("result").innerHTML = "<img src='"+canvas.toDataURL("image/jpg")+"'/>"
+                    }
+                };
+
+                canvas.onmouseup = function(){
+                    mark = false;
+                };
+            };
+        };
+    </script>
+
+</body>
+</html>

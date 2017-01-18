@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>html5-cavans</title>
+    <style>
+        *{padding:0;margin:0;}
+        #canvas{border: 1px solid #333;margin:50px;}
+
+    </style>
+</head>
+<body>
+
+
+         <!--canvas 是一个行内块级元素，和图标标签差不多。但是也有区别 ie9+ -->
+         <!--
+            注意点：
+            1:canvas宽度和高度不要加像素
+            2:canvas不允许用样式列表去定义宽度和高度
+         -->
+        <canvas id="canvas" width="600" height="400">不支持的浏览器会打印：当前浏览器不支持.</canvas>
+
+     <script>
+
+         //第二方式，通过javascript判断canvas是否支持
+         function dom(id){
+             return document.getElementById(id);
+         };
+
+         //初始化
+         window.addEventListener("load",loadCanvas);
+
+         //画布逻辑
+         function loadCanvas(){
+             //获取canvas的操作对象 --photoshop
+             var canvas = dom("canvas");
+             //获取画笔，上下文
+             var context = canvas.getContext("2d");//===>threejs d3.js webGl--c++ actionscript
+
+             //注意点：在画板所有的x,y的坐标都是针对canvas而不是针对浏览器
+
+             //moveTo(x,y)
+             //lineTo(x,y)
+             context.beginPath();//准备绘制,每次绘制都会冲新开始。如果不加可能会导致，绘制的图形是藕断丝连的。
+
+             //线条的颜色的设定
+             context.strokeStyle = "red";
+             //线条的粗细
+             //context.lineWidth = 10;
+             //线条的头部形状
+             //context.lineCap = "square";//butt默认值，平直边缘. round: square(线宽为长，满意一般线宽为宽的矩形)
+             //拐角处的形状 miter 延长连接线， bevel：对角线的斜角  round 圆角
+
+             context.lineJoin = "miter";
+             //绘制第一个点
+             context.moveTo(100,100);
+             context.lineTo(100,200);
+             //context.lineTo(200,200);
+             //context.lineTo(100,100);
+             context.closePath();//闭合直线的作用
+             context.stroke();
+
+         };
+
+     </script>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>html5-cavans</title>
+    <style>
+        *{padding:0;margin:0;}
+        #canvas{border: 1px solid #333;margin:50px;}
+
+    </style>
+</head>
+<body>
+
+
+         <!--canvas 是一个行内块级元素，和图标标签差不多。但是也有区别 ie9+ -->
+         <!--
+            注意点：
+            1:canvas宽度和高度不要加像素
+            2:canvas不允许用样式列表去定义宽度和高度
+         -->
+        <canvas id="canvas" width="600" height="400">不支持的浏览器会打印：当前浏览器不支持.</canvas>
+
+     <script>
+
+         //第二方式，通过javascript判断canvas是否支持
+         function dom(id){
+             return document.getElementById(id);
+         };
+
+         //初始化
+         window.addEventListener("load",loadCanvas);
+
+         //画布逻辑
+         function loadCanvas(){
+             //获取canvas的操作对象 --photoshop
+             var canvas = dom("canvas");
+             //获取画笔，上下文
+             var context = canvas.getContext("2d");//===>threejs d3.js webGl--c++ actionscript
+
+             context.strokeStyle = "red";//颜色
+             context.lineWidth = "2";//粗细
+             var mark = false;
+            //画板鼠标按下去的事件
+             canvas.addEventListener("mousedown",function(e){
+                 //e :鼠标事件 mousedown,mousemove mousenup
+                 // 鼠标事件就获取鼠标当前的坐标，注意这个坐标和相当于浏览器
+                 var startPonit = mkUtils.getXY(canvas,e);
+                 //起点坐标
+                 context.moveTo(startPonit.x,startPonit.y);
+                 mark = true;
+                 //鼠标移动的时候
+                 canvas.addEventListener("mousemove",function(e){
+                     if(mark) {
+                         //第二个点的坐标
+                         var endPoint = mkUtils.getXY(canvas, e);
+                         context.lineTo(endPoint.x, startPonit.y);
+                         //绘制
+                         context.stroke();
+                     }
+                 });
+
+                 canvas.addEventListener("mouseup",function(e){
+                     mark = false;
+                     startPonit = {};
+                 });
+
+             });
+         };
+
+
+
+
+         var mkUtils = {
+            getXY:function(element,e){
+                var ev = e || window.event;
+                var x ,y;
+                if(ev.pageX){
+                    x = ev.pageX;
+                    y = ev.pageY;
+                }else{
+                    x = ev.clientX + (document.body.scrollLeft || document.documentElement.scrollLeft);
+                    y = ev.clientY + (document.body.scrollTop||document.documentElement.scrollTop)
+                }
+
+                x = x - element.offsetLeft;
+                y = y - element.offsetTop;
+
+                return {x:x,y:y};
+            }
+         }
+
+     </script>
+
+</body>
+</html>
