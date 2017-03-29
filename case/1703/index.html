@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="viewer.css">
+
+    <script type="text/javascript" src="viewer.js"></script>
+</head>
+<body>
+
+    <img src="img/000.jpg" />
+    <img src="img/001.jpg" />
+
+
+    <!-- a block container is required -->
+    <div>
+        <img id="image" src="img/000.jpg" alt="Picture">
+    </div>
+
+    <div>
+        <ul id="images">
+            <li><img src="img/000.jpg" alt="Picture"></li>
+            <li><img src="img/001.jpg" alt="Picture 2"></li>
+        </ul>
+    </div>
+
+    <script>
+        // View one image
+        var viewer = new Viewer(document.getElementById('image'), {});
+
+        // View some images
+        var viewer = new Viewer(document.getElementById('images'), { });
+    </script>
+</body>
+</html>
