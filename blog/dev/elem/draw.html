@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+    <!--声明当前页面的编码集：charset=gbk,gb2312（中文编码），utf-8（国际编码）-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <!--当前页面的三要素-->
+    <title>拖拽功能</title>
+    <meta name="Keywords" content="关键词,关键词">
+    <meta name="description" content="">
+    <link rel="shortcut icon" href="" />
+
+    <!--css,js-->
+    <style type="text/css">
+        *{margin:0;padding:0;}
+        body{background-color: #A8847B;font-size: 12px;font-family: "微软雅黑";color:#666;}
+        .div_all{width:	600px;position: absolute;top: 0;left: 0;}
+        .div_all .div_title{height: 40px;width: 600px;background: #0c0a0b;cursor: move;}
+        .div_all .div_title .span_text{display: block;height: 40px;float: left;padding-left: 20px;color: #fff;font-size: 14px;text-align: center;line-height: 40px;}
+        .div_all .div_title .a_close{display: block;height: 40px;width: 40px;float: right;background: url("img/close.jpg") no-repeat top center;cursor: pointer;}
+        .div_all .div_content{width:600px;height:300px;background: #62A2A4;font-size: 40px;line-height: 300px;text-align: center;color: #fff;}
+    </style>
+
+</head>
+<body>
+<div class="div_all">
+    <div class="div_title">
+        <span class="span_text">拖拽功能_rexhang</span>
+        <a class="a_close"></a>
+    </div>
+    <div class="div_content">
+        <p>MY NAME IS REXHANG</p>
+    </div>
+</div>
+<p id="mo" style="color:white;width:600px;height:40px;border:1px solid #000;text-align:center;line-height:40px;background:#0c0a0b;"></p>
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        // 点击关闭按钮
+        $(".a_close").click(function(){
+            $(".div_all").animate({"height":"0","width":"0"},300).hide(function(){
+                $(".div_all").remove();
+            });
+        });
+
+
+        var mark = null; // 默认关闭
+        // [点击]窗口标题
+        $(".div_title").mousedown(function(event){
+            // 一点击就打开
+            mark = "1";
+            // 获取祖先DIV
+            var father_div = $(this).parents(".div_all");
+            // event.pageX pageX 事件属性返回当事件被触发时鼠标指针向对于浏览器页面（或客户区）的水平坐标。
+            // Y 同上
+            var x = event.pageX;
+            var y = event.pageY;
+            // alert("x:" + x + "y:" + y);
+
+            // 当前页面距左顶点的位置
+            // offset(): 获取匹配元素在当前视口的相对偏移。
+            var left = father_div.offset().left;
+            var top = father_div.offset().top;
+            // 最大限制 距离左边的边距★ ★ ★ ★ ★
+            var maxLeft = $(window).width() - father_div.width() - 5;
+            var maxTop = $(window).height() - father_div.height() - 5;
+            // 点击放大事件 - CSS3
+            father_div.css({"transform":"scale(1.1)"});
+
+            // 用户把鼠标移动一个像素，就会发生一次 mousemove 事件
+            $(document).mousemove(function(event){
+                // 坐标
+                $("#mo").text("鼠标当前位置距离X轴:" + event.pageX + "px" + " " +"距离Y轴:" + event.pageY + "px");
+                // 鼠标当前位置
+                if(mark){
+                    var x1 = event.pageX;
+                    var y1 = event.pageY;
+                    // 计算坐标位置
+                    var _left = x1 - x + left;
+                    var _top = y1 - y + top;
+                    // 判断定位的left和top值是否小于0,小于0强制定位为5
+                    if(_left <= 0){
+                        _left = 5;
+                    }
+                    if(_top <= 0){
+                        _top = 5;
+                    }
+                    // 限制溢出边框
+                    if(_left >= maxLeft){
+                        _left = maxLeft;
+                    }
+                    if(_top >= maxTop){
+                        _top = maxTop;
+                    }
+
+                    // 动态的去移动祖先的DIV
+                    father_div.css({"left":_left,"top":_top});
+                }
+            }).mouseup(function(){
+                mark = null; // 还原开关至初始
+                // 点击缩小到原来的事件 - CSS3
+                father_div.css({"transform":"scale(1)"});
+            });
+        });
+    });
+</script>
+</body>
+</html>

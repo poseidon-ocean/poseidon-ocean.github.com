@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>jQuery超酷页面树叶飘落装饰特效</title>
+	<link rel="stylesheet" href="css/jquery.classyleaves.min.css" />
+	
+</head>
+<body>
+	
+	
+	<input type="button" value="添加" class="addLeaf" />
+	<script src="js/jquery.min.js"></script>
+    <script src="js/jquery.rotate.js"></script>
+    <script src="js/jquery.classyleaves.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var tree = new ClassyLeaves({
+                leaves: 30,
+                maxY: -10,
+                multiplyOnClick: true,
+                multiply: 2,
+                infinite: true,
+                speed: 4000
+            });
+            $('body').on('click', '.addLeaf', function() {
+                console.log('8');
+                tree.add(8);
+                return false;
+            });
+        });
+    </script>
+</body>
+</html>

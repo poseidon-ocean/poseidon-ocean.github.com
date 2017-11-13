@@ -3,11 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="css/jquery.classyleaves.min.css" />
+
 </head>
 <body>
 
     <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/jquery.rotate.js"></script>
+    <script src="js/jquery.classyleaves.min.js"></script>
+
     <script type="text/javascript">
+        $(document).ready(function() {
+
+            var tree = new ClassyLeaves({
+                leaves: 30,
+                maxY: -10,
+                multiplyOnClick: true,
+                multiply: 2,
+                infinite: true,
+                speed: 4000
+            });
+
+//            var tree = new ClassyLeaves({
+//                leaves: 30,
+//                maxY: -10,
+//                multiplyOnClick: true,
+//                multiply: 2,
+//                infinite: true,
+//                speed: 4000
+//            });
+//            $('body').on('click', '.addLeaf', function() {
+//                console.log('8');
+//                tree.add(8);
+//                return false;
+//            });
+        });
 
     </script>
 </body>

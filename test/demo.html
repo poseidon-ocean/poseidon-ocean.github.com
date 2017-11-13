@@ -12,23 +12,103 @@
     <base target="_blank"/>
 </head>
 <body>
-    <div id="item"></div>
+
+    <div>
+        <input type="text" onkeyup="check_char(this)"/>
+
+    </div>
+
 <script src="http://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+
+
+
+
 <script type="text/javascript">
 
-    var data = {
-        name : 'pipi',
-        age : 10
-    };
-    var html = "";
-    html += "<input type='button' value='102' onclick='clickme(this,"+data+")'/>"
-    $("#item").html(html);
 
-    function clickme(obj,data){
+    function check_char(obj){
+        var $obj = $(obj);
+        var val = $obj.val();
 
-        alert(obj.value);
-        alert(data.age);
+        var vs = clearString(val);
+
+        vs = toUnicode(vs);
+
+console.log(">>>" + vs);
+        vs = fliter_emoji(vs);
+        //console.log("+++" + vs);
+        vs = unescape(vs.replace(/＼u/g, "%u"));
+        $obj.val(vs);
     }
+
+    /**
+     * 过滤特殊字符
+     * */
+    function clearString(s){
+        var pattern = new RegExp("[`~!@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）&;|{}【】‘；：”“'。，、？]")
+        var rs = "";
+        for (var i = 0; i < s.length; i++) {
+            rs = rs+s.substr(i, 1).replace(pattern, '');
+        }
+        return rs;
+    }
+
+    /**
+     * 过滤表情符号
+     */
+    function fliter_emoji(name){
+        name = name.replace(/\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDE4F]/g, "");
+
+        return name;
+    }
+
+
+    function toUnicode(str) {
+        var temp,
+                i = 0,
+                r = '',
+                len = str.length;
+
+        for (; i < len; i++) {
+            temp = str.charCodeAt(i).toString(16);
+
+            while ( temp.length < 4 )
+                temp = '0' + temp;
+
+            r += '＼u' + temp;
+        };
+
+        return r;
+    }
+
+
+
+
+
+    //字符转换为UTF-8编码
+    function EncodeUtf8(s1)
+    {
+        var s = escape(s1);
+        var sa = s.split("%");
+        var retV ="";
+        if(sa[0] != "")
+        {
+            retV = sa[0];
+        }
+        for(var i = 1; i < sa.length; i ++)
+        {
+            if(sa[i].substring(0,1) == "u")
+            {
+                retV += Hex2Utf8(Str2Hex(sa[i].substring(1,5)));
+
+            }
+            else retV += "%" + sa[i];
+        }
+
+        return retV;
+    }
+
+
 </script>
 </body>
 
